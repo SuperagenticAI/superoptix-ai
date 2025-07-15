@@ -28,7 +28,7 @@
   </p>
   
   <div style="background: linear-gradient(90deg, #10B981, #3B82F6, #8B5CF6); color: white; padding: 10px 20px; border-radius: 25px; margin: 20px 0; display: inline-block;">
-    <strong>🎉 Oracle & Genies are FREE to try!</strong>
+    <strong>🎉 Oracles & Genies are FREE to try!</strong>
   </div>
 </div>
 
@@ -49,76 +49,6 @@ SuperOptiX is a **Full-Stack Agentic AI Framework** designed to help developers 
 
 ---
 
-## 🎭 Agent Tiers
-
-SuperOptiX offers a **5-tier evolutionary system** that scales from simple automation to enterprise-grade AI operations:
-
-### 🆓 **Free Tiers** (No Credit Card Required)
-
-- **🧙‍♂️ Oracle** - Simple Q&A and basic automation
-- **🧞‍♂️ Genie** - Multi-step reasoning with tools and memory
-
-### 💼 **Commercial Tiers** (Contact Sales)
-
-- **🎭 Protocol** - Complex workflows with MCP/A2A protocols
-- **🤖 Superagent** - Multi-agent coordination and orchestration
-- **👑 Sovereign** - Autonomous enterprise AI systems
-
-[📊 View Complete Tier Comparison](https://superagenticai.github.io/superoptix-ai/guides/tiers/)
-
----
-
-## 📚 Documentation
-
-| Resource | Description | Link |
-|----------|-------------|------|
-| 📖 **Full Documentation** | Complete guides, tutorials, and API reference | [docs.super-agentic.ai](https://docs.super-agentic.ai) |
-| 🚀 **Quick Start Guide** | Get up and running in minutes | [Quick Start](https://superagenticai.github.io/superoptix-ai/quick-start/) |
-| 🎭 **Agent Tiers** | Understand the tier system | [Tiers Guide](https://superagenticai.github.io/superoptix-ai/guides/tiers/) |
-| 📄 **SuperSpec DSL** | Learn our declarative language | [SuperSpec Guide](https://superagenticai.github.io/superoptix-ai/guides/superspec/) |
-| 🏪 **Marketplace** | Pre-built agents and tools | [Marketplace](https://superagenticai.github.io/superoptix-ai/guides/marketplace/) |
-
----
-
-## 🛠️ Installation
-
-### Prerequisites
-
-- Python 3.11 or higher
-- pip or uv package manager
-
-### Basic Installation
-
-```bash
-# Using pip
-pip install superoptix
-
-# Using uv (recommended)
-uv pip install superoptix
-
-# Verify installation
-super --version
-```
-
-### Optional Dependencies
-
-```bash
-# Install with vector database support
-pip install "superoptix[vectordb]"
-
-# Install with UI components
-pip install "superoptix[ui]"
-
-# Install with observability tools
-pip install "superoptix[observability]"
-
-# Install everything
-pip install "superoptix[all]"
-```
-
----
-
-
 ## 🆘 Support & Community
 
 <div align="center" style="margin: 20px 0;">
@@ -135,7 +65,7 @@ pip install "superoptix[all]"
 
 - **📧 Email Support**: support@super-agentic.ai
 - **🌐 Website**: [super-agentic.ai](https://super-agentic.ai)
-- **📖 Documentation**: [docs.super-agentic.ai](https://docs.super-agentic.ai)
+- **📖 Documentation**: [SuperOptiX Docs](https://superagenticai.github.io/superoptix-ai)
 
 ---
 
@@ -143,7 +73,7 @@ pip install "superoptix[all]"
 
 This project is licensed under a proprietary license. For licensing inquiries, contact [licensing@super-agentic.ai](mailto:licensing@super-agentic.ai).
 
-**Note**: Oracle and Genie tiers are available for free trial without any licensing restrictions.
+**Note**: Oracles and Genies tiers are available for free trial without any licensing restrictions.
 
 ---
 
