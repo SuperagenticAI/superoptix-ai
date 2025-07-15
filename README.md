@@ -28,7 +28,7 @@
   </p>
   
   <div style="background: linear-gradient(90deg, #10B981, #3B82F6, #8B5CF6); color: white; padding: 10px 20px; border-radius: 25px; margin: 20px 0; display: inline-block;">
-    <strong>🎉 Oracle & Genies are FREE to try!</strong>
+    <strong>🎉 Oracles & Genies are FREE to try!</strong>
   </div>
 </div>
 
@@ -135,7 +135,7 @@ pip install "superoptix[all]"
 
 - **📧 Email Support**: support@super-agentic.ai
 - **🌐 Website**: [super-agentic.ai](https://super-agentic.ai)
-- **📖 Documentation**: [docs.super-agentic.ai](https://docs.super-agentic.ai)
+- **📖 Documentation**: [SuperOptiX Docs](https://superagenticai.github.io/superoptix-ai)
 
 ---
 
@@ -143,7 +143,7 @@ pip install "superoptix[all]"
 
 This project is licensed under a proprietary license. For licensing inquiries, contact [licensing@super-agentic.ai](mailto:licensing@super-agentic.ai).
 
-**Note**: Oracle and Genie tiers are available for free trial without any licensing restrictions.
+**Note**: Oracles and Genies tiers are available for free trial without any licensing restrictions.
 
 ---
 
