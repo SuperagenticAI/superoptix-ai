@@ -15,7 +15,7 @@
     <a href="https://www.python.org/downloads/">
       <img src="https://img.shields.io/badge/python-3.11+-blue.svg" alt="Python 3.11+" />
     </a>
-    <a href="https://super-agentic.ai">
+    <a href="https://superagenticai.github.io/superoptix-ai/">
       <img src="https://img.shields.io/badge/Documentation-Docs-blue.svg" alt="Documentation" />
     </a>
     <a href="https://support.super-agentic.ai">
@@ -48,76 +48,6 @@ SuperOptiX is a **Full-Stack Agentic AI Framework** designed to help developers 
 - **🏪 Marketplace** - Pre-built agents and tools for faster development
 
 ---
-
-## 🎭 Agent Tiers
-
-SuperOptiX offers a **5-tier evolutionary system** that scales from simple automation to enterprise-grade AI operations:
-
-### 🆓 **Free Tiers** (No Credit Card Required)
-
-- **🧙‍♂️ Oracle** - Simple Q&A and basic automation
-- **🧞‍♂️ Genie** - Multi-step reasoning with tools and memory
-
-### 💼 **Commercial Tiers** (Contact Sales)
-
-- **🎭 Protocol** - Complex workflows with MCP/A2A protocols
-- **🤖 Superagent** - Multi-agent coordination and orchestration
-- **👑 Sovereign** - Autonomous enterprise AI systems
-
-[📊 View Complete Tier Comparison](https://super-agentic.ai/guides/tiers/)
-
----
-
-## 📚 Documentation
-
-| Resource | Description | Link |
-|----------|-------------|------|
-| 📖 **Full Documentation** | Complete guides, tutorials, and API reference | [docs.super-agentic.ai](https://docs.super-agentic.ai) |
-| 🚀 **Quick Start Guide** | Get up and running in minutes | [Quick Start](https://super-agentic.ai/quick-start/) |
-| 🎭 **Agent Tiers** | Understand the tier system | [Tiers Guide](https://super-agentic.ai/guides/tiers/) |
-| 📄 **SuperSpec DSL** | Learn our declarative language | [SuperSpec Guide](https://super-agentic.ai/guides/superspec/) |
-| 🏪 **Marketplace** | Pre-built agents and tools | [Marketplace](https://super-agentic.ai/guides/marketplace/) |
-
----
-
-## 🛠️ Installation
-
-### Prerequisites
-
-- Python 3.11 or higher
-- pip or uv package manager
-
-### Basic Installation
-
-```bash
-# Using pip
-pip install superoptix
-
-# Using uv (recommended)
-uv pip install superoptix
-
-# Verify installation
-super --version
-```
-
-### Optional Dependencies
-
-```bash
-# Install with vector database support
-pip install "superoptix[vectordb]"
-
-# Install with UI components
-pip install "superoptix[ui]"
-
-# Install with observability tools
-pip install "superoptix[observability]"
-
-# Install everything
-pip install "superoptix[all]"
-```
-
----
-
 
 ## 🆘 Support & Community
 
