@@ -1,0 +1,233 @@
+site_name: SUPEROPTIX AI
+site_description: 'Professional AI Agent Development Framework: Evaluation-First. Enterprise-Grade. Production-Ready.'
+site_url: https://docs.super-agentic.ai
+repo_url: https://github.com/SuperagenticAI/superoptix
+repo_name: SuperOptiX
+site_author: SuperagenticAI
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      auto_title: true
+      pygments_style: monokai
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.tilde
+  - pymdownx.caret
+  - toc:
+      permalink: false
+      title: "On this page"
+  - footnotes
+  - def_list
+  - abbr
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+  - javascripts/extra.js
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  language: en
+  favicon: 'favicon.png'
+  logo: 'logo.png'
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: pink
+      accent: deep purple
+      toggle:
+        icon: material/white-balance-sunny
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: Fira Code
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+    previous: material/chevron-left
+    next: material/chevron-right
+    search: material/magnify
+    close: material/close
+    menu: material/menu
+    language: material/translate
+    share: material/share-variant
+    top: material/chevron-up
+    version: material/tag-multiple
+    home: material/home
+    expand: material/chevron-down
+    collapse: material/chevron-up
+    check: material/check
+    warning: material/alert
+    error: material/close-circle
+    info: material/information
+    note: material/note-text
+    tip: material/lightbulb
+    important: material/alert-circle
+    success: material/check-circle
+    question: material/help-circle
+    failure: material/close-circle
+    bug: material/bug
+    example: material/format-list-numbered
+    quote: material/format-quote-close
+    admonition:
+      note: material/note-text
+      abstract: material/lightbulb
+      info: material/information
+      tip: material/lightbulb
+      success: material/check-circle
+      question: material/help-circle
+      warning: material/alert
+      failure: material/close-circle
+      danger: material/close-circle
+      bug: material/bug
+      example: material/format-list-numbered
+      quote: material/format-quote-close
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+    - header.autohide
+    - announce.dismiss
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  # homepage: https://superoptix.docs
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/SuperagenticAI/superoptix
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/superoptix
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/company/superoptix
+  generator: false
+
+plugins:
+  - search:
+      lang: en
+
+nav:
+  - '👑 SuperOptiX AI': index.md
+  - '🚀 Get Started':
+      - '🎯 Introduction': introduction.md
+      - '🚀 Quick Start': quick-start.md
+      - '📦 Installation': setup.md
+      - '🗃️ LLM Setup': llm-setup.md
+      - '⚙️ Environment': environment-setup.md
+      - '📁 Project Structure': project-structure.md
+      - '🕸️ Agent Patterns': agent-patterns.md
+      - '🤖 Your First Agent': tutorials/oracles-agent.md
+      - '🧰 Your First with Agent Tools & RAG': tutorials/genies-agent.md
+      - '🎼 Your First Multi-Agent Orchestra': tutorials/first-orchestra.md
+  - '💎 SuperSpec':
+      - '💎 Overview': guides/superspec.md
+      - '📗 DSL Reference': reference/api/superspec.md
+      - '📙 DSL Examples': guides/superspec#examples
+      - '⚙️ Configuration': guides/superspec-configuration.md
+      - '🏗️ Agent Building': guides/superspec-agent-building.md
+      - '🧠 Context Engineering': guides/superspec-context-engineering.md
+  - '📚 Guides':
+      - '📖 Overview': guides/index.md
+      - '🎭 Agent Tiers': guides/tiers.md
+      - '🔍 Agent Discovery': guides/agent-discovery.md
+      - '🤖 Agent Development': guides/agent-development.md
+      - '🛠️ Tool Development': guides/tool-development.md
+      - '🎼 Orchestra Development': guides/orchestra-development.md
+      - '🏪 Marketplace': guides/marketplace.md
+      - '☁️ Cloud Inference': guides/cloud-inference.md
+      - '🎯 Model Management': guides/model-management.md
+      - '🏗️ Technical Architecture': guides/technical-architecture.md
+      - '📊 Observability': guides/observability.md
+      - '🧪 MLFlow Guide': guides/mlflow-guide.md
+      - '🔍 LangFuse Guide': guides/langfuse-integration.md
+      - '💻 CLI Reference': reference/cli.md
+      - '🔌 API Reference': reference/api/index.md
+      - '❓ FAQ': faq.md
+      - '🤝 Contributing': development/contributing.md
+      - '🏗️ Development Guide': development/index.md
+      - '🐛 Debugging': debugging-guide.md
+      - '🤖 Responsible AI': guides/responsible-ai.md
+  - '🔬 Techniques':
+      - '📖 Overview': techniques/index.md
+      - '🧠 Memory': guides/memory.md
+      - '🔍 RAG': guides/rag.md
+      - '⚡ Optimization': guides/optimization.md
+      - '🧪 Evaluation': guides/evaluation-testing.md
+      - '🧠 Model Intelligence (Coming Soon)': guides/model-intelligence.md
+      - '✅ BDD': guides/bdd.md
+      - '📊 Observability': guides/observability.md
+      - '⚙️ CI/CD': guides/cicd-integration.md
+  - '🔌 Integrations':
+      - '📖 Overview': examples/index.md
+      - '💻 MLX': examples/agents/mlx-demo.md
+      - '🐼 Ollama': examples/agents/ollama-demo.md
+      - '🤗 HuggingFace': examples/agents/huggingface-demo.md
+      - '🎛️ LM Studio': examples/agents/lmstudio-demo.md
+      - '🚥 ChromaDB': examples/agents/rag-chroma-demo.md
+      - '🍀 LanceDB': examples/agents/rag-lancedb-demo.md
+      - '🔰 Weaviate': examples/agents/weaviate-demo.md
+      - '🔸Qdrant': examples/agents/qdrant-demo.md
+      - '👁️ Milvus': examples/agents/milvus-demo.md
+      - '🛠️ Tools': examples/agents/tools-demo.md
+      - '🧠 Memory': examples/agents/memory-demo.md
+      - '📊 Observability': examples/agents/observability-demo.md
+      - '🧿 MLFlow': examples/agents/mlflow-integration.md
+      - '🧬 LangFuse': examples/agents/langfuse-integration.md
+  - '🏢 Company':
+      - '🚀 Superagentic AI': superagentic-ai.md
+      - '🎯 Mission SuperOptiX': mission-superoptix.md
+
+copyright: Copyright © 2025 Superagentic AI. Made with ❤️ for the Agentic AI community. 

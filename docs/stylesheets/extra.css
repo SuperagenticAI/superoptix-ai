@@ -1,0 +1,2966 @@
+/* SuperOptix Documentation Theme - Beautiful Pastel Light/Dark Mode Design */
+
+/* =========================================
+   CSS CUSTOM PROPERTIES FOR THEME HANDLING
+   ========================================= */
+
+/* Light Mode Variables */
+[data-md-color-scheme="default"] {
+  /* Light pastel gradients */
+  --primary-gradient: linear-gradient(135deg, #E8D5FF 0%, #FFDEE9 50%, #FFE5CC 100%);
+  --secondary-gradient: linear-gradient(45deg, #FFF0F5 0%, #F8E8FF 50%, #FFF5E6 100%);
+  --hero-gradient: linear-gradient(135deg, #F8F7FF 0%, #F5F0FF 20%, #FFF0F5 40%, #FFF5F0 60%, #F8F0FF 80%, #FFF8F0 100%);
+  --text-gradient: linear-gradient(135deg, #9F7AEA 0%, #ED64A6 50%, #F6AD55 100%);
+  --nav-gradient: linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 50%, #FFF5F5 100%);
+  
+  /* Background colors - light and airy */
+  --bg-primary: #FEFEFE;
+  --bg-secondary: #F9FAFB;
+  --bg-tertiary: #F3F4F6;
+  --bg-card: rgba(255, 255, 255, 0.98);
+  --bg-overlay: rgba(255, 255, 255, 0.15);
+  --bg-nav: rgba(249, 250, 251, 0.98);
+  
+  /* Pastel text colors - excellent readability */
+  --text-primary: #2D3748;
+  --text-secondary: #4A5568;
+  --text-muted: #718096;
+  --text-accent: #805AD5;
+  --text-link: #D53F8C;
+  --text-hero: #2D3748;
+  --text-nav: #2D3748;
+  --text-nav-hover: #1A202C;
+  --text-nav-active: #553C9A;
+  
+  /* Border and shadow colors */
+  --border-light: rgba(237, 242, 247, 0.8);
+  --border-medium: rgba(226, 232, 240, 0.9);
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-heavy: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-nav: 0 2px 8px rgba(0, 0, 0, 0.06);
+  
+  /* Code theme - Light mode optimized */
+  --code-bg: #F7FAFC;
+  --code-text: #2D3748;
+  --code-border: rgba(226, 232, 240, 0.6);
+}
+
+/* Dark Mode Variables */
+[data-md-color-scheme="slate"] {
+  /* Dark mode pastel gradients - softer and more readable */
+  --primary-gradient: linear-gradient(135deg, #553C9A 0%, #B83280 50%, #D69E2E 100%);
+  --secondary-gradient: linear-gradient(45deg, #4A5568 0%, #553C9A 50%, #B83280 100%);
+  --hero-gradient: linear-gradient(135deg, #2A1B3D 0%, #3D1B5C 30%, #5C1B4A 60%, #5C3B1B 100%);
+  --text-gradient: linear-gradient(135deg, #C4B5FD 0%, #F9A8D4 50%, #FED7AA 100%);
+  --nav-gradient: linear-gradient(135deg, #2A2E3A 0%, #1F2937 50%, #374151 100%);
+  
+  /* Background colors - warm dark with subtle gradients */
+  --bg-primary: #1A202C;
+  --bg-secondary: #2D3748;
+  --bg-tertiary: #4A5568;
+  --bg-card: rgba(45, 55, 72, 0.95);
+  --bg-overlay: rgba(0, 0, 0, 0.3);
+  --bg-nav: rgba(26, 32, 44, 0.98);
+  
+  /* Light, readable text colors for dark mode */
+  --text-primary: #F7FAFC;
+  --text-secondary: #E2E8F0;
+  --text-muted: #CBD5E0;
+  --text-accent: #C4B5FD;
+  --text-link: #F9A8D4;
+  --text-hero: #F7FAFC;
+  --text-nav: #F7FAFC;
+  --text-nav-hover: #FFFFFF;
+  --text-nav-active: #DDD6FE;
+  
+  /* Border and shadow colors for dark mode */
+  --border-light: rgba(74, 85, 104, 0.4);
+  --border-medium: rgba(74, 85, 104, 0.6);
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-heavy: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-nav: 0 2px 8px rgba(0, 0, 0, 0.3);
+  
+  /* Code theme - Dark Monokai with better contrast */
+  --code-bg: #000000;
+  --code-text: #F7FAFC;
+  --code-border: rgba(0, 0, 0, 0.4);
+}
+
+/* =========================================
+   GLOBAL LAYOUT AND TYPOGRAPHY
+   ========================================= */
+
+/* Root and body improvements */
+:root {
+  --border-radius: 12px;
+  --border-radius-large: 16px;
+  --transition-fast: 0.2s ease;
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Professional Font Size System */
+  --font-size-xs: 0.75rem;      /* 12px - Small labels, captions */
+  --font-size-sm: 0.875rem;     /* 14px - Sidebar nav, small text */
+  --font-size-base: 1rem;       /* 16px - Body text, default */
+  --font-size-lg: 1.125rem;     /* 18px - Large body text */
+  --font-size-xl: 1.25rem;      /* 20px - Subheadings, hero tagline */
+  --font-size-2xl: 1.5rem;      /* 24px - Section headings */
+  --font-size-3xl: 1.875rem;    /* 30px - Page titles */
+  --font-size-4xl: 2.25rem;     /* 36px - Hero titles */
+}
+
+/* Beautiful background gradients with purple, orange, cream */
+[data-md-color-scheme="default"] body {
+  background: var(--bg-primary);
+  background-image: radial-gradient(circle at 20% 20%, rgba(221, 214, 254, 0.25) 0%, transparent 60%),
+                    radial-gradient(circle at 80% 40%, rgba(254, 215, 170, 0.25) 0%, transparent 60%),
+                    radial-gradient(circle at 60% 80%, rgba(254, 243, 199, 0.25) 0%, transparent 60%);
+}
+
+[data-md-color-scheme="slate"] body {
+  background: var(--bg-primary);
+  background-image: radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 70%),
+                    radial-gradient(circle at 80% 40%, rgba(245, 158, 11, 0.08) 0%, transparent 70%),
+                    radial-gradient(circle at 60% 80%, rgba(253, 230, 138, 0.08) 0%, transparent 70%);
+}
+
+[data-md-color-scheme="default"] html {
+  background: var(--bg-primary);
+}
+
+[data-md-color-scheme="slate"] html {
+  background: var(--bg-primary);
+}
+
+/* Full width layout with better spacing */
+.md-container {
+  max-width: none;
+  margin: 0;
+  background: transparent;
+}
+
+.md-main__inner {
+  max-width: none;
+  margin: 0;
+  background: transparent;
+}
+
+.md-content {
+  max-width: none;
+  margin: 0;
+  background: transparent;
+}
+
+.md-content__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+}
+
+@media screen and (max-width: 76.1875em) {
+  .md-content__inner {
+    padding: 1rem 1.5rem;
+  }
+}
+
+@media screen and (max-width: 44.9375em) {
+  .md-content__inner {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* =========================================
+   HEADER AND NAVIGATION
+   ========================================= */
+
+/* Beautiful header with SuperOptiX pastel branding - light purple, pink, cream */
+.md-header {
+  background: linear-gradient(135deg, #E8D5FF 0%, #DDD6FE 20%, #FECACA 40%, #FED7AA 60%, #C4B5FD 80%, #A78BFA 100%);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: var(--shadow-nav);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  min-height: 2rem;
+}
+
+[data-md-color-scheme="slate"] .md-header {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(236, 72, 153, 0.15) 50%, rgba(245, 158, 11, 0.15) 100%);
+}
+
+.md-header__inner {
+  max-height: 2rem;
+  padding: 0 0.5rem;
+}
+
+/* Ensure table of contents don't appear in sidebar */
+.md-nav[data-md-level="1"] .md-nav--secondary,
+.md-nav__item--nested .md-nav--secondary {
+  display: none !important;
+}
+
+/* Hide any floating table of contents */
+.md-sidebar--secondary {
+  display: none !important;
+}
+
+.md-header__title {
+  font-weight: var(--font-weight-semibold);
+  color: #2D3748;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.7);
+  font-size: 0.95rem;
+  transition: color var(--transition-smooth);
+}
+
+[data-md-color-scheme="slate"] .md-header__title {
+  color: #FFFFFF;
+  text-shadow: 0 1px 2px rgba(44, 37, 72, 0.2);
+}
+
+.md-header__title:hover {
+  color: #1A202C;
+}
+
+[data-md-color-scheme="slate"] .md-header__title:hover {
+  color: #1A202C;
+}
+
+.md-header-nav__button {
+  color: var(--text-nav);
+  transition: color var(--transition-smooth);
+  opacity: 0.8;
+}
+
+.md-header-nav__button:hover {
+  color: var(--text-nav-hover);
+  opacity: 1;
+}
+
+/* Simplified header icons with strong visibility */
+.md-header-nav__button {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  padding: 0.4rem;
+  margin: 0 0.25rem;
+  transition: all var(--transition-smooth);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+[data-md-color-scheme="slate"] .md-header-nav__button {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.md-header-nav__button:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-medium);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+[data-md-color-scheme="slate"] .md-header-nav__button:hover {
+  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Header icons with maximum contrast */
+.md-header-nav__button .md-icon {
+  color: #000000;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+[data-md-color-scheme="slate"] .md-header-nav__button .md-icon {
+  color: #F7FAFC;
+}
+
+.md-header-nav__button:hover .md-icon {
+  color: #000000;
+}
+
+[data-md-color-scheme="slate"] .md-header-nav__button:hover .md-icon {
+  color: #FFFFFF;
+}
+
+/* Improved search with strong visibility */
+.md-search__form {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(45, 55, 72, 0.4);
+  transition: all var(--transition-smooth);
+  box-shadow: var(--shadow-medium);
+}
+
+[data-md-color-scheme="slate"] .md-search__form {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.md-search__form:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-heavy);
+  border-color: rgba(45, 55, 72, 0.4);
+}
+
+[data-md-color-scheme="slate"] .md-search__form:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.md-search__input {
+  color: var(--text-nav);
+  font-size: 0.8rem;
+  background: transparent;
+}
+
+[data-md-color-scheme="default"] .md-search__input {
+  color: #2D3748;
+}
+
+[data-md-color-scheme="slate"] .md-search__input {
+  color: #F7FAFC;
+}
+
+.md-search__input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+[data-md-color-scheme="default"] .md-search__input::placeholder {
+  color: #718096;
+}
+
+[data-md-color-scheme="slate"] .md-search__input::placeholder {
+  color: #CBD5E0;
+}
+
+/* Search icon visibility */
+.md-search__icon {
+  color: var(--text-nav);
+  opacity: 0.8;
+}
+
+[data-md-color-scheme="default"] .md-search__icon {
+  color: #2D3748;
+}
+
+[data-md-color-scheme="slate"] .md-search__icon {
+  color: #F7FAFC;
+}
+
+.md-search__icon:hover {
+  color: var(--text-nav-hover);
+  opacity: 1;
+}
+
+/* Beautiful navigation tabs */
+.md-tabs {
+  background: var(--nav-gradient);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: var(--shadow-light);
+}
+
+.md-tabs::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--primary-gradient);
+  opacity: 0.3;
+}
+
+.md-tabs__item {
+  height: auto;
+}
+
+.md-tabs__link {
+  color: var(--text-nav);
+  font-weight: var(--font-weight-medium);
+  font-size: 0.8rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px 8px 0 0;
+  transition: all var(--transition-smooth);
+  position: relative;
+  margin: 0 0.2rem;
+  background: transparent;
+  text-decoration: none;
+}
+
+.md-tabs__link:hover {
+  color: #2D3748;
+  background: linear-gradient(135deg, rgba(232, 213, 255, 0.6) 0%, rgba(255, 222, 233, 0.6) 50%, rgba(255, 229, 204, 0.6) 100%);
+  transform: translateY(-1px);
+  text-decoration: none;
+  box-shadow: var(--shadow-light);
+}
+
+[data-md-color-scheme="slate"] .md-tabs__link:hover {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.2) 50%, rgba(245, 158, 11, 0.2) 100%);
+  color: #F7FAFC;
+}
+
+.md-tabs__link--active,
+.md-tabs__link[aria-selected="true"] {
+  color: #553C9A;
+  background: linear-gradient(135deg, rgba(232, 213, 255, 0.9) 0%, rgba(255, 222, 233, 0.9) 50%, rgba(255, 229, 204, 0.9) 100%);
+  box-shadow: var(--shadow-medium);
+  border-bottom: 3px solid #553C9A;
+  font-weight: var(--font-weight-semibold);
+  transform: translateY(-1px);
+}
+
+[data-md-color-scheme="slate"] .md-tabs__link--active,
+[data-md-color-scheme="slate"] .md-tabs__link[aria-selected="true"] {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.4) 0%, rgba(236, 72, 153, 0.4) 50%, rgba(245, 158, 11, 0.4) 100%);
+  color: #DDD6FE;
+  border-bottom-color: #C4B5FD;
+}
+
+.md-tabs__item--active .md-tabs__link {
+  color: #553C9A;
+  background: linear-gradient(135deg, rgba(232, 213, 255, 0.9) 0%, rgba(255, 222, 233, 0.9) 50%, rgba(255, 229, 204, 0.9) 100%);
+  box-shadow: var(--shadow-medium);
+  border-bottom: 3px solid #553C9A;
+  font-weight: var(--font-weight-semibold);
+  transform: translateY(-1px);
+}
+
+[data-md-color-scheme="slate"] .md-tabs__item--active .md-tabs__link {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.4) 0%, rgba(236, 72, 153, 0.4) 50%, rgba(245, 158, 11, 0.4) 100%);
+  color: #DDD6FE;
+  border-bottom-color: #C4B5FD;
+}
+
+.md-tabs .md-tabs__item .md-tabs__link--active {
+  color: #553C9A;
+  background: linear-gradient(135deg, rgba(232, 213, 255, 0.9) 0%, rgba(255, 222, 233, 0.9) 50%, rgba(255, 229, 204, 0.9) 100%);
+  box-shadow: var(--shadow-medium);
+  border-bottom: 3px solid #553C9A;
+  font-weight: var(--font-weight-semibold);
+  transform: translateY(-1px);
+}
+
+[data-md-color-scheme="slate"] .md-tabs .md-tabs__item .md-tabs__link--active {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.4) 0%, rgba(236, 72, 153, 0.4) 50%, rgba(245, 158, 11, 0.4) 100%);
+  color: #DDD6FE;
+  border-bottom-color: #C4B5FD;
+}
+
+/* Beautiful sidebar navigation */
+.md-sidebar {
+  background: var(--bg-nav);
+  backdrop-filter: blur(15px);
+  border-right: 1px solid var(--border-light);
+}
+
+.md-nav {
+  font-size: 0.8rem;
+}
+
+.md-nav__title {
+  color: var(--text-nav);
+  font-weight: var(--font-weight-semibold);
+  font-size: 0.9rem;
+  padding: 0.75rem 0.75rem;
+  background: var(--primary-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.md-nav__item {
+  margin: 0.125rem 0;
+}
+
+.md-nav__link {
+  color: var(--text-nav);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-smooth);
+  font-weight: var(--font-weight-medium);
+  position: relative;
+  margin: 0 0.5rem;
+  font-size: 0.8rem;
+}
+
+.md-nav__link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background: var(--primary-gradient);
+  border-radius: 2px;
+  transition: height var(--transition-smooth);
+}
+
+.md-nav__link:hover {
+  color: #2D3748;
+  background: linear-gradient(135deg, rgba(232, 213, 255, 0.5) 0%, rgba(255, 222, 233, 0.5) 50%, rgba(255, 229, 204, 0.5) 100%);
+  transform: translateX(3px);
+  border-radius: var(--border-radius);
+}
+
+[data-md-color-scheme="slate"] .md-nav__link:hover {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(236, 72, 153, 0.15) 50%, rgba(245, 158, 11, 0.15) 100%);
+  color: #F7FAFC;
+}
+
+.md-nav__link:hover::before {
+  height: 60%;
+}
+
+.md-nav__link--active {
+  color: #553C9A;
+  background: linear-gradient(135deg, rgba(232, 213, 255, 0.8) 0%, rgba(255, 222, 233, 0.8) 50%, rgba(255, 229, 204, 0.8) 100%);
+  box-shadow: var(--shadow-light);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--border-radius);
+}
+
+[data-md-color-scheme="slate"] .md-nav__link--active {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.3) 0%, rgba(236, 72, 153, 0.3) 50%, rgba(245, 158, 11, 0.3) 100%);
+  color: #DDD6FE;
+}
+
+.md-nav__link--active::before {
+  height: 80%;
+}
+
+/* Hide current page headings from sidebar - show only subpages */
+.md-nav--secondary {
+  display: none !important;
+}
+
+/* Force hide all nested navigation beyond main sections */
+.md-nav__item .md-nav__item .md-nav {
+  display: none !important;
+}
+
+/* Hide deeply nested navigation items */
+.md-nav__item--nested .md-nav__item .md-nav {
+  display: none !important;
+}
+
+/* Specifically target API documentation nested items */
+.md-nav__item[data-md-level="2"] .md-nav,
+.md-nav__item[data-md-level="3"] .md-nav {
+  display: none !important;
+}
+
+/* Hide table of contents in all contexts */
+.md-nav--secondary,
+.md-nav[data-md-level="1"] .md-nav--secondary,
+.md-nav__item--nested .md-nav--secondary,
+.md-nav[data-md-level="2"] .md-nav--secondary,
+.md-nav[data-md-level="3"] .md-nav--secondary {
+  display: none !important;
+}
+
+/* Hide secondary sidebar completely */
+.md-sidebar--secondary {
+  display: none !important;
+}
+
+/* =========================================
+   CONTENT AREA IMPROVEMENTS
+   ========================================= */
+
+.md-content {
+  background: transparent;
+}
+
+.md-content__inner {
+  background: var(--bg-card);
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--shadow-medium);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-light);
+}
+
+/* =========================================
+   HERO SECTION - STUNNING DESIGN
+   ========================================= */
+
+.hero-section {
+  background: var(--hero-gradient);
+  padding: 4rem 2rem;
+  text-align: center;
+  border-radius: var(--border-radius-large);
+  margin: 2rem 0;
+  box-shadow: var(--shadow-heavy);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-hero);
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-tagline {
+  font-size: var(--font-size-xl);
+  color: var(--text-hero);
+  margin-bottom: 0.5rem;
+  opacity: 0.95;
+}
+
+.hero-subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--text-hero);
+  margin-bottom: 2rem;
+  opacity: 0.95;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+[data-md-color-scheme="slate"] .hero-subtitle {
+  background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 50%, #D1D5DB 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  font-weight: var(--font-weight-semibold);
+}
+
+.hero-gradient-text {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F7FAFC 50%, #EDF2F7 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: var(--font-weight-bold);
+}
+
+/* Beautiful feature cards */
+.hero-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-medium);
+  transition: all var(--transition-smooth);
+  border: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--primary-gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-smooth);
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-heavy);
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.hero-heading {
+  background: var(--text-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  margin: 2rem 0 1rem 0;
+  text-align: center;
+}
+
+.hero-heading-underline {
+  height: 3px;
+  background: var(--primary-gradient);
+  margin: 0 auto 2rem auto;
+  width: 60px;
+  border-radius: 2px;
+}
+
+.hero-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.hero-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  font-weight: var(--font-weight-semibold);
+  transition: all var(--transition-smooth);
+  border: 1px solid var(--border-medium);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-light);
+}
+
+.hero-link-btn span {
+  background: var(--text-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: var(--font-weight-bold);
+}
+
+.hero-link-btn:hover, .hero-link-btn:focus {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--text-accent);
+  background: var(--primary-gradient);
+  color: var(--text-hero);
+}
+
+.hero-logo {
+  max-width: 120px;
+  height: auto;
+  margin: 0 auto 2rem auto;
+  display: block;
+  filter: drop-shadow(var(--shadow-light));
+  transition: transform var(--transition-smooth);
+}
+
+.hero-logo:hover {
+  transform: scale(1.05);
+}
+
+
+
+/* =========================================
+   TYPOGRAPHY
+   ========================================= */
+
+/* Enhanced typography */
+.md-typeset {
+  color: var(--text-primary);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.md-typeset h1 {
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: var(--text-accent); /* Fallback for browsers that don't support background-clip */
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-3xl);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.md-typeset h2 {
+  color: var(--text-accent);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-2xl);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid transparent;
+  border-image: var(--primary-gradient) 1;
+  position: relative;
+}
+
+.md-typeset h2::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 40%;
+  height: 2px;
+  background: var(--primary-gradient);
+  border-radius: 1px;
+}
+
+.md-typeset h3 {
+  color: var(--text-accent);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-xl);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.md-typeset p {
+  margin-bottom: 1.5rem;
+}
+
+.md-typeset strong {
+  color: var(--text-accent);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* =========================================
+   CODE BLOCKS AND SYNTAX HIGHLIGHTING
+   ========================================= */
+
+/* Enhanced code blocks */
+.md-typeset code {
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+  font-family: 'Fira Code', monospace;
+  font-weight: 500;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--code-border);
+  font-size: 0.85em;
+}
+
+.md-typeset pre {
+  background: var(--code-bg);
+  border-radius: var(--border-radius-large);
+  padding: 1.5rem;
+  overflow-x: auto;
+  box-shadow: var(--shadow-heavy);
+  border: 1px solid var(--code-border);
+  position: relative;
+  margin: 1.5rem 0;
+}
+
+.md-typeset pre code {
+  background: transparent;
+  color: var(--code-text);
+  padding: 0;
+  box-shadow: none;
+  border: none;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+/* Syntax highlighting - Theme-aware colors */
+/* Light mode syntax highlighting */
+[data-md-color-scheme="default"] .highlight .k { color: #d73a49; font-weight: bold; } /* Keywords */
+[data-md-color-scheme="default"] .highlight .kn { color: #d73a49; font-weight: bold; } /* Keyword namespace */
+[data-md-color-scheme="default"] .highlight .kp { color: #d73a49; font-weight: bold; } /* Keyword pseudo */
+[data-md-color-scheme="default"] .highlight .kr { color: #d73a49; font-weight: bold; } /* Keyword reserved */
+[data-md-color-scheme="default"] .highlight .kt { color: #6f42c1; font-weight: bold; } /* Keyword type */
+[data-md-color-scheme="default"] .highlight .s { color: #032f62; } /* String */
+[data-md-color-scheme="default"] .highlight .se { color: #032f62; font-weight: bold; } /* String escape */
+[data-md-color-scheme="default"] .highlight .sh { color: #032f62; } /* String heredoc */
+[data-md-color-scheme="default"] .highlight .si { color: #032f62; } /* String interpolation */
+[data-md-color-scheme="default"] .highlight .sx { color: #032f62; } /* String other */
+[data-md-color-scheme="default"] .highlight .sr { color: #032f62; } /* String regex */
+[data-md-color-scheme="default"] .highlight .s1 { color: #032f62; } /* String single */
+[data-md-color-scheme="default"] .highlight .s2 { color: #032f62; } /* String double */
+[data-md-color-scheme="default"] .highlight .m { color: #005cc5; } /* Number */
+[data-md-color-scheme="default"] .highlight .mf { color: #005cc5; } /* Number float */
+[data-md-color-scheme="default"] .highlight .mh { color: #005cc5; } /* Number hex */
+[data-md-color-scheme="default"] .highlight .mi { color: #005cc5; } /* Number integer */
+[data-md-color-scheme="default"] .highlight .mo { color: #005cc5; } /* Number octal */
+[data-md-color-scheme="default"] .highlight .nb { color: #e36209; } /* Name builtin */
+[data-md-color-scheme="default"] .highlight .nc { color: #6f42c1; font-weight: bold; } /* Name class */
+[data-md-color-scheme="default"] .highlight .nd { color: #6f42c1; } /* Name decorator */
+[data-md-color-scheme="default"] .highlight .nf { color: #6f42c1; } /* Name function */
+[data-md-color-scheme="default"] .highlight .nn { color: #24292e; } /* Name namespace */
+[data-md-color-scheme="default"] .highlight .nt { color: #d73a49; } /* Name tag */
+[data-md-color-scheme="default"] .highlight .nv { color: #24292e; } /* Name variable */
+[data-md-color-scheme="default"] .highlight .ow { color: #d73a49; font-weight: bold; } /* Operator word */
+[data-md-color-scheme="default"] .highlight .o { color: #d73a49; } /* Operator */
+[data-md-color-scheme="default"] .highlight .c { color: #6a737d; font-style: italic; } /* Comment */
+[data-md-color-scheme="default"] .highlight .cm { color: #6a737d; font-style: italic; } /* Comment multiline */
+[data-md-color-scheme="default"] .highlight .cp { color: #6a737d; font-style: italic; } /* Comment preproc */
+[data-md-color-scheme="default"] .highlight .c1 { color: #6a737d; font-style: italic; } /* Comment single */
+[data-md-color-scheme="default"] .highlight .cs { color: #6a737d; font-style: italic; } /* Comment special */
+
+/* Dark mode syntax highlighting - Monokai */
+[data-md-color-scheme="slate"] .highlight .k { color: #f92672; font-weight: bold; } /* Keywords */
+[data-md-color-scheme="slate"] .highlight .kn { color: #f92672; font-weight: bold; } /* Keyword namespace */
+[data-md-color-scheme="slate"] .highlight .kp { color: #f92672; font-weight: bold; } /* Keyword pseudo */
+[data-md-color-scheme="slate"] .highlight .kr { color: #f92672; font-weight: bold; } /* Keyword reserved */
+[data-md-color-scheme="slate"] .highlight .kt { color: #66d9ef; font-weight: bold; } /* Keyword type */
+[data-md-color-scheme="slate"] .highlight .s { color: #e6db74; } /* String */
+[data-md-color-scheme="slate"] .highlight .se { color: #ae81ff; font-weight: bold; } /* String escape */
+[data-md-color-scheme="slate"] .highlight .sh { color: #e6db74; } /* String heredoc */
+[data-md-color-scheme="slate"] .highlight .si { color: #e6db74; } /* String interpolation */
+[data-md-color-scheme="slate"] .highlight .sx { color: #e6db74; } /* String other */
+[data-md-color-scheme="slate"] .highlight .sr { color: #e6db74; } /* String regex */
+[data-md-color-scheme="slate"] .highlight .s1 { color: #e6db74; } /* String single */
+[data-md-color-scheme="slate"] .highlight .s2 { color: #e6db74; } /* String double */
+[data-md-color-scheme="slate"] .highlight .m { color: #ae81ff; } /* Number */
+[data-md-color-scheme="slate"] .highlight .mf { color: #ae81ff; } /* Number float */
+[data-md-color-scheme="slate"] .highlight .mh { color: #ae81ff; } /* Number hex */
+[data-md-color-scheme="slate"] .highlight .mi { color: #ae81ff; } /* Number integer */
+[data-md-color-scheme="slate"] .highlight .mo { color: #ae81ff; } /* Number octal */
+[data-md-color-scheme="slate"] .highlight .nb { color: #a6e22e; } /* Name builtin */
+[data-md-color-scheme="slate"] .highlight .nc { color: #a6e22e; font-weight: bold; } /* Name class */
+[data-md-color-scheme="slate"] .highlight .nd { color: #a6e22e; } /* Name decorator */
+[data-md-color-scheme="slate"] .highlight .nf { color: #a6e22e; } /* Name function */
+[data-md-color-scheme="slate"] .highlight .nn { color: #f8f8f2; } /* Name namespace */
+[data-md-color-scheme="slate"] .highlight .nt { color: #f92672; } /* Name tag */
+[data-md-color-scheme="slate"] .highlight .nv { color: #f8f8f2; } /* Name variable */
+[data-md-color-scheme="slate"] .highlight .ow { color: #f92672; font-weight: bold; } /* Operator word */
+[data-md-color-scheme="slate"] .highlight .o { color: #f92672; } /* Operator */
+[data-md-color-scheme="slate"] .highlight .c { color: #75715e; font-style: italic; } /* Comment */
+[data-md-color-scheme="slate"] .highlight .cm { color: #75715e; font-style: italic; } /* Comment multiline */
+[data-md-color-scheme="slate"] .highlight .cp { color: #75715e; font-style: italic; } /* Comment preproc */
+[data-md-color-scheme="slate"] .highlight .c1 { color: #75715e; font-style: italic; } /* Comment single */
+[data-md-color-scheme="slate"] .highlight .cs { color: #75715e; font-style: italic; } /* Comment special */
+
+/* =========================================
+   LINKS AND BUTTONS
+   ========================================= */
+
+.md-typeset a {
+  color: var(--text-link);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition-smooth);
+  font-weight: var(--font-weight-medium);
+}
+
+.md-typeset a:hover {
+  border-bottom-color: var(--text-link);
+  color: var(--text-accent);
+  transform: translateY(-1px);
+}
+
+/* =========================================
+   TABLES
+   ========================================= */
+
+.md-typeset table {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-light);
+  margin: 1.5rem 0;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.md-typeset table thead {
+  background: var(--primary-gradient);
+  color: var(--text-hero);
+}
+
+.md-typeset table th {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
+  padding: 1rem;
+  text-align: left;
+  border: none;
+  color: var(--text-hero);
+}
+
+.md-typeset table td {
+  font-size: var(--font-size-base);
+  padding: 1rem;
+  border: none;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-primary);
+}
+
+.md-typeset table tbody tr:nth-child(even) {
+  background: var(--bg-secondary);
+}
+
+.md-typeset table tbody tr:hover {
+  background: var(--bg-overlay);
+  transform: scale(1.01);
+  transition: all var(--transition-smooth);
+}
+
+/* =========================================
+   ADMONITIONS
+   ========================================= */
+
+.md-typeset .admonition {
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-light);
+  margin: 1.5rem 0;
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.md-typeset .admonition-title {
+  background: var(--primary-gradient);
+  color: var(--text-hero);
+  font-weight: var(--font-weight-bold);
+  padding: 1rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  border: none;
+}
+
+.md-typeset .admonition-title::before {
+  filter: brightness(0) invert(1);
+  margin-right: 0.5rem;
+}
+
+.md-typeset .admonition > * {
+  margin: 1rem;
+}
+
+.md-typeset .admonition > .admonition-title {
+  margin: 0;
+}
+
+/* =========================================
+   TABBED CONTENT
+   ========================================= */
+
+.md-typeset .tabbed-set {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-light);
+  margin: 1.5rem 0;
+}
+
+.md-typeset .tabbed-labels {
+  background: var(--primary-gradient);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.md-typeset .tabbed-labels > label {
+  color: var(--text-hero);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  padding: 1rem 1.5rem;
+  border-bottom: 3px solid transparent;
+  transition: all var(--transition-smooth);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.md-typeset .tabbed-labels > label:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+}
+
+.md-typeset .tabbed-set > input:checked + label {
+  border-bottom-color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.md-typeset .tabbed-content {
+  background: var(--bg-card);
+  padding: 2rem;
+}
+
+/* =========================================
+   COPY BUTTON ENHANCEMENTS
+   ========================================= */
+
+.md-clipboard {
+  background: var(--text-accent);
+  color: var(--bg-primary);
+  border-radius: 50%;
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  box-shadow: var(--shadow-medium);
+  transition: all var(--transition-smooth);
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.md-clipboard:hover {
+  background: var(--primary-gradient);
+  transform: scale(1.1);
+  box-shadow: var(--shadow-heavy);
+  color: var(--text-hero);
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.md-footer {
+  background: linear-gradient(135deg, #E8D5FF 0%, #DDD6FE 20%, #FECACA 40%, #FED7AA 60%, #C4B5FD 80%, #A78BFA 100%);
+  color: #2D3748;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.7);
+  margin-top: 3rem;
+  border-top: 1px solid var(--border-light);
+  padding: 1.5rem 0;
+}
+
+[data-md-color-scheme="slate"] .md-footer {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(236, 72, 153, 0.15) 50%, rgba(245, 158, 11, 0.15) 100%);
+  color: #FFFFFF;
+  text-shadow: 0 1px 2px rgba(44, 37, 72, 0.2);
+}
+
+.md-footer-meta {
+  background: rgba(255, 255, 255, 0.15);
+  color: #2D3748;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.7);
+}
+
+[data-md-color-scheme="slate"] .md-footer-meta {
+  background: rgba(0, 0, 0, 0.15);
+  color: #FFFFFF;
+  text-shadow: 0 1px 2px rgba(44, 37, 72, 0.2);
+}
+
+/* Footer links visibility */
+.md-footer a {
+  color: #2D3748;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.7);
+}
+
+[data-md-color-scheme="slate"] .md-footer a {
+  color: #FFFFFF;
+  text-shadow: 0 1px 2px rgba(44, 37, 72, 0.2);
+}
+
+.md-footer a:hover {
+  color: #1A202C;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+[data-md-color-scheme="slate"] .md-footer a:hover {
+  color: #FFFFFF;
+  text-shadow: 0 1px 3px rgba(44, 37, 72, 0.3);
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+
+@media screen and (max-width: 76.1875em) {
+  .md-sidebar--primary {
+    transform: translateX(-100%);
+  }
+  
+  .md-overlay--active ~ .md-container .md-sidebar--primary {
+    transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 59.9375em) {
+  .hero-title {
+    font-size: 2.25rem;
+  }
+  
+  .hero-tagline {
+    font-size: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .hero-features {
+    grid-template-columns: 1fr;
+  }
+  
+  .feature-card {
+    min-width: auto;
+  }
+}
+
+@media screen and (max-width: 44.9375em) {
+  .hero-section {
+    padding: 1.5rem 1rem 2rem 1rem;
+    margin: -1rem -1rem 1.5rem -1rem;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-tagline {
+    font-size: 0.9rem;
+  }
+  
+  .md-typeset h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* =========================================
+   SCROLLBAR STYLING
+   ========================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-gradient);
+  border-radius: 4px;
+  transition: background var(--transition-smooth);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-gradient);
+}
+
+/* =========================================
+   ANIMATIONS AND LOADING STATES
+   ========================================= */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.md-content__inner {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.md-nav__item {
+  animation: slideInRight 0.3s ease-out;
+}
+
+.md-nav__item:nth-child(2) { animation-delay: 0.1s; }
+.md-nav__item:nth-child(3) { animation-delay: 0.2s; }
+.md-nav__item:nth-child(4) { animation-delay: 0.3s; }
+.md-nav__item:nth-child(5) { animation-delay: 0.4s; }
+
+/* =========================================
+   READING PROGRESS INDICATOR
+   ========================================= */
+
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 4px;
+  background: var(--text-gradient);
+  z-index: 9999;
+  transition: width 0.3s ease;
+}
+
+/* =========================================
+   CORE FEATURES STYLING
+   ========================================= */
+
+.core-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+/* Special grid for Getting Started section with 9 columns */
+.core-features:has(.feature-card:nth-child(9)) {
+  grid-template-columns: repeat(9, 1fr);
+}
+
+.core-features .feature-card {
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-light);
+  border: 1px solid var(--border-light);
+  transition: all var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.core-features .feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--text-gradient);
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+
+.core-features .feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--text-accent);
+}
+
+.core-features .feature-card:hover::before {
+  opacity: 1;
+}
+
+.core-features .feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+  text-align: center;
+}
+
+.core-features .feature-card h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.core-features .feature-card p {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  font-size: 0.85rem;
+}
+
+/* Responsive design for core features */
+@media screen and (max-width: 76.1875em) {
+  .core-features {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  
+  .core-features:has(.feature-card:nth-child(9)) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .core-features .feature-card {
+    padding: 1rem;
+  }
+  
+  .core-features .feature-icon {
+    font-size: 1.75rem;
+  }
+  
+  .core-features .feature-card h3 {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 59.9375em) {
+  .core-features {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .core-features .feature-card {
+    padding: 1rem;
+  }
+  
+  .core-features .feature-icon {
+    font-size: 1.75rem;
+  }
+  
+  .core-features .feature-card h3 {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 44.9375em) {
+  .core-features {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* === HOMEPAGE NAVIGATION GRID ENHANCED === */
+.core-features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5rem 2.5rem;
+  margin: 2.5rem 0;
+}
+
+.core-features .feature-card {
+  flex: 1 1 320px;
+  min-width: 320px;
+  max-width: 420px;
+  margin: 1rem;
+  word-break: normal;
+  white-space: normal;
+  text-align: center;
+  padding: 2.5rem 2rem 2rem 2rem;
+  background: var(--bg-card);
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--shadow-medium);
+  border: 1.5px solid var(--border-medium);
+  transition: transform 0.18s, box-shadow 0.18s;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.core-features .feature-card h3,
+.core-features .feature-card p {
+  word-break: normal;
+  white-space: normal;
+  text-align: center;
+}
+
+.core-features .feature-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.core-features .feature-card p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+}
+
+@media screen and (max-width: 76.1875em) {
+  .core-features {
+    gap: 2rem 1.5rem;
+  }
+  .core-features .feature-card {
+    min-width: 260px;
+    max-width: 100%;
+    padding: 2rem 1.2rem 1.5rem 1.2rem;
+  }
+}
+
+@media screen and (max-width: 59.9375em) {
+  .core-features {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem 0;
+  }
+  .core-features .feature-card {
+    min-width: 220px;
+    max-width: 95vw;
+    padding: 1.5rem 1rem 1rem 1rem;
+  }
+}
+
+@media screen and (max-width: 44.9375em) {
+  .core-features {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem 0;
+  }
+  .core-features .feature-card {
+    min-width: 160px;
+    max-width: 98vw;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+  }
+}
+
+/* =========================================
+   FEATURE GRID STYLING
+   ========================================= */
+
+.feature-grid {
+  margin: 2rem 0;
+}
+
+.feature-grid table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-light);
+}
+
+.feature-grid table thead {
+  background: var(--text-gradient);
+}
+
+.feature-grid table th {
+  padding: 1.5rem 1rem;
+  text-align: left;
+  font-weight: var(--font-weight-bold);
+  color: var(--text-hero);
+  font-size: 1.1rem;
+  border: none;
+}
+
+.feature-grid table td {
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: top;
+  line-height: 1.6;
+  font-size: var(--font-size-base);
+}
+
+.feature-grid table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.feature-grid table tbody tr:nth-child(even) {
+  background: var(--bg-secondary);
+}
+
+.feature-grid table tbody tr:hover {
+  background: var(--bg-tertiary);
+  transform: translateY(-1px);
+  transition: all var(--transition-smooth);
+}
+
+.feature-grid table td:first-child {
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-accent);
+  min-width: 200px;
+}
+
+.feature-grid table td:last-child {
+  color: var(--text-secondary);
+}
+
+/* Responsive design for feature grid */
+@media screen and (max-width: 76.1875em) {
+  .feature-grid table {
+    font-size: 0.9rem;
+  }
+  
+  .feature-grid table th,
+  .feature-grid table td {
+    padding: 1rem 0.75rem;
+  }
+  
+  .feature-grid table td:first-child {
+    min-width: 150px;
+  }
+}
+
+@media screen and (max-width: 59.9375em) {
+  .feature-grid table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .feature-grid table td:first-child {
+    min-width: 180px;
+  }
+}
+
+/* =========================================
+   UTILITY CLASSES
+   ========================================= */
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+.font-bold { font-weight: var(--font-weight-bold); }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+.font-medium { font-weight: var(--font-weight-medium); }
+
+/* =========================================
+   PRINT STYLES
+   ========================================= */
+
+@media print {
+  .md-header,
+  .md-tabs,
+  .md-sidebar,
+  .md-footer {
+    display: none !important;
+  }
+  
+  .md-content {
+    background: white;
+    box-shadow: none;
+  }
+  
+  .hero-section {
+    background: white;
+    color: black;
+  }
+  
+  .md-typeset h1,
+  .md-typeset h2,
+  .md-typeset h3 {
+    color: black;
+    background: none;
+    -webkit-text-fill-color: black;
+  }
+} 
+
+.gradient-text {
+  background: linear-gradient(90deg, #e91e63 0%, #9c27b0 50%, #ff9800 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+} 
+
+/* === HOMEPAGE NAVIGATION GRID FONT SIZE TWEAK === */
+.core-features .feature-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.7rem;
+  font-weight: var(--font-weight-semibold);
+}
+
+.core-features .feature-card p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.2rem;
+} 
+
+/* =========================================
+   ENHANCED TERMINAL STYLING
+   ========================================= */
+
+/* Rich terminal command styling - All terminal formats */
+.md-typeset .highlight.bash,
+.md-typeset .highlight.shell,
+.md-typeset .highlight.console,
+.md-typeset .highlight.terminal,
+.md-typeset .highlight.powershell,
+.md-typeset .highlight.cmd,
+.md-typeset .highlight.batch,
+.md-typeset .highlight.sh,
+.md-typeset .highlight.zsh,
+.md-typeset .highlight.fish,
+.md-typeset pre > code.language-bash,
+.md-typeset pre > code.language-shell,
+.md-typeset pre > code.language-console,
+.md-typeset pre > code.language-terminal,
+.md-typeset pre > code.language-powershell,
+.md-typeset pre > code.language-cmd,
+.md-typeset pre > code.language-batch,
+.md-typeset pre > code.language-sh,
+.md-typeset pre > code.language-zsh,
+.md-typeset pre > code.language-fish {
+  background: linear-gradient(135deg, #000000 0%, #2d2d2d 100%) !important;
+  border: 2px solid #404040 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+  margin: 2rem 0 !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.md-typeset .highlight.bash::before,
+.md-typeset .highlight.shell::before,
+.md-typeset .highlight.console::before,
+.md-typeset .highlight.terminal::before,
+.md-typeset .highlight.powershell::before,
+.md-typeset .highlight.cmd::before,
+.md-typeset .highlight.batch::before,
+.md-typeset .highlight.sh::before,
+.md-typeset .highlight.zsh::before,
+.md-typeset .highlight.fish::before,
+.md-typeset pre > code.language-bash::before,
+.md-typeset pre > code.language-shell::before,
+.md-typeset pre > code.language-console::before,
+.md-typeset pre > code.language-terminal::before,
+.md-typeset pre > code.language-powershell::before,
+.md-typeset pre > code.language-cmd::before,
+.md-typeset pre > code.language-batch::before,
+.md-typeset pre > code.language-sh::before,
+.md-typeset pre > code.language-zsh::before,
+.md-typeset pre > code.language-fish::before {
+  content: "💻 Terminal" !important;
+  display: block !important;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  padding: 0.75rem 1.5rem !important;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  border-bottom: 2px solid #404040 !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 10 !important;
+}
+
+.md-typeset .highlight.bash .highlight,
+.md-typeset .highlight.shell .highlight,
+.md-typeset .highlight.console .highlight,
+.md-typeset .highlight.terminal .highlight,
+.md-typeset pre > code.language-bash,
+.md-typeset pre > code.language-shell,
+.md-typeset pre > code.language-console,
+.md-typeset pre > code.language-terminal {
+  background: transparent !important;
+  padding: 1.5rem !important;
+  padding-top: 4rem !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  color: #e5e7eb !important;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace !important;
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Enhanced colorful syntax highlighting for terminal commands */
+.md-typeset .highlight.bash .hll,
+.md-typeset .highlight.shell .hll,
+.md-typeset .highlight.console .hll,
+.md-typeset .highlight.terminal .hll,
+.md-typeset .highlight.powershell .hll,
+.md-typeset .highlight.cmd .hll,
+.md-typeset .highlight.batch .hll,
+.md-typeset .highlight.sh .hll,
+.md-typeset .highlight.zsh .hll,
+.md-typeset .highlight.fish .hll {
+  background-color: rgba(102, 126, 234, 0.15) !important;
+}
+
+/* Command prompts - Bright green */
+.md-typeset .highlight.bash .gp,
+.md-typeset .highlight.shell .gp,
+.md-typeset .highlight.console .gp,
+.md-typeset .highlight.terminal .gp,
+.md-typeset .highlight.powershell .gp,
+.md-typeset .highlight.cmd .gp,
+.md-typeset .highlight.batch .gp,
+.md-typeset .highlight.sh .gp,
+.md-typeset .highlight.zsh .gp,
+.md-typeset .highlight.fish .gp {
+  color: #10b981 !important; /* Emerald green for prompts */
+  font-weight: bold !important;
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.3) !important;
+}
+
+/* Command output - Bright yellow */
+.md-typeset .highlight.bash .go,
+.md-typeset .highlight.shell .go,
+.md-typeset .highlight.console .go,
+.md-typeset .highlight.terminal .go,
+.md-typeset .highlight.powershell .go,
+.md-typeset .highlight.cmd .go,
+.md-typeset .highlight.batch .go,
+.md-typeset .highlight.sh .go,
+.md-typeset .highlight.zsh .go,
+.md-typeset .highlight.fish .go {
+  color: #f59e0b !important; /* Amber yellow for output */
+  font-style: italic !important;
+}
+
+/* Keywords and commands - Bright red */
+.md-typeset .highlight.bash .k,
+.md-typeset .highlight.shell .k,
+.md-typeset .highlight.console .k,
+.md-typeset .highlight.terminal .k,
+.md-typeset .highlight.powershell .k,
+.md-typeset .highlight.cmd .k,
+.md-typeset .highlight.batch .k,
+.md-typeset .highlight.sh .k,
+.md-typeset .highlight.zsh .k,
+.md-typeset .highlight.fish .k {
+  color: #ef4444 !important; /* Bright red for keywords */
+  font-weight: bold !important;
+  text-shadow: 0 0 6px rgba(239, 68, 68, 0.3) !important;
+}
+
+/* Strings and paths - Bright purple */
+.md-typeset .highlight.bash .s,
+.md-typeset .highlight.shell .s,
+.md-typeset .highlight.console .s,
+.md-typeset .highlight.terminal .s,
+.md-typeset .highlight.powershell .s,
+.md-typeset .highlight.cmd .s,
+.md-typeset .highlight.batch .s,
+.md-typeset .highlight.sh .s,
+.md-typeset .highlight.zsh .s,
+.md-typeset .highlight.fish .s {
+  color: #8b5cf6 !important; /* Violet purple for strings */
+  text-shadow: 0 0 6px rgba(139, 92, 246, 0.3) !important;
+}
+
+/* Numbers - Bright cyan */
+.md-typeset .highlight.bash .m,
+.md-typeset .highlight.shell .m,
+.md-typeset .highlight.console .m,
+.md-typeset .highlight.terminal .m,
+.md-typeset .highlight.powershell .m,
+.md-typeset .highlight.cmd .m,
+.md-typeset .highlight.batch .m,
+.md-typeset .highlight.sh .m,
+.md-typeset .highlight.zsh .m,
+.md-typeset .highlight.fish .m {
+  color: #06b6d4 !important; /* Cyan for numbers */
+  font-weight: bold !important;
+}
+
+/* Operators - Bright orange */
+.md-typeset .highlight.bash .o,
+.md-typeset .highlight.shell .o,
+.md-typeset .highlight.console .o,
+.md-typeset .highlight.terminal .o,
+.md-typeset .highlight.powershell .o,
+.md-typeset .highlight.cmd .o,
+.md-typeset .highlight.batch .o,
+.md-typeset .highlight.sh .o,
+.md-typeset .highlight.zsh .o,
+.md-typeset .highlight.fish .o {
+  color: #f97316 !important; /* Orange for operators */
+  font-weight: bold !important;
+}
+
+/* Comments - Bright blue */
+.md-typeset .highlight.bash .c1,
+.md-typeset .highlight.shell .c1,
+.md-typeset .highlight.console .c1,
+.md-typeset .highlight.terminal .c1,
+.md-typeset .highlight.powershell .c1,
+.md-typeset .highlight.cmd .c1,
+.md-typeset .highlight.batch .c1,
+.md-typeset .highlight.sh .c1,
+.md-typeset .highlight.zsh .c1,
+.md-typeset .highlight.fish .c1 {
+  color: #3b82f6 !important; /* Blue for comments */
+  font-style: italic !important;
+}
+
+/* Function names - Bright green */
+.md-typeset .highlight.bash .nf,
+.md-typeset .highlight.shell .nf,
+.md-typeset .highlight.console .nf,
+.md-typeset .highlight.terminal .nf,
+.md-typeset .highlight.powershell .nf,
+.md-typeset .highlight.cmd .nf,
+.md-typeset .highlight.batch .nf,
+.md-typeset .highlight.sh .nf,
+.md-typeset .highlight.zsh .nf,
+.md-typeset .highlight.fish .nf {
+  color: #22c55e !important; /* Green for functions */
+  font-weight: bold !important;
+}
+
+/* Variables - Bright pink */
+.md-typeset .highlight.bash .nv,
+.md-typeset .highlight.shell .nv,
+.md-typeset .highlight.console .nv,
+.md-typeset .highlight.terminal .nv,
+.md-typeset .highlight.powershell .nv,
+.md-typeset .highlight.cmd .nv,
+.md-typeset .highlight.batch .nv,
+.md-typeset .highlight.sh .nv,
+.md-typeset .highlight.zsh .nv,
+.md-typeset .highlight.fish .nv {
+  color: #ec4899 !important; /* Pink for variables */
+  font-weight: bold !important;
+}
+
+/* Enhanced syntax highlighting for all code blocks */
+.md-typeset .highlight {
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  margin: 1.5rem 0 !important;
+  overflow: hidden !important;
+}
+
+/* Dark mode - Monokai theme enhancements */
+[data-md-color-scheme="slate"] .md-typeset .highlight {
+  background: #000000 !important;
+  border: 1px solid #d2c642 !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .hll {
+  background-color: #49483e !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .c1 {
+  color: #75715e !important; /* Comments */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .s {
+  color: #e6db74 !important; /* Strings */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .k {
+  color: #f92672 !important; /* Keywords */
+  font-weight: bold !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .n {
+  color: #f8f8f2 !important; /* Names */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .o {
+  color: #f92672 !important; /* Operators */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .p {
+  color: #f8f8f2 !important; /* Punctuation */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .ch {
+  color: #75715e !important; /* Comments */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .cm {
+  color: #75715e !important; /* Comments */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .cp {
+  color: #75715e !important; /* Comments */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .cpf {
+  color: #75715e !important; /* Comments */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .c1 {
+  color: #75715e !important; /* Comments */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .cs {
+  color: #75715e !important; /* Comments */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .ge {
+  font-style: italic !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .gs {
+  font-weight: bold !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .kc {
+  color: #66d9ef !important; /* Keywords */
+  font-weight: bold !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .kd {
+  color: #f92672 !important; /* Keywords */
+  font-weight: bold !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .kn {
+  color: #f92672 !important; /* Keywords */
+  font-weight: bold !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .kp {
+  color: #f92672 !important; /* Keywords */
+  font-weight: bold !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .kr {
+  color: #f92672 !important; /* Keywords */
+  font-weight: bold !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .kt {
+  color: #66d9ef !important; /* Keywords */
+  font-weight: bold !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .ld {
+  color: #e6db74 !important; /* Literals */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .m {
+  color: #ae81ff !important; /* Numbers */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .s {
+  color: #e6db74 !important; /* Strings */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .na {
+  color: #a6e22e !important; /* Names */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .nb {
+  color: #f8f8f2 !important; /* Names */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .nc {
+  color: #a6e22e !important; /* Names */
+  font-weight: bold !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .no {
+  color: #66d9ef !important; /* Names */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .nd {
+  color: #a6e22e !important; /* Names */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .ni {
+  color: #f8f8f2 !important; /* Names */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .ne {
+  color: #a6e22e !important; /* Names */
+  font-weight: bold !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .nf {
+  color: #a6e22e !important; /* Names */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .nl {
+  color: #f8f8f2 !important; /* Names */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .nn {
+  color: #f8f8f2 !important; /* Names */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .nx {
+  color: #a6e22e !important; /* Names */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .py {
+  color: #f8f8f2 !important; /* Names */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .nt {
+  color: #f92672 !important; /* Names */
+  font-weight: bold !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .nv {
+  color: #f8f8f2 !important; /* Names */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .ow {
+  color: #f92672 !important; /* Operators */
+  font-weight: bold !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .w {
+  color: #f8f8f2 !important; /* Whitespace */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .mb {
+  color: #ae81ff !important; /* Numbers */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .mf {
+  color: #ae81ff !important; /* Numbers */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .mh {
+  color: #ae81ff !important; /* Numbers */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .mi {
+  color: #ae81ff !important; /* Numbers */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .mo {
+  color: #ae81ff !important; /* Numbers */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .sa {
+  color: #e6db74 !important; /* Strings */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .sb {
+  color: #e6db74 !important; /* Strings */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .sc {
+  color: #e6db74 !important; /* Strings */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .dl {
+  color: #e6db74 !important; /* Strings */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .sd {
+  color: #e6db74 !important; /* Strings */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .s2 {
+  color: #e6db74 !important; /* Strings */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .se {
+  color: #ae81ff !important; /* Strings */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .sh {
+  color: #e6db74 !important; /* Strings */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .si {
+  color: #e6db74 !important; /* Strings */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .sx {
+  color: #e6db74 !important; /* Strings */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .sr {
+  color: #e6db74 !important; /* Strings */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .s1 {
+  color: #e6db74 !important; /* Strings */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .ss {
+  color: #e6db74 !important; /* Strings */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .bp {
+  color: #f8f8f2 !important; /* Names */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .fm {
+  color: #a6e22e !important; /* Names */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .vc {
+  color: #f8f8f2 !important; /* Names */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .vg {
+  color: #f8f8f2 !important; /* Names */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .vi {
+  color: #f8f8f2 !important; /* Names */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .vm {
+  color: #f8f8f2 !important; /* Names */
+}
+
+[data-md-color-scheme="slate"] .md-typeset .highlight .il {
+  color: #ae81ff !important; /* Numbers */
+}
+
+/* Copy button styling for all code blocks */
+.md-typeset .highlight .md-clipboard {
+  background: rgba(102, 126, 234, 0.1) !important;
+  border: 1px solid rgba(102, 126, 234, 0.3) !important;
+  color: #667eea !important;
+  border-radius: 4px !important;
+}
+
+.md-typeset .highlight .md-clipboard:hover {
+  background: rgba(102, 126, 234, 0.2) !important;
+  border-color: #667eea !important;
+}
+
+/* =========================================
+   DARK MODE PURE BLACK OVERRIDES
+   ========================================= */
+
+/* Force dark gray backgrounds everywhere in dark mode */
+[data-md-color-scheme="slate"] {
+  /* Override all Material for MkDocs background variables */
+  --md-default-bg-color: #000000 !important;
+  --md-default-bg-color--light: #000000 !important;
+  --md-default-bg-color--lighter: #000000 !important;
+  --md-default-bg-color--lightest: #000000 !important;
+  
+  /* Override primary and accent background colors */
+  --md-primary-fg-color: #000000 !important;
+  --md-primary-fg-color--light: #000000 !important;
+  --md-primary-fg-color--lighter: #000000 !important;
+  --md-primary-fg-color--lightest: #000000 !important;
+  --md-accent-fg-color: #000000 !important;
+  --md-accent-fg-color--light: #000000 !important;
+  --md-accent-fg-color--lighter: #000000 !important;
+  --md-accent-fg-color--lightest: #000000 !important;
+  
+  /* Override code background colors */
+  --md-code-bg-color: #000000 !important;
+  --md-code-fg-color: #f8f8f2 !important;
+  
+  /* Override sidebar and navigation backgrounds */
+  --md-sidebar-bg-color: #000000 !important;
+  --md-sidebar-bg-color--light: #000000 !important;
+  --md-sidebar-bg-color--lighter: #000000 !important;
+  --md-sidebar-bg-color--lightest: #000000 !important;
+}
+
+/* Force pure black on all major containers */
+[data-md-color-scheme="slate"] body,
+[data-md-color-scheme="slate"] html,
+[data-md-color-scheme="slate"] .md-container,
+[data-md-color-scheme="slate"] .md-main,
+[data-md-color-scheme="slate"] .md-main__inner,
+[data-md-color-scheme="slate"] .md-content,
+[data-md-color-scheme="slate"] .md-content__inner,
+[data-md-color-scheme="slate"] .md-sidebar,
+[data-md-color-scheme="slate"] .md-sidebar--primary,
+[data-md-color-scheme="slate"] .md-sidebar--secondary,
+[data-md-color-scheme="slate"] .md-nav,
+[data-md-color-scheme="slate"] .md-nav__list,
+[data-md-color-scheme="slate"] .md-nav__item,
+[data-md-color-scheme="slate"] .md-tabs,
+[data-md-color-scheme="slate"] .md-tabs__list,
+[data-md-color-scheme="slate"] .md-tabs__item,
+[data-md-color-scheme="slate"] .md-footer,
+[data-md-color-scheme="slate"] .md-footer__inner,
+[data-md-color-scheme="slate"] .md-footer-meta,
+[data-md-color-scheme="slate"] .md-footer-meta__inner {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all cards and feature elements */
+[data-md-color-scheme="slate"] .feature-card,
+[data-md-color-scheme="slate"] .core-features .feature-card,
+[data-md-color-scheme="slate"] .hero-features .feature-card,
+[data-md-color-scheme="slate"] .md-typeset .admonition,
+[data-md-color-scheme="slate"] .md-typeset .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset .tabbed-set,
+[data-md-color-scheme="slate"] .md-typeset .tabbed-labels > label,
+[[data-md-color-scheme="slate"] .md-typeset .tabbed-content,
+[data-md-color-scheme="slate"] .md-typeset table,
+[data-md-color-scheme="slate"] .md-typeset table thead,
+[data-md-color-scheme="slate"] .md-typeset table tbody,
+[data-md-color-scheme="slate"] .md-typeset table th,
+[data-md-color-scheme="slate"] .md-typeset table td,
+[data-md-color-scheme="slate"] .md-typeset pre,
+[data-md-color-scheme="slate"] .md-typeset code,
+[data-md-color-scheme="slate"] .md-clipboard,
+[data-md-color-scheme="slate"] .md-search__form,
+[data-md-color-scheme="slate"] .md-search__input,
+[data-md-color-scheme="slate"] .md-header__button,
+[data-md-color-scheme="slate"] .md-nav__button {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all hover states */
+[data-md-color-scheme="slate"] .feature-card:hover,
+[data-md-color-scheme="slate"] .core-features .feature-card:hover,
+[data-md-color-scheme="slate"] .hero-features .feature-card:hover,
+[data-md-color-scheme="slate"] .md-nav__link:hover,
+[data-md-color-scheme="slate"] .md-tabs__link:hover,
+[data-md-color-scheme="slate"] .md-search__form:hover,
+[data-md-color-scheme="slate"] .md-typeset table tbody tr:hover,
+[data-md-color-scheme="slate"] .md-typeset .tabbed-labels > label:hover {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all active states */
+[data-md-color-scheme="slate"] .md-nav__link--active,
+[data-md-color-scheme="slate"] .md-tabs__link--active,
+[data-md-color-scheme="slate"] .md-tabs__link[aria-selected="true"],
+[data-md-color-scheme="slate"] .md-typeset .tabbed-set > input:checked + label {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all pseudo-elements */
+[data-md-color-scheme="slate"] .feature-card::before,
+[data-md-color-scheme="slate"] .feature-card::after,
+[data-md-color-scheme="slate"] .core-features .feature-card::before,
+[data-md-color-scheme="slate"] .core-features .feature-card::after,
+[data-md-color-scheme="slate"] .hero-features .feature-card::before,
+[data-md-color-scheme="slate"] .hero-features .feature-card::after,
+[data-md-color-scheme="slate"] .md-nav__link::before,
+[data-md-color-scheme="slate"] .md-tabs::after {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all overlays and modals */
+[data-md-color-scheme="slate"] .md-overlay,
+[data-md-color-scheme="slate"] .md-search__overlay,
+[data-md-color-scheme="slate"] .md-dialog,
+[data-md-color-scheme="slate"] .md-dialog__inner {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all form elements */
+[data-md-color-scheme="slate"] input,
+[data-md-color-scheme="slate"] textarea,
+[data-md-color-scheme="slate"] select,
+[data-md-color-scheme="slate"] button,
+[data-md-color-scheme="slate"] .md-button {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all scrollbars */
+[data-md-color-scheme="slate"] ::-webkit-scrollbar-track {
+  background: #000000 !important;
+}
+
+[data-md-color-scheme="slate"] ::-webkit-scrollbar-thumb {
+  background: #333333 !important;
+}
+
+[data-md-color-scheme="slate"] ::-webkit-scrollbar-thumb:hover {
+  background: #555555 !important;
+}
+
+/* Force pure black on all selection */
+[data-md-color-scheme="slate"] ::selection {
+  background: #333333 !important;
+}
+
+[data-md-color-scheme="slate"] ::-moz-selection {
+  background: #333333 !important;
+}
+
+/* Force pure black on all focus states */
+[data-md-color-scheme="slate"] *:focus {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all visited states */
+[data-md-color-scheme="slate"] a:visited {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all disabled states */
+[data-md-color-scheme="slate"] *:disabled {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all placeholder elements */
+[data-md-color-scheme="slate"] ::placeholder {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all tooltip elements */
+[data-md-color-scheme="slate"] [data-tooltip],
+[data-md-color-scheme="slate"] .tooltip {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all dropdown elements */
+[data-md-color-scheme="slate"] .dropdown,
+[data-md-color-scheme="slate"] .dropdown-content,
+[data-md-color-scheme="slate"] .dropdown-menu {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all modal elements */
+[data-md-color-scheme="slate"] .modal,
+[data-md-color-scheme="slate"] .modal-content,
+[data-md-color-scheme="slate"] .modal-header,
+[data-md-color-scheme="slate"] .modal-body,
+[data-md-color-scheme="slate"] .modal-footer {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all popup elements */
+[data-md-color-scheme="slate"] .popup,
+[data-md-color-scheme="slate"] .popup-content {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all notification elements */
+[data-md-color-scheme="slate"] .notification,
+[data-md-color-scheme="slate"] .alert,
+[data-md-color-scheme="slate"] .message {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all badge elements */
+[data-md-color-scheme="slate"] .badge,
+[data-md-color-scheme="slate"] .tag,
+[data-md-color-scheme="slate"] .label {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all progress elements */
+[data-md-color-scheme="slate"] .progress,
+[data-md-color-scheme="slate"] .progress-bar {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all breadcrumb elements */
+[data-md-color-scheme="slate"] .breadcrumb,
+[data-md-color-scheme="slate"] .breadcrumb-item {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all pagination elements */
+[data-md-color-scheme="slate"] .pagination,
+[data-md-color-scheme="slate"] .page-item,
+[data-md-color-scheme="slate"] .page-link {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all list elements */
+[data-md-color-scheme="slate"] ul,
+[data-md-color-scheme="slate"] ol,
+[data-md-color-scheme="slate"] li {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all blockquote elements */
+[data-md-color-scheme="slate"] blockquote {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all definition list elements */
+[data-md-color-scheme="slate"] dl,
+[data-md-color-scheme="slate"] dt,
+[data-md-color-scheme="slate"] dd {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all figure elements */
+[data-md-color-scheme="slate"] figure,
+[data-md-color-scheme="slate"] figcaption {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all section elements */
+[data-md-color-scheme="slate"] section,
+[data-md-color-scheme="slate"] article,
+[data-md-color-scheme="slate"] aside,
+[data-md-color-scheme="slate"] header,
+[data-md-color-scheme="slate"] footer,
+[data-md-color-scheme="slate"] nav,
+[data-md-color-scheme="slate"] main {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all div elements */
+[data-md-color-scheme="slate"] div {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all span elements */
+[data-md-color-scheme="slate"] span {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all p elements */
+[data-md-color-scheme="slate"] p {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all heading elements */
+[data-md-color-scheme="slate"] h1,
+[data-md-color-scheme="slate"] h2,
+[data-md-color-scheme="slate"] h3,
+[data-md-color-scheme="slate"] h4,
+[data-md-color-scheme="slate"] h5,
+[data-md-color-scheme="slate"] h6 {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all form elements */
+[data-md-color-scheme="slate"] form,
+[data-md-color-scheme="slate"] fieldset,
+[data-md-color-scheme="slate"] legend {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all iframe elements */
+[data-md-color-scheme="slate"] iframe {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all canvas elements */
+[data-md-color-scheme="slate"] canvas {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all svg elements */
+[data-md-color-scheme="slate"] svg {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all video elements */
+[data-md-color-scheme="slate"] video {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all audio elements */
+[data-md-color-scheme="slate"] audio {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all embed elements */
+[data-md-color-scheme="slate"] embed,
+[data-md-color-scheme="slate"] object {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all param elements */
+[data-md-color-scheme="slate"] param {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all source elements */
+[data-md-color-scheme="slate"] source {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all track elements */
+[data-md-color-scheme="slate"] track {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all map elements */
+[data-md-color-scheme="slate"] map {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all area elements */
+[data-md-color-scheme="slate"] area {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all details elements */
+[data-md-color-scheme="slate"] details,
+[data-md-color-scheme="slate"] summary {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all dialog elements */
+[data-md-color-scheme="slate"] dialog {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all menu elements */
+[data-md-color-scheme="slate"] menu,
+[data-md-color-scheme="slate"] menuitem {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all meter elements */
+[data-md-color-scheme="slate"] meter {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all output elements */
+[data-md-color-scheme="slate"] output {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all progress elements */
+[data-md-color-scheme="slate"] progress {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all ruby elements */
+[data-md-color-scheme="slate"] ruby,
+[data-md-color-scheme="slate"] rt,
+[data-md-color-scheme="slate"] rp {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all samp elements */
+[data-md-color-scheme="slate"] samp {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all small elements */
+[data-md-color-scheme="slate"] small {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all sub elements */
+[data-md-color-scheme="slate"] sub {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all sup elements */
+[data-md-color-scheme="slate"] sup {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all time elements */
+[data-md-color-scheme="slate"] time {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all var elements */
+[data-md-color-scheme="slate"] var {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all wbr elements */
+[data-md-color-scheme="slate"] wbr {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all bdi elements */
+[data-md-color-scheme="slate"] bdi {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all bdo elements */
+[data-md-color-scheme="slate"] bdo {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all cite elements */
+[data-md-color-scheme="slate"] cite {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all data elements */
+[data-md-color-scheme="slate"] data {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all del elements */
+[data-md-color-scheme="slate"] del {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all dfn elements */
+[data-md-color-scheme="slate"] dfn {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all em elements */
+[data-md-color-scheme="slate"] em {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all i elements */
+[data-md-color-scheme="slate"] i {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all ins elements */
+[data-md-color-scheme="slate"] ins {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all kbd elements */
+[data-md-color-scheme="slate"] kbd {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all mark elements */
+[data-md-color-scheme="slate"] mark {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all q elements */
+[data-md-color-scheme="slate"] q {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all s elements */
+[data-md-color-scheme="slate"] s {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all strong elements */
+[data-md-color-scheme="slate"] strong {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all u elements */
+[data-md-color-scheme="slate"] u {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all b elements */
+[data-md-color-scheme="slate"] b {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all br elements */
+[data-md-color-scheme="slate"] br {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all hr elements */
+[data-md-color-scheme="slate"] hr {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all img elements */
+[data-md-color-scheme="slate"] img {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all link elements */
+[data-md-color-scheme="slate"] link {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all meta elements */
+[data-md-color-scheme="slate"] meta {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all script elements */
+[data-md-color-scheme="slate"] script {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all style elements */
+[data-md-color-scheme="slate"] style {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all title elements */
+[data-md-color-scheme="slate"] title {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all base elements */
+[data-md-color-scheme="slate"] base {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all head elements */
+[data-md-color-scheme="slate"] head {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all body elements */
+[data-md-color-scheme="slate"] body {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all html elements */
+[data-md-color-scheme="slate"] html {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all root elements */
+[data-md-color-scheme="slate"] :root {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all universal selector */
+[data-md-color-scheme="slate"] * {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all pseudo-elements */
+[data-md-color-scheme="slate"] *::before,
+[data-md-color-scheme="slate"] *::after {
+  background: #000000 !important;
+  background-color: #000000 !important;
+}
+
+/* Force pure black on all pseudo-classes */
+[data-md-color-scheme="slate"] *:hover,
+[data-md-color-scheme="slate"] *:active,
+[data-md-color-scheme="slate"] *:focus,
+[data-md-color-scheme="slate"] *:visited,
+[data-md-color-scheme="slate"] *:link,
+[data-md-color-scheme="slate"] *:target,
+[data-md-color-scheme="slate"] *:first-child,
+[data-md-color-scheme="slate"] *:last-child,
+[data-md-color-scheme="slate"] *:nth-child(n),
+[data-md-color-scheme="slate"] *:nth-last-child(n),
+[data-md-color-scheme="slate"] *:first-of-type,
+[data-md-color-scheme="slate"] *:last-of-type,
+[data-md-color-scheme="slate"] *:nth-of-type(n),
+[data-md-color-scheme="slate"] *:nth-last-of-type(n),
+[data-md-color-scheme="slate"] *:only-child,
+[data-md-color-scheme="slate"] *:only-of-type,
+[data-md-color-scheme="slate"] *:empty,
+[data-md-color-scheme="slate"] *:root,
+[data-md-color-scheme="slate"] *:enabled,
+[data-md-color-scheme="slate"] *:disabled,
+[data-md-color-scheme="slate"] *:checked,
+[data-md-color-scheme="slate"] *:indeterminate,
+[data-md-color-scheme="slate"] *:default,
+[data-md-color-scheme="slate"] *:valid,
+[data-md-color-scheme="slate"] *:invalid,
+[data-md-color-scheme="slate"] *:in-range,
+[data-md-color-scheme="slate"] *:out-of-range,
+[data-md-color-scheme="slate"] *:required,
+[data-md-color-scheme="slate"] *:optional,
+[data-md-color-scheme="slate"] *:read-only,
+[data-md-color-scheme="slate"] *:read-write,
+[data-md-color-scheme="slate"] *:placeholder-shown,
+[data-md-color-scheme="slate"] *:autofill,
+[data-md-color-scheme="slate"] *:user-invalid,
+[data-md-color-scheme="slate"] *:user-valid {
+  background: #000000 !important;
+  background-color: #000000 !important;
+} 
+
+/* =========================================
+   SUPERSPECX ADMONITION STYLING
+   ========================================= */
+
+.md-sidebar .md-nav,
+.md-sidebar--primary .md-nav,
+.md-sidebar .md-nav__link {
+  font-size: 0.9rem !important;
+}
+
+/* Unified pastel gradient for header and footer in both modes */
+.md-header,
+[data-md-color-scheme="slate"] .md-header {
+  background: linear-gradient(135deg, rgba(196, 181, 253, 0.95) 0%, rgba(251, 113, 133, 0.95) 50%, rgba(253, 230, 138, 0.95) 100%) !important;
+  color: #000 !important;
+}
+
+.md-footer,
+[data-md-color-scheme="slate"] .md-footer {
+  background: linear-gradient(135deg, rgba(196, 181, 253, 0.95) 0%, rgba(251, 113, 133, 0.95) 50%, rgba(253, 230, 138, 0.95) 100%) !important;
+  color: #000 !important;
+}
+
