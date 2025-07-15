@@ -83,6 +83,12 @@ cd swe
 ls -la
 ```
 
+**💡 Pro Tip:** Add `--verbose` to see detailed project setup information:
+
+```bash
+super init swe --verbose
+```
+
 You should see a `.super` file in the root. **All further commands should be run from this directory.**
 
 ---
@@ -91,6 +97,12 @@ You should see a `.super` file in the root. **All further commands should be run
 
 ```bash
 super agent pull developer
+```
+
+**💡 Pro Tip:** Add `--verbose` to see detailed agent information and guidance:
+
+```bash
+super agent pull developer --verbose
 ```
 
 <details><summary>Output</summary>
@@ -257,6 +269,12 @@ This declarative approach makes agent development **reproducible**, **testable**
 super agent compile developer
 ```
 
+**💡 Pro Tip:** Add `--verbose` to see detailed guidance and feature explanations:
+
+```bash
+super agent compile developer --verbose
+```
+
 <details><summary>Output</summary>
 
 ```
@@ -345,6 +363,12 @@ super agent compile developer
 
 ```bash
 super agent evaluate developer
+```
+
+**💡 Pro Tip:** Add `--verbose` to see detailed test results and guidance:
+
+```bash
+super agent evaluate developer --verbose
 ```
 
 <details><summary>Output</summary>
@@ -522,6 +546,12 @@ The low scores are expected with `llama3.2:1b` because:
 super agent optimize developer
 ```
 
+**💡 Pro Tip:** Add `--verbose` to see detailed guidance and optimization information:
+
+```bash
+super agent optimize developer --verbose
+```
+
 <details><summary>Output</summary>
 
 ```
@@ -641,6 +671,12 @@ Now let's test if the agent can execute goals independently:
 
 ```bash
 super agent run developer --goal "Build a snake game in Python"
+```
+
+**💡 Pro Tip:** Add `--verbose` to see detailed execution information and guidance:
+
+```bash
+super agent run developer --goal "Build a snake game in Python" --verbose
 ```
 
 <details><summary>Output</summary>
@@ -869,6 +905,12 @@ Now let's create an orchestra to coordinate your agents!
 super orchestra create sdlc
 ```
 
+**💡 Pro Tip:** Add `--verbose` to see detailed orchestra configuration and guidance:
+
+```bash
+super orchestra create sdlc --verbose
+```
+
 <details><summary>Output</summary>
 
 ```
@@ -970,6 +1012,12 @@ Now run the orchestra with a specific goal:
 
 ```bash
 super orchestra run sdlc --goal "Build a simple login feature for a web application"
+```
+
+**💡 Pro Tip:** Add `--verbose` to see detailed execution information and guidance:
+
+```bash
+super orchestra run sdlc --goal "Build a simple login feature for a web application" --verbose
 ```
 
 <details><summary>Output</summary>
@@ -1193,6 +1241,54 @@ super agent --help
 super orchestra --help
 super spec --help
 ```
+
+---
+
+## 🔍 Verbose Mode: Get Detailed Information
+
+SuperOptiX commands support a `--verbose` flag that provides detailed guidance, explanations, and recommendations. This is perfect for learning and debugging.
+
+### Commands with Verbose Mode
+
+**Agent Management:**
+```bash
+# Compile with detailed guidance
+super agent compile developer --verbose
+
+# Evaluate with detailed test results
+super agent evaluate developer --verbose
+
+# Optimize with detailed information
+super agent optimize developer --verbose
+
+# Run with detailed execution info
+super agent run developer --goal "your goal" --verbose
+```
+
+**Orchestra Management:**
+```bash
+# Create with detailed configuration
+super orchestra create my_orchestra --verbose
+
+# Run with detailed execution info
+super orchestra run my_orchestra --goal "your goal" --verbose
+```
+
+### What You Get in Verbose Mode
+
+- 📋 **Detailed explanations** of what each step does
+- 🎯 **AI recommendations** for improvement
+- 📊 **Comprehensive test results** and analysis
+- 🔧 **Configuration guidance** and best practices
+- 🚀 **Next steps** and workflow recommendations
+- 💡 **Troubleshooting tips** and common solutions
+
+### When to Use Verbose Mode
+
+- 🆕 **Learning SuperOptiX** - Understand what's happening under the hood
+- 🐛 **Debugging issues** - Get detailed error information and suggestions
+- 📈 **Optimizing performance** - See detailed metrics and recommendations
+- 🎯 **Production planning** - Get comprehensive guidance for deployment
 
 ---
 

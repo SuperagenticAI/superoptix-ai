@@ -128,6 +128,9 @@ super init <project_name>
 **Arguments:**
 - `project_name` - Name of the agentic system (required)
 
+**Options:**
+- `--verbose` - Show detailed project setup information
+
 **Example:**
 ```bash
 super init my_ai_project
@@ -157,6 +160,7 @@ super agent pull <name> [options]
 **Options:**
 - `--tier {oracles,genies}` - Agent tier level (default: oracles)
 - `--force` - Force overwrite if agent already exists
+- `--verbose` - Show detailed agent information and guidance
 
 ### agent compile
 
@@ -173,6 +177,7 @@ super agent compile [name] [options]
 - `--tier {oracles,genies}` - Override playbook tier for compilation
 - `--all` - Compile all agents in the project
 - `--abstracted` - Use abstracted pipeline with SuperOptixPipeline base class
+- `--verbose` - Show detailed guidance and feature explanations
 
 ### agent design
 
@@ -238,6 +243,7 @@ super agent optimize <name> [options]
 
 **Options:**
 - `--force` - Force re-optimization even if an optimized version already exists.
+- `--verbose` - Show detailed guidance and optimization information
 
 ### agent evaluate
 
@@ -268,6 +274,9 @@ super agent run <name> --goal <goal>
 **Arguments:**
 - `name` - Name of the agent to run (required)
 - `--goal` - Goal description for the agent (required)
+
+**Options:**
+- `--verbose` - Show detailed execution information and guidance
 
 ### agent rm
 
@@ -492,6 +501,9 @@ super orchestra create <name>
 **Arguments:**
 - `name` - Name of the orchestra to create (required)
 
+**Options:**
+- `--verbose` - Show detailed orchestra configuration and guidance
+
 ### orchestra list
 
 List all orchestras in the project. This command has an alias `ls`.
@@ -511,6 +523,9 @@ super orchestra run <name> --goal <goal>
 **Arguments:**
 - `name` - Name of the orchestra to run (required)
 - `--goal` - Goal description for the orchestra (required)
+
+**Options:**
+- `--verbose` - Show detailed execution information and guidance
 
 ## Marketplace (`marketplace`, `market` or `mk`)
 

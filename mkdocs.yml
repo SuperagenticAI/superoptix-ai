@@ -149,6 +149,8 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/SuperagenticAI/superoptix
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/superoptix
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/superoptix
     - icon: fontawesome/brands/linkedin
