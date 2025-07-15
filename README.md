@@ -15,7 +15,7 @@
     <a href="https://www.python.org/downloads/">
       <img src="https://img.shields.io/badge/python-3.11+-blue.svg" alt="Python 3.11+" />
     </a>
-    <a href="https://super-agentic.ai">
+    <a href="https://superagenticai.github.io/superoptix-ai/">
       <img src="https://img.shields.io/badge/Documentation-Docs-blue.svg" alt="Documentation" />
     </a>
     <a href="https://support.super-agentic.ai">
@@ -64,7 +64,7 @@ SuperOptiX offers a **5-tier evolutionary system** that scales from simple autom
 - **🤖 Superagent** - Multi-agent coordination and orchestration
 - **👑 Sovereign** - Autonomous enterprise AI systems
 
-[📊 View Complete Tier Comparison](https://super-agentic.ai/guides/tiers/)
+[📊 View Complete Tier Comparison](https://superagenticai.github.io/superoptix-ai/guides/tiers/)
 
 ---
 
@@ -73,10 +73,10 @@ SuperOptiX offers a **5-tier evolutionary system** that scales from simple autom
 | Resource | Description | Link |
 |----------|-------------|------|
 | 📖 **Full Documentation** | Complete guides, tutorials, and API reference | [docs.super-agentic.ai](https://docs.super-agentic.ai) |
-| 🚀 **Quick Start Guide** | Get up and running in minutes | [Quick Start](https://super-agentic.ai/quick-start/) |
-| 🎭 **Agent Tiers** | Understand the tier system | [Tiers Guide](https://super-agentic.ai/guides/tiers/) |
-| 📄 **SuperSpec DSL** | Learn our declarative language | [SuperSpec Guide](https://super-agentic.ai/guides/superspec/) |
-| 🏪 **Marketplace** | Pre-built agents and tools | [Marketplace](https://super-agentic.ai/guides/marketplace/) |
+| 🚀 **Quick Start Guide** | Get up and running in minutes | [Quick Start](https://superagenticai.github.io/superoptix-ai/quick-start/) |
+| 🎭 **Agent Tiers** | Understand the tier system | [Tiers Guide](https://superagenticai.github.io/superoptix-ai/guides/tiers/) |
+| 📄 **SuperSpec DSL** | Learn our declarative language | [SuperSpec Guide](https://superagenticai.github.io/superoptix-ai/guides/superspec/) |
+| 🏪 **Marketplace** | Pre-built agents and tools | [Marketplace](https://superagenticai.github.io/superoptix-ai/guides/marketplace/) |
 
 ---
 
