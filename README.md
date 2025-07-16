@@ -4,32 +4,18 @@
 
 ## **Full Stack Agentic AI Framework**
 
+[![PyPI version](https://badge.fury.io/py/superoptix.svg)](https://badge.fury.io/py/superoptix)
+[![License](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![Documentation](https://img.shields.io/badge/Documentation-Docs-blue.svg)](https://superagenticai.github.io/superoptix-ai/)
+[![Support](https://img.shields.io/badge/Support-Help-orange.svg)](https://support.super-agentic.ai)
+[![Email](https://img.shields.io/badge/Email-Support-green.svg)](mailto:support@super-agentic.ai)
+[![Built by](https://img.shields.io/badge/Built%20by-Superagentic%20AI-purple.svg)](https://super-agentic.ai)
+
 </div>
-  
-  <div style="margin: 20px 0;">
-    <a href="https://badge.fury.io/py/superoptix">
-      <img src="https://badge.fury.io/py/superoptix.svg" alt="PyPI version" />
-    </a>
-    <a href="LICENSE">
-      <img src="https://img.shields.io/badge/License-Proprietary-red.svg" alt="License: Proprietary" />
-    </a>
-    <a href="https://www.python.org/downloads/">
-      <img src="https://img.shields.io/badge/python-3.11+-blue.svg" alt="Python 3.11+" />
-    </a>
-    <a href="https://superagenticai.github.io/superoptix-ai/">
-      <img src="https://img.shields.io/badge/Documentation-Docs-blue.svg" alt="Documentation" />
-    </a>
-    <a href="https://support.super-agentic.ai">
-      <img src="https://img.shields.io/badge/Support-Help-orange.svg" alt="Support" />
-    </a>
-    <a href="mailto:support@super-agentic.ai">
-      <img src="https://img.shields.io/badge/Email-Support-green.svg" alt="Email Support" />
-    </a>
-    <a href="https://super-agentic.ai">
-      <img src="https://img.shields.io/badge/Built%20by-Superagentic%20AI-purple.svg" alt="Built by Superagentic AI" />
-    </a>
-  </div>
-  
+
+---
+
 ## 🚀 Ready to Get Started?
 
 <div align="center">
@@ -41,18 +27,15 @@
 *✨ Explore our ecosystem and discover the future of AI development*
 
 </div>
-  
-  <img src="resources/superoptix_hero.png" alt="SuperOptiX AI Hero" style="max-width: 100%; height: auto; margin: 20px 0; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" />
-  
-  <p style="font-size: 1.2em; color: #666; margin: 20px 0;">
-    <strong>Evaluation-First • Optimization-Core • Orchestration-Ready</strong>
-  </p>
-  
+
 <div align="center">
+
+![SuperOptiX AI Hero](resources/superoptix_hero.png)
+
+**Evaluation-First • Optimization-Core • Orchestration-Ready**
 
 [![Free Trial](https://img.shields.io/badge/🎉_Oracles_&_Genies_are_FREE_to_try!-10B981?style=for-the-badge&logo=gift&logoColor=white&labelColor=3B82F6&color=8B5CF6)](https://superoptix.ai)
 
-</div>
 </div>
 
 ---
@@ -69,21 +52,12 @@ SuperOptiX is a **revolutionary Full-Stack Agentic AI Framework** that transform
 
 | 🎯 **Feature** | 💡 **What It Means** | ⚡ **Why It Matters** |
 |:---:|:---:|:---:|
-| **Evaluation-First** | BDD-style specs from day one | No more "works on my machine" disasters |
+| **Evaluation-First** | BDD-style specs from day one | Optimization and Evaluation first class citizens|
 | **DSPy-Powered** | Declarative optimization magic | Your agents get smarter automatically |
 | **Built-in Memory** | Short-term, vector & long-term storage | Agents that actually remember and learn |
 | **Native Evaluation** | Functional, behavioral & optimization tests | Confidence in every deployment |
 | **Multi-Model Ready** | OpenAI, Anthropic, HuggingFace, Ollama | Use the best model for each task |
 | **Agent Marketplace** | Pre-built solutions | Start building, not reinventing |
-
-### 🚀 What Makes Us Different
-
-> **🔥 Production-Ready from Day One** → No more fragile prototypes
-> **🎯 Test-Driven AI Development** → Write tests first, build agents second  
-> **⚡ Automatic Optimization** → Your agents get better while you sleep
-> **🧠 Context Engineering** → Build agents that understand, not just respond
-> **🏗️ Multi-Agent Orchestration** → Scale from one agent to an entire AI team
-> **📈 Built-in Observability** → See what your agents are thinking
 
 ---
 
@@ -93,17 +67,7 @@ SuperOptiX is a **revolutionary Full-Stack Agentic AI Framework** that transform
 # 🚀 Install SuperOptiX
 pip install superoptix
 
-# 🎯 Create your first agent in 5 minutes
-superoptix init my-agent
-cd my-agent
-superoptix run
 ```
-
-> **🎯 Want to see it in action?** 
-> 
-> Check out our **[5-minute tutorial](https://superagenticai.github.io/superoptix-ai/tutorials/oracles-agent/)** and build your first AI agent! 🚀
-
----
 
 ## 🆘 Support & Community
 
@@ -120,8 +84,6 @@ superoptix run
 This project is licensed under a proprietary license. For licensing inquiries, contact [licensing@super-agentic.ai](mailto:licensing@super-agentic.ai).
 
 **Note**: Oracles and Genies tiers are available for free trial without any licensing restrictions.
-
----
 
 ---
 
