@@ -1,8 +1,6 @@
 site_name: SUPEROPTIX AI
 site_description: 'Professional AI Agent Development Framework: Evaluation-First. Enterprise-Grade. Production-Ready.'
 site_url: https://docs.super-agentic.ai
-repo_url: https://github.com/SuperagenticAI/superoptix-ai
-repo_name: SuperOptiX
 site_author: SuperagenticAI
 
 markdown_extensions:
@@ -74,7 +72,6 @@ theme:
     text: Inter
     code: Fira Code
   icon:
-    repo: fontawesome/brands/github
     edit: material/pencil
     view: material/eye
     previous: material/chevron-left

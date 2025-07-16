@@ -503,6 +503,7 @@ hide:
     <a class="md-button md-button--primary" href="quick-start"><span style="margin-right:0.5em;">🚀</span>Quick Start</a>
     <a class="md-button" href="introduction"><span style="margin-right:0.5em;">📖</span>Learn More</a>
     <a class="md-button" href="guides/"><span style="margin-right:0.5em;">📚</span>Guides</a>
+    <a class="md-button" href="https://superoptix.ai" target="_blank"><span style="margin-right:0.5em;">🌐</span>Website</a>
   </div>
   <div class="modern-scroll-indicator">
     <div class="scroll-arrow-down">↓</div>
