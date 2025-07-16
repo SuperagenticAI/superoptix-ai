@@ -165,6 +165,28 @@ Choose your preferred installation method:
 
 SuperOptiX is modular - install only what you need! Here are the available extras:
 
+=== "🤖 Local Model Management"
+    
+    **For running models locally on your machine**
+    
+    **MLX (Apple Silicon)**
+    ```bash
+    pip install "superoptix[mlx]"
+    ```
+    **Includes:**
+    - mlx-lm==0.26.0 (Apple MLX framework for local inference)
+    
+    **HuggingFace**
+    ```bash
+    pip install "superoptix[huggingface]"
+    ```
+    **Includes:**
+    - transformers==4.53.2 (HuggingFace transformers library)
+    - torch==2.7.1 (PyTorch for model inference)
+    - fastapi==0.116.1 (Web framework for model serving)
+    - huggingface-hub==0.33.4 (HuggingFace Hub integration)
+    - uvicorn==0.35.0 (ASGI server for FastAPI)
+
 === "🎨 UI & Visualization"
     
     **For SuperOptiX Agent Studio and observability dashboards**
@@ -191,7 +213,6 @@ SuperOptiX is modular - install only what you need! Here are the available extra
     pip install "superoptix[weaviate]"    # Weaviate (semantic search)
     pip install "superoptix[qdrant]"      # Qdrant (production)
     pip install "superoptix[milvus]"      # Milvus (enterprise)
-    pip install "superoptix[pinecone]"    # Pinecone (cloud)
     
     # All vector databases
     pip install "superoptix[vectordb]"
@@ -287,5 +308,4 @@ pip install --upgrade pip
 ### Still Having Issues?
 
 - 📖 Check our [Troubleshooting Guide](troubleshooting.md)
-- 💬 Join our [Discord Community](https://discord.gg/superoptix)
 - 🐛 Report issues on [GitHub](https://github.com/SuperagenticAI/superoptix/issues) 

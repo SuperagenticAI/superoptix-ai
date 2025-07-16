@@ -495,4 +495,4 @@ Now that your environment is set up:
 3. **Create your first agent** with the [Quick Start Guide](quick-start.md)
 4. **Learn project structure** with the [Project Structure Guide](project-structure.md)
 
-For advanced development setup, see the [Development Guide](../development/index.md). 
+ 

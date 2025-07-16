@@ -154,7 +154,7 @@ super market search "Software"
 
 - 📦 **No coding required** - Ready to use immediately
 
-- 🔄 **Community maintained** - Regular updates and improvements
+- 🔄 **Actively maintained** - Regular updates and improvements
 
 ### 2. 📜 **Create Agents Using SuperSpec (CLI)**
 

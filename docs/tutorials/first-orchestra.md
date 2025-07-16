@@ -19,7 +19,7 @@ Before starting this tutorial, ensure you have:
 
 - **Python 3.8+** installed
 - **SuperOptiX** installed (see [Installation Guide](../setup))
-- Completed the [Your First Agent](../tutorials/oracles-agent) tutorial (recommended)
+- Completed the [Your First Agent](../tutorials/genies-agent) tutorial (recommended)
 
 ---
 

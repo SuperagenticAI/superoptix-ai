@@ -71,7 +71,6 @@ After completing the tutorials, explore:
 
 - **Stuck?** Check our [Troubleshooting Guide](../troubleshooting)
 - **Questions?** Visit our [FAQ](../faq)
-- **Community?** Join our [Discord](https://discord.gg/superoptix)
 
 ---
 

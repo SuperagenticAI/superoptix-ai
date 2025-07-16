@@ -811,4 +811,4 @@ Your Oracle agent is ready for real-world deployment and can handle complex reas
 
 ---
 
-Continue with the [Agent with Tools & RAG Tutorial](./genies-agent) to learn about advanced tool integration and RAG systems, or the [Orchestra Tutorial](./first-orchestra) to build multi-agent systems! 
+Continue with the [Agent with Tools & RAG Tutorial](genies-agent) to learn about advanced tool integration and RAG systems, or the [Orchestra Tutorial](first-orchestra) to build multi-agent systems! 

@@ -306,7 +306,7 @@ super agent optimize relevant_agent
 🔄 **Enhanced Discovery**: Integration with SuperAgents and Sovereigns
 🌐 **Hosted Marketplace**: Dedicated hosted marketplace platform
 🤖 **Auto-Discovery**: Automatic agent and tool discovery
-📊 **Community Contributions**: User-contributed agents and tools
+📊 **User Contributions**: User-contributed agents and tools
 🔗 **External Integrations**: Third-party agent and tool repositories
 
 ---
@@ -442,7 +442,7 @@ super marketplace install tool web_search
 
 - [Agent Discovery Guide](./agent-discovery.md) - Learn how to create custom agents
 - [Tool Development Guide](./tool-development.md) - Create custom tools
-- [Agent Development Lifecycle](./agent-development-lifecycle.md) - Full development workflow
+- [Agent Development Guide](./agent-development.md) - Full development workflow
 - [SuperSpec DSL Guide](./superspec.md) - Configure agents and tools
 - [CLI Reference](../reference/cli.md) - Complete command reference
 

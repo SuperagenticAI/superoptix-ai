@@ -1,6 +1,25 @@
 # 🚀 Quick Start Guide: Build a Software Development Team in 10 Minutes
 
-Welcome to SuperOptiX! This guide will get you from zero to a fully functional AI-powered software development team in just **10 minutes**. Let's build something amazing! 🎯
+<div style="text-align: center; margin: 2rem 0; padding: 2rem; background: var(--primary-gradient); border-radius: var(--border-radius); color: var(--text-primary); box-shadow: var(--shadow-heavy);">
+    <h2 style="margin-bottom: 1rem; font-size: 2rem; background: var(--text-gradient); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: var(--font-weight-bold);">🚀 Welcome to the Quick Start Guide!</h2>
+    <p style="font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--text-secondary);">Get ready to build a fully functional AI-powered software development team in just <strong>10 minutes</strong>!</p>
+    <p style="font-size: 1.2rem; margin-bottom: 2rem; font-weight: var(--font-weight-semibold); color: var(--text-primary);">No prior AI experience required - we'll guide you every step of the way.</p>
+    
+    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+        <div style="background: var(--md-default-bg-color); color: var(--text-primary); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: var(--font-weight-semibold); border: 2px solid var(--border-medium); backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            ⏱️ 10 Minutes
+        </div>
+        <div style="background: var(--md-default-bg-color); color: var(--text-primary); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: var(--font-weight-semibold); border: 2px solid var(--border-medium); backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            🤖 3 AI Agents
+        </div>
+        <div style="background: var(--md-default-bg-color); color: var(--text-primary); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: var(--font-weight-semibold); border: 2px solid var(--border-medium); backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            🎻 Multi-Agent Orchestra
+        </div>
+        <div style="background: var(--md-default-bg-color); color: var(--text-primary); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: var(--font-weight-semibold); border: 2px solid var(--border-medium); backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            🎯 Production Ready
+        </div>
+    </div>
+</div>
 
 ## 🎯 What You'll Build in 10 Minutes
 
@@ -15,6 +34,14 @@ By the end of this guide, you'll have:
 
 ## 📋 Requirements
 
+### 🖥️ Hardware Requirements
+
+- **Minimum 16GB GPU RAM** for agent optimization (Step 5)
+- **8GB+ system RAM** recommended
+- **Stable internet connection** for model downloads and API calls
+
+### 🐍 Software Requirements
+
 - **Python 3.11 or higher**
 
 - **SuperOptiX Python package** (install with pip, conda, or uv)
@@ -23,11 +50,6 @@ By the end of this guide, you'll have:
   - Install Ollama:  
     ```bash
     curl -fsSL https://ollama.com/install.sh | sh
-    ```
-  - Download models for Oracles and Genies tiers:
-    ```bash
-    super model install llama3.2:1b   # For Oracles
-    super model install llama3.2:8b   # For Genies
     ```
   - _You can also use MLX or Huggingface for local models, but we'll use Ollama for this guide._
 
@@ -48,7 +70,12 @@ Choose your preferred method:
     
     # Verify installation
     super --help
+    
+    # Get comprehensive documentation
+    super docs
     ```
+    
+    **💡 Note:** The first execution of `super` commands may take a few seconds as Python compiles bytecodes.
 
 === "🐍 Standard: pip"
     
@@ -58,7 +85,12 @@ Choose your preferred method:
     
     # Verify installation
     super --help
+    
+    # Get comprehensive documentation
+    super docs
     ```
+    
+    **💡 Note:** The first execution of `super` commands may take a few seconds as Python compiles bytecodes.
 
 === "🎯 All Features"
     
@@ -71,7 +103,110 @@ Choose your preferred method:
     # - UI components (Streamlit, Plotly)
     # - Observability (MLflow, monitoring)
     # - Cloud integrations (AWS, Azure, GCP)
+    
+    # Verify installation
+    super --help
+    
+    # Get comprehensive documentation
+    super docs
     ```
+    
+    **💡 Note:** The first execution of `super` commands may take a few seconds as Python compiles bytecodes.
+
+---
+
+## 🔧 Optional Dependencies
+
+SuperOptiX supports various optional dependencies for enhanced functionality. Install them based on your needs:
+
+=== "🤖 Local Model Management"
+    
+    **MLX (Apple Silicon)**
+    ```bash
+    pip install superoptix[mlx]
+    ```
+    - `mlx-lm==0.26.0` - Apple MLX framework for local inference
+    
+    **HuggingFace**
+    ```bash
+    pip install superoptix[huggingface]
+    ```
+    - `transformers==4.53.2` - HuggingFace transformers library
+    - `torch==2.7.1` - PyTorch for model inference
+    - `fastapi==0.116.1` - Web framework for model serving
+    - `huggingface-hub==0.33.4` - HuggingFace Hub integration
+    - `uvicorn==0.35.0` - ASGI server for FastAPI
+
+=== "🗄️ Vector Databases"
+    
+    **ChromaDB**
+    ```bash
+    pip install superoptix[chromadb]
+    ```
+    
+    **LanceDB**
+    ```bash
+    pip install superoptix[lancedb]
+    ```
+    
+    **FAISS**
+    ```bash
+    pip install superoptix[faiss]
+    ```
+    
+    **Weaviate**
+    ```bash
+    pip install superoptix[weaviate]
+    ```
+    
+    **Qdrant**
+    ```bash
+    pip install superoptix[qdrant]
+    ```
+    
+    **Milvus**
+    ```bash
+    pip install superoptix[milvus]
+    ```
+    
+    **All Vector Databases**
+    ```bash
+    pip install superoptix[vectordb]
+    ```
+
+=== "📊 Observability & UI"
+    
+    **Observability**
+    ```bash
+    pip install superoptix[observability]
+    ```
+    - MLflow, Langfuse, monitoring tools
+    
+    **UI Components**
+    ```bash
+    pip install superoptix[ui]
+    ```
+    - Streamlit, Plotly, Pandas
+    
+    **Web Framework**
+    ```bash
+    pip install superoptix[web]
+    ```
+    - FastAPI, Uvicorn, Pydantic
+
+---
+
+## 🤖 Step 0: Install AI Models (Optional but Recommended)
+
+After installing SuperOptiX, you'll need AI models to power your agents. For this guide, we'll use local models via Ollama:
+
+```bash
+# Download models for different agent tiers
+super model install llama3.2:1b   # For Oracles tier (faster, lighter)
+super model install llama3.2:8b   # For Genies tier (more capable)
+```
+
+**💡 Pro Tip:** You can also use cloud models (OpenAI, Anthropic) by setting API keys in your project's `.env` file.
 
 ---
 
@@ -150,6 +285,8 @@ The agent playbook contains all configuration, feature specs, and scenarios for 
 ### 📋 Understanding the Playbook Structure
 
 SuperOptiX uses **SuperSpec** - a powerful DSL (Domain Specific Language) for writing agent specifications, context engineering, and agent engineering practices. Here's what the developer playbook contains:
+
+<details><summary>📄 View Complete Developer Playbook YAML</summary>
 
 ```yaml
 apiVersion: agent/v1
@@ -244,6 +381,8 @@ spec:
       max_bootstrapped_demos: 4
       max_rounds: 1
 ```
+
+</details>
 
 ### 🔧 Key SuperSpec Components:
 
@@ -541,6 +680,21 @@ The low scores are expected with `llama3.2:1b` because:
 ---
 
 ## 🎯 Step 5: Optimize the Agent
+
+> ⚠️ **IMPORTANT WARNING: Optimization is Resource-Intensive**
+> 
+> **🚨 System Requirements:**
+> - **Minimum 16GB GPU RAM** required for optimization
+> - **8GB+ system RAM** recommended
+> - **Stable internet connection** for API calls
+> 
+> **💡 Optimization Details:**
+> - Makes multiple LLM API calls (can be costly)
+> - Uses DSPy BootstrapFewShot strategy
+> - May take several minutes to complete
+> - **Use responsibly** - monitor your API usage
+> 
+> **🔄 Skip this step** if you don't meet the requirements or want to avoid costs. Your agent will still work without optimization.
 
 ```bash
 super agent optimize developer
@@ -943,16 +1097,19 @@ super orchestra create sdlc --verbose
    Before running this orchestra, ensure your agents are optimized:
    1. Compile all agents: super agent compile --all
    2. Evaluate baseline: super agent evaluate <agent_name>
-   3. Optimize agents: super agent optimize <agent_name>
+   3. Optimize agents: super agent optimize <agent_name> *(requires 16GB+ GPU RAM)*
    4. Re-evaluate improvement: super agent evaluate <agent_name>
    5. Then run orchestra: super orchestra run sdlc --goal "goal"
 
 💡 Well-optimized individual agents lead to better orchestration results!
+⚠️ **Note:** Step 3 (optimization) is resource-intensive and requires 16GB+ GPU RAM. Skip if you don't meet the requirements.
 ```
 
 </details>
 
 The orchestra automatically created a YAML configuration file that coordinates your three agents:
+
+<details><summary>📄 View Complete Orchestra YAML Configuration</summary>
 
 ```yaml
 # sdlc_orchestra.yaml
@@ -1007,6 +1164,8 @@ tasks:
     priority: "medium"
     timeout_seconds: 600
 ```
+
+</details>
 
 Now run the orchestra with a specific goal:
 
@@ -1224,12 +1383,11 @@ graph LR
 super docs
 ```
 
-### Community
+### Resources
 
-- **Documentation**: [SuperOptiX Docs](https://docs.super-agentic.ai)
-- **Support**: [Get Help](https://support.super-agentic.ai)
-- **Community**: [Join Discussions](https://community.super-agentic.ai)
-- **Feedback**: [Feature Requests](https://support.super-agentic.ai/features)
+- **Website**: [superoptix.ai](https://superoptix.ai)
+- **GitHub**: [@SuperagenticAI/superoptix-ai](https://github.com/SuperagenticAI/superoptix-ai)
+- **PyPI**: [superoptix](https://pypi.org/project/superoptix/)
 
 ### Quick Commands
 ```bash
@@ -1292,10 +1450,24 @@ super orchestra run my_orchestra --goal "your goal" --verbose
 
 ---
 
-<div style="text-align: center; margin: 2rem 0; padding: 2rem; background: var(--hero-gradient); border-radius: var(--border-radius); color: white;">
-    <h2>🎉 Welcome to the SuperOptiX Community!</h2>
-    <p>You've just taken your first steps into the future of AI agent development.</p>
-    <p><strong>Ready to build something amazing?</strong></p>
+<div style="text-align: center; margin: 2rem 0; padding: 2rem; background: var(--primary-gradient); border-radius: var(--border-radius); color: var(--text-primary); box-shadow: var(--shadow-heavy);">
+    <h2 style="margin-bottom: 1rem; font-size: 2rem; background: var(--text-gradient); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: var(--font-weight-bold);">🎉 Welcome to SuperOptiX!</h2>
+    <p style="font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--text-secondary);">You've just taken your first steps into the future of AI agent development.</p>
+    <p style="font-size: 1.2rem; margin-bottom: 2rem; font-weight: var(--font-weight-semibold); color: var(--text-primary);">Ready to build something amazing?</p>
+    
+    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+        <a href="../tutorials/genies-agent" style="background: var(--md-default-bg-color); color: var(--text-primary); padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: var(--font-weight-semibold); border: 2px solid var(--border-medium); transition: var(--transition-smooth); backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            🚀 Build Your First Genies Agent
+        </a>
+        <a href="../guides/marketplace" style="background: var(--md-default-bg-color); color: var(--text-primary); padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: var(--font-weight-semibold); border: 2px solid var(--border-medium); transition: var(--transition-smooth); backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            🏪 Explore the Marketplace
+        </a>
+        <a href="../guides/superspec" style="background: var(--md-default-bg-color); color: var(--text-primary); padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: var(--font-weight-semibold); border: 2px solid var(--border-medium); transition: var(--transition-smooth); backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            💎 Learn SuperSpec DSL
+        </a>
+    </div>
 </div>
 
-*Happy building! 🚀* 
+<div style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">
+    *Happy building! 🚀*
+</div> 

@@ -1,7 +1,7 @@
 site_name: SUPEROPTIX AI
 site_description: 'Professional AI Agent Development Framework: Evaluation-First. Enterprise-Grade. Production-Ready.'
 site_url: https://docs.super-agentic.ai
-repo_url: https://github.com/SuperagenticAI/superoptix
+repo_url: https://github.com/SuperagenticAI/superoptix-ai
 repo_name: SuperOptiX
 site_author: SuperagenticAI
 
@@ -148,13 +148,11 @@ extra:
   # homepage: https://superoptix.docs
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/SuperagenticAI/superoptix
-    - icon: fontawesome/brands/discord
-      link: https://discord.gg/superoptix
+      link: https://github.com/SuperagenticAI
     - icon: fontawesome/brands/twitter
-      link: https://twitter.com/superoptix
+      link: https://x.com/SuperagenticAI
     - icon: fontawesome/brands/linkedin
-      link: https://linkedin.com/company/superoptix
+      link: https://www.linkedin.com/company/superagenticai
   generator: false
 
 plugins:

@@ -610,7 +610,7 @@ resources:
 
 ## 🔗 Related Resources
 
-- [Agent Development Lifecycle](./agent-development-lifecycle.md) - Learn how to create agents for orchestration
+- [Agent Development Guide](./agent-development.md) - Learn how to create agents for orchestration
 - [Tool Development](./tool-development.md) - Create tools that work with orchestras
 - [SuperSpec DSL Guide](./superspec.md) - Configure agents for orchestration
 - [CLI Reference](../reference/cli.md) - Orchestra command reference

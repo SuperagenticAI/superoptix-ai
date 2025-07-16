@@ -513,8 +513,8 @@ hide:
   .enhanced-hero-bg {
     background: radial-gradient(ellipse at 50% 30%, rgba(124,58,237,0.10) 0%, rgba(236,72,153,0.08) 40%, rgba(255,255,255,0.01) 100%);
     box-shadow: 0 2px 32px 0 rgba(124,58,237,0.04);
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
   }
   [data-md-color-scheme="slate"] .enhanced-hero-bg {
     background: radial-gradient(ellipse at 50% 30%, rgba(30,58,138,0.15) 0%, rgba(88,28,135,0.12) 30%, rgba(153,27,27,0.08) 60%, rgba(8,8,12,0.99) 100%);
@@ -530,7 +530,7 @@ hide:
     font-size: 4.5rem;
     font-weight: 900;
     letter-spacing: -2px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     margin-top: 0;
     text-align: center;
   }
@@ -544,12 +544,12 @@ hide:
     font-size: 2rem;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.8rem;
     text-shadow: 0 2px 8px rgba(124,58,237,0.08);
   }
   .hero-free-tiers {
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
   .free-tiers-badge {
     display: inline-block;
@@ -583,7 +583,7 @@ hide:
     font-weight: 300;
     color: var(--md-default-fg-color--light);
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
     line-height: 1.2;
   }
   .hero-subtitle-compact {
@@ -598,9 +598,9 @@ hide:
     margin-right: auto;
   }
   .hero-desc {
-    font-size: 1.15rem;
+    font-size: 0.95rem;
     font-weight: 500;
-    margin-bottom: 2.2rem;
+    margin-bottom: 1.5rem;
     text-align: center;
   }
   .hero-links {
@@ -608,7 +608,7 @@ hide:
     justify-content: center;
     gap: 1.2rem;
     flex-wrap: wrap;
-    margin: 2rem 0 1.5rem 0;
+    margin: 1.2rem 0 1rem 0;
   }
   .md-button {
     display: inline-flex;
@@ -657,11 +657,6 @@ hide:
   }
 </style>
 
-<!-- Hero Image Section -->
-<div class="hero-image-animated">
-  <img src="superoptix_hero.png" alt="SuperOptiX Hero" />
-</div>
-
 <!-- =================================================================== -->
 <!-- WHAT IS SUPEROPTIX?                                                 -->
 <!-- =================================================================== -->
@@ -673,6 +668,11 @@ hide:
     <p style="font-weight: 600;">🎯 Declarative by Design. ⚡ Optimized by Default. 🎼 Orchestration-Ready.</p>
     <p>With its native DSL (SuperSpec), DSPy-based optimization layer, structured agent tiers (Oracles, Genies, Protocols, Superagents, Sovereigns), and full-stack abstractions, SuperOptiX empowers you to build reliable, adaptive, and intelligent agentic systems—without reinventing the wheel.</p>
   </div>
+</div>
+
+<!-- Hero Image Section -->
+<div class="hero-image-animated">
+  <img src="superoptix_hero.png" alt="SuperOptiX Hero" />
 </div>
 
 <!-- =================================================================== -->

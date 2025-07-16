@@ -743,7 +743,7 @@ Category: {category}
 2. **Study tool patterns**: Examine tools in `superoptix/tools/categories/`
 3. **Create your first tool**: Follow the basic structure above
 4. **Test thoroughly**: Use unit tests and integration tests
-5. **Share with community**: Contribute tools to the SuperOptiX ecosystem
+5. **Share your tools**: Contribute tools to the SuperOptiX ecosystem
 
 ---
 
@@ -752,7 +752,7 @@ Category: {category}
 - [Agent Development Guide](./agent-development.md) - Learn how tools fit into the agent development process
 - [SuperSpec DSL Guide](./superspec.md) - Configure tools in agent playbooks
 - [CLI Reference](../reference/cli.md) - Command-line tool management
-- [API Reference](../reference/api/) - Programmatic tool access
+- [API Reference](../reference/api/index) - Programmatic tool access
 
 ---
 

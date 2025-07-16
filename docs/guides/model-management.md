@@ -274,37 +274,7 @@ super model backends
 
 ---
 
-## 🎯 Model Selection Strategy
 
-### 1. **By Use Case**
-
-| Use Case | Recommended Models | Backend | Size |
-|----------|-------------------|---------|------|
-| **General Chat** | llama3.2:3b, phi-2 | Ollama/MLX | Small |
-| **Code Generation** | llama3.2:8b, codellama:7b | Ollama | Medium |
-| **Reasoning** | llama3.2:8b, qwen2.5:7b | Ollama | Medium |
-| **Fast Inference** | phi-2, llama3.2:1b | MLX/Ollama | Tiny/Small |
-| **High Quality** | llama3.2:70b, qwen2.5:72b | Ollama | Large |
-
-### 2. **By Platform**
-
-| Platform | Recommended Backend | Best Models |
-|----------|-------------------|-------------|
-| **All Platforms** | Ollama | llama3.2:3b, llama3.2:8b |
-| **Apple Silicon** | MLX | mlx-community/phi-2 |
-| **Windows** | LM Studio | llama-3.2-1b-instruct |
-| **Advanced Users** | HuggingFace | microsoft/Phi-4 |
-
-### 3. **By Resources**
-
-| Memory | Recommended Models | Performance |
-|--------|-------------------|-------------|
-| **4GB RAM** | llama3.2:1b, phi-2 | Fast, basic |
-| **8GB RAM** | llama3.2:3b, llama3.2:8b | Balanced |
-| **16GB RAM** | llama3.2:8b, qwen2.5:7b | Good quality |
-| **32GB+ RAM** | llama3.2:70b, qwen2.5:72b | Best quality |
-
----
 
 ## 🔧 Configuration Management
 
@@ -452,7 +422,7 @@ pip install "superoptix[huggingface]"
 
 - [Model Intelligence Guide](./model-intelligence.md) - Advanced model management features
 - [Cloud Inference Guide](./cloud-inference.md) - Cloud provider integration guides
-- [Agent Development Lifecycle](./agent-development-lifecycle.md) - Using models with agents
+- [Agent Development Guide](./agent-development.md) - Using models with agents
 - [CLI Reference](../reference/cli.md) - Complete command reference
 - [Troubleshooting Guide](../troubleshooting.md) - Common issues and solutions
 

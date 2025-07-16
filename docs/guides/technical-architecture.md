@@ -730,7 +730,7 @@ graph LR
 
 - Enhanced tool ecosystem
 
-- Community marketplace growth
+- Marketplace growth
 
 ---
 

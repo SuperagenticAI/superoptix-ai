@@ -667,7 +667,6 @@ Now that you have your local models set up:
 
 - **📖 [Documentation](../)** - Comprehensive guides
 - **🐛 [Support Portal](https://support.super-agentic.ai)** - Report bugs
-- **💬 [Discord Community](https://discord.gg/superoptix)** - Get help from the community
 
 ---
 

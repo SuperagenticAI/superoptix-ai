@@ -739,7 +739,7 @@ super model repair llama3.2:3b
 
 - [Model Management Guide](./model-management.md) - Current model management capabilities
 - [Cloud Inference Guide](./cloud-inference.md) - Cloud provider integration guides
-- [Agent Development Lifecycle](./agent-development-lifecycle.md) - Using models with agents
+- [Agent Development Guide](./agent-development.md) - Using models with agents
 - [CLI Reference](../reference/cli.md) - Complete command reference
 - [Troubleshooting Guide](../troubleshooting.md) - Common issues and solutions
 

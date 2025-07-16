@@ -21,7 +21,7 @@ Choose your path based on what you want to accomplish:
 - **[Tool Development](tool-development.md)** - Create custom tools for your agents
 - **[Orchestra Development](orchestra-development.md)** - Build multi-agent workflows
 - **[Technical Architecture](technical-architecture.md)** - Deep dive into system design and components
-- **[CLI Reference](reference/cli.md)** - Command-line interface for SuperOptiX
+- **[CLI Reference](../reference/cli.md)** - Command-line interface for SuperOptiX
 
 ### ☁️ **Infrastructure & Deployment**
 - **[Cloud Inference](cloud-inference.md)** - Scale with cloud providers
@@ -30,12 +30,11 @@ Choose your path based on what you want to accomplish:
 
 ### 🔧 **Support & Troubleshooting**
 - **[Debugging Guide](../debugging-guide.md)** - Debug and troubleshoot issues
-- **[Troubleshooting](troubleshooting.md)** - Common problems and solutions
-- **[FAQ](faq.md)** - Frequently asked questions
+- **[Troubleshooting](../troubleshooting.md)** - Common problems and solutions
+- **[FAQ](../faq.md)** - Frequently asked questions
 - **[Responsible AI](responsible-ai.md)** - Ethical AI practices and guidelines
 
-### 🏗️ **Development & Contributing**
-- **[Contributing Guide](development/contributing.md)** - Contribute to SuperOptiX
-- **[Development Guide](development/index.md)** - Development setup and workflow
+
+
 
  

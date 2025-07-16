@@ -81,7 +81,7 @@ HuggingFace is the go-to platform for state-of-the-art natural language processi
 - **🔧 Custom Models**: Support for your own fine-tuned models and research
 - **🧪 Research Ready**: Perfect for academic research and experimentation
 - **🔓 Open Source Models**: Most models are open source and freely available
-- **🌐 Community Driven**: Backed by the largest NLP community in the world
+- **🌐 Open Source**: Backed by the largest NLP community in the world
 
 ## 🔧 **Customizing HuggingFace Configuration**
 
