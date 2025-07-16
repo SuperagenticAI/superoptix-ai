@@ -39,13 +39,13 @@ Choose your preferred installation method:
     ### Install SuperOptiX with UV
     ```bash
     # Basic installation
-    uv pip install superoptix
+    uv pip install superoptix --prerelease=allow
     
     # With specific extras
     uv pip install "superoptix[ui,vectordb,observability]"
     
     # Latest from PyPI
-    uv pip install superoptix
+    uv pip install superoptix --prerelease=allow
     ```
 
 === "🐍 Pip"
@@ -93,7 +93,7 @@ Choose your preferred installation method:
     curl -LsSf https://astral.sh/uv/install.sh | sh
     
     # Install SuperOptiX
-    uv pip install superoptix
+    uv pip install superoptix --prerelease=allow
     ```
     
     ### Using Conda
@@ -121,7 +121,7 @@ Choose your preferred installation method:
     curl -LsSf https://astral.sh/uv/install.sh | sh
     
     # Install SuperOptiX
-    uv pip install superoptix
+    uv pip install superoptix --prerelease=allow
     ```
     
     ### CentOS/RHEL/Fedora
@@ -136,7 +136,7 @@ Choose your preferred installation method:
     curl -LsSf https://astral.sh/uv/install.sh | sh
     
     # Install SuperOptiX
-    uv pip install superoptix
+    uv pip install superoptix --prerelease=allow
     ```
 
 === "🪟 Windows"
@@ -147,7 +147,7 @@ Choose your preferred installation method:
     powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
     
     # Install SuperOptiX
-    uv pip install superoptix
+    uv pip install superoptix --prerelease=allow
     ```
     
     ### Using Conda
