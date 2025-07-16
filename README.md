@@ -3,8 +3,6 @@
   
   <h3><strong>Full Stack Agentic AI Framework</strong></h3>
   
-  <img src="resources/superoptix_hero.png" alt="SuperOptiX AI Hero" style="max-width: 100%; height: auto; margin: 20px 0; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" />
-  
   <div style="margin: 20px 0;">
     <a href="https://badge.fury.io/py/superoptix">
       <img src="https://badge.fury.io/py/superoptix.svg" alt="PyPI version" />
@@ -21,7 +19,36 @@
     <a href="https://support.super-agentic.ai">
       <img src="https://img.shields.io/badge/Support-Help-orange.svg" alt="Support" />
     </a>
+    <a href="mailto:support@super-agentic.ai">
+      <img src="https://img.shields.io/badge/Email-Support-green.svg" alt="Email Support" />
+    </a>
+    <a href="https://super-agentic.ai">
+      <img src="https://img.shields.io/badge/Built%20by-Superagentic%20AI-purple.svg" alt="Built by Superagentic AI" />
+    </a>
   </div>
+  
+  <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 25px; border-radius: 15px; margin: 30px 0; box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);">
+    <h3 style="color: white; margin: 0 0 20px 0; text-align: center; font-size: 1.4em;">🚀 Ready to Get Started?</h3>
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+      <a href="https://superoptix.ai" style="text-decoration: none; color: white; background: rgba(255,255,255,0.2); padding: 12px 20px; border-radius: 25px; border: 2px solid rgba(255,255,255,0.3); transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 1.2em;">🌐</span>
+        <span><strong>Website</strong><br><small>superoptix.ai</small></span>
+      </a>
+      <a href="https://superagenticai.github.io/superoptix-ai" style="text-decoration: none; color: white; background: rgba(255,255,255,0.2); padding: 12px 20px; border-radius: 25px; border: 2px solid rgba(255,255,255,0.3); transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 1.2em;">📖</span>
+        <span><strong>Documentation</strong><br><small>SuperOptiX Docs</small></span>
+      </a>
+      <a href="https://super-agentic.ai" style="text-decoration: none; color: white; background: rgba(255,255,255,0.2); padding: 12px 20px; border-radius: 25px; border: 2px solid rgba(255,255,255,0.3); transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 1.2em;">💼</span>
+        <span><strong>Company</strong><br><small>super-agentic.ai</small></span>
+      </a>
+    </div>
+    <p style="color: rgba(255,255,255,0.9); text-align: center; margin: 15px 0 0 0; font-size: 0.9em;">
+      <em>✨ Explore our ecosystem and discover the future of AI development</em>
+    </p>
+  </div>
+  
+  <img src="resources/superoptix_hero.png" alt="SuperOptiX AI Hero" style="max-width: 100%; height: auto; margin: 20px 0; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" />
   
   <p style="font-size: 1.2em; color: #666; margin: 20px 0;">
     <strong>Evaluation-First • Optimization-Core • Orchestration-Ready</strong>
@@ -51,22 +78,10 @@ SuperOptiX is a **Full-Stack Agentic AI Framework** designed to help developers 
 
 ## 🆘 Support & Community
 
-<div align="center" style="margin: 20px 0;">
-  <a href="https://support.super-agentic.ai" style="text-decoration: none; margin: 0 10px;">
-    <img src="https://img.shields.io/badge/Support-Help-orange.svg" alt="Support" />
-  </a>
-  <a href="mailto:support@super-agentic.ai" style="text-decoration: none; margin: 0 10px;">
-    <img src="https://img.shields.io/badge/Email-Support-green.svg" alt="Email Support" />
-  </a>
-  <a href="https://super-agentic.ai" style="text-decoration: none; margin: 0 10px;">
-    <img src="https://img.shields.io/badge/Built%20by-Superagentic%20AI-purple.svg" alt="Built by Superagentic AI" />
-  </a>
-</div>
-
 - **📧 Email Support**: support@super-agentic.ai
-- **🌐 Website**: [super-agentic.ai](https://super-agentic.ai)
+- **🌐 Website**: [superoptix.ai](https://superoptix.ai)
 - **📖 Documentation**: [SuperOptiX Docs](https://superagenticai.github.io/superoptix-ai)
-
+- **💼 Company**: [super-agentic.ai](https://super-agentic.ai)
 ---
 
 ## 📄 License
