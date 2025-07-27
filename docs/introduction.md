@@ -5,11 +5,11 @@ title: Introduction - SuperOptiX AI
 <h1 class="hero-heading gradient-text">🎯 Introduction to SuperOptiX AI</h1>
 <div class="hero-heading-underline"></div>
 
-<div class="hero-section" style="text-align: center; margin: 3rem 0; padding: 2rem; background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.1) 50%, rgba(245, 158, 11, 0.1) 100%); border-radius: var(--border-radius); border: 2px solid rgba(139, 92, 246, 0.3);">
-    <p class="hero-tagline" style="background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #F59E0B 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.8rem; font-weight: bold; margin-bottom: 1rem;">🚀 Super Quick Intro to SuperOptiX</p>
-    <p class="hero-subtitle" style="background: linear-gradient(135deg, #10B981 0%, #3B82F6 50%, #A855F7 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.2rem; margin-bottom: 1rem;">A Brief Walkthrough to Understand the Future of Agentic AI</p>
-    <p class="hero-gradient-text" style="background: linear-gradient(135deg, #DC2626 0%, #EA580C 50%, #D97706 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1rem;"><strong>Get up to speed with SuperOptiX concepts in minutes, not hours.</strong></p>
-</div>
+## 🚀 Super Quick Intro to SuperOptiX
+
+A Brief Walkthrough to Understand the Future of Agentic AI
+
+Get up to speed with SuperOptiX concepts in minutes, not hours.
 
 ## 🚀 What is SuperOptiX?
 

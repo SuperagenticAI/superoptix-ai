@@ -1,25 +1,10 @@
 # 🚀 Quick Start Guide: Build a Software Development Team in 10 Minutes
 
-<div style="text-align: center; margin: 2rem 0; padding: 2rem; background: var(--primary-gradient); border-radius: var(--border-radius); color: var(--text-primary); box-shadow: var(--shadow-heavy);">
-    <h2 style="margin-bottom: 1rem; font-size: 2rem; background: var(--text-gradient); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: var(--font-weight-bold);">🚀 Welcome to the Quick Start Guide!</h2>
-    <p style="font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--text-secondary);">Get ready to build a fully functional AI-powered software development team in just <strong>10 minutes</strong>!</p>
-    <p style="font-size: 1.2rem; margin-bottom: 2rem; font-weight: var(--font-weight-semibold); color: var(--text-primary);">No prior AI experience required - we'll guide you every step of the way.</p>
-    
-    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
-        <div style="background: var(--md-default-bg-color); color: var(--text-primary); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: var(--font-weight-semibold); border: 2px solid var(--border-medium); backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-            ⏱️ 10 Minutes
-        </div>
-        <div style="background: var(--md-default-bg-color); color: var(--text-primary); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: var(--font-weight-semibold); border: 2px solid var(--border-medium); backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-            🤖 3 AI Agents
-        </div>
-        <div style="background: var(--md-default-bg-color); color: var(--text-primary); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: var(--font-weight-semibold); border: 2px solid var(--border-medium); backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-            🎻 Multi-Agent Orchestra
-        </div>
-        <div style="background: var(--md-default-bg-color); color: var(--text-primary); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: var(--font-weight-semibold); border: 2px solid var(--border-medium); backdrop-filter: blur(10px); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-            🎯 Production Ready
-        </div>
-    </div>
-</div>
+## 🚀 Welcome to the Quick Start Guide!
+
+Get ready to build a fully functional AI-powered software development team in just **10 minutes**!
+
+No prior AI experience required - we'll guide you every step of the way.
 
 ## 🎯 What You'll Build in 10 Minutes
 

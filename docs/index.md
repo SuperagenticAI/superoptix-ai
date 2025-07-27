@@ -518,7 +518,7 @@ hide:
     padding-bottom: 0.8rem;
   }
   [data-md-color-scheme="slate"] .enhanced-hero-bg {
-    background: radial-gradient(ellipse at 50% 30%, rgba(30,58,138,0.15) 0%, rgba(88,28,135,0.12) 30%, rgba(153,27,27,0.08) 60%, rgba(8,8,12,0.99) 100%);
+    background: radial-gradient(ellipse at 50% 30%, rgba(30,58,138,0.15) 0%, rgba(88,28,135,0.12) 30%, rgba(153,27,27,0.08) 60%, rgba(113, 58, 133, 0.99) 100%);
   }
   .gradient-animated {
     background: linear-gradient(90deg, #7C3AED, #EC4899, #F59E0B, #FDE68A, #7C3AED);

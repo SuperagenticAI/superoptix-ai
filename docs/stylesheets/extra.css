@@ -41,9 +41,9 @@
   --shadow-nav: 0 2px 8px rgba(0, 0, 0, 0.06);
   
   /* Code theme - Light mode optimized */
-  --code-bg: #dadaf350;
-  --code-text: #a86346;
-  --code-border: rgba(187, 11, 245, 0.982);
+  --code-bg: #ffffff50;
+  --code-text: #cd54cf;
+  --code-border: rgba(246, 229, 251, 0.982);
 }
 
 /* Dark Mode Variables */
@@ -83,9 +83,9 @@
   --shadow-nav: 0 2px 8px rgba(0, 0, 0, 0.3);
   
   /* Code theme - Dark Monokai with better contrast */
-  --code-bg: #1a0808;
-  --code-text: #52d719;
-  --code-border: rgba(35 157 170);
+  --code-bg: #000000;
+  --code-text: #dfc30e;
+  --code-border: rgb(13, 13, 13);
 }
 
 /* =========================================
