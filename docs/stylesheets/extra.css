@@ -42,7 +42,7 @@
   
   /* Code theme - Light mode optimized */
   --code-bg: #ffffff50;
-  --code-text: #cd54cf;
+  --code-text: #7907f3;
   --code-border: rgba(246, 229, 251, 0.982);
 }
 
@@ -68,7 +68,7 @@
   --text-secondary: #E2E8F0;
   --text-muted: #CBD5E0;
   --text-accent: #C4B5FD;
-  --text-link: #F9A8D4;
+  --text-link: #d6781a;
   --text-hero: #F7FAFC;
   --text-nav: #F7FAFC;
   --text-nav-hover: #FFFFFF;
@@ -84,7 +84,7 @@
   
   /* Code theme - Dark Monokai with better contrast */
   --code-bg: #000000;
-  --code-text: #dfc30e;
+  --code-text: #eadd57;
   --code-border: rgb(13, 13, 13);
 }
 

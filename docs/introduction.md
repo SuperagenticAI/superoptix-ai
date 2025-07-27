@@ -13,12 +13,7 @@ Get up to speed with SuperOptiX concepts in minutes, not hours.
 
 ## 🚀 What is SuperOptiX?
 
-<div style="text-align: center; margin: 3rem 0; padding: 2rem; background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.1) 50%, rgba(245, 158, 11, 0.1) 100%); border-radius: var(--border-radius); border: 2px solid rgba(139, 92, 246, 0.3);">
-    <h3 style="margin-bottom: 1rem; background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #F59E0B 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold;">👑 The King of Agent Frameworks</h3>
-    <p style="font-size: 1.1rem; margin-bottom: 2rem;">
-        <strong>SuperOptiX is a Full-Stack Agentic AI Framework designed to help developers and teams build optimized, production-grade AI agents from day one.</strong>
-    </p>
-</div>
+SuperOptiX is a Full-Stack Agentic AI Framework designed to help developers and teams build optimized, production-grade AI agents from day one.
 
 **SuperOptiX** brings together declarative agent specification, automatic optimization, built-in evaluation, and multi-agent orchestration—all grounded in the principles of test-driven development and context engineering.
 

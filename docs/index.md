@@ -484,41 +484,379 @@ hide:
 </style>
 
 <!-- =================================================================== -->
-<!-- HERO SECTION                                                        -->
+<!-- COMPACT HERO SECTION - UNIVERSAL THEME                            -->
 <!-- =================================================================== -->
-<div class="hero-section enhanced-hero-bg">
-  <h1 class="hero-heading gradient-animated">👑 SUPEROPTIX AI</h1>
-  <p class="hero-tagline gradient-soft">Full Stack Agentic AI Framework</p>
-  <div class="hero-free-tiers">
-    <span class="free-tiers-badge">🎉 Oracle & Genies are FREE to try!</span>
-    <div class="tier-system-link">
-      <a href="guides/tiers" class="tier-link">📊 View All Tiers →</a>
+<div class="hero-compact">
+  <div class="hero-content">
+    <!-- Brand & Title -->
+    <div class="hero-header">
+      <h1 class="hero-title">SUPEROPTIX AI</h1>
     </div>
-  </div>
-  <div class="hero-subtitle-inline">
-    🧪 Evaluation-First ⚡ Optimization-Core 🕸️ Multi-Agent Orchestration
-  </div>
-  <p class="hero-desc gradient-text-secondary">Powered by DSPy. Refined by Superagentic AI.</p>
-  <div class="hero-links">
-    <a class="md-button md-button--primary" href="quick-start"><span style="margin-right:0.5em;">🚀</span>Quick Start</a>
-    <a class="md-button" href="introduction"><span style="margin-right:0.5em;">📖</span>Learn More</a>
-    <a class="md-button" href="guides/"><span style="margin-right:0.5em;">📚</span>Guides</a>
-    <a class="md-button" href="https://superoptix.ai" target="_blank"><span style="margin-right:0.5em;">🌐</span>Website</a>
-  </div>
-  <div class="modern-scroll-indicator">
-    <div class="scroll-arrow-down">↓</div>
+    
+    <!-- Subtitle & Features -->
+    <p class="hero-subtitle">Full Stack Agentic AI Framework</p>
+    <div class="hero-tags">
+      <span class="tag">🧪 Evaluation-First</span>
+      <span class="tag">⚡ Optimization-Core</span>
+      <span class="tag">🕸️ Multi-Agent Orchestration</span>
+    </div>
+    
+    <!-- Description -->
+    <p class="hero-desc">Powered by DSPy. Refined by Superagentic AI.</p>
+    
+    <!-- Free Tier Notice -->
+    <div class="free-notice">
+      <span class="free-badge">🎉 Oracle & Genies are FREE to try!</span>
+      <a href="guides/tiers" class="tiers-link">📊 View All Tiers →</a>
+    </div>
+    
+    <!-- Action Buttons -->
+    <div class="hero-buttons">
+      <a href="quick-start" class="btn-primary">🚀 Quick Start</a>
+      <a href="introduction" class="btn-secondary">📖 Learn More</a>
+      <a href="guides/" class="btn-secondary">📚 Guides</a>
+      <a href="https://superoptix.ai" target="_blank" class="btn-secondary">🌐 Website</a>
+    </div>
   </div>
 </div>
 
 <style>
-  .enhanced-hero-bg {
-    background: radial-gradient(ellipse at 50% 30%, rgba(124,58,237,0.10) 0%, rgba(236,72,153,0.08) 40%, rgba(255,255,255,0.01) 100%);
-    box-shadow: 0 2px 32px 0 rgba(124,58,237,0.04);
-    padding-top: 0.8rem;
-    padding-bottom: 0.8rem;
+  /* =================================================================== */
+  /* COMPACT HERO SECTION - UNIVERSAL THEME                             */
+  /* =================================================================== */
+  
+  .hero-compact {
+    background: var(--md-default-bg-color);
+    border: 1px solid transparent;
+    border-radius: 12px;
+    margin: 1.5rem 1rem;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+    background-clip: padding-box;
   }
-  [data-md-color-scheme="slate"] .enhanced-hero-bg {
-    background: radial-gradient(ellipse at 50% 30%, rgba(30,58,138,0.15) 0%, rgba(88,28,135,0.12) 30%, rgba(153,27,27,0.08) 60%, rgba(113, 58, 133, 0.99) 100%);
+  
+  /* Glossy border effect for hero section */
+  .hero-compact::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.8) 0%, 
+      rgba(255, 255, 255, 0.4) 25%, 
+      rgba(255, 255, 255, 0.1) 50%, 
+      rgba(255, 255, 255, 0.4) 75%, 
+      rgba(255, 255, 255, 0.8) 100%
+    );
+    border-radius: 12px;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  /* Dark mode glossy border */
+  [data-md-color-scheme="slate"] .hero-compact::after {
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.2) 0%, 
+      rgba(255, 255, 255, 0.1) 25%, 
+      rgba(255, 255, 255, 0.05) 50%, 
+      rgba(255, 255, 255, 0.1) 75%, 
+      rgba(255, 255, 255, 0.2) 100%
+    );
+  }
+  
+  .hero-compact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #6366F1, #8B5CF6, #EC4899, #F59E0B);
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Header */
+  .hero-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0;
+    background: linear-gradient(135deg, #6366F1, #8B5CF6, #EC4899);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+  }
+  
+  /* Subtitle */
+  .hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--md-default-fg-color);
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+  }
+  
+  /* Tags */
+  .hero-tags {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  
+  .tag {
+    background: var(--md-code-bg-color);
+    color: var(--md-code-fg-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 0.5px solid var(--md-default-fg-color--lightest);
+    transition: all 0.2s ease;
+  }
+  
+  .tag:hover {
+    background: var(--md-primary-fg-color);
+    color: var(--md-primary-bg-color);
+    transform: translateY(-1px);
+  }
+  
+  /* Description */
+  .hero-desc {
+    font-size: 1rem;
+    color: var(--md-default-fg-color--light);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  
+  /* Free Notice */
+  .free-notice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  
+  .free-badge {
+    background: linear-gradient(135deg, #10B981, #3B82F6, #8B5CF6);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  
+  .tiers-link {
+    color: var(--md-primary-fg-color);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid transparent;
+  }
+  
+  .tiers-link:hover {
+    color: var(--md-accent-fg-color);
+    border-bottom-color: var(--md-accent-fg-color);
+  }
+  
+  /* Buttons */
+  .hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  
+  .btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+    min-width: 120px;
+    justify-content: center;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(135deg, #E0E7FF, #F3E8FF, #FEF3C7);
+    color: #4C1D95;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.12);
+    font-weight: 700;
+    position: relative;
+    background-clip: padding-box;
+  }
+  
+  /* Glossy border for primary button */
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.9) 0%, 
+      rgba(255, 255, 255, 0.6) 25%, 
+      rgba(255, 255, 255, 0.3) 50%, 
+      rgba(255, 255, 255, 0.6) 75%, 
+      rgba(255, 255, 255, 0.9) 100%
+    );
+    border-radius: 8px;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #C7D2FE, #E9D5FF, #FDE68A);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.25);
+  }
+  
+  .btn-secondary {
+    background: linear-gradient(135deg, #F8FAFC, #F1F5F9, #E2E8F0);
+    color: #475569;
+    border: 1px solid transparent;
+    font-weight: 600;
+    position: relative;
+    background-clip: padding-box;
+  }
+  
+  /* Glossy border for secondary buttons */
+  .btn-secondary::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.7) 0%, 
+      rgba(255, 255, 255, 0.4) 25%, 
+      rgba(255, 255, 255, 0.2) 50%, 
+      rgba(255, 255, 255, 0.4) 75%, 
+      rgba(255, 255, 255, 0.7) 100%
+    );
+    border-radius: 8px;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  .btn-secondary:hover {
+    background: linear-gradient(135deg, #F1F5F9, #E2E8F0, #CBD5E1);
+    color: #334155;
+    border-color: #CBD5E1;
+    transform: translateY(-1px);
+  }
+  
+  /* Dark Mode Button Colors */
+  [data-md-color-scheme="slate"] .btn-primary {
+    background: linear-gradient(135deg, #1E1B4B, #312E81, #3730A3);
+    color: #E2E8F0;
+    border: 1px solid #4C1D95;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
+  }
+  
+  [data-md-color-scheme="slate"] .btn-primary:hover {
+    background: linear-gradient(135deg, #312E81, #3730A3, #5B21B6);
+    color: #F1F5F9;
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+  }
+  
+  [data-md-color-scheme="slate"] .btn-secondary {
+    background: linear-gradient(135deg, #1F2937, #374151, #4B5563);
+    color: #D1D5DB;
+    border: 1px solid transparent;
+  }
+  
+  /* Dark mode glossy borders for buttons */
+  [data-md-color-scheme="slate"] .btn-primary::after {
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.3) 0%, 
+      rgba(255, 255, 255, 0.2) 25%, 
+      rgba(255, 255, 255, 0.1) 50%, 
+      rgba(255, 255, 255, 0.2) 75%, 
+      rgba(255, 255, 255, 0.3) 100%
+    );
+  }
+  
+  [data-md-color-scheme="slate"] .btn-secondary::after {
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.2) 0%, 
+      rgba(255, 255, 255, 0.15) 25%, 
+      rgba(255, 255, 255, 0.1) 50%, 
+      rgba(255, 255, 255, 0.15) 75%, 
+      rgba(255, 255, 255, 0.2) 100%
+    );
+  }
+  
+  [data-md-color-scheme="slate"] .btn-secondary:hover {
+    background: linear-gradient(135deg, #374151, #4B5563, #6B7280);
+    color: #F9FAFB;
+    border-color: #6B7280;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero-compact {
+      margin: 1rem 0.5rem;
+      padding: 1.5rem 1rem;
+    }
+    
+    .hero-title {
+      font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+    
+    .hero-tags {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .hero-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .btn-primary, .btn-secondary {
+      width: 100%;
+      max-width: 250px;
+    }
+  }
+  
+  /* Animations */
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
   }
   .gradient-animated {
     background: linear-gradient(90deg, #7C3AED, #EC4899, #F59E0B, #FDE68A, #7C3AED);
