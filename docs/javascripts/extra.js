@@ -268,9 +268,6 @@ function initializeCodeEnhancements() {
 
   // Add line numbers to code blocks
   document.querySelectorAll('pre code').forEach(addLineNumbers);
-  
-  // Add language labels to code blocks
-  document.querySelectorAll('.highlight').forEach(addLanguageLabel);
 }
 
 function addLineNumbers(codeBlock) {
@@ -302,41 +299,7 @@ function addLineNumbers(codeBlock) {
   }
 }
 
-function addLanguageLabel(highlightBlock) {
-  const classList = highlightBlock.classList;
-  let language = '';
-  
-  for (const className of classList) {
-    if (className.startsWith('language-')) {
-      language = className.replace('language-', '');
-      break;
-    }
-  }
-  
-  if (language) {
-    const label = document.createElement('div');
-    label.className = 'code-language-label';
-    label.textContent = language.toUpperCase();
-    label.style.cssText = `
-      position: absolute;
-      top: 0.5rem;
-      left: 1rem;
-      background: var(--text-accent);
-      color: var(--text-hero);
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.7rem;
-      font-weight: bold;
-      z-index: 1;
-    `;
-    
-    const preElement = highlightBlock.querySelector('pre');
-    if (preElement) {
-      preElement.style.position = 'relative';
-      preElement.appendChild(label);
-    }
-  }
-}
+
 
 function showCopyFeedback(button, message) {
   const originalContent = button.innerHTML;

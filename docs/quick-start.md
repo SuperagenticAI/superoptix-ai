@@ -53,6 +53,16 @@ By the end of this guide, you'll have:
     ```
   - _You can also use MLX or Huggingface for local models, but we'll use Ollama for this guide._
 
+!!! warning "Windows Users - Important!"
+    
+    **On Windows, set PYTHONUTF8=1** to ensure proper UTF-8 encoding support:
+    
+    ```cmd
+    set PYTHONUTF8=1
+    ```
+    
+    Or add it to your system environment variables for permanent setting.
+
 ---
 
 ## 🛠️ Installation Options

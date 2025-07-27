@@ -86,6 +86,16 @@ pip install superoptix
 
 ```
 
+!!! warning "Windows Users - Important!"
+    
+    **On Windows, set PYTHONUTF8=1** to ensure proper UTF-8 encoding support:
+    
+    ```cmd
+    set PYTHONUTF8=1
+    ```
+    
+    Or add it to your system environment variables for permanent setting.
+
 ## 📙 Checkout Website and Docs
 <div align="center">
 
