@@ -40,25 +40,114 @@ def list_models(
 
 **Returns:** List of model information objects
 
+#### test_model()
+```python
+def test_model(
+    self,
+    model_name: str,
+    prompt: str = "Hello, world!",
+    backend_type: Optional[SuperOptiXBackendType] = None
+) -> Dict[str, Any]:
+    """Test a SuperOptiX model with a simple prompt."""
+```
+
+**Parameters:**
+- `model_name` (str): Name of the model to test
+- `prompt` (str): Prompt to send to the model - defaults to "Hello, world!"
+- `backend_type` (SuperOptiXBackendType, optional): Backend type (auto-detected if not specified)
+
+**Returns:** Dictionary with test results including:
+- `success` (bool): Whether the test was successful
+- `response` (str): Model response text
+- `model` (str): Model name
+- `prompt` (str): Input prompt
+- `response_time` (float): Response time in seconds
+- `tokens` (int): Number of tokens generated (if available)
+- `error` (str): Error message if test failed
+
+**Features:**
+- **Auto-backend detection:** Automatically finds the correct backend for the model
+- **Auto-installation:** Automatically installs models if not found
+- **Cross-backend support:** Works with Ollama, MLX, and HuggingFace
+- **Real-time execution:** Direct model execution without server setup
+
+**Supported Backends:**
+- **Ollama:** Uses `ollama run` command for direct execution
+- **MLX:** Downloads and uses MLX-LM directly with transformers pipeline
+- **HuggingFace:** Downloads and uses transformers pipeline directly
+- **LM Studio:** Not supported (designed for server mode)
+
+**Example:**
+```python
+from superoptix.models.manager import SuperOptiXModelManager
+
+manager = SuperOptiXModelManager()
+
+# Test with auto-detection and auto-installation
+result = manager.test_model("llama3.2:3b", "Write a Python function to add two numbers")
+
+if result["success"]:
+    print(f"Response: {result['response']}")
+    print(f"Time: {result['response_time']:.2f}s")
+else:
+    print(f"Error: {result['error']}")
+```
+
 #### install_model()
 ```python
 def install_model(
     self,
     model_name: str,
-    backend: SuperOptiXBackendType = SuperOptiXBackendType.OLLAMA,
-    force: bool = False,
-    **kwargs
-) -> SuperOptiXModelInfo:
-    """Install a model on the specified backend."""
+    backend_type: Optional[SuperOptiXBackendType] = None
+) -> bool:
+    """Install a SuperOptiX model with automatic backend detection."""
 ```
 
 **Parameters:**
 - `model_name` (str): Name of the model to install
-- `backend` (SuperOptiXBackendType): Target backend - defaults to OLLAMA
-- `force` (bool): Force reinstall if already installed - defaults to False
-- `**kwargs` (Any): Additional installation parameters
+- `backend_type` (SuperOptiXBackendType, optional): Target backend (auto-detected if not specified)
 
-**Returns:** Model information object
+**Returns:** Boolean indicating success
+
+**Features:**
+- **Auto-backend detection:** Automatically determines the appropriate backend based on model name patterns
+- **Backend-specific installation:** Uses appropriate installation method for each backend
+- **Progress feedback:** Provides real-time installation progress
+- **Error handling:** Comprehensive error reporting and recovery
+
+**Backend-Specific Installation:**
+
+**Ollama:**
+- Uses `ollama pull` command
+- Downloads from Ollama model registry
+- Supports all Ollama-compatible models
+
+**MLX:**
+- Downloads from HuggingFace Hub
+- Uses MLX-LM format for Apple Silicon
+- Supports MLX-community models
+
+**HuggingFace:**
+- Downloads from HuggingFace Hub
+- Uses transformers pipeline format
+- Supports all HuggingFace models
+
+**LM Studio:**
+- Not supported for direct installation
+- Designed for server mode operation
+
+**Example:**
+```python
+from superoptix.models.manager import SuperOptiXModelManager
+
+manager = SuperOptiXModelManager()
+
+# Auto-detection installation
+success = manager.install_model("llama3.2:3b")  # Uses Ollama
+
+# Explicit backend installation
+success = manager.install_model("microsoft/phi-1_5", SuperOptiXBackendType.HUGGINGFACE)
+```
 
 #### get_model_info()
 ```python
@@ -127,6 +216,55 @@ def check_backend_status(
 - `backend` (SuperOptiXBackendType): Backend to check
 
 **Returns:** Backend status information
+
+#### uninstall_model()
+```python
+def uninstall_model(
+    self,
+    model_name: str,
+    backend_type: Optional[SuperOptiXBackendType] = None
+) -> bool:
+    """Uninstall a SuperOptiX model with intelligent backend detection."""
+```
+
+**Parameters:**
+- `model_name` (str): Name of the model to uninstall
+- `backend_type` (SuperOptiXBackendType, optional): Backend type (auto-detected if not specified)
+
+**Returns:** Boolean indicating success
+
+**Features:**
+- **Auto-backend detection:** Automatically finds the backend containing the model
+- **Intelligent removal:** Removes model files and cache entries
+- **Cross-backend support:** Works with all supported backends
+- **Safe removal:** Confirms model existence before removal
+
+**Backend-Specific Removal:**
+
+**Ollama:**
+- Uses `ollama rm` command
+- Removes model from Ollama registry
+
+**MLX:**
+- Removes model files from MLX cache
+- Cleans up HuggingFace cache entries
+
+**HuggingFace:**
+- Removes model files from SuperOptiX cache
+- Cleans up HuggingFace cache entries
+
+**Example:**
+```python
+from superoptix.models.manager import SuperOptiXModelManager
+
+manager = SuperOptiXModelManager()
+
+# Auto-detection removal
+success = manager.uninstall_model("llama3.2:3b")
+
+# Explicit backend removal
+success = manager.uninstall_model("microsoft/phi-1_5", SuperOptiXBackendType.HUGGINGFACE)
+```
 
 ## Data Classes
 

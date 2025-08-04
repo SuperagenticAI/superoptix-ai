@@ -25,6 +25,9 @@ Welcome to the comprehensive SuperOptiX CLI reference! This document covers all 
   - [model discover](#model-discover)
   - [model guide](#model-guide)
   - [model install](#model-install)
+  - [model run](#model-run)
+  - [model remove](#model-remove)
+  - [model refresh](#model-refresh)
   - [model info](#model-info)
   - [model backends](#model-backends)
   - [model dspy](#model-dspy)
@@ -94,6 +97,9 @@ super agent list                    # List project agents
 # Model management
 super model list                    # List installed models
 super model install <model>         # Install model
+super model run <model> <prompt>    # Run model with auto-installation
+super model remove <model>          # Remove model
+super model refresh                 # Refresh model cache
 super model server <backend> <model> # Start local server
 
 # DSL and development
@@ -346,7 +352,108 @@ super model install <model_name> [options]
 
 **Options:**
 - `--backend, -b {ollama,mlx,huggingface,lmstudio}` - Specify backend
-- `--force, -f` - Force reinstall if already exists
+
+
+### model run
+
+Run a prompt against a SuperOptiX model with automatic installation.
+
+```bash
+super model run <model_name> <prompt> [options]
+```
+
+**Arguments:**
+- `model_name` - Name of the model to run (required)
+- `prompt` - Prompt to send to the model (required)
+
+**Options:**
+- `--backend, -b {ollama,mlx,huggingface}` - Backend to use (auto-detected if not specified)
+- `--interactive, -i` - Run in interactive mode
+- `--max-tokens, -m` - Maximum tokens to generate (default: 2048)
+- `--temperature, -t` - Temperature for generation 0.0-2.0 (default: 0.7)
+
+**Features:**
+- **Auto-installation:** Automatically installs models if not found
+- **Backend auto-detection:** Finds the correct backend for the model
+- **Interactive mode:** Supports conversation mode with history
+- **Real-time execution:** Direct model execution without server setup
+
+**Supported Backends:**
+- **Ollama:** Uses `ollama run` command
+- **MLX:** Downloads and uses MLX-LM directly
+- **HuggingFace:** Downloads and uses transformers pipeline directly
+- **LM Studio:** Not supported (designed for server mode)
+
+**Examples:**
+```bash
+# Single prompt execution
+super model run llama3.2:3b "Write a Python function to add two numbers" --backend ollama
+
+# Interactive mode
+super model run llama3.2:3b "" --backend ollama --interactive
+
+# Auto-detection with auto-installation
+super model run mlx-community/Llama-3.2-3B-Instruct-4bit "Write a hello world program" --backend mlx
+
+# HuggingFace with auto-installation
+super model run microsoft/phi-1_5 "Write a simple calculator" --backend huggingface
+```
+
+### model remove
+
+Remove a model from a specific backend.
+
+```bash
+super model remove <model_name> [options]
+```
+
+**Arguments:**
+- `model_name` - Name of the model to remove (required)
+
+**Options:**
+- `--backend, -b {ollama,mlx,huggingface,lmstudio}` - Backend to remove from (auto-detected if not specified)
+
+- `--all-backends` - Remove from all backends where it exists
+
+**Features:**
+- **Auto-backend detection:** Automatically finds the backend containing the model
+- **Intelligent removal:** Removes model files and cache entries
+- **Cross-backend support:** Works with all supported backends
+- **Safe removal:** Confirms model existence before removal
+
+**Examples:**
+```bash
+# Remove from specific backend
+super model remove llama3.2:3b --backend ollama
+
+# Remove from all backends
+super model remove llama3.2:3b --all-backends
+
+# Force removal
+super model remove llama3.2:3b
+```
+
+### model refresh
+
+Refresh the SuperOptiX model cache.
+
+```bash
+super model refresh
+```
+
+**Description:**
+Updates the local cache of available models by querying all backends and rebuilding the internal model registry.
+
+**Use cases:**
+- After manually installing models outside of SuperOptiX
+- When models are deleted manually
+- To resolve cache inconsistencies
+- After backend updates or changes
+
+**Example:**
+```bash
+super model refresh
+```
 
 ### model info
 
@@ -391,11 +498,67 @@ super model server <backend> <model_name> [options]
 ```
 
 **Arguments:**
-- `backend` - Backend type: mlx, huggingface, lmstudio (required)
+- `backend` - Backend type (mlx, huggingface, lmstudio)
 - `model_name` - Model name to start server for (required)
 
 **Options:**
-- `--port, -p` - Port to run server on
+- `--port, -p` - Port to run server on (default varies by backend)
+
+**Examples:**
+```bash
+# Start MLX server
+super model server mlx mlx-community/Llama-3.2-3B-Instruct-4bit --port 8000
+
+# Start HuggingFace server
+super model server huggingface microsoft/Phi-4 --port 8001
+
+# Start LM Studio server
+super model server lmstudio llama-3.2-1b-instruct --port 1234
+```
+
+### model convert
+
+Convert HuggingFace model to MLX format (EXPERIMENTAL). This command has an alias `c`.
+
+```bash
+super model convert <hf_model> [options]
+```
+
+**Arguments:**
+- `hf_model` - HuggingFace model to convert (e.g., 'microsoft/phi-2')
+
+**Options:**
+- `--output, -o` - Output path for converted model (default: model name)
+- `--quantize, -q` - Generate a quantized model
+- `--bits` - Bits per weight for quantization (default: 4)
+- `--group-size` - Group size for quantization (default: 64)
+- `--quant-recipe` - Mixed quantization recipe (mixed_2_6, mixed_3_4, mixed_3_6, mixed_4_6)
+- `--dtype` - Data type (float16, bfloat16, float32)
+- `--upload` - HuggingFace repo to upload converted model to
+- `--dequantize` - Dequantize a quantized model
+- `--trust-remote-code` - Trust remote code from HuggingFace
+
+**Note:** This command is experimental and requires MLX backend to be available.
+
+### model quantize
+
+Quantize or dequantize an MLX model (EXPERIMENTAL). This command has an alias `q`.
+
+```bash
+super model quantize <model_name> [options]
+```
+
+**Arguments:**
+- `model_name` - MLX model to quantize (required)
+
+**Options:**
+- `--output, -o` - Output path for quantized model
+- `--bits` - Bits per weight for quantization (default: 4)
+- `--group-size` - Group size for quantization (default: 64)
+- `--recipe` - Mixed quantization recipe (mixed_2_6, mixed_3_4, mixed_3_6, mixed_4_6)
+- `--dequantize` - Dequantize instead of quantize
+
+**Note:** This command is experimental and requires MLX backend to be available.
 
 ## SuperSpec DSL (`spec`)
 
@@ -511,174 +674,3 @@ List all orchestras in the project. This command has an alias `ls`.
 ```bash
 super orchestra list
 ```
-
-### orchestra run
-
-Run an orchestra with a specific goal. This command has an alias `ru`.
-
-```bash
-super orchestra run <name> --goal <goal>
-```
-
-**Arguments:**
-- `name` - Name of the orchestra to run (required)
-- `--goal` - Goal description for the orchestra (required)
-
-**Options:**
-- `--verbose` - Show detailed execution information and guidance
-
-## Marketplace (`marketplace`, `market` or `mk`)
-
-### marketplace
-
-Show the main marketplace dashboard.
-
-```bash
-super marketplace
-```
-
-### marketplace browse
-
-Browse marketplace by category. This command has an alias `br`.
-
-```bash
-super marketplace browse <type> [options]
-```
-
-**Arguments:**
-- `type` - What to browse: agents, tools, industries, or categories (required)
-
-**Options:**
-- `--industry` - Filter agents by industry
-- `--category` - Filter tools by category
-- `--tier {oracles,genies}` - Filter by tier level
-
-### marketplace search
-
-Universal search across agents and tools. This command has an alias `se`.
-
-```bash
-super marketplace search <query>
-```
-
-**Arguments:**
-- `query` - Search term or phrase (required)
-
-### marketplace show
-
-Show detailed information about a component. This command has an alias `sh`.
-
-```bash
-super marketplace show <name>
-```
-
-**Arguments:**
-- `name` - Name of the component to show (required)
-
-### marketplace featured
-
-Show featured/popular components. This command has an alias `fe`.
-
-```bash
-super marketplace featured
-```
-
-### marketplace install
-
-Install a component (convenience wrapper). This command has an alias `in`.
-
-```bash
-super marketplace install <type> <name>
-```
-
-**Arguments:**
-- `type` - Type of component: agent or tool (required)
-- `name` - Name of the component to install (required)
-
-## Observability (`observe` or `ob`)
-
-### observe dashboard
-
-Launch the observability dashboard. This command has an alias `db`.
-
-```bash
-super observe dashboard [options]
-```
-
-**Options:**
-- `--agent-id` - Agent ID to monitor (optional)
-- `--port` - Dashboard port (default: 8501)
-- `--host` - Dashboard host (default: localhost)
-- `--auto-open` - Auto-open browser
-
-### observe traces
-
-View and export agent execution traces. This command has an alias `tr`.
-
-```bash
-super observe traces <agent_id> [options]
-```
-
-**Arguments:**
-- `agent_id` - The agent ID to view traces for (required)
-
-**Options:**
-- `--component` - Filter by component
-- `--status` - Filter by status
-- `--limit` - Limit number of traces (default: 100)
-- `--export {json,csv}` - Export format
-- `--output` - Output file path
-- `--detailed` - Show detailed trace analysis
-- `--show-tools` - Show tool execution details
-- `--show-llm` - Show LLM call details
-
-### observe check
-
-Check pipeline tracing configuration. This command has an alias `ch`.
-
-```bash
-super observe check [options]
-```
-
-**Options:**
-- `--agent-id` - Agent ID to test (optional)
-- `--run-test` - Run a test agent execution
-- `--check-dspy` - Check DSPy configuration
-
-### observe analyze
-
-Analyze agent performance. This command has an alias `an`.
-
-```bash
-super observe analyze <agent_id> [options]
-```
-
-**Arguments:**
-- `agent_id` - The agent ID to analyze (required)
-
-**Options:**
-- `--days` - Number of days to analyze (default: 7)
-
-### observe list
-
-List all agents with trace files. This command has an alias `ls`.
-
-```bash
-super observe list
-```
-
-### observe debug
-
-Debug an agent.
-
-```bash
-super observe debug agent <agent_id> [options]
-```
-
-**Arguments:**
-- `agent_id` - Agent ID to debug (required)
-
-**Options:**
-- `--enable-step-mode` - Enable step-by-step debugging
-- `--break-on-error` - Break on error
-- `--break-on-memory` - Break on memory operations 

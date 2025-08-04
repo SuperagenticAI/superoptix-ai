@@ -214,32 +214,32 @@ super agent info my_agent.py --detailed
 
 ### super model
 
-Manage language models and backends.
+Manage SuperOptiX models and their lifecycle.
 
 #### super model list
 
-List available models.
+List available models across all backends.
 
 ```bash
 super model list [OPTIONS]
 ```
 
 **Options:**
-- `--backend`: Filter by backend
-- `--size`: Filter by model size
-- `--task`: Filter by model task
-- `--installed-only`: Show only installed models
-- `--format`: Output format (table, json, yaml)
+- `--backend`: Filter by backend (ollama, mlx, huggingface, lmstudio)
+- `--size`: Filter by size (tiny, small, medium, large)
+- `--task`: Filter by task (chat, code, reasoning, embedding)
+- `--installed-only`: Show only installed models (default: True)
+- `--all`: Show all available models
 - `--verbose`: Show detailed information
 
 **Example:**
 ```bash
-super model list --backend ollama --installed-only --format json
+super model list --backend ollama --size small
 ```
 
 #### super model install
 
-Install a model.
+Install a model on a specific backend.
 
 ```bash
 super model install [OPTIONS] MODEL_NAME
@@ -249,62 +249,62 @@ super model install [OPTIONS] MODEL_NAME
 - `MODEL_NAME`: Name of the model to install
 
 **Options:**
-- `--backend`: Target backend
-- `--force`: Force reinstall
-- `--progress`: Show progress bar
-- `--verify`: Verify installation
+- `--backend`: Backend to install on (ollama, mlx, huggingface, lmstudio)
+
 
 **Example:**
 ```bash
-super model install llama3.2:8b --backend ollama --progress
+super model install llama3.2:3b --backend ollama
 ```
 
-#### super model server
+#### super model run
 
-Start a model server.
+Run a prompt against a SuperOptiX model with automatic installation.
 
 ```bash
-super model server [OPTIONS] MODEL_NAME
+super model run [OPTIONS] MODEL_NAME PROMPT
 ```
 
 **Arguments:**
-- `MODEL_NAME`: Name of the model to serve
+- `MODEL_NAME`: Name of the model to run
+- `PROMPT`: Prompt to send to the model
 
 **Options:**
-- `--backend`: Model backend
-- `--port`: Server port
-- `--host`: Server host
-- `--config`: Server configuration file
-- `--daemon`: Run as daemon
+- `--backend`: Backend to use (ollama, mlx, huggingface) - auto-detected if not specified
+- `--interactive`: Run in interactive mode
+- `--max-tokens`: Maximum tokens to generate (default: 2048)
+- `--temperature`: Temperature for generation 0.0-2.0 (default: 0.7)
 
-**Example:**
+**Features:**
+- **Auto-installation:** Automatically installs models if not found
+- **Backend auto-detection:** Finds the correct backend for the model
+- **Interactive mode:** Supports conversation mode with history
+- **Real-time execution:** Direct model execution without server setup
+
+**Supported Backends:**
+- **Ollama:** Uses `ollama run` command
+- **MLX:** Downloads and uses MLX-LM directly
+- **HuggingFace:** Downloads and uses transformers pipeline directly
+- **LM Studio:** Not supported (designed for server mode)
+
+**Examples:**
 ```bash
-super model server llama3.2:8b --port 8000 --host 0.0.0.0
-```
+# Single prompt execution
+super model run llama3.2:3b "Write a Python function to add two numbers" --backend ollama
 
-#### super model info
+# Interactive mode
+super model run llama3.2:3b "" --backend ollama --interactive
 
-Get information about a model.
+# Auto-detection with auto-installation
+super model run mlx-community/Llama-3.2-3B-Instruct-4bit "Write a hello world program" --backend mlx
 
-```bash
-super model info [OPTIONS] MODEL_NAME
-```
-
-**Arguments:**
-- `MODEL_NAME`: Name of the model
-
-**Options:**
-- `--backend`: Model backend
-- `--format`: Output format (table, json, yaml)
-
-**Example:**
-```bash
-super model info llama3.2:8b --backend ollama --format json
+# HuggingFace with auto-installation
+super model run microsoft/phi-1_5 "Write a simple calculator" --backend huggingface
 ```
 
 #### super model remove
 
-Remove an installed model.
+Remove a model from a specific backend.
 
 ```bash
 super model remove [OPTIONS] MODEL_NAME
@@ -314,12 +314,175 @@ super model remove [OPTIONS] MODEL_NAME
 - `MODEL_NAME`: Name of the model to remove
 
 **Options:**
-- `--backend`: Model backend
-- `--force`: Force removal
+- `--backend`: Backend to remove from (auto-detected if not specified)
+
+- `--all-backends`: Remove from all backends where it exists
 
 **Example:**
 ```bash
-super model remove llama3.2:8b --backend ollama --force
+super model remove llama3.2:3b --backend ollama
+```
+
+#### super model refresh
+
+Refresh the SuperOptiX model cache.
+
+```bash
+super model refresh
+```
+
+**Example:**
+```bash
+super model refresh
+```
+
+#### super model info
+
+Get detailed information about a model.
+
+```bash
+super model info MODEL_NAME
+```
+
+**Arguments:**
+- `MODEL_NAME`: Name of the model to get info about
+
+**Example:**
+```bash
+super model info llama3.2:3b
+```
+
+#### super model server
+
+Start a model server for local inference.
+
+```bash
+super model server [OPTIONS] BACKEND MODEL_NAME
+```
+
+**Arguments:**
+- `BACKEND`: Backend type (mlx, huggingface, lmstudio)
+- `MODEL_NAME`: Name of the model to serve
+
+**Options:**
+- `--port`: Port to run server on
+
+**Example:**
+```bash
+super model server mlx mlx-community/Llama-3.2-3B-Instruct-4bit --port 8000
+```
+
+#### super model dspy
+
+Create a DSPy client for a model.
+
+```bash
+super model dspy [OPTIONS] MODEL_NAME
+```
+
+**Arguments:**
+- `MODEL_NAME`: Name of the model for DSPy client
+
+**Options:**
+- `--temperature`: Temperature for generation (default: 0.7)
+- `--max-tokens`: Maximum tokens (default: 2048)
+
+**Example:**
+```bash
+super model dspy ollama/llama3.2:3b --temperature 0.8
+```
+
+#### super model convert
+
+Convert HuggingFace model to MLX format (EXPERIMENTAL).
+
+```bash
+super model convert [OPTIONS] HF_MODEL
+```
+
+**Arguments:**
+- `HF_MODEL`: HuggingFace model to convert (e.g., 'microsoft/phi-2')
+
+**Options:**
+- `--output`: Output path for converted model (default: model name)
+- `--quantize`: Generate a quantized model
+- `--bits`: Bits per weight for quantization (default: 4)
+- `--group-size`: Group size for quantization (default: 64)
+- `--quant-recipe`: Mixed quantization recipe (mixed_2_6, mixed_3_4, mixed_3_6, mixed_4_6)
+- `--dtype`: Data type (float16, bfloat16, float32)
+- `--upload`: HuggingFace repo to upload converted model to
+- `--dequantize`: Dequantize a quantized model
+- `--trust-remote-code`: Trust remote code from HuggingFace
+
+**Note:** This command is experimental and requires MLX backend to be available.
+
+**Example:**
+```bash
+super model convert microsoft/phi-2 --quantize --bits 4
+```
+
+#### super model quantize
+
+Quantize or dequantize an MLX model (EXPERIMENTAL).
+
+```bash
+super model quantize [OPTIONS] MODEL_NAME
+```
+
+**Arguments:**
+- `MODEL_NAME`: MLX model to quantize
+
+**Options:**
+- `--output`: Output path for quantized model
+- `--bits`: Bits per weight for quantization (default: 4)
+- `--group-size`: Group size for quantization (default: 64)
+- `--recipe`: Mixed quantization recipe (mixed_2_6, mixed_3_4, mixed_3_6, mixed_4_6)
+- `--dequantize`: Dequantize instead of quantize
+
+**Note:** This command is experimental and requires MLX backend to be available.
+
+**Example:**
+```bash
+super model quantize my-model --bits 4 --output my-model-q4
+```
+
+#### super model discover
+
+Discover available models across backends.
+
+```bash
+super model discover
+```
+
+**Example:**
+```bash
+super model discover
+```
+
+#### super model guide
+
+Show installation guide for different backends.
+
+```bash
+super model guide
+```
+
+**Example:**
+```bash
+super model guide
+```
+
+#### super model backends
+
+List available backends and their status.
+
+```bash
+super model backends
+```
+
+**Example:**
+```bash
+super model backends
 ```
 
 ## Marketplace Commands

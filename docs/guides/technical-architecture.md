@@ -2,7 +2,7 @@
 
 ## Overview
 
-SuperOptiX is a comprehensive AI agent development framework built on top of DSPy (Declarative Self-improving Language Programs) that provides a structured approach to creating, evaluating, and optimizing AI agents. The framework implements a tier-based system with advanced features including RAG (Retrieval-Augmented Generation), memory management, observability, and BDD (Behavior-Driven Development) testing.
+SuperOptiX is a comprehensive AI agent development framework built on top of DSPy (Declarative Self-improving Language Programs) that provides a structured approach to creating, evaluating, and optimizing AI agents. The framework implements a tier-based system with advanced features including RAG (Retrieval-Augmented Generation), memory management, observability, and comprehensive model management.
 
 ## Core Architecture Components
 
@@ -342,45 +342,7 @@ graph TD
 
 - **External Integration**: Support for external observability systems
 
-### 8. **BDD (Behavior-Driven Development) Testing** 🧪
-
-SuperOptiX implements BDD testing for agent validation:
-
-```mermaid
-graph TD
-    A[BDD Scenarios] --> B[Scenario Parser]
-    B --> C[Test Execution]
-    C --> D[Evaluation Engine]
-    D --> E[Results Analysis]
-    
-    A --> A1[Given-When-Then]
-    A --> A2[Feature Specifications]
-    A --> A3[Test Cases]
-    
-    D --> D1[Semantic Similarity]
-    D --> D2[Keyword Matching]
-    D --> D3[Structure Analysis]
-    D --> D4[Custom Metrics]
-    
-    E --> E1[Pass/Fail Results]
-    E --> E2[Performance Metrics]
-    E --> E3[Recommendations]
-    E --> E4[Auto-tuning]
-```
-
-**BDD Features:**
-
-- **Scenario Definition**: Given-When-Then format for test cases
-
-- **Feature Specifications**: Comprehensive test coverage
-
-- **Evaluation Metrics**: Semantic similarity, keyword matching, structure analysis
-
-- **Auto-tuning**: Automatic optimization based on test results
-
-- **Reporting**: Detailed test reports and recommendations
-
-### 9. **Model Management** 🤖
+### 8. **Model Management** 🤖
 
 SuperOptiX provides comprehensive model management:
 
@@ -428,7 +390,7 @@ graph TD
 
 - Model switching and fallback
 
-### 10. **CLI Interface** 💻
+### 9. **CLI Interface** 💻
 
 SuperOptiX provides a comprehensive CLI for all operations:
 

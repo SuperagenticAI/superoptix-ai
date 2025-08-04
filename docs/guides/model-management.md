@@ -1,431 +1,389 @@
 # 🧠 Model Management Guide
 
-> **Master SuperOptiX's current model management capabilities and tier system**
+SuperOptiX provides comprehensive model management capabilities with support for multiple backends, automatic installation, and direct model execution.
 
----
+## Overview
 
-## 🎯 Overview
+The model management system allows you to:
+- **Install models** across different backends (Ollama, MLX, HuggingFace)
+- **Run models directly** without server setup
+- **Auto-install models** when they're not found
+- **Manage model lifecycle** with installation, removal, and updates
 
-SuperOptiX provides a **unified model management system** that handles local language models across multiple backends. This guide covers the current implementation and how to effectively manage models within the SuperOptiX ecosystem.
+## Quick Start
 
-### 🧠 Current Capabilities
+### Running Models Directly
 
-- **📋 Model Listing**: List and filter installed models
-- **🔍 Model Discovery**: Get guidance on available models and backends
-- **📦 Model Installation**: Install models across different backends
-- **ℹ️ Model Information**: Get detailed model information
-- **🖥️ Server Management**: Start local model servers
-- **🧠 DSPy Integration**: Create DSPy clients for models
-- **🔧 Backend Status**: Check backend availability and status
+The easiest way to use models is with the `super model run` command:
 
----
+```bash
+# Run a model with auto-installation
+super model run llama3.2:3b "Write a Python function to add two numbers"
 
-## 🏗️ Model Tier System
+# Specify backend explicitly
+super model run llama3.2:3b "Write a hello world program" --backend ollama
 
-SuperOptiX uses a **progressive tier system** that determines agent capabilities and features:
+# Interactive mode
+super model run llama3.2:3b "" --interactive
+```
 
-### 🎭 **Oracle Tier (Free)**
-- **Basic question-answering** with Chain of Thought reasoning
-- **Simple evaluation** (exact match, F1)
-- **Basic optimization** (BootstrapFewShot)
-- **Sequential task orchestration** only
-- **No tools, memory, or RAG**
+### Installing Models
 
-### 🧞 **Genie Tier (Free)**
-- **All Oracle capabilities** plus:
-- **Tool integration** and ReAct reasoning
-- **RAG (knowledge retrieval)** capabilities
-- **Agent memory** (short-term and episodic)
-- **Basic streaming** responses
-- **Sequential orchestration** only
+Install models for specific backends:
 
-### 🚀 **Higher Tiers (Enterprise)**
-- **Parallel execution** strategies
-- **Kubernetes-style orchestration**
-- **Advanced enterprise features**
-- **Production-grade scaling**
+```bash
+# Install Ollama model
+super model install llama3.2:3b --backend ollama
 
----
+# Install MLX model
+super model install mlx-community/Llama-3.2-3B-Instruct-4bit --backend mlx
 
-## 📋 Model Listing & Discovery
+# Install HuggingFace model
+super model install microsoft/phi-1_5 --backend huggingface
+```
 
-### 1. **List Installed Models**
+## Supported Backends
+
+### Ollama
+- **Best for:** Local models, easy setup
+- **Models:** All Ollama-compatible models
+- **Installation:** `ollama pull <model>`
+- **Execution:** `ollama run <model> <prompt>`
+
+### MLX
+- **Best for:** Apple Silicon optimization
+- **Models:** MLX-community models
+- **Installation:** Downloads from HuggingFace Hub
+- **Execution:** Direct MLX-LM inference
+
+### HuggingFace
+- **Best for:** Wide model selection, research
+- **Models:** All HuggingFace models
+- **Installation:** Downloads from HuggingFace Hub
+- **Execution:** Direct transformers pipeline
+
+### LM Studio
+- **Best for:** Desktop GUI, server mode
+- **Models:** LM Studio compatible models
+- **Installation:** Manual via LM Studio app
+- **Execution:** Server mode only (not supported for direct execution)
+
+## Model Execution
+
+### Single Prompt Mode
+
+Run a single prompt against a model:
+
+```bash
+# Basic usage
+super model run <model_name> "<prompt>"
+
+# Examples
+super model run llama3.2:3b "Write a Python function to calculate fibonacci"
+super model run mlx-community/phi-2 "Explain quantum computing in simple terms"
+super model run microsoft/phi-1_5 "Write a simple calculator program"
+```
+
+### Interactive Mode
+
+Start an interactive conversation:
+
+```bash
+super model run <model_name> "" --interactive
+```
+
+**Interactive Commands:**
+- `quit` or `exit`: End the session
+- `clear`: Clear conversation history
+- `Ctrl+C`: Interrupt current generation
+
+### Generation Parameters
+
+Control model behavior:
+
+```bash
+# Set temperature (creativity)
+super model run llama3.2:3b "Write a story" --temperature 0.9
+
+# Set max tokens (response length)
+super model run llama3.2:3b "Explain AI" --max-tokens 500
+
+# Combine parameters
+super model run llama3.2:3b "Write a poem" --temperature 0.8 --max-tokens 200
+```
+
+## Auto-Installation
+
+Models are automatically installed when they're not found:
+
+```bash
+# This will auto-install the model if not found
+super model run mlx-community/Llama-3.2-3B-Instruct-4bit "Hello world"
+```
+
+**Auto-Installation Features:**
+- **Backend detection:** Automatically determines the correct backend
+- **Progress feedback:** Shows download progress
+- **Error handling:** Provides clear error messages
+- **Cache management:** Handles model caching efficiently
+
+## Model Management Commands
+
+### List Models
 
 ```bash
 # List all installed models
 super model list
 
-# List all available models (including uninstalled)
-super model list --all
-
-# Filter by backend
+# List models by backend
 super model list --backend ollama
 super model list --backend mlx
 super model list --backend huggingface
-super model list --backend lmstudio
 
 # Filter by size
-super model list --size tiny
 super model list --size small
-super model list --size medium
-super model list --size large
 
 # Filter by task
-super model list --task chat
 super model list --task code
-super model list --task reasoning
-super model list --task embedding
-
-# Combine filters
-super model list --backend ollama --size small --task chat
-
-# Verbose information
-super model list --verbose
 ```
 
-### 2. **Model Discovery**
+### Remove Models
 
 ```bash
-# Get comprehensive discovery guide
-super model discover
+# Remove from specific backend
+super model remove llama3.2:3b --backend ollama
 
-# Get detailed installation guide
-super model guide
+# Remove from all backends
+super model remove llama3.2:3b --all-backends
 ```
 
----
+**Note**: LM Studio models cannot be removed via CLI and require manual deletion:
+1. Open LM Studio application
+2. Go to 'My Models' section  
+3. Right-click on the model and select 'Delete'
+4. Or manually delete from: `~/.cache/lm-studio/models/`
 
-## 📦 Model Installation
-
-### 1. **Install Models by Backend**
+### Get Model Information
 
 ```bash
-# Install Ollama models (default backend)
-super model install llama3.2:3b
-super model install llama3.2:8b
-super model install llama3.2:70b
+# Get detailed model info
+super model info llama3.2:3b
 
-# Install MLX models
-super model install -b mlx mlx-community/phi-2
-super model install -b mlx mlx-community/Llama-3.2-3B-Instruct-4bit
-
-# Install HuggingFace models
-super model install -b huggingface microsoft/Phi-4
-super model install -b huggingface microsoft/DialoGPT-small
-
-# Install LM Studio models
-super model install -b lmstudio llama-3.2-1b-instruct
-super model install -b lmstudio your-model-name
-
-# Force reinstall if needed
-super model install llama3.2:3b --force
+# Get info for specific backend
+super model info microsoft/phi-1_5 --backend huggingface
 ```
 
-### 2. **Backend-Specific Setup**
+### Refresh Cache
 
-#### **🦙 Ollama (Recommended for Beginners)**
 ```bash
-# Install Ollama
-curl -fsSL https://ollama.ai/install.sh | sh
-
-# Start Ollama (runs automatically)
-ollama serve
-
-# Install models
-super model install llama3.2:3b
-super model install llama3.2:8b
+# Refresh model cache
+super model refresh
 ```
 
-#### **🍎 MLX (Apple Silicon)**
+## Backend-Specific Features
+
+### Ollama Backend
+
+**Installation:**
 ```bash
-# Install MLX dependencies
-pip install mlx-lm
+# Install via Ollama
+ollama pull llama3.2:3b
 
-# Or install with SuperOptiX
-pip install "superoptix[mlx]"
-
-# Install models
-super model install -b mlx mlx-community/phi-2
-super model install -b mlx mlx-community/Llama-3.2-3B-Instruct-4bit
+# Or use SuperOptiX
+super model install llama3.2:3b --backend ollama
 ```
 
-#### **🤗 HuggingFace (Advanced Users)**
+**Execution:**
 ```bash
-# Install HuggingFace dependencies
-pip install transformers torch fastapi uvicorn
-
-# Or install with SuperOptiX
-pip install "superoptix[huggingface]"
-
-# Install models
-super model install -b huggingface microsoft/Phi-4
-super model install -b huggingface microsoft/DialoGPT-small
+# Direct execution
+super model run llama3.2:3b "Write code"
 ```
 
-#### **🎮 LM Studio (Windows Users)**
+### MLX Backend
+
+**Installation:**
 ```bash
-# Download LM Studio from https://lmstudio.ai
-# Install and launch LM Studio
-# Download a model through the interface
-# Start the server (default port: 1234)
+# Auto-installation
+super model run mlx-community/phi-2 "Hello"
 
-# Models are managed through LM Studio app
-super model install -b lmstudio your-model-name
+# Manual installation
+super model install mlx-community/phi-2 --backend mlx
 ```
 
----
+**Execution:**
+```bash
+# Direct execution (Apple Silicon optimized)
+super model run mlx-community/phi-2 "Write a function"
+```
 
-## 🖥️ Server Management
+### HuggingFace Backend
 
-### 1. **Start Model Servers**
+**Installation:**
+```bash
+# Auto-installation
+super model run microsoft/phi-1_5 "Hello"
+
+# Manual installation
+super model install microsoft/phi-1_5 --backend huggingface
+```
+
+**Execution:**
+```bash
+# Direct execution (uses transformers pipeline)
+super model run microsoft/phi-1_5 "Write code"
+```
+
+## Advanced Usage
+
+### DSPy Integration
+
+Create DSPy clients for advanced AI workflows:
+
+```bash
+# Create DSPy client
+super model dspy ollama/llama3.2:3b --temperature 0.7
+
+# Use in Python
+from superoptix.models.manager import SuperOptiXModelManager
+manager = SuperOptiXModelManager()
+client = manager.create_dspy_client("ollama/llama3.2:3b")
+```
+
+### Server Mode
+
+Start model servers for API access:
 
 ```bash
 # Start MLX server
-super model server mlx phi-2 --port 8000
-super model server mlx mlx-community/Llama-3.2-3B-Instruct-4bit --port 8000
+super model server mlx mlx-community/phi-2 --port 8000
 
 # Start HuggingFace server
-super model server huggingface microsoft/Phi-4 --port 8001
-super model server huggingface microsoft/DialoGPT-small --port 8001
-
-# Start LM Studio server
-super model server lmstudio llama-3.2-1b-instruct --port 1234
-super model server lmstudio your-model-name --port 1234
+super model server huggingface microsoft/phi-1_5 --port 8001
 ```
 
-### 2. **Server Backend Details**
+### Model Discovery
 
-| Backend | Server Required | Default Port | Platform | Auto-Start |
-|---------|----------------|--------------|----------|------------|
-| 🦙 Ollama | No | 11434 | All | Yes |
-| 🍎 MLX | Yes | 8000 | Apple Silicon | No |
-| 🤗 HuggingFace | Yes | 8001 | All | No |
-| 🎮 LM Studio | Yes | 1234 | Windows/macOS | No |
-
----
-
-## 🧠 DSPy Integration
-
-### 1. **Create DSPy Clients**
+Discover available models:
 
 ```bash
-# Create Ollama DSPy client
-super model dspy ollama/llama3.2:3b
-super model dspy ollama/llama3.2:8b
+# Interactive discovery
+super model discover
 
-# Create MLX DSPy client
-super model dspy mlx/phi-2
-super model dspy mlx-community/Llama-3.2-3B-Instruct-4bit
+# Show installation guides
+super model guide
 
-# Create HuggingFace DSPy client
-super model dspy huggingface/microsoft/Phi-4
-super model dspy microsoft/Phi-4
-
-# Create LM Studio DSPy client
-super model dspy lmstudio/llama-3.2-1b-instruct
-super model dspy lmstudio/your-model-name
-
-# DSPy client with custom parameters
-super model dspy ollama/llama3.2:3b --temperature 0.7 --max-tokens 2048
-```
-
-### 2. **DSPy Integration Examples**
-
-```python
-# In your agent playbook or pipeline
-from dspy import Predict
-from superoptix.models.backends.ollama import OllamaClient
-
-# Create the client
-client = OllamaClient(
-    model="llama3.2:3b",
-    temperature=0.7,
-    max_tokens=2048
-)
-
-# Use with DSPy modules
-predictor = Predict(client)
-
-# Example usage
-response = predictor("Explain quantum computing in simple terms")
-print(response)
-```
-
----
-
-## 📊 Model Information
-
-### 1. **Get Model Details**
-
-```bash
-# Get model information
-super model info llama3.2:3b
-super model info mlx-community/phi-2
-super model info microsoft/Phi-4
-super model info llama-3.2-1b-instruct
-```
-
-### 2. **Check Backend Status**
-
-```bash
-# Check all backends
+# List backends
 super model backends
 ```
 
----
+### Model Conversion and Quantization
 
+Convert and quantize models for MLX backend:
 
+```bash
+# Convert HuggingFace model to MLX format
+super model convert microsoft/phi-2 --quantize --bits 4
 
-## 🔧 Configuration Management
+# Quantize existing MLX model
+super model quantize my-model --bits 4 --output my-model-q4
 
-### 1. **Model Configuration in Playbooks**
-
-```yaml
-# In your agent playbook
-spec:
-  language_model:
-    provider: "ollama"  # or "mlx", "huggingface", "lmstudio"
-    model: "llama3.2:3b"
-    temperature: 0.7
-    max_tokens: 2048
-    api_base: "http://localhost:11434"  # for MLX/HuggingFace servers
+# Dequantize a quantized model
+super model quantize my-model-q4 --dequantize --output my-model-dequantized
 ```
 
-### 2. **Backend-Specific Configuration**
+**Note:** These commands are experimental and require MLX backend to be available.
 
-#### **Ollama Configuration**
-```yaml
-language_model:
-  provider: "ollama"
-  model: "llama3.2:3b"
-  temperature: 0.7
-  max_tokens: 2048
-  # No api_base needed - uses default localhost:11434
-```
-
-#### **MLX Configuration**
-```yaml
-language_model:
-  provider: "mlx"
-  model: "mlx-community/phi-2"
-  temperature: 0.7
-  max_tokens: 2048
-  api_base: "http://localhost:8000"  # MLX server port
-```
-
-#### **HuggingFace Configuration**
-```yaml
-language_model:
-  provider: "huggingface"
-  model: "microsoft/Phi-4"
-  temperature: 0.7
-  max_tokens: 2048
-  api_base: "http://localhost:8001"  # HuggingFace server port
-```
-
-#### **LM Studio Configuration**
-```yaml
-language_model:
-  provider: "lmstudio"
-  model: "llama-3.2-1b-instruct"
-  temperature: 0.7
-  max_tokens: 2048
-  api_base: "http://localhost:1234"  # LM Studio server port
-```
-
----
-
-## 🚨 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
-#### **Model Not Found**
+**Model not found:**
 ```bash
-# Check available models
-super model list --all
+# Check if model exists
+super model list --backend ollama
 
-# Use correct model name
-super model install llama3.2:3b  # ✅ Correct
-super model install llama3.2     # ❌ Wrong
+# Try auto-installation
+super model run <model_name> "test"
 ```
 
-#### **Server Connection Failed**
+**Installation fails:**
 ```bash
-# Check if server is running
-# For Ollama: ollama serve
-# For MLX: super model server mlx phi-2 --port 8000
-# For LM Studio: Start in LM Studio app
-# For HuggingFace: super model server huggingface model --port 8001
+# Check backend availability
+super model backends
+
+# Refresh cache
+super model refresh
+
+# Try manual installation
+super model install <model_name> --backend <backend>
 ```
 
-#### **Port Already in Use**
+**Execution errors:**
 ```bash
-# Use different port
-super model server mlx phi-2 --port 8001
-super model server huggingface microsoft/Phi-4 --port 8002
+# Check model status
+super model info <model_name>
+
+# Try different backend
+super model run <model_name> "test" --backend <backend>
 ```
 
-#### **Apple Silicon Required**
+### Performance Tips
+
+1. **Use appropriate backends:**
+   - Ollama: Good for local models
+   - MLX: Best for Apple Silicon
+   - HuggingFace: Wide model selection
+
+2. **Model size considerations:**
+   - Small models: Faster, less accurate
+   - Large models: Slower, more accurate
+
+3. **Memory management:**
+   - Close unused models
+   - Use `super model refresh` to clean cache
+
+## Examples
+
+### Code Generation
+
 ```bash
-# Use Ollama instead
-super model install llama3.2:3b
-super model dspy ollama/llama3.2:3b
+# Generate Python function
+super model run llama3.2:3b "Write a Python function to sort a list"
+
+# Generate JavaScript code
+super model run microsoft/phi-1_5 "Write a JavaScript function to validate email"
 ```
 
-#### **Missing Python Packages**
+### Content Creation
+
 ```bash
-# Install MLX dependencies
-pip install mlx-lm
+# Write a blog post
+super model run llama3.2:3b "Write a blog post about AI trends"
 
-# Install HuggingFace dependencies
-pip install transformers torch fastapi uvicorn
-
-# Or install with SuperOptiX extras
-pip install "superoptix[mlx]"
-pip install "superoptix[huggingface]"
+# Create a story
+super model run mlx-community/phi-2 "Write a short story about a robot"
 ```
 
----
+### Analysis
 
-## 🎯 Best Practices
+```bash
+# Analyze text
+super model run microsoft/phi-1_5 "Analyze this text: [your text here]"
 
-### 1. **Model Selection**
+# Explain concept
+super model run llama3.2:3b "Explain machine learning in simple terms"
+```
 
-- **Start with Ollama**: Easiest for beginners, works on all platforms
-- **Use MLX on Apple Silicon**: Best performance for Apple Silicon Macs
-- **Choose HuggingFace for advanced use**: Maximum flexibility and model variety
-- **Use LM Studio on Windows**: Good GUI interface for Windows users
+## Best Practices
 
-### 2. **Server Management**
+1. **Start with auto-installation:** Let SuperOptiX handle model setup
+2. **Use appropriate models:** Match model size to your needs
+3. **Experiment with parameters:** Adjust temperature and max_tokens
+4. **Use interactive mode:** For complex conversations
+5. **Monitor performance:** Check response times and quality
 
-- **Ollama**: No manual server management needed
-- **MLX/HuggingFace**: Start servers when needed, use different ports
-- **LM Studio**: Manage through the application interface
-- **Monitor resources**: Keep an eye on memory usage
+## Next Steps
 
-### 3. **DSPy Integration**
-
-- **Test models first**: Use `super model info` to verify installation
-- **Start with simple prompts**: Test basic functionality before complex tasks
-- **Monitor performance**: Check response times and quality
-- **Use appropriate parameters**: Adjust temperature and max_tokens for your use case
-
-### 4. **Tier Compliance**
-
-- **Oracle agents**: Use any model, no special requirements
-- **Genie agents**: Models should support tool calling and reasoning
-- **Higher tiers**: Enterprise features require specific model capabilities
-
----
-
-## 🔗 Related Resources
-
-- [Model Intelligence Guide](./model-intelligence.md) - Advanced model management features
-- [Cloud Inference Guide](./cloud-inference.md) - Cloud provider integration guides
-- [Agent Development Guide](./agent-development.md) - Using models with agents
-- [CLI Reference](../reference/cli.md) - Complete command reference
-- [Troubleshooting Guide](../troubleshooting.md) - Common issues and solutions
-
----
-
-*Ready to manage your models effectively? Start with `super model discover` to explore available models and backends! 🚀* 
+- Explore [Agent Development](../guides/agent-development.md) for building AI agents
+- Learn about [Orchestra Development](../guides/orchestra-development.md) for multi-agent systems
+- Check out [Tool Development](../guides/tool-development.md) for custom tools 
