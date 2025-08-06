@@ -199,9 +199,15 @@ After installing SuperOptiX, you'll need AI models to power your agents. For thi
 # Download models for different agent tiers
 super model install llama3.2:1b   # For Oracles tier (faster, lighter)
 super model install llama3.2:8b   # For Genies tier (more capable)
+
+# 🆕 NEW: Install GPT-OSS models for advanced reasoning
+super model install gpt-oss:20b   # For advanced reasoning and agentic tasks
+super model install gpt-oss:120b  # For production-level reasoning (requires H100 GPU)
 ```
 
 **💡 Pro Tip:** You can also use cloud models (OpenAI, Anthropic) by setting API keys in your project's `.env` file.
+
+**🚀 GPT-OSS Models:** OpenAI's latest open-source models with configurable reasoning levels and agentic capabilities. Perfect for complex reasoning tasks!
 
 ---
 

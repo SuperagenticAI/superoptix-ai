@@ -50,6 +50,14 @@ super model install microsoft/phi-1_5 --backend huggingface
 - **Installation:** `ollama pull <model>`
 - **Execution:** `ollama run <model> <prompt>`
 
+### GPT-OSS (OpenAI's Open Source)
+- **Best for:** Advanced reasoning, complex tasks
+- **Models:** GPT-OSS-20B, GPT-OSS-120B
+- **Installation:** `super model install gpt-oss:20b` or `super model install openai/gpt-oss-20b --backend huggingface`
+- **Execution:** Direct inference
+- **Features:** Apache 2.0 license, MXFP4 quantization
+- **Resources:** [GPT-OSS-120B](https://huggingface.co/openai/gpt-oss-120b), [GPT-OSS-20B](https://huggingface.co/openai/gpt-oss-20b), [Ollama Library](https://ollama.com/library/gpt-oss)
+
 ### MLX
 - **Best for:** Apple Silicon optimization
 - **Models:** MLX-community models
@@ -111,6 +119,80 @@ super model run llama3.2:3b "Explain AI" --max-tokens 500
 # Combine parameters
 super model run llama3.2:3b "Write a poem" --temperature 0.8 --max-tokens 200
 ```
+
+## 🤖 GPT-OSS Models
+
+SuperOptiX now supports OpenAI's latest open-source language models: **GPT-OSS-20B** and **GPT-OSS-120B**. These models are designed for advanced reasoning and agentic tasks.
+
+### 🎯 GPT-OSS Model Overview
+
+| Model | Parameters | Active Parameters | Best For | Hardware Requirements |
+|-------|------------|-------------------|----------|----------------------|
+| **GPT-OSS-20B** | 21B | 3.6B | Lower latency, local/specialized use cases | 16GB+ RAM |
+| **GPT-OSS-120B** | 117B | 5.1B | Production, general purpose, high reasoning | Single H100 GPU |
+
+### 🚀 Key Features
+
+- **🔓 Apache 2.0 License**: Build freely without copyleft restrictions
+- **⚡ Native MXFP4 Quantization**: Optimized for efficient inference
+
+### 📦 Installing GPT-OSS Models
+
+#### Via Ollama (Recommended)
+
+```bash
+# Install GPT-OSS models
+super model install gpt-oss:20b
+super model install gpt-oss:120b
+
+# Test the models
+super model run gpt-oss:20b "Explain quantum computing with detailed reasoning"
+```
+
+#### Via HuggingFace
+
+```bash
+# Install via HuggingFace
+super model install openai/gpt-oss-20b --backend huggingface
+super model install openai/gpt-oss-120b --backend huggingface
+
+# Start server
+super model server huggingface openai/gpt-oss-20b --port 8001
+```
+
+### 🎯 Using GPT-OSS Models
+
+```bash
+# Simple question
+super model run gpt-oss:20b "What is 2+2?"
+
+# Explain a concept
+super model run gpt-oss:20b "Explain machine learning"
+
+# Complex task
+super model run gpt-oss:20b "Design a distributed system architecture"
+```
+
+### 🔧 Basic Usage Examples
+
+```bash
+# Simple calculation
+super model run gpt-oss:20b "Calculate the factorial of 10"
+
+# Get information
+super model run gpt-oss:20b "What's the latest news about AI?"
+
+# Complex problem solving
+super model run gpt-oss:120b "Solve: A train leaves station A at 2 PM traveling at 60 mph. Another train leaves station B at 3 PM traveling at 80 mph. When will they meet if the stations are 300 miles apart?"
+```
+
+### 🎯 Performance Recommendations
+
+| Use Case | Recommended Model | Hardware |
+|----------|------------------|----------|
+| **Quick responses** | GPT-OSS-20B | 16GB+ RAM |
+| **Complex tasks** | GPT-OSS-120B | H100 GPU |
+| **Local development** | GPT-OSS-20B | 16GB+ RAM |
 
 ## Auto-Installation
 
@@ -381,6 +463,14 @@ super model run llama3.2:3b "Explain machine learning in simple terms"
 3. **Experiment with parameters:** Adjust temperature and max_tokens
 4. **Use interactive mode:** For complex conversations
 5. **Monitor performance:** Check response times and quality
+
+## Resources
+
+- [SuperOptiX Documentation](https://superoptix.ai) - Complete framework documentation
+- [DSPy Framework](https://dspy.ai) - Foundation framework
+- [GPT-OSS-120B Model](https://huggingface.co/openai/gpt-oss-120b) - HuggingFace repository
+- [GPT-OSS-20B Model](https://huggingface.co/openai/gpt-oss-20b) - HuggingFace repository
+- [Ollama Library](https://ollama.com/library/gpt-oss) - Ollama model library
 
 ## Next Steps
 

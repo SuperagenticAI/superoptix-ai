@@ -12,6 +12,7 @@ SuperOptiX supports multiple local model backends, each optimized for different 
 | Backend | Best For | Platform | Ease of Use | Performance |
 |---------|----------|----------|-------------|-------------|
 | **🦙 Ollama** | Beginners, All platforms | Cross-platform | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| **🤖 GPT-OSS** | Advanced reasoning, Agentic tasks | Cross-platform | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
 | **🍎 MLX** | Apple Silicon users | macOS only | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
 | **🎮 LM Studio** | Windows users | Windows/macOS | ⭐⭐⭐ | ⭐⭐⭐⭐ |
 | **🤗 HuggingFace** | Advanced users | All platforms | ⭐⭐ | ⭐⭐⭐⭐⭐ |
@@ -141,6 +142,219 @@ super model info llama3.2:3b
 # List all available models
 super model list --all
 ```
+
+## 🤖 GPT-OSS Models (OpenAI's Open Source)
+
+**GPT-OSS** models are OpenAI's latest open-weight language models designed for powerful reasoning, agentic tasks, and versatile developer use cases. SuperOptiX now supports both GPT-OSS-20B and GPT-OSS-120B models!
+
+### 🎯 GPT-OSS Model Overview
+
+| Model | Parameters | Active Parameters | Best For | Hardware Requirements |
+|-------|------------|-------------------|----------|----------------------|
+| **GPT-OSS-20B** | 21B | 3.6B | Lower latency, local/specialized use cases | 16GB+ RAM |
+| **GPT-OSS-120B** | 117B | 5.1B | Production, general purpose, high reasoning | Single H100 GPU |
+
+### 🚀 Key Features
+
+- **🔓 Apache 2.0 License:** Build freely without copyleft restrictions
+- **⚡ Native MXFP4 Quantization:** Optimized for efficient inference
+
+### 📦 Install GPT-OSS Models
+
+#### Via Ollama (Recommended)
+
+```bash
+# Install GPT-OSS models via Ollama
+super model install gpt-oss:20b
+super model install gpt-oss:120b
+
+# Or use direct Ollama commands
+ollama pull gpt-oss:20b
+ollama pull gpt-oss:120b
+```
+
+<details><summary><strong>Show Ollama Installation Output</strong></summary>
+
+```
+🚀 SuperOptiX Model Intelligence - Installing gpt-oss:20b
+🦙 Pulling model gpt-oss:20b from Ollama...
+⏳ This may take a few minutes depending on your internet connection and model size.
+
+pulling manifest 
+pulling 8f7b3c2a1d4e: 100% ▕██████████████████████████████████████████████▏ 12.5 GB                         
+pulling 9a2b4c6d8e0f: 100% ▕██████████████████████████████████████████████▏ 1.2 KB                         
+verifying sha256 digest 
+writing manifest 
+success 
+✅ Model pulled successfully!
+
+💡 You can now use it with SuperOptiX:
+  super model dspy ollama/gpt-oss:20b
+
+📊 Model details:
+  • Size: large
+  • Task: chat
+  • Parameters: 21B (3.6B active)
+
+🎉 Installation completed successfully!
+🦙 Ollama running on http://localhost:11434 ready to use with SuperOptiX!
+```
+
+</details>
+
+#### Via HuggingFace
+
+```bash
+# Install GPT-OSS models via HuggingFace
+super model install openai/gpt-oss-20b --backend huggingface
+super model install openai/gpt-oss-120b --backend huggingface
+
+# Start HuggingFace server
+super model server huggingface openai/gpt-oss-20b --port 8001
+super model server huggingface openai/gpt-oss-120b --port 8002
+```
+
+<details><summary><strong>Show HuggingFace Installation Output</strong></summary>
+
+```
+🚀 SuperOptiX Model Intelligence - Installing openai/gpt-oss-20b
+🤗 Downloading model from HuggingFace...
+⏳ This may take several minutes depending on your internet connection and model size.
+
+Downloading model files...
+  • config.json: 100% ▕██████████████████████████████████████████████▏ 2.1 KB
+  • model.safetensors: 100% ▕██████████████████████████████████████████████▏ 12.5 GB
+  • tokenizer.json: 100% ▕██████████████████████████████████████████████▏ 1.8 MB
+  • tokenizer_config.json: 100% ▕██████████████████████████████████████████████▏ 1.2 KB
+
+✅ Model downloaded successfully!
+
+💡 You can now use it with SuperOptiX:
+  super model server huggingface openai/gpt-oss-20b --port 8001
+
+📊 Model details:
+  • Size: large
+  • Task: chat
+  • Parameters: 21B (3.6B active)
+  • License: Apache 2.0
+
+🎉 Installation completed successfully!
+```
+
+</details>
+
+### 🎯 Using GPT-OSS with SuperOptiX
+
+#### 1. **Configure Playbook for GPT-OSS**
+
+```yaml
+# Example playbook configuration for GPT-OSS
+language_model:
+  provider: ollama  # or huggingface
+  model: gpt-oss:20b  # or gpt-oss:120b
+  api_base: http://localhost:11434  # for Ollama
+  # api_base: http://localhost:8001  # for HuggingFace
+  temperature: 0.7
+  max_tokens: 2048
+
+
+```
+
+#### 2. **Test GPT-OSS Models**
+
+```bash
+# Test with Ollama backend
+super model run gpt-oss:20b "Explain quantum computing with detailed reasoning"
+
+# Test with HuggingFace backend
+super model run openai/gpt-oss-20b "Write a Python function to solve the traveling salesman problem"
+```
+
+#### 3. **Basic Usage Examples**
+
+```bash
+# Simple question
+super model run gpt-oss:20b "What is 2+2?"
+
+# Explain a concept
+super model run gpt-oss:20b "Explain machine learning"
+
+# Complex task
+super model run gpt-oss:20b "Design a distributed system architecture"
+```
+
+### 📋 Manage GPT-OSS Models
+
+```bash
+# List installed GPT-OSS models
+super model list | grep gpt-oss
+
+# Get detailed information
+super model info gpt-oss:20b
+super model info openai/gpt-oss-120b
+
+# Test model performance
+super model test gpt-oss:20b "Hello, how are you?"
+```
+
+### 🎯 Performance Recommendations
+
+| Use Case | Recommended Model | Hardware |
+|----------|------------------|----------|
+| **Quick responses** | GPT-OSS-20B | 16GB+ RAM |
+| **Complex tasks** | GPT-OSS-120B | H100 GPU |
+| **Local development** | GPT-OSS-20B | 16GB+ RAM |
+
+### 🔧 Troubleshooting GPT-OSS
+
+=== "Model Not Found"
+    
+    **Error:** `Model not found` or `Model does not exist`
+    
+    **Solution:**
+    ```bash
+    # For Ollama
+    ollama pull gpt-oss:20b
+    ollama pull gpt-oss:120b
+    
+    # For HuggingFace
+    super model install openai/gpt-oss-20b --backend huggingface
+    super model install openai/gpt-oss-120b --backend huggingface
+    ```
+
+=== "Out of Memory"
+    
+    **Error:** `CUDA out of memory` or `Not enough memory`
+    
+    **Solution:**
+    ```bash
+    # Use smaller model
+    super model install gpt-oss:20b  # Instead of 120b
+    
+    # Use CPU inference
+    super model server huggingface openai/gpt-oss-20b --device cpu
+    ```
+
+=== "Server Connection Failed"
+    
+    **Error:** `Connection refused` or `Cannot connect to server`
+    
+    **Solution:**
+    ```bash
+    # Check Ollama server
+    ollama serve
+    
+    # Check HuggingFace server
+    super model server huggingface openai/gpt-oss-20b --port 8001
+    ```
+
+### 📚 Resources
+
+- [GPT-OSS-120B Model](https://huggingface.co/openai/gpt-oss-120b) - HuggingFace repository
+- [GPT-OSS-20B Model](https://huggingface.co/openai/gpt-oss-20b) - HuggingFace repository
+- [Ollama Library](https://ollama.com/library/gpt-oss) - Ollama model library
+- [SuperOptiX Documentation](https://superoptix.ai) - Complete framework documentation
+- [DSPy Framework](https://dspy.ai) - Foundation framework
 
 ## 🍎 MLX (Apple Silicon)
 
@@ -413,7 +627,7 @@ super model list
 
 **Example Output:**
 ```
-                           🚀 SuperOptiX Model Intelligence - 9 models                  
+                           🚀 SuperOptiX Model Intelligence - 9 models                   
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━┓
 ┃ Model                                    ┃    Backend     ┃    Status    ┃  Size   ┃   Task    ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━┩
