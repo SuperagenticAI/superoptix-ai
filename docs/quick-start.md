@@ -203,11 +203,16 @@ super model install llama3.2:8b   # For Genies tier (more capable)
 # 🆕 NEW: Install GPT-OSS models for advanced reasoning
 super model install gpt-oss:20b   # For advanced reasoning and agentic tasks
 super model install gpt-oss:120b  # For production-level reasoning (requires H100 GPU)
+
+# 🍎 Apple Silicon: Install GPT-OSS with native support
+super model install lmstudio-community/gpt-oss-20b-MLX-8bit --backend mlx   # Native Apple Silicon support
 ```
 
 **💡 Pro Tip:** You can also use cloud models (OpenAI, Anthropic) by setting API keys in your project's `.env` file.
 
 **🚀 GPT-OSS Models:** OpenAI's latest open-source models with configurable reasoning levels and agentic capabilities. Perfect for complex reasoning tasks!
+
+**🍎 Apple Silicon Support:** MLX-LM v0.26.3 now provides native Apple Silicon support for GPT-OSS models, resolving mixed precision issues!
 
 ---
 

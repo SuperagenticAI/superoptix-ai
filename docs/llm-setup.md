@@ -145,7 +145,17 @@ super model list --all
 
 ## 🤖 GPT-OSS Models (OpenAI's Open Source)
 
-**GPT-OSS** models are OpenAI's latest open-weight language models designed for powerful reasoning, agentic tasks, and versatile developer use cases. SuperOptiX now supports both GPT-OSS-20B and GPT-OSS-120B models!
+**GPT-OSS** models are OpenAI's latest open-weight language models designed for powerful reasoning, agentic tasks, and versatile developer use cases. SuperOptiX now supports both GPT-OSS-20B and GPT-OSS-120B models with **native Apple Silicon support**!
+
+### 🍎 Apple Silicon Support
+
+**MLX-LM v0.26.3** now provides native Apple Silicon support for GPT-OSS models, resolving the mixed precision issues that previously prevented these models from running on Apple Silicon.
+
+| Backend | Model | Status | Performance | Apple Silicon | **Recommendation** |
+|---------|-------|--------|-------------|---------------|-------------------|
+| **🦙 Ollama** | gpt-oss:20b | **✅ Works** | **19.7 t/s** | **✅ Optimized format** | **⭐ RECOMMENDED** |
+| **🍎 MLX-LM** | openai_gpt-oss-20b | **✅ Works** | 5.2 t/s | **✅ Native support** | **Apple Silicon only** |
+| **🤗 HuggingFace** | openai/gpt-oss-20b | **❌ Broken** | N/A | **❌ Mixed precision errors** | **❌ Avoid on Apple Silicon** |
 
 ### 🎯 GPT-OSS Model Overview
 
@@ -154,14 +164,52 @@ super model list --all
 | **GPT-OSS-20B** | 21B | 3.6B | Lower latency, local/specialized use cases | 16GB+ RAM |
 | **GPT-OSS-120B** | 117B | 5.1B | Production, general purpose, high reasoning | Single H100 GPU |
 
+!!! tip "🚀 **Recommended: Use Ollama for GPT-OSS Models**"
+    **For the best performance and reliability with GPT-OSS models, we recommend using Ollama:**
+    
+    - **✅ Best Performance**: 19.7 t/s vs 5.2 t/s (MLX) vs N/A (HuggingFace)
+    - **✅ Cross-Platform**: Works on all platforms (Windows, macOS, Linux)
+    - **✅ Easy Setup**: Simple installation and model management
+    - **✅ Optimized Format**: GGUF format optimized for local inference
+    - **✅ No Server Required**: Direct model execution
+    
+    **Install and use GPT-OSS with Ollama:**
+    ```bash
+    # Install GPT-OSS models
+    super model install gpt-oss:20b
+    super model install gpt-oss:120b
+    
+    # Use in playbooks
+    language_model:
+      provider: ollama
+      model: gpt-oss:20b
+      api_base: http://localhost:11434
+    ```
+
 ### 🚀 Key Features
 
 - **🔓 Apache 2.0 License:** Build freely without copyleft restrictions
 - **⚡ Native MXFP4 Quantization:** Optimized for efficient inference
+- **🍎 Apple Silicon Native:** No more mixed precision issues
 
 ### 📦 Install GPT-OSS Models
 
-#### Via Ollama (Recommended)
+#### Via Ollama (Cross-Platform - **RECOMMENDED**)
+
+```bash
+# Install GPT-OSS models via Ollama (Best Performance)
+super model install gpt-oss:20b
+super model install gpt-oss:120b
+
+# Or use direct Ollama commands
+ollama pull gpt-oss:20b
+ollama pull gpt-oss:120b
+
+# Run with Ollama backend
+super model run gpt-oss:20b "Your prompt" --backend ollama
+```
+
+#### Via MLX-LM (Apple Silicon - Native Support)
 
 ```bash
 # Install GPT-OSS models via Ollama
@@ -171,6 +219,9 @@ super model install gpt-oss:120b
 # Or use direct Ollama commands
 ollama pull gpt-oss:20b
 ollama pull gpt-oss:120b
+
+# Run with Ollama backend
+super model run gpt-oss:20b "Your prompt" --backend ollama
 ```
 
 <details><summary><strong>Show Ollama Installation Output</strong></summary>
@@ -250,12 +301,69 @@ Downloading model files...
 ```yaml
 # Example playbook configuration for GPT-OSS
 language_model:
-  provider: ollama  # or huggingface
-  model: gpt-oss:20b  # or gpt-oss:120b
+  provider: mlx  # or ollama or huggingface
+  model: lmstudio-community/gpt-oss-20b-MLX-8bit  # for MLX-LM
+  # model: gpt-oss:20b  # for Ollama
+  # model: openai/gpt-oss-20b  # for HuggingFace
   api_base: http://localhost:11434  # for Ollama
   # api_base: http://localhost:8001  # for HuggingFace
   temperature: 0.7
   max_tokens: 2048
+
+# GPT-OSS Language Model Configuration Examples
+
+**🦙 Ollama Backend (Cross-platform - RECOMMENDED):**
+```yaml
+language_model:
+  provider: ollama
+  model: gpt-oss:20b
+  api_base: http://localhost:11434
+  temperature: 0.7
+  max_tokens: 4096
+```
+
+**🍎 MLX Backend (Apple Silicon - Native Support):**
+```yaml
+language_model:
+  provider: mlx
+  model: lmstudio-community/gpt-oss-20b-MLX-8bit
+  api_base: http://localhost:8000
+  temperature: 0.7
+  max_tokens: 4096
+```
+
+**🤗 HuggingFace Backend (Limited on Apple Silicon):**
+```yaml
+language_model:
+  provider: huggingface
+  model: openai/gpt-oss-20b
+  api_base: http://localhost:8001
+  temperature: 0.7
+  max_tokens: 4096
+```
+
+### 🚀 **Starting MLX Server for GPT-OSS**
+
+Before using GPT-OSS with MLX in your playbook, start the MLX server:
+
+```bash
+# Start MLX server for GPT-OSS model
+super model server mlx lmstudio-community/gpt-oss-20b-MLX-8bit --port 8000
+
+# Or start on a different port
+super model server mlx lmstudio-community/gpt-oss-20b-MLX-8bit --port 9000
+```
+
+**Server Output:**
+```
+🍎 MLX Local Server
+Starting MLX server for lmstudio-community/gpt-oss-20b-MLX-8bit on port 8000...
+🚀 Starting MLX server...
+python -m mlx_lm.server --model lmstudio-community/gpt-oss-20b-MLX-8bit --port 8000
+✅ MLX server is running on http://localhost:8000
+```
+
+**Note:** Keep the server running while using GPT-OSS models in your playbooks.
 
 
 ```
@@ -263,24 +371,28 @@ language_model:
 #### 2. **Test GPT-OSS Models**
 
 ```bash
-# Test with Ollama backend
-super model run gpt-oss:20b "Explain quantum computing with detailed reasoning"
+# Test with MLX-LM backend (Apple Silicon - Native)
+super model run lmstudio-community/gpt-oss-20b-MLX-8bit "Explain quantum computing with detailed reasoning" --backend mlx
 
-# Test with HuggingFace backend
-super model run openai/gpt-oss-20b "Write a Python function to solve the traveling salesman problem"
+# Test with Ollama backend (Cross-platform - Best Performance)
+super model run gpt-oss:20b "Explain quantum computing with detailed reasoning" --backend ollama
+
+# Test with HuggingFace backend (Limited on Apple Silicon)
+super model run openai/gpt-oss-20b "Write a Python function to solve the traveling salesman problem" --backend huggingface
 ```
 
 #### 3. **Basic Usage Examples**
 
 ```bash
-# Simple question
-super model run gpt-oss:20b "What is 2+2?"
+# MLX-LM (Apple Silicon - Native support)
+super model run lmstudio-community/gpt-oss-20b-MLX-8bit "What is 2+2?" --backend mlx
+super model run lmstudio-community/gpt-oss-20b-MLX-8bit "Explain machine learning" --backend mlx
+super model run lmstudio-community/gpt-oss-20b-MLX-8bit "Design a distributed system architecture" --backend mlx
 
-# Explain a concept
-super model run gpt-oss:20b "Explain machine learning"
-
-# Complex task
-super model run gpt-oss:20b "Design a distributed system architecture"
+# Ollama (Cross-platform - Best performance)
+super model run gpt-oss:20b "What is 2+2?" --backend ollama
+super model run gpt-oss:20b "Explain machine learning" --backend ollama
+super model run gpt-oss:20b "Design a distributed system architecture" --backend ollama
 ```
 
 ### 📋 Manage GPT-OSS Models
@@ -307,12 +419,28 @@ super model test gpt-oss:20b "Hello, how are you?"
 
 ### 🔧 Troubleshooting GPT-OSS
 
+=== "Apple Silicon Mixed Precision Issues"
+    
+    **Error:** `error: 'mps.matmul' op detected operation with both F16 and BF16 operands which is not supported`
+    
+    **Solution:**
+    ```bash
+    # Use MLX-LM backend (native Apple Silicon support)
+super model run lmstudio-community/gpt-oss-20b-MLX-8bit "prompt" --backend mlx
+    
+    # Or use Ollama backend (optimized format)
+    super model run gpt-oss:20b "prompt" --backend ollama
+    ```
+
 === "Model Not Found"
     
     **Error:** `Model not found` or `Model does not exist`
     
     **Solution:**
     ```bash
+    # For MLX-LM (Apple Silicon)
+super model install lmstudio-community/gpt-oss-20b-MLX-8bit --backend mlx
+    
     # For Ollama
     ollama pull gpt-oss:20b
     ollama pull gpt-oss:120b
@@ -358,7 +486,7 @@ super model test gpt-oss:20b "Hello, how are you?"
 
 ## 🍎 MLX (Apple Silicon)
 
-**MLX** is Apple's native machine learning framework, offering blazing-fast inference on Apple Silicon Macs.
+**MLX** is Apple's native machine learning framework, offering blazing-fast inference on Apple Silicon Macs. **MLX-LM v0.26.3** now provides native support for GPT-OSS models!
 
 !!! tip "Apple Silicon Only"
     MLX only works on Apple Silicon Macs (M1, M2, M3). If you're on Intel Mac, use Ollama instead.
@@ -367,7 +495,7 @@ super model test gpt-oss:20b "Hello, how are you?"
 
 ```bash
 # Install MLX dependencies
-pip install mlx-lm
+pip install mlx-lm==0.26.3
 
 # Or install with SuperOptiX
 pip install "superoptix[mlx]"
@@ -376,10 +504,15 @@ pip install "superoptix[mlx]"
 ### 📦 Install MLX Models
 
 ```bash
+# Install GPT-OSS models (native Apple Silicon support)
+super model install openai/gpt-oss-20b --backend mlx
+super model install openai/gpt-oss-120b --backend mlx
+
 # Install popular MLX models
 super model install -b mlx mlx-community/phi-2
 super model install -b mlx mlx-community/Llama-3.2-3B-Instruct-4bit
 super model install -b mlx mlx-community/Mistral-7B-Instruct-v0.2-4bit
+super model install -b mlx lmstudio-community/gpt-oss-20b-MLX-8bit
 ```
 
 ### 🖥️ Start MLX Servers
