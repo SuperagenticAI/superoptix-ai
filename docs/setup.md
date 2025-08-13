@@ -271,6 +271,41 @@ SuperOptiX is modular - install only what you need! Here are the available extra
     - Matplotlib (Plotting)
     - Seaborn (Statistical visualization)
 
+=== "🤖 AI Framework Integration"
+    
+    **For advanced AI orchestration and multi-agent systems**
+    
+    ```bash
+    # Install core AI framework dependencies
+    pip install "superoptix[optimas]"
+    ```
+    
+    **Includes:**
+    - DSPy (Prompt optimization framework)
+    - OpenAI (LLM integration)
+    - AutoGen (Multi-agent conversations)
+    - Optimas AI (Advanced orchestration)
+    
+    !!! warning "CrewAI Dependency Conflict"
+        **CrewAI has a known dependency conflict** with DSPy due to incompatible `json-repair` version requirements:
+        
+        - **DSPy 3.0.0** requires `json-repair>=0.30.0`
+        - **CrewAI 0.157.0** requires `json-repair==0.25.2`
+        
+        **To use CrewAI with SuperOptiX, install it manually:**
+        ```bash
+        # 1. Install SuperOptiX with DSPy support
+        pip install "superoptix[optimas]"
+        
+        # 2. Install CrewAI without dependencies
+        pip install crewai==0.157.0 --no-deps
+        
+        # 3. Ensure compatible json-repair version
+        pip install "json-repair>=0.30.0"
+        ```
+        
+        This approach bypasses the dependency conflict while maintaining compatibility.
+
 ## 🔍 Verification
 
 After installation, verify SuperOptiX is working correctly:
@@ -313,6 +348,15 @@ superoptix-env\Scripts\activate     # Windows
 **Package Not Found**: Update pip
 ```bash
 pip install --upgrade pip
+```
+
+**CrewAI Installation Conflicts**: If you encounter dependency conflicts when installing CrewAI with SuperOptiX:
+```bash
+# The issue: CrewAI requires json-repair==0.25.2, but DSPy needs json-repair>=0.30.0
+# Solution: Install manually with --no-deps flag
+pip install "superoptix[optimas]"  # Install DSPy support first
+pip install crewai==0.157.0 --no-deps  # Install CrewAI without dependencies
+pip install "json-repair>=0.30.0"  # Ensure compatible version
 ```
 
 ### Still Having Issues?

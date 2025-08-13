@@ -186,6 +186,7 @@ nav:
       - '🏪 Marketplace': guides/marketplace.md
       - '☁️ Cloud Inference': guides/cloud-inference.md
       - '🎯 Model Management': guides/model-management.md
+      - '⚡ Optimas Integration': guides/optimas-integration.md
       - '🏗️ Technical Architecture': guides/technical-architecture.md
       - '📊 Observability': guides/observability.md
       - '🧪 MLFlow Guide': guides/mlflow-guide.md
@@ -209,6 +210,7 @@ nav:
       - '⚙️ CI/CD': guides/cicd-integration.md
   - '🔌 Integrations':
       - '📖 Overview': examples/index.md
+      - '⚡ Optimas': examples/agents/optimas-examples.md
       - '💻 MLX': examples/agents/mlx-demo.md
       - '🐼 Ollama': examples/agents/ollama-demo.md
       - '🤗 HuggingFace': examples/agents/huggingface-demo.md

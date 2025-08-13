@@ -94,6 +94,47 @@ evals/      knowledge/  optimizers/ servers/    tools/
 
 ---
 
+## 📦 Dependencies and Extras
+
+SuperOptiX supports various optional dependencies through extras. You can install specific functionality as needed:
+
+```bash
+# Core AI framework (DSPy, OpenAI, AutoGen)
+pip install "superoptix[optimas]"
+
+# UI and visualization
+pip install "superoptix[ui]"
+
+# Vector databases for RAG
+pip install "superoptix[vectordb]"
+
+# Observability and monitoring
+pip install "superoptix[observability]"
+```
+
+### ⚠️ Important: CrewAI Dependency Conflict
+
+**CrewAI has a known dependency conflict** with SuperOptiX due to incompatible `json-repair` version requirements:
+
+- **DSPy 3.0.0** requires `json-repair>=0.30.0`
+- **CrewAI 0.157.0** requires `json-repair==0.25.2`
+
+**To use CrewAI with SuperOptiX, install it manually:**
+```bash
+# 1. Install SuperOptiX with DSPy support
+pip install "superoptix[optimas]"
+
+# 2. Install CrewAI without dependencies
+pip install crewai==0.157.0 --no-deps
+
+# 3. Ensure compatible json-repair version
+pip install "json-repair>=0.30.0"
+```
+
+See our [Troubleshooting Guide](troubleshooting.md) for more details.
+
+---
+
 ## 🏷️ Step 4: Pull and Compile an Agent
 
 Let’s add a pre-built agent and see what files are created.

@@ -98,6 +98,38 @@ The **Proprietary version** includes:
 
 **⚠️ Important:** The OSS version is designed for **demos and prototypes**. It's not recommended for production use unless you have significant expertise in AI system deployment and optimization.
 
+## 🔧 **Installation & Dependencies**
+
+### I'm getting dependency conflicts when installing CrewAI with SuperOptiX. What's happening?
+
+This is a **known dependency conflict** between CrewAI and DSPy due to incompatible `json-repair` version requirements:
+
+**🔍 The Problem:**
+- **DSPy 3.0.0** requires `json-repair>=0.30.0`
+- **CrewAI 0.157.0** requires `json-repair==0.25.2` (exact version)
+
+**✅ The Solution:**
+Install CrewAI manually after installing SuperOptiX with DSPy support:
+
+```bash
+# 1. Install SuperOptiX with DSPy support (this gets compatible json-repair)
+pip install "superoptix[optimas]"
+
+# 2. Install CrewAI without dependencies to avoid conflicts
+pip install crewai==0.157.0 --no-deps
+
+# 3. Ensure compatible json-repair version
+pip install "json-repair>=0.30.0"
+```
+
+**💡 Why This Works:**
+- The `--no-deps` flag prevents pip from trying to resolve conflicting dependencies
+- We manually install the version of `json-repair` that satisfies both packages
+- Both packages work together at runtime despite metadata conflicts
+
+**📚 Alternative:**
+If you only need CrewAI functionality, you can install SuperOptiX without DSPy support and then add CrewAI normally.
+
 ### How can I access higher tiers (Protocols and beyond)?
 
 Higher tiers require **enterprise licensing** from Superagentic AI:
