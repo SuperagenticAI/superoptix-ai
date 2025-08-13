@@ -2,320 +2,419 @@
 title: Optimas Integration Guide
 ---
 
-# 🚀 Optimas + SuperOptiX Integration
+# ⚡ Optimas Integration Guide
 
-**Build, evaluate, and optimize AI agents using Optimas as your execution engine.**
+SuperOptiX integrates seamlessly with the **Optimas** framework, enabling you to use advanced prompt optimization techniques (OPRO, MIPRO, COPRO) with multiple LLM frameworks including **OpenAI SDK**, **CrewAI**, **AutoGen**, and **DSPy**.
 
-Optimas provides powerful prompt optimization and evaluation capabilities that work seamlessly with SuperOptiX across multiple AI frameworks:
+## 🚀 Quick Start
 
-- **🤖 CrewAI** → `optimas-crewai` (recommended for beginners)
-- **🎯 OpenAI SDK** → `optimas-openai`
-- **🔄 AutoGen** → `optimas-autogen`
-- **🧠 DSPy** → `optimas-dspy`
+### 1. Install SuperOptiX with Optimas Support
 
----
-
-## 🚀 Quick Start (5 minutes)
-
-### 1. Setup Project
 ```bash
-# Create new project
-super init my_agent && cd my_agent
+# Install with Optimas support
+pip install "superoptix[optimas]"
 
-# Install with CrewAI target (most reliable)
-pip install superoptix[optimas,optimas-crewai]
+# For OpenAI SDK target (recommended - most reliable)
+pip install "superoptix[optimas,optimas-openai]"
+
+# For CrewAI target
+pip install "superoptix[optimas,optimas-crewai]"
+
+# For AutoGen target  
+pip install "superoptix[optimas,optimas-autogen]"
+
+# For DSPy target
+pip install "superoptix[optimas,optimas-dspy]"
 ```
 
-### 2. Pull Demo Agent
+### 2. Install Additional Dependencies
+
 ```bash
-# Get a ready-to-use developer agent
-super agent pull optimas_crewai
+# Required for DSPy 3.0.0 streaming support
+pip install litellm
+
+# For CrewAI (install manually to avoid conflicts)
+pip install crewai
+pip install json-repair>=0.30.0
 ```
 
-### 3. Run Full Workflow
+### 3. Quick Demo
+
 ```bash
-# Compile → Evaluate → Optimize → Run
+# Initialize project
+super init test_optimas
+cd test_optimas
+
+# Pull demo agents
+super agent pull optimas_openai      # OpenAI SDK (recommended)
+super agent pull optimas_crewai      # CrewAI
+super agent pull optimas_autogen     # AutoGen
+super agent pull optimas_dspy        # DSPy
+
+# Test compilation
+super agent compile optimas_openai --target optimas-openai
 super agent compile optimas_crewai --target optimas-crewai
-super agent evaluate optimas_crewai --engine optimas --target optimas-crewai
-super agent optimize optimas_crewai --engine optimas --target optimas-crewai
-super agent run optimas_crewai --engine optimas --target optimas-crewai \
-  --goal "Write a Python function to calculate prime numbers"
+super agent compile optimas_autogen --target optimas-autogen
+super agent compile optimas_dspy --target optimas-dspy
 ```
 
-**🎉 That's it!** Your agent is now running with Optimas optimization.
+## 📊 Target Compatibility Matrix
 
----
+| Target | Compile | Evaluate | Optimize | Run | Status | Notes |
+|--------|---------|----------|----------|-----|--------|-------|
+| **OpenAI SDK** | ✅ | ✅ | ✅ | ✅ | **Fully Working** | Most reliable, no threading issues |
+| **CrewAI** | ✅ | ✅ | ✅ | ✅ | **Fully Working** | Requires manual dependency installation |
+| **AutoGen** | ✅ | ✅ | ⚠️ | ✅ | **Mostly Working** | Optimization works but can be slow |
+| **DSPy** | ✅ | ✅ | ✅ | ✅ | **Fully Working** | All optimizers now working properly |
 
-## 📚 What You Get
+## 🔧 Environment Variables
 
-### **Compile** → Generates Python pipeline
-- Creates `agents/optimas_crewai/pipelines/optimas_crewai_optimas-crewai_pipeline.py`
-- **✅ NEW**: Pipelines work correctly from the start (no manual fixes needed!)
-- Exposes `system_engine()` function returning an Optimas `CompoundAISystem`
-
-### **Evaluate** → Tests with BDD scenarios  
-- Runs your playbook's test scenarios against the compiled pipeline
-- Provides pass/fail results and performance metrics
-- **✅ NEW**: 100% success rate across all targets
-
-### **Optimize** → Improves prompts automatically
-- Uses OPRO (Optimal PROmpting) to find better instructions
-- **✅ NEW**: Custom optimization for CrewAI (prevents hanging)
-- Iteratively refines prompts based on evaluation results
-
-### **Run** → Execute optimized agent
-- Sends your goal to the optimized pipeline
-- Returns structured results from the AI agent
-
----
-
-## ⚙️ Environment Variables (Optional for Optimization)
-
-**💡 TIP**: These environment variables are now optional but can help control optimization behavior:
+### OPRO Optimization Variables
 
 ```bash
-# Control optimization behavior (optional)
-export SUPEROPTIX_OPRO_NUM_CANDIDATES=1
-export SUPEROPTIX_OPRO_MAX_TOKENS=1000
-export SUPEROPTIX_OPRO_MAX_WORKERS=2
-export SUPEROPTIX_OPRO_COMPILE_TIMEOUT=60
-
-# LiteLLM timeouts (optional)
-export LITELLM_TIMEOUT=30
-export LITELLM_MAX_RETRIES=3
+# Core OPRO settings
+SUPEROPTIX_OPRO_MAX_TOKENS=256          # Max tokens per prompt
+SUPEROPTIX_OPRO_NUM_CANDIDATES=3        # Number of prompt candidates
+SUPEROPTIX_OPRO_MAX_WORKERS=3           # Max concurrent workers
+SUPEROPTIX_OPRO_TEMPERATURE=0.8         # Creativity level (0.0-1.0)
+SUPEROPTIX_OPRO_COMPILE_TIMEOUT=120     # Timeout in seconds
 ```
 
-**Why these help**:
-- `SUPEROPTIX_OPRO_COMPILE_TIMEOUT=60`: Prevents optimization from hanging
-- `SUPEROPTIX_OPRO_NUM_CANDIDATES=1`: Limits optimization rounds for faster results
-- `LITELLM_TIMEOUT=30`: Prevents hanging on slow LLM responses
+### MIPRO Optimization Variables
 
----
+```bash
+# MIPRO settings (for DSPy targets)
+SUPEROPTIX_MIPRO_NUM_CANDIDATES=3       # Number of candidates
+SUPEROPTIX_MIPRO_NUM_THREADS=3          # Number of threads
+```
 
-## 🔧 Installation Options
+### COPRO Optimization Variables
 
-Choose your target framework:
+```bash
+# COPRO settings (for DSPy targets)
+SUPEROPTIX_COPRO_BREADTH=3              # Search breadth
+SUPEROPTIX_COPRO_DEPTH=3                # Search depth
+```
 
-=== "CrewAI (Recommended)"
-    ```bash
-    # Multi-agent workflows, most reliable
-    pip install superoptix[optimas,optimas-crewai]
-    ```
-    
-    **Best for**: Beginners, multi-agent scenarios, team-based tasks
+### LiteLLM Configuration Variables
 
-=== "OpenAI SDK"
-    ```bash
-    # Simple OpenAI integration
-    pip install superoptix[optimas,optimas-openai]
-    ```
-    
-    **Best for**: Simple agents, local development, quick prototyping
+```bash
+# LiteLLM settings (affects DSPy and CrewAI)
+LITELLM_TIMEOUT=60                      # Request timeout
+LITELLM_MAX_RETRIES=3                   # Max retry attempts
+LITELLM_MAX_RESPONSE=4000               # Max response tokens
+LITELLM_CACHE_ENABLED=false             # Disable caching
+LITELLM_LOG_LEVEL=ERROR                 # Log level
+```
 
-=== "AutoGen"
-    ```bash
-    # Conversational agents
-    pip install superoptix[optimas,optimas-autogen]
-    ```
-    
-    **Best for**: Chat-based interactions, conversation flows
+## 🎯 Target-Specific Configuration
 
-=== "DSPy via Optimas"
-    ```bash
-    # Research and advanced prompting
-    pip install superoptix[optimas,optimas-dspy]
-    ```
-    
-    **Best for**: Research, custom prompting strategies
+### OpenAI SDK Target (Recommended)
 
----
-
-## 🎭 Create Your Own Agent
-
-### Basic Playbook Structure
 ```yaml
-# agents/my_agent/playbook/my_agent_playbook.yaml
-apiVersion: agent/v1
-kind: AgentSpec
+# optimas_openai_playbook.yaml
+name: optimas_openai
+description: OpenAI SDK integration with Optimas
+language_model:
+  provider: ollama
+  model: llama3.2:1b
+  base_url: http://localhost:11434
+  api_key: ""
 
-metadata:
-  name: My Agent
-  id: my_agent
-  version: 1.0.0
-  level: oracles
-
-spec:
-  language_model:
-    provider: ollama
-    model: ollama/llama3.2:1b
-    base_url: http://localhost:11434
-    api_key: ollama
-
-  tasks:
-    - name: solve_problem
-      instruction: "You are an expert problem solver. Analyze and solve the given problem."
-      inputs:
-        - name: problem_description
-          type: str
-          required: true
-      outputs:
-        - name: solution
-          type: str
-
-  feature_specifications:
-    scenarios:
-      - name: basic_test
-        input:
-          problem_description: "What is 2 + 2?"
-        expected_output:
-          solution: string
+components:
+  - name: implement_feature
+    type: optimas-openai
+    description: "OpenAI component for implementing features"
+    inputs:
+      - name: feature_requirement
+        type: string
+        description: "Description of the feature to implement"
+    outputs:
+      - name: implementation
+        type: string
+        description: "The implemented feature code"
 ```
 
-### Key Sections Explained
+**✅ Why OpenAI SDK is recommended:**
+- Most reliable and stable
+- No threading issues
+- Fast optimization and execution
+- Works perfectly with all optimizers
 
-- **`language_model`**: Configure your LLM (Ollama, OpenAI, etc.)
-- **`tasks`**: Define what your agent can do
-- **`feature_specifications`**: Test scenarios for evaluation and optimization
+### CrewAI Target
 
----
+```yaml
+# optimas_crewai_playbook.yaml
+name: optimas_crewai
+description: CrewAI integration with Optimas
+language_model:
+  provider: ollama
+  model: llama3.2:1b
+  base_url: http://localhost:11434
+  api_key: ""
 
-## 🎯 Optimization Strategies
+components:
+  - name: implement_feature
+    type: optimas-crewai
+    description: "CrewAI agent for implementing features"
+    inputs:
+      - name: feature_requirement
+        type: string
+        description: "Description of the feature to implement"
+    outputs:
+      - name: implementation
+        type: string
+        description: "The implemented feature code"
+```
 
-### OPRO (Optimal PROmpting) - Default
+**⚠️ CrewAI Dependencies:**
 ```bash
-# Basic optimization
-super agent optimize my_agent --engine optimas --target optimas-crewai
+# Install manually to avoid conflicts
+pip install crewai
+pip install json-repair>=0.30.0
+```
 
-# Control optimization parameters
+### AutoGen Target
+
+```yaml
+# optimas_autogen_playbook.yaml
+name: optimas_autogen
+description: AutoGen integration with Optimas
+language_model:
+  provider: ollama
+  model: llama3.2:1b
+  base_url: http://localhost:11434
+  api_key: ""
+  model_info:
+    model_name: "llama3.2:1b"
+    max_tokens: 4096
+    temperature: 0.7
+    top_p: 0.9
+
+components:
+  - name: implement_feature
+    type: optimas-autogen
+    description: "AutoGen agent for implementing features"
+    inputs:
+      - name: feature_requirement
+        type: string
+        description: "Description of the feature to implement"
+    outputs:
+      - name: implementation
+        type: string
+        description: "The implemented feature code"
+```
+
+**⚠️ AutoGen Notes:**
+- Requires detailed `model_info` for non-OpenAI models
+- Optimization can be slow but works reliably
+- Best for complex multi-agent workflows
+
+### DSPy Target
+
+```yaml
+# optimas_dspy_playbook.yaml
+name: optimas_dspy
+description: DSPy integration with Optimas
+language_model:
+  provider: ollama
+  model: llama3.2:1b
+  base_url: http://localhost:11434
+  api_key: ""
+
+components:
+  - name: implement_feature
+    type: optimas-dspy
+    description: "DSPy module for implementing features"
+    inputs:
+      - name: feature_requirement
+        type: string
+        description: "Description of the feature to implement"
+    outputs:
+      - name: implementation
+        type: string
+        description: "The implemented feature code"
+```
+
+**✅ DSPy Features:**
+- All optimizers (OPRO, MIPRO, COPRO) now working properly
+- Excellent for research and production optimization
+- Fast optimization and execution
+- Great for prompt engineering workflows
+
+## 🚀 Complete Workflow Examples
+
+### OpenAI SDK Workflow (Recommended)
+
+```bash
+# 1. Compile
+super agent compile optimas_openai --target optimas-openai
+
+# 2. Evaluate
+super agent evaluate optimas_openai --engine optimas --target optimas-openai
+
+# 3. Optimize with environment variables
+SUPEROPTIX_OPRO_MAX_TOKENS=256 \
 SUPEROPTIX_OPRO_NUM_CANDIDATES=3 \
-SUPEROPTIX_OPRO_MAX_TOKENS=1000 \
-super agent optimize my_agent --engine optimas --target optimas-crewai
+SUPEROPTIX_OPRO_MAX_WORKERS=3 \
+SUPEROPTIX_OPRO_TEMPERATURE=0.8 \
+super agent optimize optimas_openai --engine optimas --target optimas-openai
+
+# 4. Run
+super agent run optimas_openai --engine optimas --target optimas-openai --goal "Write a Python function to add two numbers"
 ```
 
-### MIPRO/COPRO (DSPy targets only)
+### CrewAI Workflow
+
 ```bash
-# MIPRO - Teleprompting optimization
-super agent optimize my_agent --engine optimas --target optimas-dspy --optimizer mipro
+# 1. Compile
+super agent compile optimas_crewai --target optimas-crewai
 
-# COPRO - Breadth/depth search
-super agent optimize my_agent --engine optimas --target optimas-dspy --optimizer copro
+# 2. Evaluate
+super agent evaluate optimas_crewai --engine optimas --target optimas-crewai
+
+# 3. Optimize
+SUPEROPTIX_OPRO_MAX_TOKENS=256 \
+SUPEROPTIX_OPRO_NUM_CANDIDATES=3 \
+SUPEROPTIX_OPRO_MAX_WORKERS=3 \
+super agent optimize optimas_crewai --engine optimas --target optimas-crewai
+
+# 4. Run
+super agent run optimas_crewai --engine optimas --target optimas-crewai --goal "Write a Python function to calculate factorial"
 ```
 
----
+### AutoGen Workflow
 
-## 🔍 Evaluation & Testing
-
-### Run BDD Scenarios
 ```bash
-# Evaluate against all scenarios
-super agent evaluate my_agent --engine optimas --target optimas-crewai
+# 1. Compile
+super agent compile optimas_autogen --target optimas-autogen
 
-# Verbose output
-super agent evaluate my_agent --engine optimas --target optimas-crewai --verbose
+# 2. Evaluate
+super agent evaluate optimas_autogen --engine optimas --target optimas-autogen
+
+# 3. Optimize (can be slow)
+SUPEROPTIX_OPRO_MAX_TOKENS=256 \
+SUPEROPTIX_OPRO_NUM_CANDIDATES=3 \
+SUPEROPTIX_OPRO_MAX_WORKERS=3 \
+SUPEROPTIX_OPRO_COMPILE_TIMEOUT=180 \
+super agent optimize optimas_autogen --engine optimas --target optimas-autogen
+
+# 4. Run
+super agent run optimas_autogen --engine optimas --target optimas-autogen --goal "Write a Python function to reverse a string"
 ```
 
-### What Gets Tested
-- **Input validation**: Correct input handling
-- **Output format**: Expected response structure  
-- **Edge cases**: Empty inputs, malformed data
-- **Performance**: Response quality and relevance
+### DSPy Workflow
 
----
-
-## 🚀 Advanced Usage
-
-### Custom Evaluation Functions
-```python
-# In your generated pipeline
-def eval_func(**kwargs) -> float:
-    """Custom scoring function for optimization."""
-    response = kwargs.get('solution', '')
-    
-    # Score based on length, content, etc.
-    if 'python' in response.lower():
-        return 0.8
-    elif len(response) > 100:
-        return 0.6
-    else:
-        return 0.3
-```
-
-### Environment Variables
 ```bash
-# Control optimization behavior
-export SUPEROPTIX_OPRO_MAX_TOKENS=200
-export SUPEROPTIX_OPRO_NUM_CANDIDATES=5
-export SUPEROPTIX_OPRO_MAX_WORKERS=2
+# 1. Compile
+super agent compile optimas_dspy --target optimas-dspy
 
-# LiteLLM timeouts (prevents hanging)
-export LITELLM_TIMEOUT=30
-export LITELLM_MAX_RETRIES=3
+# 2. Evaluate
+super agent evaluate optimas_dspy --engine optimas --target optimas-dspy
+
+# 3. Optimize
+SUPEROPTIX_OPRO_MAX_TOKENS=256 \
+SUPEROPTIX_OPRO_NUM_CANDIDATES=3 \
+SUPEROPTIX_OPRO_MAX_WORKERS=3 \
+SUPEROPTIX_OPRO_TEMPERATURE=0.8 \
+super agent optimize optimas_dspy --engine optimas --target optimas-dspy
+
+# 4. Run
+super agent run optimas_dspy --engine optimas --target optimas-dspy --goal "Write a Python function to calculate fibonacci numbers"
 ```
 
----
+## 🔍 Troubleshooting
 
-## 🛠️ Troubleshooting
+### Common Issues
 
-### Common Issues & Solutions
+#### 1. DSPy Optimization Performance
 
-| Problem | Solution |
-|---------|----------|
-| **"No LLM config found" (DSPy)** | ✅ **FIXED**: Templates now include proper LLM configuration |
-| **"AutoGen is required" errors** | ✅ **FIXED**: `autogen-ext` dependency now included |
-| **Optimization hangs** | ✅ **FIXED**: Custom CrewAI optimization prevents hanging |
-| **CrewAI provider errors** | Use `model: ollama/llama3.2:1b` format |
-| **Base URL issues** | Use `http://localhost:11434` (no `/v1` prefix) |
+**For Best Results:**
+- Use appropriate optimization parameters for your use case
+- Monitor optimization progress and adjust parameters as needed
+- Consider using MIPRO or COPRO optimizers for specific DSPy workflows
 
-### Debug Mode
+#### 2. CrewAI Dependency Conflicts
+
+**Symptoms:**
+```
+json-repair version conflicts
+```
+
+**Solutions:**
 ```bash
-# Verbose output for troubleshooting
-super agent optimize my_agent --engine optimas --target optimas-crewai --verbose
+pip install crewai --no-deps
+pip install json-repair>=0.30.0
 ```
 
----
+#### 3. AutoGen Model Info Errors
 
-## 📖 Command Reference
+**Symptoms:**
+```
+model_info is required when model name is not a valid OpenAI model
+```
 
-### Core Commands
+**Solutions:**
+- Add detailed `model_info` section in playbook
+- Use OpenAI-compatible model names
+
+#### 4. Optimization Timeouts
+
+**Symptoms:**
+```
+OPRO timed out after 120s on component
+```
+
+**Solutions:**
+- Increase timeout: `SUPEROPTIX_OPRO_COMPILE_TIMEOUT=300`
+- Reduce model size or token limits
+- Use smaller optimization parameters
+
+### Performance Optimization
+
+#### For Fast Optimization:
 ```bash
-# Compile agent to target
-super agent compile <agent> --target <target>
-
-# Evaluate with BDD
-super agent evaluate <agent> --engine optimas --target <target>
-
-# Optimize prompts
-super agent optimize <agent> --engine optimas --target <target>
-
-# Run agent
-super agent run <agent> --engine optimas --target <target> --goal "..."
+SUPEROPTIX_OPRO_MAX_TOKENS=128
+SUPEROPTIX_OPRO_NUM_CANDIDATES=2
+SUPEROPTIX_OPRO_MAX_WORKERS=2
+SUPEROPTIX_OPRO_TEMPERATURE=0.7
 ```
 
-### Target Options
-- `optimas-crewai` - CrewAI framework (recommended)
-- `optimas-openai` - OpenAI SDK
-- `optimas-autogen` - AutoGen framework  
-- `optimas-dspy` - DSPy framework
+#### For High-Quality Optimization:
+```bash
+SUPEROPTIX_OPRO_MAX_TOKENS=512
+SUPEROPTIX_OPRO_NUM_CANDIDATES=5
+SUPEROPTIX_OPRO_MAX_WORKERS=4
+SUPEROPTIX_OPRO_TEMPERATURE=0.9
+SUPEROPTIX_OPRO_COMPILE_TIMEOUT=300
+```
 
----
+## 📚 Best Practices
 
-## 🔗 Next Steps
+### 1. Target Selection
+- **Production**: Use OpenAI SDK target (most reliable)
+- **Multi-agent**: Use CrewAI or AutoGen targets
+- **Research & Optimization**: Use DSPy target (fully supported)
 
-- **📚 Examples**: See working demos in [Optimas Examples](../examples/agents/optimas-examples.md)
-- **🧪 Testing**: Learn about [Evaluation & Testing](../evaluation-testing.md)
-- **🎨 Design**: Use [Agent Designer](../../reference/cli.md#agent-design) for visual creation
-- **🚀 Deployment**: Explore [Orchestra](../orchestra-development.md) for production workflows
+### 2. Environment Variables
+- Set all relevant variables before running commands
+- Use inline variable setting for reproducibility
+- Monitor timeout values for large models
 
----
+### 3. Model Configuration
+- Use local models (Ollama) for development
+- Ensure proper `model_info` for non-OpenAI models
+- Test with smaller models first
 
-## 💡 Pro Tips
+### 4. Optimization Strategy
+- Start with OPRO (most reliable)
+- Use MIPRO/COPRO only with DSPy targets
+- Monitor optimization progress and adjust parameters
 
-1. **Start with CrewAI target** - Most reliable for beginners
-2. **Use local Ollama** - Faster iteration, no API costs
-3. **Keep scenarios simple** - 3-5 test cases work best
-4. **Templates are fixed** - ✅ Pipelines now work correctly from the start
-5. **All targets functional** - ✅ 100% success rate across CrewAI, OpenAI, AutoGen, and DSPy
+## 🔗 Related Documentation
 
-**🎯 Ready to build your first Optimas-powered agent?** Start with the Quick Start section above!
+- [Optimas Examples](../examples/agents/optimas-examples.md) - Working examples for all targets
+- [CLI Reference](../reference/cli.md) - Complete command reference
+- [Agent Development](../guides/agent-development.md) - Building custom agents
 
 
