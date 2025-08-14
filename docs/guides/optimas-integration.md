@@ -107,7 +107,37 @@ LITELLM_CACHE_ENABLED=false             # Disable caching
 LITELLM_LOG_LEVEL=ERROR                 # Log level
 ```
 
+## 🎯 Optimizer Options
+
+The `--optimizer` flag allows you to specify which optimization method to use:
+
+### Available Optimizers
+
+- **`--optimizer opro`**: OPRO (Optimization by PROmpting) - Single-iteration optimization
+- **`--optimizer mipro`**: MIPRO (Multi-Iteration PROmpting) - Multi-iteration optimization  
+- **`--optimizer copro`**: COPRO (Cooperative PROmpting) - Cooperative optimization
+
+### Optimizer-Specific Environment Variables
+
+```bash
+# OPRO settings (default)
+SUPEROPTIX_OPRO_MAX_TOKENS=256
+SUPEROPTIX_OPRO_NUM_CANDIDATES=3
+SUPEROPTIX_OPRO_MAX_WORKERS=3
+SUPEROPTIX_OPRO_TEMPERATURE=0.8
+
+# MIPRO settings (for DSPy targets)
+SUPEROPTIX_MIPRO_NUM_CANDIDATES=3
+SUPEROPTIX_MIPRO_NUM_THREADS=3
+
+# COPRO settings (for DSPy targets)
+SUPEROPTIX_COPRO_BREADTH=3
+SUPEROPTIX_COPRO_DEPTH=3
+```
+
 ## 🎯 Target-Specific Configuration
+
+**Note**: The playbook structure uses `tasks` instead of `components`. Each task defines the agent's capabilities and behavior.
 
 ### OpenAI SDK Target (Recommended)
 
@@ -121,18 +151,18 @@ language_model:
   base_url: http://localhost:11434
   api_key: ""
 
-components:
+tasks:
   - name: implement_feature
-    type: optimas-openai
-    description: "OpenAI component for implementing features"
+    instruction: >-
+      You are a Software Developer. Your goal is to write clean, efficient, and
+      maintainable code. Implement the feature based on the provided requirement.
     inputs:
       - name: feature_requirement
-        type: string
-        description: "Description of the feature to implement"
+        type: str
+        required: true
     outputs:
       - name: implementation
-        type: string
-        description: "The implemented feature code"
+        type: str
 ```
 
 **✅ Why OpenAI SDK is recommended:**
@@ -153,18 +183,18 @@ language_model:
   base_url: http://localhost:11434
   api_key: ""
 
-components:
+tasks:
   - name: implement_feature
-    type: optimas-crewai
-    description: "CrewAI agent for implementing features"
+    instruction: >-
+      You are a Software Developer. Your goal is to write clean, efficient, and
+      maintainable code. Implement the feature based on the provided requirement.
     inputs:
       - name: feature_requirement
-        type: string
-        description: "Description of the feature to implement"
+        type: str
+        required: true
     outputs:
       - name: implementation
-        type: string
-        description: "The implemented feature code"
+        type: str
 ```
 
 **⚠️ CrewAI Dependencies:**
@@ -191,18 +221,18 @@ language_model:
     temperature: 0.7
     top_p: 0.9
 
-components:
+tasks:
   - name: implement_feature
-    type: optimas-autogen
-    description: "AutoGen agent for implementing features"
+    instruction: >-
+      You are a Software Developer. Your goal is to write clean, efficient, and
+      maintainable code. Implement the feature based on the provided requirement.
     inputs:
       - name: feature_requirement
-        type: string
-        description: "Description of the feature to implement"
+        type: str
+        required: true
     outputs:
       - name: implementation
-        type: string
-        description: "The implemented feature code"
+        type: str
 ```
 
 **⚠️ AutoGen Notes:**
@@ -222,18 +252,18 @@ language_model:
   base_url: http://localhost:11434
   api_key: ""
 
-components:
+tasks:
   - name: implement_feature
-    type: optimas-dspy
-    description: "DSPy module for implementing features"
+    instruction: >-
+      You are a Software Developer. Your goal is to write clean, efficient, and
+      maintainable code. Implement the feature based on the provided requirement.
     inputs:
       - name: feature_requirement
-        type: string
-        description: "Description of the feature to implement"
+        type: str
+        required: true
     outputs:
       - name: implementation
-        type: string
-        description: "The implemented feature code"
+        type: str
 ```
 
 **✅ DSPy Features:**
@@ -258,7 +288,7 @@ SUPEROPTIX_OPRO_MAX_TOKENS=256 \
 SUPEROPTIX_OPRO_NUM_CANDIDATES=3 \
 SUPEROPTIX_OPRO_MAX_WORKERS=3 \
 SUPEROPTIX_OPRO_TEMPERATURE=0.8 \
-super agent optimize optimas_openai --engine optimas --target optimas-openai
+super agent optimize optimas_openai --engine optimas --target optimas-openai --optimizer opro
 
 # 4. Run
 super agent run optimas_openai --engine optimas --target optimas-openai --goal "Write a Python function to add two numbers"
@@ -277,7 +307,7 @@ super agent evaluate optimas_crewai --engine optimas --target optimas-crewai
 SUPEROPTIX_OPRO_MAX_TOKENS=256 \
 SUPEROPTIX_OPRO_NUM_CANDIDATES=3 \
 SUPEROPTIX_OPRO_MAX_WORKERS=3 \
-super agent optimize optimas_crewai --engine optimas --target optimas-crewai
+super agent optimize optimas_crewai --engine optimas --target optimas-crewai --optimizer opro
 
 # 4. Run
 super agent run optimas_crewai --engine optimas --target optimas-crewai --goal "Write a Python function to calculate factorial"
@@ -297,7 +327,7 @@ SUPEROPTIX_OPRO_MAX_TOKENS=256 \
 SUPEROPTIX_OPRO_NUM_CANDIDATES=3 \
 SUPEROPTIX_OPRO_MAX_WORKERS=3 \
 SUPEROPTIX_OPRO_COMPILE_TIMEOUT=180 \
-super agent optimize optimas_autogen --engine optimas --target optimas-autogen
+super agent optimize optimas_autogen --engine optimas --target optimas-autogen --optimizer opro
 
 # 4. Run
 super agent run optimas_autogen --engine optimas --target optimas-autogen --goal "Write a Python function to reverse a string"
@@ -317,7 +347,7 @@ SUPEROPTIX_OPRO_MAX_TOKENS=256 \
 SUPEROPTIX_OPRO_NUM_CANDIDATES=3 \
 SUPEROPTIX_OPRO_MAX_WORKERS=3 \
 SUPEROPTIX_OPRO_TEMPERATURE=0.8 \
-super agent optimize optimas_dspy --engine optimas --target optimas-dspy
+super agent optimize optimas_dspy --engine optimas --target optimas-dspy --optimizer opro
 
 # 4. Run
 super agent run optimas_dspy --engine optimas --target optimas-dspy --goal "Write a Python function to calculate fibonacci numbers"

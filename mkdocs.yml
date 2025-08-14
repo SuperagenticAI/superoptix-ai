@@ -187,7 +187,6 @@ nav:
       - '☁️ Cloud Inference': guides/cloud-inference.md
       - '🎯 Model Management': guides/model-management.md
       - '⚡ Optimas Integration': guides/optimas-integration.md
-      - '🧪 Optimas Testing Summary': guides/optimas-testing-summary.md
       - '🏗️ Technical Architecture': guides/technical-architecture.md
       - '📊 Observability': guides/observability.md
       - '🧪 MLFlow Guide': guides/mlflow-guide.md

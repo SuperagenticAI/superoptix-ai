@@ -35,7 +35,7 @@ super agent evaluate optimas_openai --engine optimas --target optimas-openai
 SUPEROPTIX_OPRO_MAX_TOKENS=256 \
 SUPEROPTIX_OPRO_NUM_CANDIDATES=3 \
 SUPEROPTIX_OPRO_MAX_WORKERS=3 \
-super agent optimize optimas_openai --engine optimas --target optimas-openai
+super agent optimize optimas_openai --engine optimas --target optimas-openai --optimizer opro
 
 # 4. Run
 super agent run optimas_openai --engine optimas --target optimas-openai --goal "Write a Python function to add two numbers"
@@ -200,6 +200,29 @@ The issue is with LiteLLM library version compatibility:
 # Option 2: Reduce concurrency (may still fail)
 SUPEROPTIX_OPRO_MAX_WORKERS=1
 # Option 3: Use for research only (avoid optimization)
+```
+
+## 🎯 Optimizer Options
+
+The `--optimizer` flag allows you to specify which optimization method to use:
+
+### Available Optimizers
+
+- **`--optimizer opro`**: OPRO (Optimization by PROmpting) - Single-iteration optimization
+- **`--optimizer mipro`**: MIPRO (Multi-Iteration PROmpting) - Multi-iteration optimization  
+- **`--optimizer copro`**: COPRO (Cooperative PROmpting) - Cooperative optimization
+
+### Example Usage
+
+```bash
+# OPRO optimization (default)
+super agent optimize <agent> --engine optimas --target <target> --optimizer opro
+
+# MIPRO optimization (great for DSPy)
+super agent optimize <agent> --engine optimas --target <target> --optimizer mipro
+
+# COPRO optimization (cooperative approach)
+super agent optimize <agent> --engine optimas --target <target> --optimizer copro
 ```
 
 ## 🔧 Environment Variable Examples
