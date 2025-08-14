@@ -61,7 +61,7 @@ Choose your preferred method:
     curl -LsSf https://astral.sh/uv/install.sh | sh
     
     # Install SuperOptiX
-    uv pip install superoptix --prerelease=allow
+    uv pip install superoptix
     
     # Verify installation
     super --help

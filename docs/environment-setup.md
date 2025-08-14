@@ -194,7 +194,7 @@ Virtual environments isolate project dependencies, preventing conflicts between 
 === "⚡ uv (Recommended)"
     ```bash
     # Install SuperOptiX
-    uv pip install superoptix --prerelease=allow
+    uv pip install superoptix
     
     # Install with optional dependencies
     uv pip install "superoptix[vectordb,ui,observability]"
@@ -485,7 +485,7 @@ which pip
     curl -LsSf https://astral.sh/uv/install.sh | sh
     
     # Use uv instead of pip
-    uv pip install superoptix --prerelease=allow
+    uv pip install superoptix
     ```
 
 === "📦 Using Conda for Better Dependency Resolution"

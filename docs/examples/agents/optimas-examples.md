@@ -6,6 +6,16 @@ title: Optimas Examples
 
 Working examples and demos for all Optimas integration targets. These examples have been verified to work correctly with the latest SuperOptiX version.
 
+Background reading and references:
+
+- Optimas website: [optimas.stanford.edu](https://optimas.stanford.edu)
+- Optimas paper (Wu et al., 2025): [arXiv: 2507.03041](https://www.arxiv.org/pdf/2507.03041)
+- DSPy: [dspy.ai](https://dspy.ai)
+- CrewAI: [docs.crewai.com](https://docs.crewai.com)
+- AutoGen: [microsoft.github.io/autogen](https://microsoft.github.io/autogen/)
+- OpenAI Agent SDK: [platform.openai.com/docs/agents](https://platform.openai.com/docs/agents)
+- LiteLLM: [github.com/BerriAI/litellm](https://github.com/BerriAI/litellm)
+
 ## 🚀 Quick Demo
 
 ### Pull Demo Playbooks

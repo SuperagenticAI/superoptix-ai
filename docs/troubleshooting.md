@@ -129,7 +129,7 @@ pip install --upgrade pip
 pip search superoptix
 
 # Install from PyPI
-pip install superoptix --prerelease=allow
+pip install superoptix
 ```
 
 ## 🚀 Still Having Issues?

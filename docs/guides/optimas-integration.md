@@ -6,6 +6,67 @@ title: Optimas Integration Guide
 
 SuperOptiX integrates seamlessly with the **Optimas** framework, enabling you to use advanced prompt optimization techniques (OPRO, MIPRO, COPRO) with multiple LLM frameworks including **OpenAI SDK**, **CrewAI**, **AutoGen**, and **DSPy**.
 
+> About Optimas: Optimas optimizes compound AI systems using globally aligned Local Reward Functions (LRFs) so that local improvements translate to higher end‑to‑end performance. Learn more on the official site and paper:
+
+- Optimas website: [optimas.stanford.edu](https://optimas.stanford.edu)
+- Optimas paper (Wu et al., 2025): [arXiv: 2507.03041](https://www.arxiv.org/pdf/2507.03041)
+
+Related frameworks supported by this guide:
+
+- DSPy: [dspy.ai](https://dspy.ai)
+- CrewAI: [docs.crewai.com](https://docs.crewai.com)
+- AutoGen: [microsoft.github.io/autogen](https://microsoft.github.io/autogen/)
+- OpenAI Agent SDK: [platform.openai.com/docs/agents](https://platform.openai.com/docs/agents)
+- LiteLLM (used by some targets): [github.com/BerriAI/litellm](https://github.com/BerriAI/litellm)
+
+## What Optimas is (and why it matters)
+
+[Optimas](https://optimas.stanford.edu) is a unified optimization framework for compound AI systems:
+
+- Learns a Local Reward Function (LRF) per component that remains globally aligned, so local updates are safe and beneficial to the whole system. This enables efficient optimization without always running the entire pipeline. See: [arXiv: 2507.03041](https://www.arxiv.org/pdf/2507.03041).
+- Supports heterogeneous configuration types:
+  - Prompts and textual instructions via metric‑guided search
+  - Hyperparameters and discrete choices (e.g., top‑k, tool/model selection, routing)
+  - Model parameters where supported (e.g., RL with PPO)
+- Works across frameworks via target adapters: [OpenAI Agent SDK](https://platform.openai.com/docs/agents), [CrewAI](https://docs.crewai.com), [AutoGen](https://microsoft.github.io/autogen/), and [DSPy](https://dspy.ai)
+- Compound‑system optimization: operates across multiple components and tools, not just single prompts
+- Multiple optimizers available: OPRO (single‑iteration), MIPRO (multi‑iteration), COPRO (cooperative)
+
+## What this unlocks
+
+- Optimize prompts, hyperparameters, model parameters, and model routers across compound AI systems
+- Run OPRO, MIPRO, and COPRO optimization loops through a single CLI workflow
+- Keep your preferred agent stack (DSPy, CrewAI, AutoGen, OpenAI SDK) and get consistent optimization behavior
+
+## Why this is impactful
+
+- Globally aligned local rewards: maximizing a component’s local reward increases overall system quality, improving data efficiency by reducing full system runs
+- Heterogeneous updates across prompts, hyperparameters, routing/model selection, and (where applicable) model parameters via RL
+- Reported average relative improvement of 11.92% across five compound systems with theoretical guarantees and strong empirical results:
+  - Optimas site: [optimas.stanford.edu](https://optimas.stanford.edu)
+  - Paper: [arXiv: 2507.03041](https://www.arxiv.org/pdf/2507.03041)
+
+## Where Optimas fits in SuperOptiX
+
+Optimas integrates into the standard SuperOptiX lifecycle:
+
+1. Compile your agent for a specific target
+2. Evaluate to establish a baseline
+3. Optimize with Optimas (OPRO/MIPRO/COPRO) using the same CLI across targets
+4. Run the optimized agent
+
+This extends optimization beyond prompts to hyperparameters, model selection/routing, and parameters where supported.
+
+- Focus‑aligned: SuperOptiX is built for optimization; Optimas operationalizes it across agents and tools
+- Beyond prompts: optimize prompts, hyperparameters, parameters, and routers for production workflows
+- One CLI to rule them all: compile → evaluate → optimize → run across all targets
+
+## Optimas vs. DSPy (complementary)
+
+- [DSPy](https://dspy.ai) is a framework for composing LLM pipelines and programmatic teleprompting
+- Optimas is an optimization engine that runs globally aligned local updates across multi‑component systems, regardless of the underlying framework (including DSPy)
+- In practice: build in your preferred stack; use Optimas to optimize end‑to‑end. If using DSPy, try `--optimizer mipro` for deeper prompt refinement (OPRO and COPRO also supported)
+
 ## 🚀 Quick Start
 
 ### 1. Install SuperOptiX with Optimas Support
@@ -446,5 +507,15 @@ SUPEROPTIX_OPRO_COMPILE_TIMEOUT=300
 - [Optimas Examples](../examples/agents/optimas-examples.md) - Working examples for all targets
 - [CLI Reference](../reference/cli.md) - Complete command reference
 - [Agent Development](../guides/agent-development.md) - Building custom agents
+
+## 📖 External References
+
+- Optimas website: [optimas.stanford.edu](https://optimas.stanford.edu)
+- Optimas paper (Wu et al., 2025): [arXiv: 2507.03041](https://www.arxiv.org/pdf/2507.03041)
+- DSPy: [dspy.ai](https://dspy.ai)
+- CrewAI: [docs.crewai.com](https://docs.crewai.com)
+- AutoGen: [microsoft.github.io/autogen](https://microsoft.github.io/autogen/)
+- OpenAI Agent SDK: [platform.openai.com/docs/agents](https://platform.openai.com/docs/agents)
+- LiteLLM: [github.com/BerriAI/litellm](https://github.com/BerriAI/litellm)
 
 
