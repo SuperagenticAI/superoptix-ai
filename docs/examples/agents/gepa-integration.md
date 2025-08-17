@@ -135,20 +135,20 @@ spec:
 
 ```bash
 # Pull and set up agent
-super agent pull advanced-math-gepa
-super agent compile advanced-math-gepa
+super agent pull advanced_math_gepa
+super agent compile advanced_math_gepa
 
 # Evaluate baseline
-super agent evaluate advanced-math-gepa
+super agent evaluate advanced_math_gepa
 
 # Run GEPA optimization
-super agent optimize advanced-math-gepa
+super agent optimize advanced_math_gepa
 
 # Measure improvement
-super agent evaluate advanced-math-gepa
+super agent evaluate advanced_math_gepa
 
 # Test optimized agent
-super agent run advanced-math-gepa --goal "Solve x² + 3x - 4 = 0"
+super agent run advanced_math_gepa --goal "Solve x² + 3x - 4 = 0"
 ```
 
 ### Memory-Efficient Configuration

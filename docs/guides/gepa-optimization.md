@@ -50,22 +50,22 @@ The fastest way to get started with GEPA in SuperOptiX:
 
 ```bash
 # 1. Pull a GEPA-enabled agent
-super agent pull advanced-math-gepa
+super agent pull advanced_math_gepa
 
 # 2. Compile the agent
-super agent compile advanced-math-gepa
+super agent compile advanced_math_gepa
 
 # 3. Test baseline performance
-super agent evaluate advanced-math-gepa
+super agent evaluate advanced_math_gepa
 
 # 4. Optimize with GEPA
-super agent optimize advanced-math-gepa
+super agent optimize advanced_math_gepa
 
 # 5. Measure improvement
-super agent evaluate advanced-math-gepa
+super agent evaluate advanced_math_gepa
 
 # 6. Use the optimized agent
-super agent run advanced-math-gepa --goal "Solve x² + 5x - 6 = 0"
+super agent run advanced_math_gepa --goal "Solve x² + 5x - 6 = 0"
 ```
 
 ### Basic GEPA Configuration
@@ -572,20 +572,20 @@ metric: vulnerability_detection_feedback
 
 ```bash
 # 1. Create or pull a GEPA-ready agent
-super agent pull advanced-math-gepa
+super agent pull advanced_math_gepa
 
 # 2. Compile and establish baseline
-super agent compile advanced-math-gepa
-super agent evaluate advanced-math-gepa
+super agent compile advanced_math_gepa
+super agent evaluate advanced_math_gepa
 
 # 3. Run GEPA optimization
-super agent optimize advanced-math-gepa
+super agent optimize advanced_math_gepa
 
 # 4. Validate improvements
-super agent evaluate advanced-math-gepa
+super agent evaluate advanced_math_gepa
 
 # 5. Test the optimized agent
-super agent run advanced-math-gepa --goal "Solve 2x² + 3x - 5 = 0"
+super agent run advanced_math_gepa --goal "Solve 2x² + 3x - 5 = 0"
 ```
 
 ## Related Documentation
