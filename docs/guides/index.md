@@ -17,6 +17,12 @@ Choose your path based on what you want to accomplish:
 - **[Agent Development](agent-development.md)** - Build custom agents from scratch
 - **[SuperSpec DSL](superspec.md)** - Master the declarative specification language
 
+### 🚀 **Advanced Optimization**
+- **[DSPy Optimizers](dspy-optimizers.md)** - Comprehensive guide to all DSPy optimizers (GEPA, SIMBA, MIPROv2, etc.)
+- **[GEPA Optimization](gepa-optimization.md)** - Deep dive into Graph Enhanced Prompting Algorithm
+- **[Optimization Strategies](optimization.md)** - General optimization techniques and best practices
+- **[Evaluation & Testing](evaluation-testing.md)** - Measure and improve agent performance
+
 ### 🛠️ **Development Tools & Workflows**
 - **[Tool Development](tool-development.md)** - Create custom tools for your agents
 - **[Orchestra Development](orchestra-development.md)** - Build multi-agent workflows

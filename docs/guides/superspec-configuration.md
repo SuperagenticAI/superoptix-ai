@@ -326,6 +326,71 @@ spec:
       metrics_collection: bool          # OPTIONAL - Enable metrics collection
 ```
 
+### **13. DSPy Optimizer/Teleprompter Support**
+
+SuperSpec now supports configuring any DSPy optimizer or teleprompter directly in your agent spec. This enables advanced optimization strategies, including GEPA, SIMBA, COPRO, KNNFewShot, BetterTogether, and more.
+
+**How to use:**
+
+Add an `optimizer` section under `spec.optimization`:
+
+```yaml
+spec:
+  optimization:
+    optimizer:
+      name: GEPA  # or SIMBA, COPRO, KNNFewShot, BetterTogether, etc.
+      params:
+        metric: semantic_f1
+        max_iters: 10
+        feedback_fn: my_custom_feedback
+    # ... other optimization config ...
+```
+
+- `name`: The DSPy optimizer/teleprompter class name (case-sensitive, e.g., GEPA, SIMBA, COPRO, KNNFewShot, BetterTogether, BootstrapFewShot, LabeledFewShot, etc.)
+- `params`: Dictionary of parameters to pass to the optimizer/teleprompter constructor. Keys/values depend on the optimizer.
+
+**Examples:**
+
+```yaml
+spec:
+  optimization:
+    optimizer:
+      name: GEPA
+      params:
+        metric: semantic_f1
+        max_iters: 10
+        feedback_fn: my_custom_feedback
+```
+
+```yaml
+spec:
+  optimization:
+    optimizer:
+      name: KNNFewShot
+      params:
+        k: 8
+        retriever: my_knn_retriever
+```
+
+```yaml
+spec:
+  optimization:
+    optimizer:
+      name: BetterTogether
+      params:
+        prompt_optimizer: BootstrapFewShot
+        weight_optimizer: BootstrapFinetune
+```
+
+**How it works:**
+- The pipeline generator will dynamically instantiate the specified optimizer/teleprompter with the provided parameters.
+- All DSPy optimizers/teleprompters in your DSPy version are supported.
+- If not specified, the default optimizer for the agent tier is used (LabeledFewShot for Oracles, BootstrapFewShot for Genies).
+
+**See also:**
+- [DSPy Optimizer Reference](https://github.com/stanford-oval/dspy/tree/main/dspy/teleprompt)
+- [GEPA Optimizer](https://github.com/stanford-oval/gepa)
+
 ## 🎯 **Tier-Specific Configuration**
 
 ### **Oracles Tier Configuration**

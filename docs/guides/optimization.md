@@ -109,13 +109,19 @@ spec:
 
 ### Supported Strategies
 
-The current version of SuperOptiX supports these optimization strategies:
+SuperOptiX supports these optimization strategies:
 
-- **bootstrap_fewshot** (default) - Uses DSPy's BootstrapFewShot optimizer
+- **bootstrap_fewshot** (default) - Uses DSPy's BootstrapFewShot optimizer for basic prompt and few-shot optimization
+
+- **GEPA** - Graph Enhanced Prompting Algorithm for advanced reflective prompt evolution with domain-specific feedback
 
 - **knn_fewshot** - K-nearest neighbors few-shot optimization
 
 - **labeled_fewshot** - Labeled few-shot optimization
+
+- **SIMBA** - Stochastic Introspective Mini-Batch Ascent for advanced optimization
+
+- **MIPROv2** - Multi-step Instruction Prompt Optimization for sophisticated prompt engineering
 
 ## Best Practices
 
@@ -266,6 +272,7 @@ super agent evaluate your_agent   # Minimal cloud usage
 
 ## 📚 Related Documentation
 
+- [GEPA Optimization Guide](gepa-optimization.md) - Advanced GEPA optimization techniques
 - [Agent Development Guide](agent-development.md) - Complete agent development workflow
 - [Evaluation & Testing Guide](evaluation-testing.md) - Testing methodologies
 - [BDD Guide](bdd.md) - Behavior-driven development

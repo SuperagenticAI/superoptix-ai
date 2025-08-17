@@ -465,6 +465,44 @@ class AgentSpec:
     feature_specifications: Optional[Dict[str, Any]]  # BDD scenarios
 ```
 
+## 🧠 DSPy Optimizer/Teleprompter Configuration
+
+SuperSpec supports configuring any DSPy optimizer or teleprompter for agent optimization. This is done via the `spec.optimization.optimizer` section.
+
+**YAML Example:**
+
+```yaml
+spec:
+  optimization:
+    optimizer:
+      name: GEPA  # or SIMBA, COPRO, KNNFewShot, BetterTogether, etc.
+      params:
+        metric: semantic_f1
+        max_iters: 10
+        feedback_fn: my_custom_feedback
+```
+
+- `name`: The DSPy optimizer/teleprompter class name (e.g., GEPA, SIMBA, COPRO, KNNFewShot, BetterTogether, BootstrapFewShot, LabeledFewShot, etc.)
+- `params`: Dictionary of parameters to pass to the optimizer/teleprompter constructor. Keys/values depend on the optimizer.
+
+**Supported Optimizers/Teleprompters:**
+- GEPA
+- SIMBA
+- COPRO
+- KNNFewShot
+- BetterTogether
+- BootstrapFewShot
+- LabeledFewShot
+- ...and any future DSPy optimizers/teleprompters
+
+**How it works:**
+- The pipeline generator will dynamically instantiate the specified optimizer/teleprompter with the provided parameters.
+- If not specified, the default optimizer for the agent tier is used.
+
+**References:**
+- [DSPy Teleprompters](https://github.com/stanford-oval/dspy/tree/main/dspy/teleprompt)
+- [GEPA Optimizer](https://github.com/stanford-oval/gepa)
+
 ## 🚀 **CLI Commands**
 
 ### **Generate Playbook**

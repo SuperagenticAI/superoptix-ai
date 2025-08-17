@@ -183,6 +183,8 @@ nav:
       - '🤖 Agent Development': guides/agent-development.md
       - '🛠️ Tool Development': guides/tool-development.md
       - '🎼 Orchestra Development': guides/orchestra-development.md
+      - '🚀 GEPA Optimization': guides/gepa-optimization.md
+      - '⚙️ DSPy Optimizers': guides/dspy-optimizers.md
       - '🏪 Marketplace': guides/marketplace.md
       - '☁️ Cloud Inference': guides/cloud-inference.md
       - '🎯 Model Management': guides/model-management.md
@@ -225,6 +227,7 @@ nav:
       - '📊 Observability': examples/agents/observability-demo.md
       - '🧿 MLFlow': examples/agents/mlflow-integration.md
       - '🧬 LangFuse': examples/agents/langfuse-integration.md
+      - '🚀 GEPA Integration': examples/agents/gepa-integration.md
   - '🏢 Company':
       - '🚀 Superagentic AI': superagentic-ai.md
       - '🎯 Mission SuperOptiX': mission-superoptix.md
