@@ -471,15 +471,288 @@ Based on testing with llama3.1:8b on M4 Max (128GB):
 - [Memory Management](memory.md)
 - [Model Management](model-management.md)
 
+## Quick Start Guide
+
+### 🚀 Complete DSPy Optimizer Workflow
+
+Here are ready-to-run commands for each DSPy optimizer. Each example includes pull, compile, optimize, and test steps.
+
+#### GEPA - Graph Enhanced Prompting Algorithm
+**Best for**: Oracle-tier agents, complex reasoning, mathematical problems
+
+```bash
+# Quick start with GEPA demo agent
+super agent pull gepa_demo
+super agent compile gepa_demo
+super agent optimize gepa_demo --timeout 300
+super agent evaluate gepa_demo
+super agent run gepa_demo --goal "Demonstrate reflective optimization capabilities"
+
+# Advanced math with GEPA
+super agent pull advanced_math_gepa
+super agent compile advanced_math_gepa
+super agent optimize advanced_math_gepa --timeout 300
+super agent run advanced_math_gepa --goal "Solve x² + 5x - 6 = 0 showing all steps"
+```
+
+#### SIMBA - Stochastic Introspective Mini-Batch Ascent
+**Best for**: Performance-critical applications, systematic improvement
+
+```bash
+# Mathematics problems with SIMBA
+super agent pull simba_math
+super agent compile simba_math
+super agent optimize simba_math --timeout 300
+super agent evaluate simba_math
+super agent run simba_math --goal "Calculate the area of a circle with radius 7"
+
+# General SIMBA optimization
+super agent pull simba_playbook
+super agent compile simba_playbook
+super agent optimize simba_playbook --timeout 300
+super agent run simba_playbook --goal "Optimize reasoning with mini-batch processing"
+```
+
+#### MIPROv2 - Multi-step Instruction Prompt Optimization
+**Best for**: Instruction-following tasks, detailed reasoning
+
+```bash
+# Mathematics with MIPROv2
+super agent pull miprov2_math
+super agent compile miprov2_math
+super agent optimize miprov2_math --timeout 300
+super agent evaluate miprov2_math
+super agent run miprov2_math --goal "Solve quadratic equation using multiple methods"
+
+# General MIPROv2 optimization
+super agent pull miprov2_playbook
+super agent compile miprov2_playbook
+super agent optimize miprov2_playbook --timeout 300
+super agent run miprov2_playbook --goal "Demonstrate multi-step instruction optimization"
+```
+
+#### BootstrapFewShot - Traditional Few-Shot Learning
+**Best for**: Getting started, reliable baselines, tool-calling agents
+
+```bash
+# Mathematics with Bootstrap
+super agent pull bootstrap_math
+super agent compile bootstrap_math
+super agent optimize bootstrap_math --timeout 300
+super agent evaluate bootstrap_math
+super agent run bootstrap_math --goal "Solve algebraic equation with step-by-step explanation"
+
+# General Bootstrap optimization
+super agent pull bootstrapfewshot_playbook
+super agent compile bootstrapfewshot_playbook
+super agent optimize bootstrapfewshot_playbook --timeout 300
+super agent run bootstrapfewshot_playbook --goal "Demonstrate traditional few-shot learning"
+```
+
+#### BetterTogether - Ensemble Few-Shot Learning
+**Best for**: Robust performance, collaborative learning
+
+```bash
+# Mathematics with BetterTogether
+super agent pull bettertogether_math
+super agent compile bettertogether_math
+super agent optimize bettertogether_math --timeout 300
+super agent evaluate bettertogether_math
+super agent run bettertogether_math --goal "Solve geometry problem using ensemble methods"
+
+# General BetterTogether optimization
+super agent pull bettertogether_playbook
+super agent compile bettertogether_playbook
+super agent optimize bettertogether_playbook --timeout 300
+super agent run bettertogether_playbook --goal "Demonstrate ensemble optimization"
+```
+
+#### COPRO - Collaborative Prompt Optimization
+**Best for**: Search-based improvement (requires special setup)
+
+```bash
+# Set required environment variable
+export LITELLM_DROP_PARAMS=true
+
+# Mathematics with COPRO
+super agent pull copro_math
+super agent compile copro_math
+super agent optimize copro_math --timeout 300
+super agent evaluate copro_math
+super agent run copro_math --goal "Solve calculus problem with collaborative optimization"
+
+# General COPRO optimization
+super agent pull copro_playbook
+super agent compile copro_playbook
+super agent optimize copro_playbook --timeout 300
+super agent run copro_playbook --goal "Demonstrate collaborative prompt optimization"
+```
+
+#### KNNFewShot - K-Nearest Neighbor Learning
+**Best for**: Pattern recognition, similarity-based learning
+
+```bash
+# Mathematics with KNN
+super agent pull knn_math
+super agent compile knn_math
+super agent optimize knn_math --timeout 300
+super agent evaluate knn_math
+super agent run knn_math --goal "Solve trigonometry using pattern recognition"
+
+# General KNN optimization
+super agent pull knnfewshot_playbook
+super agent compile knnfewshot_playbook
+super agent optimize knnfewshot_playbook --timeout 300
+super agent run knnfewshot_playbook --goal "Demonstrate K-nearest neighbor optimization"
+```
+
+#### LabeledFewShot - Traditional Labeled Learning
+**Best for**: Small datasets, simple scenarios
+
+```bash
+# Traditional labeled learning
+super agent pull labeledfewshot_playbook
+super agent compile labeledfewshot_playbook
+super agent optimize labeledfewshot_playbook --timeout 300
+super agent evaluate labeledfewshot_playbook
+super agent run labeledfewshot_playbook --goal "Demonstrate traditional labeled few-shot learning"
+```
+
+---
+
+### 📊 Comparison Workflow
+
+Compare multiple optimizers on the same task:
+
+```bash
+# Test all optimizers on math problems
+agents=("bootstrap_math" "bettertogether_math" "simba_math" "miprov2_math")
+
+for agent in "${agents[@]}"; do
+    echo "Testing $agent optimizer..."
+    super agent pull $agent
+    super agent compile $agent
+    super agent evaluate $agent > baseline_$agent.txt
+    super agent optimize $agent --timeout 300
+    super agent evaluate $agent > optimized_$agent.txt
+    echo "Results saved for $agent"
+done
+
+# Compare results
+echo "Baseline vs Optimized Performance:"
+for agent in "${agents[@]}"; do
+    echo "=== $agent ==="
+    echo "Baseline:" && cat baseline_$agent.txt
+    echo "Optimized:" && cat optimized_$agent.txt
+    echo ""
+done
+```
+
+---
+
+### 🎯 Domain-Specific Quick Starts
+
+#### For Mathematical Problem Solving
+```bash
+# Try different optimizers for math
+super agent pull advanced_math_gepa    # GEPA for complex reasoning
+super agent pull simba_math           # SIMBA for performance
+super agent pull miprov2_math         # MIPROv2 for instruction clarity
+super agent pull bootstrap_math       # Bootstrap for reliability
+
+# Pick one and optimize
+super agent compile simba_math
+super agent optimize simba_math --timeout 300
+super agent run simba_math --goal "Find the integral of 2x³ + 3x² - x + 5"
+```
+
+#### For General Purpose Optimization
+```bash
+# Try general-purpose optimizers
+super agent pull gepa_demo            # GEPA demonstration
+super agent pull simba_playbook       # SIMBA optimization
+super agent pull bettertogether_playbook  # Ensemble methods
+super agent pull bootstrapfewshot_playbook  # Traditional approach
+
+# Pick one and test
+super agent compile bettertogether_playbook
+super agent optimize bettertogether_playbook --timeout 300
+super agent run bettertogether_playbook --goal "Demonstrate optimization capabilities"
+```
+
+#### For Tool-Calling Agents (Genies Tier+)
+```bash
+# GEPA doesn't work with tool-calling agents
+# Use these optimizers instead:
+
+super agent pull bootstrapfewshot_playbook  # Recommended default
+super agent compile bootstrapfewshot_playbook
+super agent optimize bootstrapfewshot_playbook --timeout 300
+
+# Alternative: SIMBA for complex tool interactions
+super agent pull simba_playbook
+super agent compile simba_playbook
+super agent optimize simba_playbook --timeout 300
+
+# Alternative: BetterTogether for robust tool usage
+super agent pull bettertogether_playbook
+super agent compile bettertogether_playbook
+super agent optimize bettertogether_playbook --timeout 300
+```
+
+---
+
+## Available DSPy Optimizer Agents
+
+SuperOptiX provides pre-configured agents demonstrating each DSPy optimizer:
+
+### 🧮 Mathematics-Focused Agents
+
+| Agent ID | Optimizer | Best For | Command |
+|----------|-----------|----------|---------|
+| `bootstrap_math` | BootstrapFewShot | Reliable baselines | `super agent pull bootstrap_math` |
+| `bettertogether_math` | BetterTogether | Robust performance | `super agent pull bettertogether_math` |
+| `simba_math` | SIMBA | Performance critical | `super agent pull simba_math` |
+| `miprov2_math` | MIPROv2 | Instruction clarity | `super agent pull miprov2_math` |
+| `copro_math` | COPRO | Search-based optimization | `super agent pull copro_math` |
+| `knn_math` | KNNFewShot | Pattern recognition | `super agent pull knn_math` |
+
+### 🔧 General Purpose Agents
+
+| Agent ID | Optimizer | Best For | Command |
+|----------|-----------|----------|---------|
+| `gepa_demo` | GEPA | Complex reasoning demo | `super agent pull gepa_demo` |
+| `bootstrapfewshot_playbook` | BootstrapFewShot | Traditional optimization | `super agent pull bootstrapfewshot_playbook` |
+| `bettertogether_playbook` | BetterTogether | Ensemble learning | `super agent pull bettertogether_playbook` |
+| `simba_playbook` | SIMBA | Advanced optimization | `super agent pull simba_playbook` |
+| `miprov2_playbook` | MIPROv2 | Multi-step instructions | `super agent pull miprov2_playbook` |
+| `copro_playbook` | COPRO | Collaborative optimization | `super agent pull copro_playbook` |
+| `knnfewshot_playbook` | KNNFewShot | Similarity-based learning | `super agent pull knnfewshot_playbook` |
+| `labeledfewshot_playbook` | LabeledFewShot | Traditional labeled learning | `super agent pull labeledfewshot_playbook` |
+
+---
+
 ## Examples
 
 Explore working examples in `/superoptix/agents/dspy_optimizers/`:
 
-- `gepa_playbook.yaml` - GEPA configuration
+### Mathematical Problem Solving
+- `bootstrap_math_playbook.yaml` - Traditional few-shot for math
+- `bettertogether_math_playbook.yaml` - Ensemble learning for math
 - `simba_math_playbook.yaml` - SIMBA for mathematics
 - `miprov2_math_playbook.yaml` - MIPROv2 advanced prompting
-- `bootstrap_math_playbook.yaml` - Traditional few-shot
-- `bettertogether_math_playbook.yaml` - Ensemble learning
+- `copro_math_playbook.yaml` - Collaborative optimization for math
+- `knn_math_playbook.yaml` - K-nearest neighbor for math
+
+### General Purpose Optimization
+- `gepa_playbook.yaml` - GEPA configuration and demonstration
+- `bootstrapfewshot_playbook.yaml` - Traditional few-shot learning
+- `bettertogether_playbook.yaml` - Ensemble learning methods
+- `simba_playbook.yaml` - SIMBA optimization
+- `miprov2_playbook.yaml` - Multi-step instruction optimization
+- `copro_playbook.yaml` - Collaborative prompt optimization
+- `knnfewshot_playbook.yaml` - K-nearest neighbor learning
+- `labeledfewshot_playbook.yaml` - Traditional labeled few-shot
 
 ## Contributing
 

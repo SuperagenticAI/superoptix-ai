@@ -543,6 +543,78 @@ metric: vulnerability_detection_feedback
 - Working with very large training datasets (>100 examples)
 - Budget constraints require minimal resource usage
 - Traditional optimization already achieves requirements
+- **Using ReAct agents with tool calling** (Genies tier and above)
+
+### ⚠️ GEPA and Tool-Calling Agents
+
+**Important Limitation**: GEPA is not compatible with ReAct agents that use tool calling (Genies tier and above). This includes:
+
+- **Genies Tier Agents**: ReAct + Tools + Memory
+- **Protocols Tier Agents**: Advanced multi-agent systems
+- **Any agent with tool integration**
+
+**Why GEPA doesn't work with tool-calling agents**:
+
+1. **Complex Output Format**: ReAct agents produce structured outputs with tool calls, reasoning steps, and observations that don't match GEPA's expected simple text format
+2. **Tool Call Parsing**: GEPA's evaluation metrics expect simple string outputs, but ReAct produces complex multi-step trajectories
+3. **Trajectory Complexity**: GEPA analyzes reasoning trajectories, but tool-enhanced ReAct has much more complex multi-step workflows
+4. **Format Failure Issues**: Tool responses often break GEPA's response parsing expectations
+
+**Error Symptoms**:
+```
+WARNING: Failed to unpack prediction and trace. This is likely due to the LLM response not following dspy formatting.
+INFO: No trajectories captured. Skipping.
+Average Metric: 0.0 / 5 (0.0%)
+```
+
+**Better Optimizers for Tool-Calling Agents**:
+
+For Genies tier agents with tools, use these optimizers instead:
+
+```yaml
+# Recommended for tool-calling agents
+optimization:
+  optimizer:
+    name: BootstrapFewShot  # Default, works well with ReAct+tools
+    params:
+      metric: answer_exact_match
+      max_bootstrapped_demos: 4
+      max_rounds: 1
+```
+
+```yaml
+# Alternative: SIMBA for complex reasoning
+optimization:
+  optimizer:
+    name: SIMBA
+    params:
+      metric: answer_exact_match
+      bsize: 4
+      num_candidates: 2
+      max_steps: 3
+```
+
+```yaml
+# Alternative: BetterTogether for robust performance
+optimization:
+  optimizer:
+    name: BetterTogether
+    params:
+      metric: answer_exact_match
+      max_bootstrapped_demos: 3
+      max_labeled_demos: 12
+```
+
+**Agent Tier Compatibility**:
+
+| Tier | Tool Support | GEPA Compatible | Recommended Optimizer |
+|------|--------------|-----------------|----------------------|
+| **Oracles** | No tools | ✅ Yes | GEPA (excellent) |
+| **Genies** | ReAct + Tools | ❌ No | BootstrapFewShot, SIMBA |
+| **Protocols** | Advanced tools | ❌ No | BetterTogether, MIPROv2 |
+| **Superagents** | Complex tools | ❌ No | SIMBA, MIPROv2 |
+
+**Summary**: Use GEPA for Oracle-tier agents (simple reasoning without tools). For Genies tier and above (with tool calling), use BootstrapFewShot, SIMBA, or BetterTogether optimizers instead.
 
 ### Cost Considerations
 
@@ -586,6 +658,263 @@ super agent evaluate advanced_math_gepa
 
 # 5. Test the optimized agent
 super agent run advanced_math_gepa --goal "Solve 2x² + 3x - 5 = 0"
+```
+
+## Available GEPA Agents
+
+SuperOptiX provides pre-configured GEPA agents across multiple domains. Each agent is optimized for specific use cases and comes with domain-specific feedback metrics.
+
+### 🧮 Mathematics & Analytics
+
+#### Advanced Math GEPA Solver
+**Agent ID**: `advanced_math_gepa`
+**Domain**: Advanced mathematical problem solving
+**Specializes in**: Quadratic equations, calculus, geometry, algebraic reasoning
+
+```bash
+# Quick start with math problems
+super agent pull advanced_math_gepa
+super agent compile advanced_math_gepa
+super agent optimize advanced_math_gepa
+super agent run advanced_math_gepa --goal "Find the derivative of x³ + 2x² - 5x + 1"
+```
+
+**Key Features**:
+- Step-by-step solution methodology
+- Multiple solution approaches
+- Verification and checking
+- Mathematical notation support
+- Educational explanations
+
+---
+
+#### Data Science GEPA
+**Agent ID**: `data_science_gepa`
+**Domain**: Statistical analysis and machine learning
+**Specializes in**: Data analysis, statistical inference, ML insights, hypothesis testing
+
+```bash
+# Start with data science problems
+super agent pull data_science_gepa
+super agent compile data_science_gepa
+super agent optimize data_science_gepa
+super agent run data_science_gepa --goal "Analyze correlation between customer age and purchase behavior"
+```
+
+**Key Features**:
+- Statistical methodology validation
+- Data visualization recommendations
+- Hypothesis testing frameworks
+- ML model selection guidance
+- Scientific rigor validation
+
+---
+
+### 🏥 Healthcare & Medical
+
+#### Medical Assistant GEPA
+**Agent ID**: `medical_assistant_gepa`
+**Domain**: Clinical decision support and medical information
+**Specializes in**: Medical knowledge synthesis, patient education, clinical reasoning
+
+```bash
+# Medical information assistance
+super agent pull medical_assistant_gepa
+super agent compile medical_assistant_gepa
+super agent optimize medical_assistant_gepa
+super agent run medical_assistant_gepa --goal "Explain hypertension treatment options"
+```
+
+**Key Features**:
+- Safety-focused medical information
+- Evidence-based recommendations
+- Patient education materials
+- Clinical decision support
+- Medical terminology accuracy
+
+---
+
+### ⚖️ Legal & Compliance
+
+#### Contract Analyzer GEPA
+**Agent ID**: `contract_analyzer_gepa`
+**Domain**: Legal contract analysis and risk assessment
+**Specializes in**: Contract review, risk identification, compliance verification
+
+```bash
+# Legal contract analysis
+super agent pull contract_analyzer_gepa
+super agent compile contract_analyzer_gepa
+super agent optimize contract_analyzer_gepa
+super agent run contract_analyzer_gepa --goal "Review this software license agreement for compliance risks"
+```
+
+**Key Features**:
+- Legal risk assessment
+- Compliance verification
+- Contract clause analysis
+- Regulatory framework alignment
+- Risk mitigation strategies
+
+---
+
+### 💼 Enterprise & Finance
+
+#### Enterprise Extractor GEPA
+**Agent ID**: `enterprise_extractor_gepa`
+**Domain**: Enterprise document processing and information extraction
+**Specializes in**: Multi-component analysis, structured data extraction, business intelligence
+
+```bash
+# Enterprise document processing
+super agent pull enterprise_extractor_gepa
+super agent compile enterprise_extractor_gepa
+super agent optimize enterprise_extractor_gepa
+super agent run enterprise_extractor_gepa --goal "Extract key metrics from this quarterly business report"
+```
+
+**Key Features**:
+- Multi-aspect document analysis
+- Structured information extraction
+- Business intelligence insights
+- Risk assessment integration
+- Executive summary generation
+
+---
+
+### 🔒 Security & Privacy
+
+#### Security Analyzer GEPA
+**Agent ID**: `security_analyzer_gepa`
+**Domain**: Security vulnerability detection and code analysis
+**Specializes in**: Vulnerability detection, secure coding practices, security assessment
+
+```bash
+# Security code analysis
+super agent pull security_analyzer_gepa
+super agent compile security_analyzer_gepa
+super agent optimize security_analyzer_gepa
+super agent run security_analyzer_gepa --goal "Analyze this code for security vulnerabilities"
+```
+
+**Key Features**:
+- Vulnerability detection
+- Security best practices
+- Remediation guidance
+- Compliance framework alignment
+- Risk severity assessment
+
+---
+
+#### Privacy Delegate GEPA
+**Agent ID**: `privacy_delegate_gepa`
+**Domain**: Privacy-preserving task delegation and data handling
+**Specializes in**: Data anonymization, privacy compliance, secure information handling
+
+```bash
+# Privacy-conscious task delegation
+super agent pull privacy_delegate_gepa
+super agent compile privacy_delegate_gepa
+super agent optimize privacy_delegate_gepa
+super agent run privacy_delegate_gepa --goal "Process customer data while maintaining GDPR compliance"
+```
+
+**Key Features**:
+- Privacy preservation techniques
+- Data anonymization strategies
+- Regulatory compliance (GDPR, CCPA)
+- Secure delegation workflows
+- Privacy risk assessment
+
+---
+
+### 🛠️ Development & Demonstration
+
+#### GEPA Demo
+**Agent ID**: `gepa_demo`
+**Domain**: GEPA optimizer demonstration and learning
+**Specializes in**: Showcasing GEPA capabilities, optimization examples, learning scenarios
+
+```bash
+# Learn GEPA optimization
+super agent pull gepa_demo
+super agent compile gepa_demo
+super agent optimize gepa_demo
+super agent run gepa_demo --goal "Demonstrate GEPA's reflective optimization capabilities"
+```
+
+**Key Features**:
+- GEPA optimization showcase
+- Before/after comparisons
+- Learning examples
+- Optimization metrics demonstration
+- Best practices illustration
+
+---
+
+## Domain-Specific Quick Start Commands
+
+### For Mathematics Problems
+```bash
+# Advanced mathematical reasoning
+super agent pull advanced_math_gepa
+super agent compile advanced_math_gepa
+super agent optimize advanced_math_gepa --timeout 300
+super agent run advanced_math_gepa --goal "Solve the system: 2x + 3y = 12, x - y = 1"
+```
+
+### For Business Analysis
+```bash
+# Enterprise document processing
+super agent pull enterprise_extractor_gepa
+super agent compile enterprise_extractor_gepa
+super agent optimize enterprise_extractor_gepa --timeout 300
+super agent run enterprise_extractor_gepa --goal "Analyze quarterly revenue trends and identify growth opportunities"
+```
+
+### For Security Assessment
+```bash
+# Security vulnerability analysis
+super agent pull security_analyzer_gepa
+super agent compile security_analyzer_gepa
+super agent optimize security_analyzer_gepa --timeout 300
+super agent run security_analyzer_gepa --goal "Review authentication implementation for security vulnerabilities"
+```
+
+### For Medical Information
+```bash
+# Clinical decision support
+super agent pull medical_assistant_gepa
+super agent compile medical_assistant_gepa
+super agent optimize medical_assistant_gepa --timeout 300
+super agent run medical_assistant_gepa --goal "Explain diabetes management strategies for elderly patients"
+```
+
+### For Legal Analysis
+```bash
+# Contract and legal document review
+super agent pull contract_analyzer_gepa
+super agent compile contract_analyzer_gepa
+super agent optimize contract_analyzer_gepa --timeout 300
+super agent run contract_analyzer_gepa --goal "Review employment contract for compliance with labor laws"
+```
+
+### For Data Science
+```bash
+# Statistical analysis and ML insights
+super agent pull data_science_gepa
+super agent compile data_science_gepa
+super agent optimize data_science_gepa --timeout 300
+super agent run data_science_gepa --goal "Design A/B test for mobile app feature rollout"
+```
+
+### For Privacy-Sensitive Tasks
+```bash
+# Privacy-preserving data processing
+super agent pull privacy_delegate_gepa
+super agent compile privacy_delegate_gepa
+super agent optimize privacy_delegate_gepa --timeout 300
+super agent run privacy_delegate_gepa --goal "Process user analytics while maintaining privacy compliance"
 ```
 
 ## Related Documentation
