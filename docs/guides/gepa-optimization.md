@@ -42,11 +42,44 @@ GEPA is based on cutting-edge research in prompt optimization and reflective lea
 
 The research demonstrates that GEPA can outperform reinforcement learning approaches while requiring significantly less computational resources and training data.
 
+## 🚀 See GEPA in Action
+
+### Interactive Demo Repository
+
+**For the best hands-on GEPA experience**, visit our dedicated demonstration repository:
+
+🔗 **[GEPA Evaluation Demo](https://github.com/SuperagenticAI/gepa-eval)**
+
+This repository provides:
+- **Interactive demonstrations** of GEPA optimization
+- **Before/after comparisons** showing dramatic improvements
+- **Multiple hardware tiers** (lightweight for 8GB+ RAM, full demo for 16GB+)
+- **Complete working examples** across different domains
+- **Step-by-step optimization walkthrough**
+
+#### Quick Demo Commands
+```bash
+# Clone the demo repository
+git clone https://github.com/SuperagenticAI/gepa-eval.git
+cd gepa-eval
+
+# Setup (installs models and dependencies)
+./scripts/setup.sh
+
+# Lightweight demo (8GB+ RAM, 2-3 minutes)
+./scripts/run_light_demo.sh
+
+# Full demo (16GB+ RAM, 5-10 minutes)  
+./scripts/run_demo.sh
+```
+
+**What you'll see**: Watch a basic math agent transform into a sophisticated problem solver with multiple solution methods, verification steps, and pedagogical explanations - all through GEPA's reflective optimization process.
+
 ## How to Use GEPA in SuperOptiX
 
-### Quick Start
+### Quick Start in SuperOptiX
 
-The fastest way to get started with GEPA in SuperOptiX:
+Once you've explored the demo, integrate GEPA into your SuperOptiX workflows:
 
 ```bash
 # 1. Pull a GEPA-enabled agent

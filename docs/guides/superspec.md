@@ -598,46 +598,144 @@ spec:
 
 ### **Optimization Configuration**
 
-The `optimization` section configures DSPy-based performance improvement.
+The `optimization` section configures advanced DSPy-based performance improvement using state-of-the-art optimizers.
 
-#### **Basic Configuration**
+#### **Complete Configuration Schema**
 
 ```yaml
 spec:
   optimization:
-    strategy: few_shot_bootstrapping|few_shot_random_search|instruction_search|model_finetuning|prompt_search|ensemble|labeled_few_shot|knn_few_shot|bayesian_signature_optimization  # OPTIONAL (default: few_shot_bootstrapping)
-    metric: string                      # REQUIRED - Metric to optimize for
-    metric_threshold: float             # OPTIONAL - Quality threshold
-    few_shot_bootstrapping_config:      # OPTIONAL - Bootstrap configuration
-      max_bootstrapped_demos: int       # OPTIONAL (default: 4) - Max demos
-      max_rounds: int                   # OPTIONAL (default: 1) - Optimization rounds
+    enabled: true                       # OPTIONAL (default: false)
+    optimizer:
+      name: GEPA|SIMBA|MIPROv2|BootstrapFewShot|BetterTogether|COPRO|KNNFewShot|LabeledFewShot
+      params:
+        # Common parameters for all optimizers
+        metric: string                  # REQUIRED - Evaluation metric
+        timeout: 300                    # OPTIONAL - Timeout in seconds
+        verbose: false                  # OPTIONAL - Enable detailed logs
+        
+        # GEPA-specific parameters
+        auto: minimal|light|medium|heavy            # GEPA budget control
+        reflection_lm: string                       # Reflection model name
+        reflection_minibatch_size: 3                # Reflection batch size
+        skip_perfect_score: true                    # Skip if perfect
+        add_format_failure_as_feedback: true       # Include format errors
+        
+        # SIMBA-specific parameters  
+        bsize: 8                                    # SIMBA batch size
+        num_candidates: 5                           # Number of candidates
+        max_steps: 10                               # Maximum steps
+        
+        # BootstrapFewShot parameters
+        max_bootstrapped_demos: 8                   # Bootstrap examples
+        max_labeled_demos: 16                       # Labeled examples
+        max_rounds: 2                               # Optimization rounds
+        max_errors: 3                               # Error tolerance
+        
+        # MIPROv2 parameters
+        init_temperature: 1.2                      # Initial temperature
+        
+    evaluation:
+      enabled: true                               # Enable evaluation
+      metrics: ["answer_exact_match"]             # Additional metrics
+      test_split: 0.2                            # Test data fraction
+      cross_validation:
+        enabled: false                            # Enable CV
+        folds: 5                                  # CV folds
+        
+    hardware_optimization:
+      target_tier: lightweight|standard|production # Hardware tier
+      memory_limit_gb: 16                         # Memory limit
+      parallel_optimization: false               # Enable parallel
+      max_workers: 2                             # Parallel workers
 ```
 
-#### **Optimization Strategies**
+#### **DSPy Optimizers**
 
-| Strategy | Description | Use Case |
-|----------|-------------|----------|
-| `few_shot_bootstrapping` | Bootstrap few-shot examples | General optimization |
-| `few_shot_random_search` | Random search for examples | Exploration |
-| `instruction_search` | Search for better instructions | Prompt optimization |
-| `model_finetuning` | Fine-tune the model | Custom model training |
-| `prompt_search` | Search for optimal prompts | Prompt engineering |
-| `ensemble` | Combine multiple approaches | Robust performance |
-| `labeled_few_shot` | Use labeled examples | Supervised learning |
-| `knn_few_shot` | K-nearest neighbors | Similarity-based |
-| `bayesian_signature_optimization` | Bayesian optimization | Advanced tuning |
+SuperSpec now supports all major DSPy optimizers with universal tier compatibility:
 
-#### **Example**
+| Optimizer | Description | Strengths | Time Estimate |
+|-----------|-------------|-----------|---------------|
+| **🧠 GEPA** | Graph Enhanced Prompting Algorithm | Complex reasoning, math, reflective optimization | 3-30 min |
+| **⚡ SIMBA** | Stochastic Introspective Mini-Batch Ascent | Fast optimization, general tasks | 1-3 min |
+| **📝 MIPROv2** | Multi-step Instruction Prompt Optimization | Creative writing, sophisticated prompts | 2-15 min |
+| **🔄 BootstrapFewShot** | Bootstrap few-shot examples | Quick optimization, small datasets | 30-60 sec |
+| **🤝 BetterTogether** | Ensemble few-shot approach | Document analysis, balanced accuracy | 1-5 min |
+| **🤖 COPRO** | Collaborative Prompt Optimization | Legal analysis, structured tasks | 2-8 min |
+| **🔍 KNNFewShot** | K-nearest neighbor few-shot learning | Similarity-based, recommendations | 1-2 min |
+| **🏷️ LabeledFewShot** | Traditional labeled few-shot | Translation, classification | 30-90 sec |
+
+#### **Quick Start Examples**
+
+**GEPA for Mathematical Reasoning:**
+```yaml
+  optimization:
+    enabled: true
+    optimizer:
+      name: GEPA
+      params:
+        metric: advanced_math_feedback
+        auto: light
+        reflection_lm: qwen3:8b
+        reflection_minibatch_size: 3
+```
+
+**SIMBA for Fast Optimization:**
+```yaml
+  optimization:
+    enabled: true
+    optimizer:
+      name: SIMBA
+      params:
+        metric: answer_exact_match
+        bsize: 8
+        num_candidates: 5
+```
+
+**BootstrapFewShot for Quick Testing:**
+```yaml
+  optimization:
+    enabled: true
+    optimizer:
+      name: BootstrapFewShot
+      params:
+        metric: answer_exact_match
+        max_bootstrapped_demos: 4
+```
+
+#### **Advanced Feedback Metrics**
+
+SuperSpec provides specialized metrics for domain-specific optimization:
+
+| Metric | Use Case | Description |
+|--------|----------|-------------|
+| `advanced_math_feedback` | Mathematics | Step-by-step reasoning validation |
+| `multi_component_enterprise_feedback` | Business | Multi-aspect document analysis |
+| `vulnerability_detection_feedback` | Security | Security analysis with remediation |
+| `privacy_preservation_feedback` | Privacy | Data privacy compliance |
+| `medical_accuracy_feedback` | Healthcare | Medical safety validation |
+| `legal_analysis_feedback` | Legal | Legal compliance verification |
+
+#### **Hardware Tier Configuration**
+
+Optimize for different hardware capabilities:
 
 ```yaml
-spec:
   optimization:
-    strategy: few_shot_bootstrapping
-    metric: answer_correctness
-    metric_threshold: 0.7
-    few_shot_bootstrapping_config:
-      max_bootstrapped_demos: 4
-      max_rounds: 1
+    hardware_optimization:
+      target_tier: lightweight    # 8GB+ RAM, 2-3 min optimization
+      # OR
+      target_tier: standard      # 16GB+ RAM, 5-8 min optimization  
+      # OR
+      target_tier: production    # 32GB+ RAM, 15-30 min optimization
+```
+
+#### **Legacy Support**
+
+For backward compatibility, the old optimization format is still supported:
+
+```yaml
+  optimization: few_shot_bootstrapping  # Legacy format - automatically converted
 ```
 
 ## 🎯 **Context Engineering Deep Dive**

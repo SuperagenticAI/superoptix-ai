@@ -38,6 +38,8 @@ optimization:
 
 **Best For:** Complex reasoning tasks, mathematical problems, domain-specific optimization
 
+🎯 **See GEPA in Action**: Check out our [interactive GEPA demo repository](https://github.com/SuperagenticAI/gepa-eval) for hands-on examples with before/after comparisons and multiple hardware configurations.
+
 ---
 
 ### ⚡ **SIMBA** - Stochastic Introspective Mini-Batch Ascent
