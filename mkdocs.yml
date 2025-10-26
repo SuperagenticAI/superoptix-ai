@@ -14,11 +14,14 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.highlight:
-      anchor_linenums: true
-      line_spans: __span
+      anchor_linenums: false
+      linenums: false
       pygments_lang_class: true
-      auto_title: true
+      auto_title: false
       pygments_style: monokai
+      line_spans: ""
+      anchor_linenums: false
+      line_anchors: ""
   - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.snippets
@@ -47,7 +50,6 @@ extra_javascript:
 
 theme:
   name: material
-  custom_dir: docs/overrides
   language: en
   favicon: 'favicon.png'
   logo: 'logo.png'
@@ -55,91 +57,37 @@ theme:
     # Light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: pink
-      accent: deep purple
+      primary: grey
+      accent: purple
       toggle:
-        icon: material/white-balance-sunny
+        icon: material/weather-sunny
         name: Switch to dark mode
     # Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: deep purple
-      accent: orange
+      primary: grey
+      accent: purple
       toggle:
         icon: material/weather-night
         name: Switch to light mode
   font:
     text: Inter
     code: Fira Code
-  icon:
-    edit: material/pencil
-    view: material/eye
-    previous: material/chevron-left
-    next: material/chevron-right
-    search: material/magnify
-    close: material/close
-    menu: material/menu
-    language: material/translate
-    share: material/share-variant
-    top: material/chevron-up
-    version: material/tag-multiple
-    home: material/home
-    expand: material/chevron-down
-    collapse: material/chevron-up
-    check: material/check
-    warning: material/alert
-    error: material/close-circle
-    info: material/information
-    note: material/note-text
-    tip: material/lightbulb
-    important: material/alert-circle
-    success: material/check-circle
-    question: material/help-circle
-    failure: material/close-circle
-    bug: material/bug
-    example: material/format-list-numbered
-    quote: material/format-quote-close
-    admonition:
-      note: material/note-text
-      abstract: material/lightbulb
-      info: material/information
-      tip: material/lightbulb
-      success: material/check-circle
-      question: material/help-circle
-      warning: material/alert
-      failure: material/close-circle
-      danger: material/close-circle
-      bug: material/bug
-      example: material/format-list-numbered
-      quote: material/format-quote-close
   features:
     - navigation.instant
-    - navigation.instant.prefetch
-    - navigation.instant.progress
     - navigation.tracking
-    - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.sections
-    - navigation.expand
     - navigation.path
-    - navigation.indexes
     - navigation.top
-    - navigation.footer
     - toc.follow
-    - toc.integrate
     - search.suggest
     - search.highlight
     - search.share
     - content.code.copy
-    - content.code.select
     - content.code.annotate
     - content.tabs.link
-    - content.tooltips
-    - header.autohide
-    - announce.dismiss
 
 extra_css:
-  - stylesheets/extra.css
+  - stylesheets/extra.css?v=22.0  # Fixed tabbed code block gradients with !important
 
 extra:
   # homepage: https://superoptix.docs
@@ -157,79 +105,154 @@ plugins:
       lang: en
 
 nav:
-  - '👑 SuperOptiX AI': index.md
-  - '🚀 Get Started':
-      - '🎯 Introduction': introduction.md
+  - 🏠 Home: index.md
+  - 🚀 Get Started:
+      - '📖 Introduction': introduction.md
       - '🚀 Quick Start': quick-start.md
-      - '📦 Installation': setup.md
-      - '🗃️ LLM Setup': llm-setup.md
-      - '⚙️ Environment': environment-setup.md
+      - '🌐 Multi-Framework Quick Start': tutorials/multi-framework-quickstart.md
+      - '⚙️ Setup & Installation': setup.md
+      - '🧠 LLM Setup': llm-setup.md
+      - '🏗️ Environment Setup': environment-setup.md
       - '📁 Project Structure': project-structure.md
-      - '🕸️ Agent Patterns': agent-patterns.md
-      - '🤖 Your First Agent': tutorials/oracles-agent.md
-      - '🧰 Your First with Agent Tools & RAG': tutorials/genies-agent.md
-      - '🎼 Your First Multi-Agent Orchestra': tutorials/first-orchestra.md
-  - '💎 SuperSpec':
-      - '💎 Overview': guides/superspec.md
-      - '📗 DSL Reference': reference/api/superspec.md
-      - '📙 DSL Examples': guides/superspec#examples
-      - '⚙️ Configuration': guides/superspec-configuration.md
+      - '🎓 Tutorials':
+          - '📚 Tutorials Overview': tutorials/index.md
+          - '🔮 Your First Agent (Oracle)': tutorials/oracles-agent.md
+          - '🧞 Agent with Tools & RAG (Genie)': tutorials/genies-agent.md
+  - 🔬 Frameworks:
+      - '📚 Frameworks Overview': guides/index.md
+      - '🌐 Comparison': guides/multi-framework.md
+      - '🤖 OpenAI SDK': guides/openai-sdk-integration.md
+      - '👥 CrewAI': guides/crewai-integration.md
+      - '⚡ CrewAI Advanced': guides/crewai-task-optimization.md
+      - '🔮 Google ADK': guides/google-adk-integration.md
+      - '🏢 Microsoft': guides/microsoft-framework-integration.md
+      - '🌊 DeepAgents': guides/deepagents-integration.md
+  - 📝 SuperSpec:
+      - '📝 SuperSpec Overview': guides/superspec.md
+      - '📗 DSL Reference': guides/superspec-dsl-reference.md
+      - '📙 DSL Examples': guides/superspec-dsl-examples.md
       - '🏗️ Agent Building': guides/superspec-agent-building.md
+      - '⚙️ Configuration': guides/superspec-configuration.md
       - '🧠 Context Engineering': guides/superspec-context-engineering.md
-  - '📚 Guides':
-      - '📖 Overview': guides/index.md
-      - '🎭 Agent Tiers': guides/tiers.md
+  - 🛠️ Build:
+      - '🏆 Agent Tiers': guides/tiers.md
+      - '🎨 Agent Patterns': agent-patterns.md
       - '🔍 Agent Discovery': guides/agent-discovery.md
       - '🤖 Agent Development': guides/agent-development.md
-      - '🛠️ Tool Development': guides/tool-development.md
+      - '🔧 Tool Development': guides/tool-development.md
+      - '🏛️ Technical Architecture': guides/technical-architecture.md
+  - ✅ Evaluate:
+      - '✅ Evaluation & Testing': guides/evaluation-testing.md
+      - '🎭 RSpec-Style BDD Testing': guides/bdd.md
+  - 🎯 Agent Optimization:
+      - '📖 Overview': guides/agent-optimization/overview.md
+      - '💬 Prompt Optimization': guides/agent-optimization/prompts.md
+      - '🔍 RAG Optimization': guides/agent-optimization/rag.md
+      - '🛠️ Tool Optimization': guides/agent-optimization/tools.md
+      - '🧠 Memory Optimization': guides/agent-optimization/memory.md
+      - '🔌 Protocol Optimization (MCP)': guides/agent-optimization/protocols.md
+      - '📊 Dataset-Driven Optimization': guides/agent-optimization/datasets.md
+      - '🎯 Full-Stack Example': guides/agent-optimization/full-stack-example.md
+  - ⚡ Optimize:
+      - '🧬 GEPA Optimizer': guides/gepa-optimization.md
+      - '📈 Optimization Guide': guides/optimization.md
+      - '🔬 DSPy Optimizers': guides/dspy-optimizers.md
+      - '🔍 RAG Optimization': tutorials/rag-optimization.md
+      - '🔌 MCP Optimization': tutorials/mcp-optimization.md
+      - '💡 Memory Optimization': guides/memory-optimization.md
+  - 🎼 Orchestrate:
       - '🎼 Orchestra Development': guides/orchestra-development.md
-      - '🚀 GEPA Optimization': guides/gepa-optimization.md
-      - '⚙️ DSPy Optimizers': guides/dspy-optimizers.md
-      - '🏪 Marketplace': guides/marketplace.md
-      - '☁️ Cloud Inference': guides/cloud-inference.md
-      - '🎯 Model Management': guides/model-management.md
-      - '⚡ Optimas Integration': guides/optimas-integration.md
-      - '🏗️ Technical Architecture': guides/technical-architecture.md
-      - '📊 Observability': guides/observability.md
-      - '🧪 MLFlow Guide': guides/mlflow-guide.md
-      - '🔍 LangFuse Guide': guides/langfuse-integration.md
-      - '💻 CLI Reference': reference/cli.md
-      - '🔌 API Reference': reference/api/index.md
-      - '❓ FAQ': faq.md
-      - '🤝 Contributing': development/contributing.md
-      - '🏗️ Development Guide': development/index.md
-      - '🐛 Debugging': debugging-guide.md
-      - '🤖 Responsible AI': guides/responsible-ai.md
-  - '🔬 Techniques':
-      - '📖 Overview': techniques/index.md
-      - '🧠 Memory': guides/memory.md
-      - '🔍 RAG': guides/rag.md
-      - '⚡ Optimization': guides/optimization.md
-      - '🧪 Evaluation': guides/evaluation-testing.md
-      - '🧠 Model Intelligence (Coming Soon)': guides/model-intelligence.md
-      - '✅ BDD': guides/bdd.md
-      - '📊 Observability': guides/observability.md
-      - '⚙️ CI/CD': guides/cicd-integration.md
-  - '🔌 Integrations':
-      - '📖 Overview': examples/index.md
+      - '🎼 Multi-Agent Orchestra': tutorials/first-orchestra.md
+  - 📊 Monitor:
+      - '📊 Observability Overview': guides/observability.md
+      - '🧿 MLFlow': guides/mlflow-guide.md
+      - '🧬 LangFuse': guides/langfuse-integration.md
+      - '📈 Weights & Biases': guides/weights-biases-integration.md
+      - '⚖️ Comparison': guides/observability-comparison.md
+      - '🚀 Enhanced': guides/enhanced-observability.md
+  - 🗄️ Context:
+      - '🔍 RAG & MCP Guide': guides/mcp-rag-complete-guide.md
+      - '📚 RAG Configuration': guides/rag.md
+      - '🔌 MCP Protocol': guides/protocol-first-agents.md
+      - '📊 Dataset Import': guides/dataset-import.md
+      - '🧠 Memory Systems': guides/memory.md
+  - 🔌 Integrations:
       - '⚡ Optimas': examples/agents/optimas-examples.md
-      - '💻 MLX': examples/agents/mlx-demo.md
-      - '🐼 Ollama': examples/agents/ollama-demo.md
-      - '🤗 HuggingFace': examples/agents/huggingface-demo.md
-      - '🎛️ LM Studio': examples/agents/lmstudio-demo.md
+      - '⚡ Optimas Guide': guides/optimas-integration.md
       - '🚥 ChromaDB': examples/agents/rag-chroma-demo.md
       - '🍀 LanceDB': examples/agents/rag-lancedb-demo.md
       - '🔰 Weaviate': examples/agents/weaviate-demo.md
-      - '🔸Qdrant': examples/agents/qdrant-demo.md
+      - '🔸 Qdrant': examples/agents/qdrant-demo.md
       - '👁️ Milvus': examples/agents/milvus-demo.md
       - '🛠️ Tools': examples/agents/tools-demo.md
       - '🧠 Memory': examples/agents/memory-demo.md
       - '📊 Observability': examples/agents/observability-demo.md
       - '🧿 MLFlow': examples/agents/mlflow-integration.md
       - '🧬 LangFuse': examples/agents/langfuse-integration.md
-      - '🚀 GEPA Integration': examples/agents/gepa-integration.md
-  - '🏢 Company':
-      - '🚀 Superagentic AI': superagentic-ai.md
-      - '🎯 Mission SuperOptiX': mission-superoptix.md
+      - '🚀 GEPA': examples/agents/gepa-integration.md
+  - 💻 CLI:
+      - '📘 CLI Complete Guide': guides/cli-complete-guide.md
+      - '💬 Conversational Interface': guides/conversational-interface.md
+      - '📖 CLI Reference': reference/cli.md
+  - 🤖 Models:
+      - '🧠 Model Management': guides/model-management.md
+      - '💡 Model Intelligence': guides/model-intelligence.md
+      - '💻 Local Inference':
+          - '💻 MLX (Apple Silicon)': examples/agents/mlx-demo.md
+          - '🐼 Ollama': examples/agents/ollama-demo.md
+          - '🤗 HuggingFace': examples/agents/huggingface-demo.md
+          - '🎛️ LM Studio': examples/agents/lmstudio-demo.md
+      - '☁️ Cloud & Production':
+          - '☁️ Cloud Inference (OpenAI, Anthropic, Google)': guides/cloud-inference.md
+          - '🚀 vLLM (High-Performance Serving)': guides/vllm-inference.md
+          - '⚡ SGLang (Structured Generation)': guides/sglang-inference.md
+  - 📚 Examples:
+      - '📚 Examples Overview': examples/index.md
+      - '⚡ Optimas': examples/agents/optimas-examples.md
+      - '🚥 ChromaDB RAG': examples/agents/rag-chroma-demo.md
+      - '🍀 LanceDB RAG': examples/agents/rag-lancedb-demo.md
+      - '🔰 Weaviate': examples/agents/weaviate-demo.md
+      - '🔸 Qdrant': examples/agents/qdrant-demo.md
+      - '👁️ Milvus': examples/agents/milvus-demo.md
+      - '🛠️ Tools': examples/agents/tools-demo.md
+      - '🧠 Memory': examples/agents/memory-demo.md
+      - '📊 Observability': examples/agents/observability-demo.md
+      - '🧿 MLFlow Integration': examples/agents/mlflow-integration.md
+      - '🧬 LangFuse Integration': examples/agents/langfuse-integration.md
+      - '📈 Weights & Biases': examples/agents/weights-biases-demo.md
+      - '🚀 GEPA': examples/agents/gepa-integration.md
+  - 🎯 Techniques:
+      - '🎯 Overview': techniques/index.md
+      - '🧠 Memory Systems': guides/memory.md
+      - '💡 Memory Optimization': guides/memory-optimization.md
+      - '🔍 RAG Integration': guides/rag.md
+      - '📈 Optimization': guides/optimization.md
+      - '✅ Evaluation & Testing': guides/evaluation-testing.md
+      - '📊 Observability': guides/observability.md
+      - '🎭 RSpec-Style BDD Testing': guides/bdd.md
+      - '🔄 CI/CD Integration': guides/cicd-integration.md
+      - '🚂 Rails Analogy (For Rails Devs)': guides/rails-analogy.md
+  - 🛍️ Marketplace:
+      - '🛍️ Marketplace Overview': guides/marketplace.md
+  - ✅ Responsible AI:
+      - '✅ Responsible AI Guide': guides/responsible-ai.md
+  - 🏢 Company:
+      - '🌟 Superagentic AI': superagentic-ai.md
+  - 📖 Reference:
+      - '📚 Overview': reference/index.md
+      - '🔧 API Reference':
+          - 'API Overview': reference/api/index.md
+          - '📝 SuperSpec API': reference/api/superspec.md
+          - '🧬 GEPA API': reference/api/gepa.md
+          - '🔬 DSPy Optimizers API': reference/api/dspy-optimizers.md
+          - '🏃 Runners API': reference/api/runners.md
+          - '🧠 Memory API': reference/api/memory.md
+          - '🤖 Models API': reference/api/models.md
+          - '🔧 Tools API': reference/api/tools.md
+          - '📊 Observability API': reference/api/observability.md
+          - '💻 CLI API': reference/api/cli.md
+          - '🔧 Core API': reference/api/core.md
+      - '❓ FAQ': faq.md
+      - '🐛 Debugging': debugging-guide.md
 
 copyright: Copyright © 2025 Superagentic AI. Made with ❤️ for the Agentic AI community. 
