@@ -1,23 +1,111 @@
-# 🚀 Superagentic AI
+# 🏢 Superagentic AI
 
-**Superagentic AI** is the full-stack agentic AI company behind **SuperOptiX** - pioneering a safer, future-ready AI ecosystem through innovative foundational pillars.
+<div align="center">
+  <img src="logo.png" alt="SuperOptiX Logo" width="200" style="margin-bottom: 10px;"/>
+  <h2 style="margin-top: 10px; margin-bottom: 10px;">Superagentic AI</h2>
+  <p style="margin-top: 10px; margin-bottom: 20px;"><strong>Building the future of autonomous AI systems</strong></p>
+</div>
 
-## 🌐 Website
-Visit our website: **[https://super-agentic.ai](https://super-agentic.ai)**
+<div align="center" style="margin: 30px 0;">
+  <a href="https://super-agentic.ai" style="background: #4CAF50; color: white; padding: 14px 28px; text-decoration: none; border-radius: 4px; margin: 5px; display: inline-block; font-weight: bold;">🌐 Visit Website</a>
+  <a href="../quick-start/" style="background: #2196F3; color: white; padding: 14px 28px; text-decoration: none; border-radius: 4px; margin: 5px; display: inline-block; font-weight: bold;">🚀 Get Started</a>
+  <a href="../guides/" style="background: #FF9800; color: white; padding: 14px 28px; text-decoration: none; border-radius: 4px; margin: 5px; display: inline-block; font-weight: bold;">📚 Documentation</a>
+</div>
 
-## 🎯 SuperOptiX by Superagentic AI
+---
 
-**SuperOptiX** is the revolutionary AI agent framework built by **Superagentic AI** - a comprehensive solution designed to create production-worthy AI agents that embody our vision for the future of autonomous AI systems.
+## 🎯 Who We Are
 
-As a full-stack agentic AI company, Superagentic AI has developed **SuperOptiX** with a focus on optimization, security, and human-AI collaboration. The framework's first two tiers - **Oracles** and **Genies** - are now available, making advanced AI agent capabilities accessible to the broader developer community.
+**Superagentic AI** is the full-stack agentic AI company behind **SuperOptiX**, pioneering a safer, future-ready AI ecosystem through innovative foundational pillars.
 
-SuperOptiX is designed to create AI agents that are:
+As a full-stack agentic AI company, we are building **SuperOptiX** - a comprehensive framework designed to create production-worthy AI agents that embody our vision for the future of autonomous AI systems.
 
-- **🔒 Secure** - Built with enterprise-grade security and safety measures
-- **⚡ Optimized** - Performance-first approach with intelligent optimization
-- **🛠️ Developer-Friendly** - Intuitive tools and comprehensive documentation
-- **🌐 Scalable** - Ready for production deployment at any scale
-- **🤝 Collaborative** - Designed for human-AI co-intelligence
+---
+
+## 🏗️ Our Mission
+
+SuperOptiX is more than just another AI framework, it's the embodiment of our commitment to building a safer, more intelligent, and more collaborative AI future. Our mission is to provide developers and organizations with the tools they need to create AI agents that are:
+
+<table style="width: 100%; border-collapse: collapse;">
+  <tr>
+    <td style="padding: 20px; text-align: center; width: 20%; border: 2px solid rgba(76, 175, 80, 0.3); background: rgba(76, 175, 80, 0.05);">
+      <h2>🔒</h2>
+      <h4>Production-Ready</h4>
+      <p>Built for real-world deployment at scale</p>
+    </td>
+    <td style="padding: 20px; text-align: center; width: 20%; border: 2px solid rgba(33, 150, 243, 0.3); background: rgba(33, 150, 243, 0.05);">
+      <h2>⚡</h2>
+      <h4>Performance-Optimized</h4>
+      <p>Designed with optimization as a first-class concern</p>
+    </td>
+    <td style="padding: 20px; text-align: center; width: 20%; border: 2px solid rgba(255, 152, 0, 0.3); background: rgba(255, 152, 0, 0.05);">
+      <h2>🛡️</h2>
+      <h4>Secure & Safe</h4>
+      <p>Enterprise-grade security and safety measures</p>
+    </td>
+    <td style="padding: 20px; text-align: center; width: 20%; border: 2px solid rgba(156, 39, 176, 0.3); background: rgba(156, 39, 176, 0.05);">
+      <h2>🤝</h2>
+      <h4>Human-Collaborative</h4>
+      <p>Designed for seamless human-AI interaction</p>
+    </td>
+    <td style="padding: 20px; text-align: center; width: 20%; border: 2px solid rgba(76, 175, 80, 0.3); background: rgba(76, 175, 80, 0.05);">
+      <h2>🌐</h2>
+      <h4>Scalable</h4>
+      <p>Ready to grow with your organization</p>
+    </td>
+  </tr>
+</table>
+
+---
+
+## 🚀 SuperOptiX: Our Flagship Product
+
+**SuperOptiX** is the revolutionary AI agent framework built by Superagentic AI. The framework's first two tiers, **Oracles** and **Genies**, are now available, making advanced AI agent capabilities accessible to the broader developer community.
+
+### 💎 Key Features
+
+<table style="width: 100%; border-collapse: collapse;">
+  <tr>
+    <td style="padding: 20px; width: 50%; vertical-align: top; border: 2px solid rgba(76, 175, 80, 0.3); background: rgba(76, 175, 80, 0.05);">
+      <h3 style="color: #4CAF50;">💎 SuperSpec DSL</h3>
+      <p><strong>Declarative agent specification</strong> with rapid development, type safety, and extensibility. Build complex agents in minutes, not days.</p>
+    </td>
+    <td style="padding: 20px; width: 50%; vertical-align: top; border: 2px solid rgba(33, 150, 243, 0.3); background: rgba(33, 150, 243, 0.05);">
+      <h3 style="color: #2196F3;">🏗️ Agent Pipelines</h3>
+      <p><strong>Automated workflows</strong> with custom agent building, secure coding practices, and seamless CI/CD integration.</p>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 20px; width: 50%; vertical-align: top; border: 2px solid rgba(255, 152, 0, 0.3); background: rgba(255, 152, 0, 0.05);">
+      <h3 style="color: #FF9800;">🧠 Memory Systems</h3>
+      <p><strong>Multi-modal memory</strong> with ChromaDB, LanceDB, Weaviate, Qdrant, Milvus support. Intelligent context management and long-term learning.</p>
+    </td>
+    <td style="padding: 20px; width: 50%; vertical-align: top; border: 2px solid rgba(156, 39, 176, 0.3); background: rgba(156, 39, 176, 0.05);">
+      <h3 style="color: #9C27B0;">🔍 RAG Integration</h3>
+      <p><strong>Vector database support</strong> with automated document processing, semantic search, and centralized knowledge management.</p>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 20px; width: 50%; vertical-align: top; border: 2px solid rgba(76, 175, 80, 0.3); background: rgba(76, 175, 80, 0.05);">
+      <h3 style="color: #4CAF50;">🛠️ Tool Ecosystem</h3>
+      <p><strong>Built-in and custom tools</strong> with intelligent tool orchestration and seamless API integration.</p>
+    </td>
+    <td style="padding: 20px; width: 50%; vertical-align: top; border: 2px solid rgba(33, 150, 243, 0.3); background: rgba(33, 150, 243, 0.05);">
+      <h3 style="color: #2196F3;">📊 Observability</h3>
+      <p><strong>Real-time monitoring</strong> with advanced debugging, performance analytics, and complete audit trails.</p>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 20px; width: 50%; vertical-align: top; border: 2px solid rgba(255, 152, 0, 0.3); background: rgba(255, 152, 0, 0.05);">
+      <h3 style="color: #FF9800;">🎼 Multi-Agent Orchestration</h3>
+      <p><strong>Agent teams</strong> with complex workflow management, resource optimization, and scalable architecture.</p>
+    </td>
+    <td style="padding: 20px; width: 50%; vertical-align: top; border: 2px solid rgba(156, 39, 176, 0.3); background: rgba(156, 39, 176, 0.05);">
+      <h3 style="color: #9C27B0;">🧬 GEPA Optimizer</h3>
+      <p><strong>Universal optimization</strong> across all frameworks with proven 37.5% → 80% improvements.</p>
+    </td>
+  </tr>
+</table>
 
 ## 🏗️ Our Foundational Pillars
 
@@ -49,7 +137,7 @@ AgentEx isn't just a nice-to-have. As agents become more prevalent in building a
 - **Performance Optimization** - Interfaces designed for speed and efficiency
 
 ### 🤝 Agentic Co-Intelligence
-The idea that humans and agents must evolve together — as orchestrators, trainers, validators, and high-context collaborators. This pillar focuses on:
+The idea that humans and agents must evolve together - as orchestrators, trainers, validators, and high-context collaborators. This pillar focuses on:
 
 - **Human-AI Collaboration** - Seamless interaction between humans and AI agents
 - **Training & Validation** - Human oversight and guidance for AI systems
@@ -103,7 +191,7 @@ SuperOptiX provides pure-class agent experience through:
 - **Optimized Interfaces** - Purpose-built environments for AI agents
 
 ### 🤝 Agentic Co-Intelligence
-Agentic Co-Intelligence is the idea that humans and agents must evolve together — as orchestrators, trainers, validators, and high-context collaborators.
+Agentic Co-Intelligence is the idea that humans and agents must evolve together - as orchestrators, trainers, validators, and high-context collaborators.
 
 SuperOptiX implements this through:
 - **Human-in-the-Loop** - Upper-tier controls for human oversight
@@ -119,19 +207,90 @@ We envision a world where AI agents are:
 - **Production-Ready** - Deployed at scale in real-world applications
 - **Ethical** - Operating with transparency and accountability
 
-## 📚 Learn More
+## 🎯 Our Vision
 
-### 🌐 Core Pillars
-- **[Agentic Co-Intelligence](https://super-agentic.ai/super-agentic-cointelligence)** - Discover our approach to human-AI collaboration
-- **[Agent Experience](https://super-agentic.ai/agent-experience)** - Learn about AgentEx principles and implementation
-- **[Agent Engineering](https://super-agentic.ai/agent-engineering)** - Explore our engineering methodologies and tools
+We envision a world where AI agents are:
 
-### 📖 Blog & Resources
-- **[Super Posts](https://super-agentic.ai/resources/super-posts)** - Latest insights, tutorials, and updates from our team
-
-### 🎧 Podcast
-Listen to **The Superagentic AI Show** on [Apple Podcasts](https://podcasts.apple.com/gb/podcast/the-superagentic-ai-show/id1816402510) for in-depth discussions about the future of AI and agentic systems.
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+  <tr style="background: rgba(33, 150, 243, 0.15); font-weight: bold;">
+    <td style="padding: 15px; border: 2px solid rgba(128, 128, 128, 0.3);">Vision Element</td>
+    <td style="padding: 15px; border: 2px solid rgba(128, 128, 128, 0.3);">Description</td>
+  </tr>
+  <tr style="background: rgba(76, 175, 80, 0.05);">
+    <td style="padding: 12px; border: 2px solid rgba(128, 128, 128, 0.3);"><strong style="color: #4CAF50;">🔒 Safe and Reliable</strong></td>
+    <td style="padding: 12px; border: 2px solid rgba(128, 128, 128, 0.3);">Built with security and safety as core principles</td>
+  </tr>
+  <tr style="background: rgba(33, 150, 243, 0.05);">
+    <td style="padding: 12px; border: 2px solid rgba(128, 128, 128, 0.3);"><strong style="color: #2196F3;">🧠 Intelligent and Adaptive</strong></td>
+    <td style="padding: 12px; border: 2px solid rgba(128, 128, 128, 0.3);">Capable of learning and evolving with their environment</td>
+  </tr>
+  <tr style="background: rgba(255, 152, 0, 0.05);">
+    <td style="padding: 12px; border: 2px solid rgba(128, 128, 128, 0.3);"><strong style="color: #FF9800;">🤝 Collaborative</strong></td>
+    <td style="padding: 12px; border: 2px solid rgba(128, 128, 128, 0.3);">Working seamlessly with humans and other agents</td>
+  </tr>
+  <tr style="background: rgba(156, 39, 176, 0.05);">
+    <td style="padding: 12px; border: 2px solid rgba(128, 128, 128, 0.3);"><strong style="color: #9C27B0;">🚀 Production-Ready</strong></td>
+    <td style="padding: 12px; border: 2px solid rgba(128, 128, 128, 0.3);">Deployed at scale in real-world applications</td>
+  </tr>
+  <tr style="background: rgba(76, 175, 80, 0.05);">
+    <td style="padding: 12px; border: 2px solid rgba(128, 128, 128, 0.3);"><strong style="color: #4CAF50;">✅ Ethical</strong></td>
+    <td style="padding: 12px; border: 2px solid rgba(128, 128, 128, 0.3);">Operating with transparency and accountability</td>
+  </tr>
+</table>
 
 ---
 
-*Superagentic AI is more than a company - we're a movement dedicated to building a safer, more intelligent, and more collaborative AI future. Join us in shaping the next generation of autonomous AI systems.* 
+## 🚀 Getting Started with SuperOptiX
+
+Ready to build the future of AI agents?
+
+<table style="width: 100%; border-collapse: collapse;">
+  <tr>
+    <td style="padding: 20px; text-align: center; width: 25%; border: 2px solid rgba(76, 175, 80, 0.3); background: rgba(76, 175, 80, 0.05);">
+      <h2>📦</h2>
+      <h4><a href="../setup/" style="color: #4CAF50; text-decoration: none; font-weight: bold;">Installation</a></h4>
+      <p>Quick setup and installation</p>
+    </td>
+    <td style="padding: 20px; text-align: center; width: 25%; border: 2px solid rgba(33, 150, 243, 0.3); background: rgba(33, 150, 243, 0.05);">
+      <h2>🚀</h2>
+      <h4><a href="../quick-start/" style="color: #2196F3; text-decoration: none; font-weight: bold;">Quick Start</a></h4>
+      <p>Build your first agent in minutes</p>
+    </td>
+    <td style="padding: 20px; text-align: center; width: 25%; border: 2px solid rgba(255, 152, 0, 0.3); background: rgba(255, 152, 0, 0.05);">
+      <h2>📚</h2>
+      <h4><a href="../guides/" style="color: #FF9800; text-decoration: none; font-weight: bold;">Documentation</a></h4>
+      <p>Comprehensive guides and tutorials</p>
+    </td>
+    <td style="padding: 20px; text-align: center; width: 25%; border: 2px solid rgba(156, 39, 176, 0.3); background: rgba(156, 39, 176, 0.05);">
+      <h2>💎</h2>
+      <h4><a href="../guides/superspec/" style="color: #9C27B0; text-decoration: none; font-weight: bold;">SuperSpec</a></h4>
+      <p>Learn our declarative DSL</p>
+    </td>
+  </tr>
+</table>
+
+---
+
+## 📚 Learn More About Superagentic AI
+
+<div align="center" style="margin: 30px 0;">
+  <a href="https://super-agentic.ai/super-agentic-cointelligence" style="background: #4CAF50; color: white; padding: 14px 28px; text-decoration: none; border-radius: 4px; margin: 5px; display: inline-block; font-weight: bold;">🤝 Agentic Co-Intelligence</a>
+  <a href="https://super-agentic.ai/agent-experience" style="background: #2196F3; color: white; padding: 14px 28px; text-decoration: none; border-radius: 4px; margin: 5px; display: inline-block; font-weight: bold;">🎯 Agent Experience</a>
+  <a href="https://super-agentic.ai/agent-engineering" style="background: #FF9800; color: white; padding: 14px 28px; text-decoration: none; border-radius: 4px; margin: 5px; display: inline-block; font-weight: bold;">⚙️ Agent Engineering</a>
+  <a href="https://super-agentic.ai/resources/super-posts" style="background: #9C27B0; color: white; padding: 14px 28px; text-decoration: none; border-radius: 4px; margin: 5px; display: inline-block; font-weight: bold;">📖 Blog</a>
+</div>
+
+### 🎧 The Superagentic AI Show
+
+Listen to our podcast on [Apple Podcasts](https://podcasts.apple.com/gb/podcast/the-superagentic-ai-show/id1816402510) for in-depth discussions about the future of AI and agentic systems.
+
+---
+
+<div align="center" style="margin: 40px 0;">
+  <p style="font-size: 1.3em; font-style: italic;"><em>Superagentic AI is more than a company, we're a movement dedicated to building a safer, more intelligent, and more collaborative AI future. Join us in shaping the next generation of autonomous AI systems.</em></p>
+</div>
+
+<div align="center" style="margin: 30px 0;">
+  <a href="https://super-agentic.ai" style="background: #4CAF50; color: white; padding: 16px 32px; text-decoration: none; border-radius: 4px; margin: 10px; display: inline-block; font-weight: bold; font-size: 1.1em;">🌐 Visit Our Website</a>
+  <a href="../quick-start/" style="background: #2196F3; color: white; padding: 16px 32px; text-decoration: none; border-radius: 4px; margin: 10px; display: inline-block; font-weight: bold; font-size: 1.1em;">🚀 Try SuperOptiX Free</a>
+</div> 

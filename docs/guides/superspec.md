@@ -1,10 +1,10 @@
-# 💎 SuperSpec - The Heart of Agent Building
+# 💎 SuperSpec - Universal Agent Specification
 
 <div style="text-align: center; margin: 3rem 0; padding: 2rem; background: linear-gradient(135deg, var(--md-primary-fg-color--light) 0%, var(--md-accent-fg-color--light) 25%, var(--md-primary-fg-color--lighter) 50%, var(--md-accent-fg-color--lighter) 75%, var(--md-primary-fg-color--lightest) 100%); border-radius: var(--border-radius); color: var(--md-default-fg-color); border: 2px solid var(--md-primary-fg-color--light);">
-    <h2 style="color: var(--md-default-fg-color);">💎 SuperSpec - The Heart of Agent Building</h2>
+    <h2 style="color: var(--md-default-fg-color);">💎 SuperSpec - Universal Agent Specification</h2>
     <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--md-default-fg-color);">
-        <strong>SuperSpec is our declarative DSL that makes agent building as simple as writing a specification.</strong><br>
-        Think of it as "Kubernetes for AI agents" - you describe what you want, and SuperOptiX builds the entire pipeline.
+        <strong>SuperSpec is our declarative DSL that works across all 6 major agent frameworks.</strong><br>
+        Think of it as "Kubernetes for AI agents" - you describe what you want, choose your framework, and SuperOptiX builds the entire pipeline.
     </p>
     
     <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
@@ -12,37 +12,43 @@
             <span style="font-size: 1.2rem;">📝</span> <strong>Declarative Agent Specs</strong>
         </div>
         <div style="background: rgba(255, 255, 255, 0.1); padding: 0.75rem 1.5rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <span style="font-size: 1.2rem;">🔧</span> <strong>Multi-Framework Support</strong>
+        </div>
+        <div style="background: rgba(255, 255, 255, 0.1); padding: 0.75rem 1.5rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2);">
             <span style="font-size: 1.2rem;">🧪</span> <strong>BDD-Style Testing</strong>
         </div>
         <div style="background: rgba(255, 255, 255, 0.1); padding: 0.75rem 1.5rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2);">
-            <span style="font-size: 1.2rem;">⚙️</span> <strong>Auto-Optimization</strong>
-        </div>
-        <div style="background: rgba(255, 255, 255, 0.1); padding: 0.75rem 1.5rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2);">
-            <span style="font-size: 1.2rem;">🏗️</span> <strong>Pipeline Generation</strong>
+            <span style="font-size: 1.2rem;">⚙️</span> <strong>GEPA Optimization</strong>
         </div>
     </div>
 </div>
 
 ## 🎯 **What is SuperSpec?**
 
-**SuperSpec** (pronounced `/suː.pər spɛk/`) is the **context and agent engineering specification language** for AI agents. It's designed to provide the **just-right context** to agents so they perform better - not too much, not too little, but striking the perfect balance.
+**SuperSpec** (pronounced `/suː.pər spɛk/`) is the **universal specification language** for AI agents across all major frameworks. It's designed to provide the **just-right context** to agents so they perform better - not too much, not too little, but striking the perfect balance.
 
-### **Core Philosophy**
+**🌟 Key Achievement**: One specification format works across DSPy, OpenAI SDK, CrewAI, Google ADK, Microsoft Agent Framework, and DeepAgents!
+
+### **Core Philosophy: Framework Freedom**
+
+SuperSpec enables you to:
+- **Choose Your Framework**: Select from 6 major frameworks based on your needs
+- **Keep Your Workflow**: Same compile → evaluate → optimize → run cycle
+- **Optimize Universally**: GEPA works across all frameworks
+- **Version Control Everything**: Git-based agent management
 
 ```mermaid
 graph LR
-    A[Context Engineering] --> B[Just-Right Context]
-    B --> C[Agent Performance]
-    C --> D[Strong Contracts]
-    D --> E[DSPy Signatures]
-    E --> F[Validated Output]
+    A[SuperSpec YAML] --> B[Choose Framework]
+    B --> C[Compile to Native Code]
+    C --> D[GEPA Optimization]
+    D --> E[Production Deployment]
     
     style A fill:#1e3a8a,stroke:#3b82f6,stroke-width:2px,color:#ffffff
     style B fill:#7c3aed,stroke:#a855f7,stroke-width:2px,color:#ffffff
     style C fill:#059669,stroke:#10b981,stroke-width:2px,color:#ffffff
     style D fill:#d97706,stroke:#f59e0b,stroke-width:2px,color:#ffffff
-    style E fill:#dc2626,stroke:#ef4444,stroke-width:2px,color:#ffffff
-    style F fill:#059669,stroke:#10b981,stroke-width:2px,color:#ffffff
+    style E fill:#059669,stroke:#10b981,stroke-width:2px,color:#ffffff
 ```
 
 ### **Context Engineering**
@@ -88,17 +94,95 @@ apiVersion: agent/v1                    # REQUIRED - Schema version
 kind: AgentSpec                        # REQUIRED - Object type
 metadata:                              # REQUIRED - Agent identity
 spec:                                  # REQUIRED - Agent specification
+  target_framework: string             # REQUIRED - Framework choice (dspy, openai, crewai, google-adk, microsoft, deepagents)
   language_model:                      # REQUIRED - LLM configuration
   persona:                             # OPTIONAL - Agent personality
-  tasks:                               # REQUIRED - Agent capabilities
+  tasks:                               # REQUIRED - Agent capabilities (framework-specific)
   agentflow:                           # OPTIONAL - Execution flow
   tools:                               # OPTIONAL - Tool integration
   memory:                              # OPTIONAL - Memory systems
   rag:                                 # OPTIONAL - Knowledge retrieval
   evaluation:                          # OPTIONAL - Quality metrics
-  feature_specifications:              # OPTIONAL - BDD scenarios
-  optimization:                        # OPTIONAL - Performance tuning
+  feature_specifications:              # REQUIRED - BDD scenarios (universal)
+  optimization:                        # OPTIONAL - GEPA optimization (universal)
 ```
+
+## 🔧 **Multi-Framework Support**
+
+### **Choosing Your Framework**
+
+SuperSpec supports 6 major agent frameworks. Select based on your needs:
+
+=== "🔬 DSPy"
+    ```yaml
+    spec:
+      target_framework: dspy  # Pure DSPy mode
+      language_model:
+        provider: ollama
+        model: llama3.1:8b
+    ```
+    **Best For**: Complex reasoning, 10+ optimizable variables
+
+=== "🤖 OpenAI SDK"
+    ```yaml
+    spec:
+      target_framework: openai  # OpenAI Agents SDK
+      language_model:
+        provider: ollama
+        model: gpt-oss:20b
+    ```
+    **Best For**: Simple & fast, works with Ollama
+
+=== "👥 CrewAI"
+    ```yaml
+    spec:
+      target_framework: crewai  # Multi-agent collaboration
+      language_model:
+        provider: ollama
+        model: llama3.1:8b
+    ```
+    **Best For**: Multi-agent teams, role-based agents
+
+=== "🔮 Google ADK"
+    ```yaml
+    spec:
+      target_framework: google-adk  # Gemini native
+      language_model:
+        provider: google
+        model: gemini-2.0-flash
+    ```
+    **Best For**: Gemini 2.0, free tier available
+
+=== "🏢 Microsoft"
+    ```yaml
+    spec:
+      target_framework: microsoft  # Enterprise Azure
+      language_model:
+        provider: ollama
+        model: gpt-oss:20b
+    ```
+    **Best For**: Enterprise Azure integration
+
+=== "🌊 DeepAgents"
+    ```yaml
+    spec:
+      target_framework: deepagents  # Complex planning
+      language_model:
+        provider: ollama
+        model: llama3.1:8b
+    ```
+    **Best For**: LangGraph planning, advanced reasoning
+
+### **Framework Comparison**
+
+| Framework | Variables | Local Models | Best For |
+|-----------|-----------|--------------|----------|
+| **DSPy** | 10+ | ✅ Ollama | Complex reasoning, research |
+| **OpenAI SDK** | 1 | ✅ Ollama | Simple & fast |
+| **CrewAI** | 5 | ✅ Ollama | Multi-agent teams |
+| **Google ADK** | 1 | ❌ Cloud only | Gemini native, free tier |
+| **Microsoft** | 1 | ✅ Ollama | Enterprise Azure |
+| **DeepAgents** | 1 | ✅ Ollama | Complex planning |
 
 ### **Learning Path: Beginner to Advanced**
 

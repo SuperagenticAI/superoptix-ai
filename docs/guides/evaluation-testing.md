@@ -1,15 +1,131 @@
-# Evaluation & Testing Guide
+# 🧪 Evaluation & Testing Guide
 
-SuperOptiX provides a comprehensive BDD (Behavior-Driven Development) evaluation framework that validates your agents against real-world scenarios. This guide covers how to test and validate your agents effectively.
+SuperOptiX provides **universal evaluation and testing** across all 6 major agent frameworks using BDD (Behavior-Driven Development) scenarios. Test your agents consistently regardless of framework choice.
 
-## What is BDD Evaluation?
+**🌟 Key Achievement**: Same evaluation workflow works across DSPy, OpenAI SDK, CrewAI, Google ADK, Microsoft Agent Framework, and DeepAgents!
+
+## Overview
+
+Evaluation in SuperOptiX follows a **universal BDD approach** that works seamlessly across all supported frameworks:
+
+- **🔧 Framework Agnostic**: Same evaluation commands work for all frameworks
+- **📊 BDD Scenarios**: Behavior-Driven Development testing approach
+- **⚡ Consistent Results**: Comparable metrics across frameworks
+- **🎯 Real-World Testing**: Scenarios that mirror actual usage
+- **🔄 Automated Validation**: CI/CD integration ready
+
+## 🎯 BDD Evaluation Across Frameworks
+
+### What is BDD Evaluation?
 
 BDD evaluation in SuperOptiX uses **feature specifications** (scenarios) to test agent behavior in realistic situations. Each scenario defines:
 - **Given**: The context or situation
-- **When**: The action or input
+- **When**: The action or input  
 - **Then**: The expected behavior or output
 
-This approach ensures your agents perform correctly in real-world scenarios before deployment.
+This approach ensures your agents perform correctly in real-world scenarios before deployment, **regardless of framework**.
+
+### Universal Evaluation Workflow
+
+**Step 1: Choose Your Framework & Pull Agent**
+
+=== "🔬 DSPy"
+    ```bash
+    super agent pull sentiment_analyzer
+    super agent compile sentiment_analyzer
+    super agent evaluate sentiment_analyzer
+    ```
+
+=== "🤖 OpenAI SDK"
+    ```bash
+    super agent pull assistant_openai
+    super agent compile assistant_openai
+    super agent evaluate assistant_openai
+    ```
+
+=== "👥 CrewAI"
+    ```bash
+    super agent pull researcher_crew
+    super agent compile researcher_crew
+    super agent evaluate researcher_crew
+    ```
+
+=== "🔮 Google ADK"
+    ```bash
+    super agent pull assistant_adk
+    super agent compile assistant_adk
+    super agent evaluate assistant_adk
+    ```
+
+=== "🏢 Microsoft"
+    ```bash
+    super agent pull assistant_microsoft
+    super agent compile assistant_microsoft
+    super agent evaluate assistant_microsoft
+    ```
+
+=== "🌊 DeepAgents"
+    ```bash
+    super agent pull research_agent_deepagents
+    super agent compile research_agent_deepagents
+    super agent evaluate research_agent_deepagents
+    ```
+
+**Step 2: Evaluate (Same Command for ALL!)**
+
+```bash
+# Universal evaluation command - works on ANY framework!
+super agent evaluate <agent_name>
+
+# Examples for each framework:
+super agent evaluate sentiment_analyzer        # DSPy
+super agent evaluate assistant_openai          # OpenAI SDK
+super agent evaluate researcher_crew           # CrewAI
+super agent evaluate assistant_adk             # Google ADK
+super agent evaluate assistant_microsoft       # Microsoft
+super agent evaluate research_agent_deepagents # DeepAgents
+```
+
+**Step 3: Optimize & Re-evaluate**
+
+```bash
+# Optimize with GEPA (universal optimizer)
+super agent optimize <agent_name> --auto medium
+
+# Re-evaluate optimized version
+super agent evaluate <agent_name> --load-optimized
+```
+
+## 📊 Multi-Framework Testing Results
+
+### **Proven Results Across Frameworks**
+
+| Framework | Agent | Baseline | After GEPA | Improvement | Status |
+|-----------|-------|----------|------------|-------------|--------|
+| **🔬 DSPy** | Sentiment Analyzer | 37.5% | 80.0% | +42.5 pts 🏆 | ✅ Proven |
+| **🤖 OpenAI SDK** | AI Assistant | 100% | 100% | Maintained ✅ | ✅ Proven |
+| **👥 CrewAI** | Research Crew | 75% | 100% | +25 pts ⭐ | ✅ Proven |
+| **🔮 Google ADK** | Assistant | - | - | Available | ✅ Available |
+| **🏢 Microsoft** | Assistant | - | - | Available | ✅ Available |
+| **🌊 DeepAgents** | Research Agent | - | - | Available | ✅ Available |
+
+### **Universal Evaluation Commands**
+
+**All frameworks use the same evaluation commands:**
+
+```bash
+# Standard evaluation (works for ALL frameworks)
+super agent evaluate <agent_name>
+
+# With optimization comparison
+super agent evaluate <agent_name> --load-optimized
+
+# Verbose output for debugging
+super agent evaluate <agent_name> --verbose
+
+# CI/CD integration
+super agent evaluate <agent_name> --format json --save-report results.json
+```
 
 ## CLI Command Options
 

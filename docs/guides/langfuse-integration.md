@@ -127,7 +127,7 @@ Expected output:
 │  🤖 COMPILATION IN PROGRESS                                                                              │
 │                                                                                                          │
 │  🎯 Agent: Developer Assistant                                                                           │
-│  🏗️ Framework: DSPy (default) Junior Pipeline — other frameworks coming soon
+│  🏗️ Framework: DSPy (default) Junior Pipeline - other frameworks coming soon
  │
 │  🔧 Process: YAML playbook → Executable Python pipeline                                                  │
 │  📁 Output: langfuse_demo/agents/developer/pipelines/developer_pipeline.py                               │

@@ -1,46 +1,108 @@
-# RAG (Retrieval-Augmented Generation) Guide
+# 🔍 RAG (Retrieval-Augmented Generation) Guide
 
-SuperOptiX provides comprehensive RAG (Retrieval-Augmented Generation) support that seamlessly integrates with DSPy pipelines and ReAct agents. This guide covers how to set up, configure, and use RAG with various vector database vendors.
+SuperOptiX provides **universal RAG support** across all 6 major agent frameworks, with powerful MCP (Model Context Protocol) integration for advanced knowledge retrieval.
+
+**🌟 Key Achievement**: RAG works seamlessly across DSPy, OpenAI SDK, CrewAI, Google ADK, Microsoft Agent Framework, and DeepAgents!
 
 ## Overview
 
 RAG enhances AI agents by providing them with access to external knowledge sources. Instead of relying solely on pre-trained knowledge, agents can retrieve relevant information from documents, databases, or other sources to provide more accurate and up-to-date responses.
 
-## Quick Start
+### **Multi-Framework RAG**
 
-### Basic RAG Setup
+RAG in SuperOptiX works consistently across all frameworks:
+- **🔧 Framework Agnostic**: Same RAG configuration works for all frameworks
+- **📊 MCP Integration**: Advanced Model Context Protocol support
+- **⚡ Multiple Vector DBs**: ChromaDB, LanceDB, Weaviate, Qdrant, Milvus
+- **🎯 Universal Optimization**: GEPA can optimize RAG-enhanced agents
+- **🔄 Consistent API**: Same configuration format across frameworks
 
-```python
-from agile.agents.qa.pipelines.qa_pipeline import QaPipeline
+## 🚀 Quick Start
 
-# Initialize pipeline with RAG
-pipeline = QaPipeline()
+### **Universal RAG Configuration**
 
-# Add documents to RAG system
-documents = [
-    {
-        'content': 'DSPy is a framework for optimizing LM prompts and weights.',
-        'metadata': {'source': 'docs', 'topic': 'framework'}
-    },
-    {
-        'content': 'Software testing ensures quality and reliability of applications.',
-        'metadata': {'source': 'docs', 'topic': 'testing'}
-    }
-]
+RAG works the same way across all frameworks! Just add the `rag` section to your playbook:
 
-pipeline.add_documents(documents)
+=== "🔬 DSPy"
+    ```yaml
+    spec:
+      target_framework: dspy
+      rag:
+        enabled: true
+        retriever_type: chroma
+        config:
+          top_k: 5
+          chunk_size: 512
+    ```
 
-# Query with RAG-enhanced responses
-result = await pipeline.forward("What is DSPy?")
-print(result['response'])
-```
+=== "🤖 OpenAI SDK"
+    ```yaml
+    spec:
+      target_framework: openai
+      rag:
+        enabled: true
+        retriever_type: chroma
+        config:
+          top_k: 5
+          chunk_size: 512
+    ```
 
-### Check RAG Status
+=== "👥 CrewAI"
+    ```yaml
+    spec:
+      target_framework: crewai
+      rag:
+        enabled: true
+        retriever_type: chroma
+        config:
+          top_k: 5
+          chunk_size: 512
+    ```
 
-```python
-status = pipeline.get_rag_status()
-print(f"RAG Enabled: {status['enabled']}")
-print(f"Vector DB Type: {status['vector_db_type']}")
+=== "🔮 Google ADK"
+    ```yaml
+    spec:
+      target_framework: google-adk
+      rag:
+        enabled: true
+        retriever_type: chroma
+        config:
+          top_k: 5
+          chunk_size: 512
+    ```
+
+=== "🏢 Microsoft"
+    ```yaml
+    spec:
+      target_framework: microsoft
+      rag:
+        enabled: true
+        retriever_type: chroma
+        config:
+          top_k: 5
+          chunk_size: 512
+    ```
+
+=== "🌊 DeepAgents"
+    ```yaml
+    spec:
+      target_framework: deepagents
+      rag:
+        enabled: true
+        retriever_type: chroma
+        config:
+          top_k: 5
+          chunk_size: 512
+    ```
+
+### **Universal Workflow**
+
+```bash
+# Same workflow for ALL frameworks!
+super agent compile <agent_name>  # RAG automatically configured
+super agent evaluate <agent_name>  # Test with knowledge retrieval
+super agent optimize <agent_name> --auto medium  # GEPA optimizes RAG-enhanced agents
+super agent run <agent_name>  # Use with RAG-enhanced responses
 ```
 
 ## RAG Configuration
@@ -72,7 +134,80 @@ spec:
 | `chunk_overlap` | int | 50 | Overlap between chunks |
 | `embedding_model` | string | all-MiniLM-L6-v2 | Sentence transformer model |
 
-## Supported Vector Databases
+## 🔌 MCP (Model Context Protocol) Integration
+
+SuperOptiX supports **MCP (Model Context Protocol)** for advanced RAG capabilities and tool integration.
+
+### **What is MCP?**
+
+MCP (Model Context Protocol) is a universal protocol for connecting AI agents to external data sources, tools, and knowledge bases. It provides:
+- **Standardized Connections**: Connect to any MCP server
+- **Advanced RAG**: Enhanced knowledge retrieval
+- **Tool Integration**: Seamless tool discovery and execution
+- **Multi-Framework Support**: Works across all frameworks
+
+### **MCP Configuration**
+
+```yaml
+spec:
+  target_framework: dspy  # Works with any framework
+  rag:
+    enabled: true
+    mcp:
+      enabled: true
+      servers:
+        - name: filesystem
+          command: npx
+          args: ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/docs"]
+        - name: git
+          command: npx
+          args: ["-y", "@modelcontextprotocol/server-git", "--repository", "/path/to/repo"]
+    config:
+      top_k: 5
+      chunk_size: 512
+```
+
+### **MCP Benefits**
+
+- ✅ **Universal Protocol**: Works across all frameworks
+- ✅ **Rich Integrations**: Connect to filesystems, databases, APIs, Git repos
+- ✅ **Tool Discovery**: Automatic tool detection and execution
+- ✅ **Enhanced RAG**: Better context retrieval with MCP servers
+- ✅ **GEPA Optimization**: Optimize MCP-enhanced agents with GEPA
+
+### **Example: MCP + RAG + Multi-Framework**
+
+```yaml
+apiVersion: agent/v1
+kind: AgentSpec
+metadata:
+  name: mcp_enhanced_agent
+spec:
+  target_framework: openai  # Works with ANY framework!
+  language_model:
+    provider: ollama
+    model: gpt-oss:20b
+  rag:
+    enabled: true
+    retriever_type: chroma
+    mcp:
+      enabled: true
+      servers:
+        - name: filesystem
+          command: npx
+          args: ["-y", "@modelcontextprotocol/server-filesystem", "./docs"]
+  optimization:
+    optimizer:
+      name: GEPA  # Optimize MCP-enhanced agents!
+      params:
+        auto: medium
+```
+
+**Learn More**: See our [MCP Protocol Guide](protocol-first-agents.md) for detailed MCP integration examples.
+
+---
+
+## 📦 Supported Vector Databases
 
 ### 1. ChromaDB (Recommended for Local Development)
 

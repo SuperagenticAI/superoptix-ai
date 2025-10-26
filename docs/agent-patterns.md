@@ -57,11 +57,11 @@ Oracles are single-purpose agents that provide fast question-answering capabilit
 
 **Key Capabilities:**
 
-- 🧩 **Single-step reasoning** — Direct question-to-answer mapping
-- 📝 **Template-based responses** — Consistent output formats
-- ⚡ **Built-in optimization** — DSPy-powered prompt tuning
-- 🛡️ **Simple validations** — Basic output verification
-- 🤖 **Any LLM support** — Works with any language model
+- 🧩 **Single-step reasoning** - Direct question-to-answer mapping
+- 📝 **Template-based responses** - Consistent output formats
+- ⚡ **Built-in optimization** - DSPy-powered prompt tuning
+- 🛡️ **Simple validations** - Basic output verification
+- 🤖 **Any LLM support** - Works with any language model
 
 ### Example Use Cases
 
@@ -111,11 +111,11 @@ Genies are multi-step reasoning agents that can interact with external systems t
 
 **Key Capabilities:**
 
-- 🧠 **Multi-step reasoning** — Chain-of-thought problem solving
-- 🛠️ **Dynamic tool selection** — Intelligent tool usage
-- 🗂️ **Memory integration** — Learning from interactions
-- 📚 **RAG support** — Knowledge retrieval from vector databases
-- 📞 **Function calling** — Advanced LLM capabilities
+- 🧠 **Multi-step reasoning** - Chain-of-thought problem solving
+- 🛠️ **Dynamic tool selection** - Intelligent tool usage
+- 🗂️ **Memory integration** - Learning from interactions
+- 📚 **RAG support** - Knowledge retrieval from vector databases
+- 📞 **Function calling** - Advanced LLM capabilities
 
 ### Example Use Cases
 
@@ -179,11 +179,11 @@ Protocols support emerging protocols like MCP (Model Context Protocol) and A2A (
 
 **Key Capabilities:**
 
-- 🔗 **Advanced agent protocols** — MCP, A2A integration
-- 🏗️ **Complex workflow management** — Multi-step business processes
-- 🧵 **Parallel orchestration** — Concurrent agent execution
-- 🚀 **Production deployment** — Enterprise-grade infrastructure
-- 🧬 **Advanced optimization** — Custom DSPy pipelines
+- 🔗 **Advanced agent protocols** - MCP, A2A integration
+- 🏗️ **Complex workflow management** - Multi-step business processes
+- 🧵 **Parallel orchestration** - Concurrent agent execution
+- 🚀 **Production deployment** - Enterprise-grade infrastructure
+- 🧬 **Advanced optimization** - Custom DSPy pipelines
 
 ### Example Use Cases
 
@@ -247,11 +247,11 @@ Superagents are multi-agent systems where a lead agent manages and coordinates o
 
 **Key Capabilities:**
 
-- 🤝 **Multi-agent coordination** — Lead agent management
-- 🪄 **Dynamic subagent spawning** — On-demand agent creation
-- 🕸️ **AgentLines integration** — Advanced orchestration
-- 🛰️ **High-level protocols** — Beyond MCP and A2A
-- 🗄️ **Resource management** — Compute and memory optimization
+- 🤝 **Multi-agent coordination** - Lead agent management
+- 🪄 **Dynamic subagent spawning** - On-demand agent creation
+- 🕸️ **AgentLines integration** - Advanced orchestration
+- 🛰️ **High-level protocols** - Beyond MCP and A2A
+- 🗄️ **Resource management** - Compute and memory optimization
 
 ### Example Use Cases
 
@@ -313,11 +313,11 @@ Sovereigns are autonomous AI systems that can discover agents based on tasks, ma
 
 **Key Capabilities:**
 
-- 🦾 **Autonomous decision-making** — Independent operation
-- 🔍 **Agent discovery** — Automatic agent selection
-- 🌐 **Cross-domain synthesis** — Multi-domain knowledge
-- 🕰️ **Real-time governance** — Dynamic management
-- 🛡️ **Enterprise-grade security** — Production security
+- 🦾 **Autonomous decision-making** - Independent operation
+- 🔍 **Agent discovery** - Automatic agent selection
+- 🌐 **Cross-domain synthesis** - Multi-domain knowledge
+- 🕰️ **Real-time governance** - Dynamic management
+- 🛡️ **Enterprise-grade security** - Production security
 
 ### Example Use Cases
 

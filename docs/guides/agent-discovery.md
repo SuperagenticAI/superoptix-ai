@@ -1,6 +1,6 @@
 # 🕵️‍♂️ Agent Discovery Guide
 
-Agent discovery in SuperOptiX is all about **creating and exploring agent playbooks**—the heart of context engineering for your agents.
+Agent discovery in SuperOptiX is all about **creating and exploring agent playbooks**-the heart of context engineering for your agents.
 
 ---
 
@@ -308,4 +308,4 @@ Your playbook can include:
 - Try the UI studio for visual design
 - Edit and version your playbooks as your needs evolve
 
-Agent discovery is the foundation of every great agentic system—start with a strong playbook, and everything else gets easier! 🚀 
+Agent discovery is the foundation of every great agentic system-start with a strong playbook, and everything else gets easier! 🚀 

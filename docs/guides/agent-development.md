@@ -150,7 +150,7 @@ super agent compile developer
 │  🤖 COMPILATION IN PROGRESS                                                                              │
 │                                                                                                          │
 │  🎯 Agent: Developer Assistant                                                                           │
-│  🏗️ Framework: DSPy Genies Pipeline — other frameworks coming soon                                      │
+│  🏗️ Framework: DSPy Genies Pipeline - other frameworks coming soon                                      │
 │  🔧 Process: YAML playbook → Executable Python pipeline                                                  │
 │  📁 Output: swe/agents/developer/pipelines/developer_pipeline.py                                        │
 │                                                                                                          │

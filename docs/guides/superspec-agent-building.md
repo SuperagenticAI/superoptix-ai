@@ -1,64 +1,81 @@
-# 🏗️ SuperSpec Agent Building
+# 🏗️ SuperSpec Agent Building - Multi-Framework
 
 <div style="text-align: center; margin: 2rem 0; padding: 1.5rem; background: linear-gradient(135deg, var(--md-primary-fg-color--light) 0%, var(--md-accent-fg-color--light) 50%, var(--md-primary-fg-color--lighter) 100%); border-radius: var(--border-radius); color: var(--md-default-fg-color); border: 2px solid var(--md-primary-fg-color--light);">
-    <h2 style="color: var(--md-default-fg-color);">🏗️ SuperSpec Agent Building</h2>
+    <h2 style="color: var(--md-default-fg-color);">🏗️ SuperSpec Agent Building - Multi-Framework</h2>
     <p style="font-size: 1.1rem; margin-bottom: 1rem; color: var(--md-default-fg-color);">
-        <strong>Build powerful AI agents with SuperSpec DSL</strong><br>
-        Based on the actual SuperOptiX library implementation
+        <strong>Build powerful AI agents across 6 major frameworks with SuperSpec DSL</strong><br>
+        One specification format, six frameworks: DSPy, OpenAI SDK, CrewAI, Google ADK, Microsoft, DeepAgents
     </p>
 </div>
 
 ## 📋 **Overview**
 
-Agent building in SuperSpec is the process of creating intelligent, autonomous systems using the SuperSpec Domain-Specific Language (DSL). This approach combines the power of DSPy with a structured, YAML-based specification format that makes agent development accessible, maintainable, and scalable.
+Agent building in SuperSpec is the process of creating intelligent, autonomous systems using the SuperSpec Domain-Specific Language (DSL). This approach combines framework flexibility with a structured, YAML-based specification format that makes agent development accessible, maintainable, and scalable.
+
+**🌟 Key Achievement**: Write once, deploy to any of 6 major frameworks!
 
 ## 🎯 **Agent Building Philosophy**
 
-### **1. Declarative Design**
+### **1. Framework Freedom**
 
-SuperSpec follows a **declarative approach** where you specify **what** the agent should do rather than **how** to do it. This separation of concerns allows the framework to handle the complex orchestration while you focus on defining the agent's capabilities and behavior.
+SuperSpec enables you to:
+- **Choose Your Framework**: Select from 6 major frameworks based on your needs
+- **Keep Your Specification**: Same YAML format works across all frameworks
+- **Universal Optimization**: GEPA works on all frameworks
+- **Consistent Workflow**: compile → evaluate → optimize → run
 
 ```mermaid
 graph TD
-    A[Declarative Specification] --> B[SuperSpec DSL]
-    B --> C[DSPy Compilation]
-    C --> D[Optimized Agent]
-    D --> E[Runtime Execution]
+    A[SuperSpec YAML] --> B{Choose Framework}
+    B -->|DSPy| C1[Pure DSPy Agent]
+    B -->|OpenAI SDK| C2[OpenAI Agent]
+    B -->|CrewAI| C3[CrewAI Agent]
+    B -->|Google ADK| C4[Gemini Agent]
+    B -->|Microsoft| C5[Azure Agent]
+    B -->|DeepAgents| C6[LangGraph Agent]
+    C1 & C2 & C3 & C4 & C5 & C6 --> D[GEPA Optimization]
+    D --> E[Production Deployment]
     
     style A fill:#1e3a8a,stroke:#3b82f6,stroke-width:2px,color:#ffffff
     style B fill:#7c3aed,stroke:#a855f7,stroke-width:2px,color:#ffffff
-    style C fill:#059669,stroke:#10b981,stroke-width:2px,color:#ffffff
     style D fill:#d97706,stroke:#f59e0b,stroke-width:2px,color:#ffffff
-    style E fill:#dc2626,stroke:#ef4444,stroke-width:2px,color:#ffffff
+    style E fill:#059669,stroke:#10b981,stroke-width:2px,color:#ffffff
 ```
 
-### **2. Tier-Based Architecture**
+### **2. Declarative Design**
 
-SuperSpec implements a **tiered architecture** that provides different levels of capability:
+SuperSpec follows a **declarative approach** where you specify **what** the agent should do rather than **how** to do it. This separation of concerns allows the framework to handle the complex orchestration while you focus on defining the agent's capabilities and behavior.
 
-| Tier | Capabilities | Use Cases |
-|------|-------------|-----------|
-| **Oracles** | Basic reasoning, text generation | Simple Q&A, content creation |
-| **Genies** | Advanced reasoning, tools, memory, RAG | Complex tasks, multi-step workflows |
+### **3. Framework Selection Guide**
+
+| Framework | Variables | Local Models | Best For |
+|-----------|-----------|--------------|----------|
+| **🔬 DSPy** | 10+ | ✅ Ollama | Complex reasoning, research |
+| **🤖 OpenAI SDK** | 1 | ✅ Ollama | Simple & fast |
+| **👥 CrewAI** | 5 | ✅ Ollama | Multi-agent teams |
+| **🔮 Google ADK** | 1 | ❌ Cloud only | Gemini native, free tier |
+| **🏢 Microsoft** | 1 | ✅ Ollama | Enterprise Azure |
+| **🌊 DeepAgents** | 1 | ✅ Ollama | Complex planning |
 
 ## 🏗️ **Agent Building Components**
 
-### **1. Core Building Blocks**
+### **1. Core Building Blocks (Universal)**
 
-Every SuperSpec agent consists of these fundamental components:
+Every SuperSpec agent consists of these fundamental components, **regardless of framework**:
 
 ```yaml
 metadata:
   name: "Agent Name"
   id: "agent_id"
   version: "1.0.0"
-  level: oracles|genies
 
 spec:
+  target_framework: dspy|openai|crewai|google-adk|microsoft|deepagents  # Choose your framework
   language_model: {...}
   persona: {...}
-  tasks: [...]
-  agentflow: [...]
+  tasks: [...]  # Framework-specific
+  feature_specifications: {...}  # Universal BDD scenarios
+  optimization: {...}  # Universal GEPA optimization
 ```
 
 ### **2. Language Model Configuration**

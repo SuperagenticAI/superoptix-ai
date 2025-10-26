@@ -1,10 +1,12 @@
-# Memory Systems Guide
+# 🧠 Memory Systems Guide
 
-SuperOptiX provides a comprehensive, multi-layered memory management system that gives agents sophisticated state management and persistence capabilities. This system addresses one of the key missing features in AI agent frameworks.
+SuperOptiX provides a **universal memory management system** that works across all 6 major agent frameworks, giving agents sophisticated state management and persistence capabilities.
+
+**🌟 Key Achievement**: Same memory system works across DSPy, OpenAI SDK, CrewAI, Google ADK, Microsoft Agent Framework, and DeepAgents!
 
 ## Overview
 
-The memory system consists of four main components working together:
+The memory system consists of four main components working together, **regardless of framework**:
 
 ### 1. Memory Backends
 Provides flexible storage options:
@@ -63,12 +65,139 @@ Manages hierarchical context across different scopes:
 - **Context Stack**: Hierarchical context management
 - **Automatic Persistence**: Context saved across sessions
 - **Context Merging**: Intelligent combination of multiple context layers
+- **Multi-Framework**: Works across all 6 frameworks
 
 Scopes:
 - **Global**: Persistent agent characteristics and learned patterns
 - **Session**: Current session data and preferences
 - **Task**: Specific task context and state
 - **Local**: Temporary, function-specific context
+
+## 🔧 Multi-Framework Memory Support
+
+### **Universal Memory Configuration**
+
+Memory works the same way across all frameworks! Just add the `memory` section to your playbook:
+
+=== "🔬 DSPy"
+    ```yaml
+    spec:
+      target_framework: dspy
+      memory:
+        enabled: true
+        backend: sqlite
+        short_term:
+          max_size: 100
+          retention_policy: lru
+        long_term:
+          enabled: true
+          semantic_search: true
+    ```
+
+=== "🤖 OpenAI SDK"
+    ```yaml
+    spec:
+      target_framework: openai
+      memory:
+        enabled: true
+        backend: sqlite
+        short_term:
+          max_size: 100
+          retention_policy: lru
+        long_term:
+          enabled: true
+          semantic_search: true
+    ```
+
+=== "👥 CrewAI"
+    ```yaml
+    spec:
+      target_framework: crewai
+      memory:
+        enabled: true
+        backend: sqlite
+        short_term:
+          max_size: 100
+          retention_policy: lru
+        long_term:
+          enabled: true
+          semantic_search: true
+    ```
+
+=== "🔮 Google ADK"
+    ```yaml
+    spec:
+      target_framework: google-adk
+      memory:
+        enabled: true
+        backend: sqlite
+        short_term:
+          max_size: 100
+          retention_policy: lru
+        long_term:
+          enabled: true
+          semantic_search: true
+    ```
+
+=== "🏢 Microsoft"
+    ```yaml
+    spec:
+      target_framework: microsoft
+      memory:
+        enabled: true
+        backend: sqlite
+        short_term:
+          max_size: 100
+          retention_policy: lru
+        long_term:
+          enabled: true
+          semantic_search: true
+    ```
+
+=== "🌊 DeepAgents"
+    ```yaml
+    spec:
+      target_framework: deepagents
+      memory:
+        enabled: true
+        backend: sqlite
+        short_term:
+          max_size: 100
+          retention_policy: lru
+        long_term:
+          enabled: true
+          semantic_search: true
+    ```
+
+### **Universal Workflow**
+
+```bash
+# Same workflow for ALL frameworks!
+super agent compile <agent_name>  # Memory automatically configured
+super agent evaluate <agent_name>  # Test with memory persistence
+super agent optimize <agent_name> --auto medium  # GEPA optimizes memory-enhanced agents
+super agent run <agent_name>  # Use with memory persistence
+```
+
+### **Memory + GEPA Optimization**
+
+Memory-enhanced agents can be optimized with GEPA:
+
+```yaml
+spec:
+  target_framework: openai  # Works with ANY framework!
+  memory:
+    enabled: true
+    backend: sqlite
+    long_term:
+      enabled: true
+      semantic_search: true
+  optimization:
+    optimizer:
+      name: GEPA  # Optimize memory-enhanced agents!
+      params:
+        auto: medium
+```
 
 ## Key Features
 

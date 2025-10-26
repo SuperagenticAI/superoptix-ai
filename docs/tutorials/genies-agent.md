@@ -9,7 +9,7 @@ You'll create a **Genie Tier Developer agent** with:
 - ⚡ Real DSPy-powered pipeline
 - 👀 Full tracing and observability
 
-It could be a real, production-grade agent—no toy examples! If you perform optimization and evaluation, you can make it production-worthy (unlike prompt-and-pray frameworks).
+It could be a real, production-grade agent-no toy examples! If you perform optimization and evaluation, you can make it production-worthy (unlike prompt-and-pray frameworks).
 
 ---
 
@@ -71,7 +71,7 @@ with advanced agent            │
                                │
 │     cd swe
                                │
-│     # You should see a .super file here – always run super commands from this
+│     # You should see a .super file here - always run super commands from this
 directory                      │
 │
                                │
@@ -155,7 +155,7 @@ tool_calling:
   tool_selection_strategy: auto
 ```
 
-✅ **RAG**: Retrieval-augmented generation (RAG) is available and ready to use with ChromaDB and a sentence-transformer embedding model. No ingestion is required at this step—RAG will be used automatically if needed.
+✅ **RAG**: Retrieval-augmented generation (RAG) is available and ready to use with ChromaDB and a sentence-transformer embedding model. No ingestion is required at this step-RAG will be used automatically if needed.
 
 🛠️ **Tools**: Web search, calculator, and file operations are enabled, with auto tool selection.
 
@@ -180,7 +180,7 @@ super agent compile developer
 │  🤖 COMPILATION IN PROGRESS                                                                                  │
 │                                                                                                              │
 │  🎯 Agent: Developer                                                                                         │
-│  🏗️ Framework: DSPy (default) Junior Pipeline — other frameworks coming soon
+│  🏗️ Framework: DSPy (default) Junior Pipeline - other frameworks coming soon
  │
 │  🔧 Process: YAML playbook → Executable Python pipeline                                                      │
 │  📁 Output: swe/agents/developer/pipelines/developer_pipeline.py                                             │
@@ -202,7 +202,7 @@ super agent compile developer
    • Promotes code reuse and modularity
    • Separates pipeline logic into reusable mixins
    • Ideal for building complex agents with shared components
-   • Built on DSPy – support for additional frameworks is on our roadmap
+   • Built on DSPy - support for additional frameworks is on our roadmap
 
 💡 Genies tier includes all Oracles features
 
@@ -524,7 +524,7 @@ super agent optimize developer
 │ 🔧 DSPy Optimization in progress                                                                             │
 │                                                                                                              │
 │ • This step fine-tunes prompts and may take several minutes.                                                 │
-│ • API calls can incur compute cost – monitor your provider dashboard.                                        │
+│ • API calls can incur compute cost - monitor your provider dashboard.                                        │
 │ • You can abort anytime with CTRL+C; your base pipeline remains intact.                                      │
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
@@ -977,7 +977,7 @@ You've successfully created a **sophisticated, production-ready AI agent** that 
 
 ### 🌟 **You're Now an AI Agent Engineer!**
 
-This isn't just a simple chatbot—you've built a **sophisticated AI system** that can:
+This isn't just a simple chatbot-you've built a **sophisticated AI system** that can:
 - **Solve complex problems** with systematic reasoning
 - **Access real-time information** through web search and tools
 - **Learn from interactions** and improve over time

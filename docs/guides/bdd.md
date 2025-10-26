@@ -1,8 +1,10 @@
-# 🎭 Behavior-Driven Development (BDD) in SuperOptiX
+# 🎭 RSpec-Style BDD in SuperOptiX
 
 ## 🎯 **What is BDD?**
 
 **Behavior-Driven Development (BDD)** is a software development methodology that bridges the gap between technical and non-technical stakeholders by describing software behavior in natural language. BDD focuses on **behavior** rather than implementation details.
+
+**RSpec** is the most popular BDD testing framework for Ruby and Ruby on Rails, created to make tests more readable and expressive. SuperOptiX follows RSpec's philosophy of clear, behavior-focused specifications for AI agents.
 
 ### **Core BDD Principles**
 
@@ -37,6 +39,29 @@ Feature: User Authentication
     Then I should be redirected to the dashboard
     And I should see my profile information
 ```
+
+### **RSpec-Style BDD (Ruby/Rails)**
+
+RSpec brings BDD to Ruby with a cleaner, more expressive syntax:
+
+```ruby
+# spec/models/user_spec.rb
+describe User do
+  describe '#authenticate' do
+    it 'logs in with valid credentials' do
+      user = User.create(email: 'test@example.com', password: 'secret')
+      expect(user.authenticate('secret')).to be true
+    end
+    
+    it 'rejects invalid passwords' do
+      user = User.create(email: 'test@example.com', password: 'secret')
+      expect(user.authenticate('wrong')).to be false
+    end
+  end
+end
+```
+
+SuperOptiX adapts this RSpec philosophy for AI agents!
 
 ## 🏗️ **BDD in Software Development**
 

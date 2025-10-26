@@ -43,15 +43,15 @@ drwxr-xr-x@  5 user  staff   ... tests/
 
 **Key files and folders:**
 
-- **📄 `.super`** — This file marks the root of your Agentic System. Always run `super` commands from this directory.
+- **📄 `.super`** - This file marks the root of your Agentic System. Always run `super` commands from this directory.
 
-- **⚙️ `pyproject.toml`** — Python package configuration for your agentic system.
+- **⚙️ `pyproject.toml`** - Python package configuration for your agentic system.
 
-- **📖 `README.md`** — Project overview and documentation.
+- **📖 `README.md`** - Project overview and documentation.
 
-- **📦 `swe/`** — Main Python package for your agentic modules and logic.
+- **📦 `swe/`** - Main Python package for your agentic modules and logic.
 
-- **🧪 `tests/`** — Place your tests here.
+- **🧪 `tests/`** - Place your tests here.
 
 ---
 
@@ -72,25 +72,25 @@ evals/      knowledge/  optimizers/ servers/    tools/
 
 **Directory meanings:**
 
-- **🤖 `agents/`** — Each agent lives in its own subdirectory here. Agent playbooks, pipelines, and optimized pipelines are stored here.
+- **🤖 `agents/`** - Each agent lives in its own subdirectory here. Agent playbooks, pipelines, and optimized pipelines are stored here.
 
-- **🛡️ `guardrails/`** — Guardrails for safety, validation, and compliance.
+- **🛡️ `guardrails/`** - Guardrails for safety, validation, and compliance.
 
-- **🧠 `memory/`** — Memory modules for your agents.
+- **🧠 `memory/`** - Memory modules for your agents.
 
-- **📡 `protocols/`** — Communication and orchestration protocols.
+- **📡 `protocols/`** - Communication and orchestration protocols.
 
-- **👥 `teams/`** — Multi-agent team configurations.
+- **👥 `teams/`** - Multi-agent team configurations.
 
-- **✅ `evals/`** — Evaluation scenarios and test cases.
+- **✅ `evals/`** - Evaluation scenarios and test cases.
 
-- **📚 `knowledge/`** — Knowledge bases and data sources.
+- **📚 `knowledge/`** - Knowledge bases and data sources.
 
-- **⚡ `optimizers/`** — Optimization strategies and modules.
+- **⚡ `optimizers/`** - Optimization strategies and modules.
 
-- **🌐 `servers/`** — Server and API integration code.
+- **🌐 `servers/`** - Server and API integration code.
 
-- **🔧 `tools/`** — Custom tools and utilities for your agents.
+- **🔧 `tools/`** - Custom tools and utilities for your agents.
 
 ---
 
@@ -146,8 +146,8 @@ super agent pull developer
 This creates a new agent directory structure:
 
 **📁 `swe/agents/developer/`**
-- **📋 `playbook/`** — Contains the agent's configuration files
-  - **📄 `developer_playbook.yaml`** — Agent definition and configuration
+- **📋 `playbook/`** - Contains the agent's configuration files
+  - **📄 `developer_playbook.yaml`** - Agent definition and configuration
 
 ---
 
@@ -160,10 +160,10 @@ super agent compile developer
 This generates a pipeline structure:
 
 **📁 `swe/agents/developer/`**
-- **📋 `playbook/`** — Agent configuration files
-  - **📄 `developer_playbook.yaml`** — Agent definition
-- **⚙️ `pipelines/`** — Generated pipeline files
-  - **🐍 `developer_pipeline.py`** — Executable agent pipeline
+- **📋 `playbook/`** - Agent configuration files
+  - **📄 `developer_playbook.yaml`** - Agent definition
+- **⚙️ `pipelines/`** - Generated pipeline files
+  - **🐍 `developer_pipeline.py`** - Executable agent pipeline
 
 ---
 
@@ -224,4 +224,4 @@ class DeveloperPipeline(
 
 - All `super` CLI commands (e.g., `super agent`, `super orchestra`, `super spec`) must be run from the root directory containing the `.super` file.
 - Each agent’s logic, playbooks, and pipelines are isolated in their own subdirectories under `agents/`.
-- The project is a standard Python package — you can ship and reuse it in other Agentic Systems. 
+- The project is a standard Python package - you can ship and reuse it in other Agentic Systems. 

@@ -1,62 +1,79 @@
-# DSPy Optimizers in SuperOptiX
+# 🔬 DSPy Optimizers: Pure DSPy Mode
 
-SuperOptiX provides comprehensive support for all major [DSPy](https://dspy.ai/) optimizers through an integrated factory system. This guide covers how to use DSPy's powerful [optimization capabilities](https://dspy.ai/learn/optimization/overview/) within the SuperOptiX framework.
+SuperOptiX provides **pure DSPy optimization** without mixing frameworks. Use DSPy's powerful optimization capabilities while maintaining clean, framework-specific workflows.
+
+**🌟 Key Achievement**: DSPy agents optimized with GEPA achieve **37.5% → 80%** improvement (+42.5 points)!
 
 ## Overview
 
 DSPy optimizers automatically improve your agent's prompts and reasoning patterns through systematic optimization. SuperOptiX enhances this with:
 
-- **Unified Factory System**: Single interface for all DSPy optimizers
+- **Pure DSPy Mode**: No SuperOptiX mixing - clean DSPy workflows
+- **Universal GEPA Integration**: Same GEPA optimizer works across all frameworks
 - **Memory-Optimized Configurations**: Safe defaults for various system specs
 - **Advanced Feedback Metrics**: Domain-specific evaluation functions
 - **Smart Answer Extraction**: Handles various output formats automatically
 - **Integration with SuperSpec**: Seamless YAML-based configuration
 
-## Available Optimizers
+## 🚀 GEPA: The Universal Optimizer
 
-### 🚀 **GEPA** - Graph Enhanced Prompting Algorithm
-*Reflective prompt evolution with advanced feedback*
+**GEPA (Graph Enhanced Prompting Algorithm)** is SuperOptiX's universal optimizer that works across **all 6 frameworks**, including DSPy. It's proven to deliver dramatic improvements with minimal training data.
+
+### DSPy + GEPA Results
+
+**Proven Performance on DSPy Agents:**
+- **Sentiment Analysis**: 37.5% → 80% (+42.5 points improvement)
+- **Variables Optimized**: 10+ (signature instructions, field descriptions, reasoning steps)
+- **Sample Efficiency**: Achieves improvements with just 3-10 scenarios
+- **Framework**: Pure DSPy (no mixing with other frameworks)
+
+### GEPA Configuration for DSPy
 
 ```yaml
-optimization:
-  optimizer:
-    name: GEPA
-    params:
-      metric: answer_exact_match
-      auto: light                    # light, medium, heavy
-      reflection_lm: qwen3:8b
-      reflection_minibatch_size: 3
-      skip_perfect_score: true
-      add_format_failure_as_feedback: true
+spec:
+  target_framework: dspy  # Pure DSPy mode
+  optimization:
+    optimizer:
+      name: GEPA
+      params:
+        metric: answer_exact_match
+        auto: medium                    # light, medium, intensive
+        reflection_lm: qwen3:8b
+        reflection_minibatch_size: 3
+        skip_perfect_score: true
+        add_format_failure_as_feedback: true
 ```
 
 **Key Features:**
 - **Reflective Learning**: Self-improving prompts through feedback
-- **Auto Modes**: `light` (fast), `medium` (balanced), `heavy` (thorough)
+- **Auto Modes**: `light` (fast), `medium` (balanced), `intensive` (thorough)
 - **Advanced Metrics**: 7 domain-specific feedback functions
 - **Memory Usage**: ~25GB peak
+- **Pure DSPy**: No framework mixing
 
 **Best For:** Complex reasoning tasks, mathematical problems, domain-specific optimization
 
-🎯 **See GEPA in Action**: Check out our [interactive GEPA demo repository](https://github.com/SuperagenticAI/gepa-eval) for hands-on examples with before/after comparisons and multiple hardware configurations.
+🎯 **See GEPA in Action**: Check out our [interactive GEPA demo repository](https://github.com/SuperagenticAI/gepa-eval) for hands-on examples with before/after comparisons.
 
 ---
 
-### ⚡ **SIMBA** - Stochastic Introspective Mini-Batch Ascent
-*Advanced optimization with mini-batch processing*
+### ⚡ **SIMBA** - Alternative DSPy Optimizer
+*Stochastic introspective mini-batch ascent (when GEPA isn't needed)*
 
 ```yaml
-optimization:
-  optimizer:
-    name: SIMBA
-    params:
-      metric: answer_exact_match
-      bsize: 8                       # Mini-batch size
-      num_candidates: 4              # Candidate prompts per step
-      max_steps: 4                   # Optimization steps
-      max_demos: 3                   # Few-shot examples
-      temperature_for_sampling: 0.2
-      temperature_for_candidates: 0.2
+spec:
+  target_framework: dspy  # Pure DSPy mode
+  optimization:
+    optimizer:
+      name: SIMBA
+      params:
+        metric: answer_exact_match
+        bsize: 8                       # Mini-batch size
+        num_candidates: 4              # Candidate prompts per step
+        max_steps: 4                   # Optimization steps
+        max_demos: 3                   # Few-shot examples
+        temperature_for_sampling: 0.2
+        temperature_for_candidates: 0.2
 ```
 
 **Key Features:**
@@ -64,8 +81,17 @@ optimization:
 - **Candidate Generation**: Multiple prompt variations per step
 - **Temperature Control**: Fine-tuned sampling parameters
 - **Memory Usage**: ~28GB peak
+- **Pure DSPy**: No framework mixing
 
-**Best For:** Large datasets, performance-critical applications, systematic improvement
+**When to Use SIMBA Instead of GEPA:**
+- Large datasets (SIMBA handles batches better)
+- Performance-critical applications (faster than GEPA)
+- When you prefer statistical optimization over reflective learning
+- When you have abundant training data
+
+**Performance Comparison:**
+- **GEPA**: 37.5% → 80% (+42.5 points) - Better for complex reasoning
+- **SIMBA**: Good for systematic improvement with large datasets
 
 ---
 
@@ -136,6 +162,57 @@ optimization:
 - **Memory Usage**: ~20GB peak
 
 **Best For:** Robust performance, ensemble methods, collaborative learning
+
+---
+
+## 🎯 Choosing the Right Optimizer
+
+### **Recommended: Start with GEPA** ⭐
+
+For most DSPy use cases, **GEPA is the recommended choice**:
+
+```yaml
+spec:
+  target_framework: dspy
+  optimization:
+    optimizer:
+      name: GEPA
+      params:
+        auto: medium  # Start here!
+```
+
+**Why GEPA?**
+- ✅ **Proven Results**: 37.5% → 80% improvement
+- ✅ **Sample Efficient**: Works with 3-10 scenarios
+- ✅ **Universal**: Same optimizer works across all frameworks
+- ✅ **Reflective Learning**: Self-improving prompts
+- ✅ **Domain Adaptable**: Incorporates domain-specific feedback
+
+### **When to Use Alternatives**
+
+| Optimizer | Use When | Memory | Speed | Best For |
+|-----------|----------|--------|-------|----------|
+| **GEPA** | Most cases ⭐ | ~25GB | Medium | Complex reasoning, domain-specific |
+| **SIMBA** | Large datasets | ~28GB | Fast | Batch processing, systematic improvement |
+| **MIPROv2** | Instruction tasks | ~20GB | Medium | Multi-step workflows, detailed reasoning |
+| **BootstrapFewShot** | Getting started | ~18GB | Fast | Baselines, limited data |
+| **BetterTogether** | Ensemble needs | ~20GB | Medium | Robust performance, collaboration |
+
+### **Quick Decision Guide**
+
+```bash
+# Start here for most cases
+super agent optimize <agent> --auto medium  # Uses GEPA
+
+# For large datasets
+super agent optimize <agent> --optimizer simba
+
+# For instruction-following tasks  
+super agent optimize <agent> --optimizer miprov2
+
+# For getting started
+super agent optimize <agent> --optimizer bootstrapfewshot
+```
 
 ---
 
@@ -243,33 +320,68 @@ optimizer = "BetterTogether"
 optimizer = "GEPA"
 ```
 
-## Usage Patterns
+## 🚀 DSPy Workflow with GEPA
 
-### Basic Optimization
-
-```yaml
-# In your agent playbook
-optimization:
-  optimizer:
-    name: BootstrapFewShot
-    params:
-      metric: answer_exact_match
-```
+### **Recommended Workflow** (GEPA-First)
 
 ```bash
-# Command line
-super agent optimize my_agent
+# 1. Initialize project
+super init my_dspy_project
+cd my_dspy_project
+
+# 2. Pull a DSPy agent
+super agent pull sentiment_analyzer  # Pure DSPy agent
+
+# 3. Compile (pure DSPy mode)
+super agent compile sentiment_analyzer
+
+# 4. Baseline evaluation
+super agent evaluate sentiment_analyzer
+
+# 5. Optimize with GEPA (recommended!)
+super agent optimize sentiment_analyzer --auto medium
+
+# 6. Evaluate optimized version
+super agent evaluate sentiment_analyzer --load-optimized
+
+# 7. Run the optimized agent
+super agent run sentiment_analyzer
 ```
 
-### Advanced Configuration
+### **Alternative Workflows**
+
+=== "SIMBA (Large Datasets)"
+    ```bash
+    super agent optimize sentiment_analyzer --optimizer simba
+    ```
+
+=== "MIPROv2 (Instructions)"
+    ```bash
+    super agent optimize sentiment_analyzer --optimizer miprov2
+    ```
+
+=== "BootstrapFewShot (Getting Started)"
+    ```bash
+    super agent optimize sentiment_analyzer --optimizer bootstrapfewshot
+    ```
+
+### **Pure DSPy Configuration**
 
 ```yaml
-optimization:
-  optimizer:
-    name: GEPA
-    params:
-      metric: advanced_math_feedback
-      auto: medium
+# agent_playbook.yaml
+apiVersion: agent/v1
+kind: AgentSpec
+metadata:
+  name: sentiment_analyzer
+spec:
+  target_framework: dspy  # Pure DSPy mode
+  optimization:
+    optimizer:
+      name: GEPA  # Recommended optimizer
+      params:
+        auto: medium
+        metric: answer_exact_match
+```
       reflection_lm: qwen3:8b
       reflection_minibatch_size: 3
       skip_perfect_score: true

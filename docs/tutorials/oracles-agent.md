@@ -57,7 +57,7 @@ super init swe
 │                                                                                                              │
 │  1. Move to your new project root and confirm setup:                                                         │
 │     cd swe                                                                                                   │
-│     # You should see a .super file here – always run super commands from this directory                      │
+│     # You should see a .super file here - always run super commands from this directory                      │
 │                                                                                                              │
 │  2. Pull your first agent:                                                                                   │
 │     super agent pull developer  # swap 'developer' for any agent name                                        │
@@ -149,7 +149,7 @@ super agent compile developer
 │  🤖 COMPILATION IN PROGRESS                                                                                  │
 │                                                                                                              │
 │  🎯 Agent: Developer Assistant                                                                               │
-│  🏗️ Framework: DSPy (default) Junior Pipeline — other frameworks coming soon
+│  🏗️ Framework: DSPy (default) Junior Pipeline - other frameworks coming soon
  │
 │  🔧 Process: YAML playbook → Executable Python pipeline                                                      │
 │  📁 Output: swe/agents/developer/pipelines/developer_pipeline.py                                             │
@@ -169,7 +169,7 @@ super agent compile developer
    • Promotes code reuse and modularity
    • Separates pipeline logic into reusable mixins
    • Ideal for building complex agents with shared components
-   • Built on DSPy – support for additional frameworks is on our roadmap
+   • Built on DSPy - support for additional frameworks is on our roadmap
 
 🎯 Oracles Tier Features
   ✅ Basic Predict and Chain of Thought modules
@@ -775,7 +775,7 @@ You've successfully created a **sophisticated Oracle-tier reasoning agent** that
 
 ### 🌟 **You're Now an AI Reasoning Engineer!**
 
-This isn't just a simple chatbot—you've built a **sophisticated reasoning system** that can:
+This isn't just a simple chatbot-you've built a **sophisticated reasoning system** that can:
 - **Analyze complex topics** with systematic thinking
 - **Provide structured explanations** with clear organization
 - **Decompose problems** into manageable components

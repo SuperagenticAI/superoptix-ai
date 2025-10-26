@@ -1,0 +1,604 @@
+# Multi-Framework Support Guide
+
+**SuperOptiX: The World's First Universal Agent Optimization Framework**
+
+Build agents in any of 6 major frameworks, then optimize them all with the same powerful GEPA engine.
+
+---
+
+## 📦 Installation
+
+### Core Installation
+
+```bash
+pip install superoptix==0.2.0b1 --pre
+```
+
+**Includes:** DSPy 3.0.4b1 (default framework)
+
+### Install Specific Frameworks
+
+```bash
+# OpenAI Agents SDK
+pip install superoptix[frameworks-openai]==0.2.0b1 --pre
+
+# Google ADK
+pip install superoptix[frameworks-google]==0.2.0b1 --pre
+
+# Microsoft Agent Framework
+pip install superoptix[frameworks-microsoft]==0.2.0b1 --pre
+
+# DeepAgents
+pip install superoptix[frameworks-deepagents]==0.2.0b1 --pre
+
+# CrewAI
+pip install superoptix[frameworks-crewai]==0.2.0b1 --pre
+
+# All frameworks at once
+pip install superoptix[frameworks]==0.2.0b1 --pre
+```
+
+---
+
+## Overview
+
+SuperOptiX is the **only framework** that allows you to:
+
+- ✅ Build agents in **6 major frameworks** (DSPy, OpenAI SDK, CrewAI, Google ADK, Microsoft, DeepAgents)
+- ✅ Optimize with **one universal optimizer** (GEPA)
+- ✅ Use **the same workflow** regardless of framework
+- ✅ Switch frameworks without rewriting code
+- ✅ Compare frameworks side-by-side
+
+---
+
+## Supported Frameworks
+
+### Framework Comparison
+
+| Framework | Status | Optimizable Variables | Local Models | Best For |
+|-----------|--------|----------------------|--------------|----------|
+| **DSPy** | ✅ Production | 10+ variables | ✅ Ollama | Complex reasoning, research |
+| **OpenAI SDK** | ✅ Production | 1 (instructions) | ✅ Ollama | Simple & fast agents |
+| **CrewAI** | ✅ Production | 5 (role+goal+backstory+task) | ✅ Ollama | Multi-agent teams |
+| **Google ADK** | ✅ Production | 1 (instruction) | ☁️ Gemini | Google ecosystem, free tier |
+| **Microsoft** | ✅ Production | 1 (instructions) | ✅ Ollama | Enterprise Azure, .NET |
+| **DeepAgents** | ✅ Production | 1 (system_prompt) | ✅ Ollama | Complex planning, LangGraph |
+
+---
+
+## Universal Workflow
+
+The same workflow works for **ALL frameworks**:
+
+```bash
+# 1. Create agent (SuperSpec YAML)
+# 2. Compile to your chosen framework
+super agent compile my_agent --framework [dspy|openai|crewai|google-adk|microsoft|deepagents]
+
+# 3. Evaluate
+super agent evaluate my_agent
+
+# 4. Optimize with GEPA (works on ALL frameworks!)
+super agent optimize my_agent --auto medium
+
+# 5. Re-evaluate
+super agent evaluate my_agent --load-optimized
+
+# 6. Run in production
+super agent run my_agent
+```
+
+---
+
+## Framework-Specific Guides
+
+### 1. DSPy (Stanford Research Framework)
+
+**Best for**: Complex reasoning, research, maximum optimization flexibility
+
+#### Quick Start
+
+```bash
+# Pull demo agent
+super agent pull sentiment_analyzer
+
+# Compile (DSPy is default)
+super agent compile sentiment_analyzer
+
+# Evaluate
+super agent evaluate sentiment_analyzer
+
+# Optimize
+super agent optimize sentiment_analyzer --auto medium
+
+# Run
+super agent run sentiment_analyzer
+```
+
+#### Configuration
+
+```yaml
+# playbook.yaml
+apiVersion: agent/v1
+kind: AgentSpec
+metadata:
+  name: my_dspy_agent
+spec:
+  target_framework: dspy  # or omit for default
+  language_model:
+    provider: ollama
+    model: llama3.1:8b
+    api_base: http://localhost:11434
+  persona:
+    role: Research Assistant
+    goal: Analyze complex topics
+```
+
+#### What GEPA Optimizes
+
+- Signatures (input/output specs)
+- Instructions for each module
+- Chain-of-thought prompts
+- Few-shot examples
+- Module connections
+
+**Proven Results**: 37.5% → 80% improvement
+
+---
+
+### 2. OpenAI Agents SDK (Simple & Fast)
+
+**Best for**: Simple agents, fast prototyping, Ollama compatibility
+
+#### Quick Start
+
+```bash
+# Pull demo agent
+super agent pull assistant_openai
+
+# Compile
+super agent compile assistant_openai --framework openai
+
+# Evaluate
+super agent evaluate assistant_openai
+
+# Optimize
+super agent optimize assistant_openai --auto medium
+
+# Run
+super agent run assistant_openai
+```
+
+#### Configuration
+
+```yaml
+# playbook.yaml
+spec:
+  target_framework: openai
+  language_model:
+    provider: ollama
+    model: llama3.1:8b
+    api_base: http://localhost:11434
+  persona:
+    instructions: |
+      You are a helpful AI assistant.
+      Provide clear, concise responses.
+```
+
+#### What GEPA Optimizes
+
+- Agent instructions (the main system prompt)
+
+**Proven Results**: 100% pass rate
+
+---
+
+### 3. CrewAI (Multi-Agent Teams)
+
+**Best for**: Multi-agent collaboration, role-based agents
+
+#### Quick Start
+
+```bash
+# Pull demo agents
+super agent pull researcher_crew
+super agent pull content_creator_crew
+
+# Compile
+super agent compile researcher_crew --framework crewai
+
+# Evaluate
+super agent evaluate researcher_crew
+
+# Optimize
+super agent optimize content_creator_crew --auto medium
+
+# Run
+super agent run researcher_crew
+```
+
+#### Configuration
+
+**Basic Agent Configuration**
+```yaml
+spec:
+  target_framework: crewai
+  language_model:
+    provider: ollama
+    model: llama3.1:8b
+  persona:
+    role: Research Analyst
+    goal: Conduct thorough research on topics
+    backstory: |
+      Experienced researcher with attention to detail.
+  tasks:
+    - name: research
+      description: Research the given topic
+      expected_output: Comprehensive research report
+```
+
+**Advanced: Combined Agent + Task Optimization**
+```yaml
+spec:
+  target_framework: crewai
+  persona:
+    role: Content Creator
+    goal: Create engaging content
+    backstory: |
+      Creative writer with audience engagement expertise.
+  tasks:
+    - name: write
+      description: Write compelling content about the topic
+      expected_output: Polished article ready for publication
+```
+
+#### What GEPA Optimizes
+
+GEPA can optimize:
+- **Agent profile**: role, goal, backstory
+- **Task configuration**: description, expected_output
+- **Combined optimization**: agent profile + task configuration for better results
+
+**Proven Results**: 100% pass rate
+
+---
+
+### 4. Google ADK (Gemini Native)
+
+**Best for**: Google ecosystem, Gemini integration, free tier
+
+#### Quick Start
+
+```bash
+# Set API key
+export GOOGLE_API_KEY="your-key-here"
+
+# Pull demo agent
+super agent pull assistant_adk
+
+# Compile
+super agent compile assistant_adk --framework google-adk
+
+# Evaluate
+super agent evaluate assistant_adk
+
+# Optimize
+super agent optimize assistant_adk --auto medium
+
+# Run
+super agent run assistant_adk
+```
+
+#### Configuration
+
+```yaml
+spec:
+  target_framework: google-adk
+  language_model:
+    provider: google
+    model: gemini-2.0-flash  # Free tier!
+  persona:
+    instructions: |
+      You are a helpful AI assistant powered by Google's Gemini.
+```
+
+#### What GEPA Optimizes
+
+- Agent instruction (system prompt)
+
+---
+
+### 5. Microsoft Agent Framework (Enterprise)
+
+**Best for**: Azure integration, .NET support, enterprise workflows
+
+#### Quick Start
+
+```bash
+# Pull demo agent
+super agent pull assistant_microsoft
+
+# Compile
+super agent compile assistant_microsoft --framework microsoft
+
+# Evaluate
+super agent evaluate assistant_microsoft
+
+# Optimize
+super agent optimize assistant_microsoft --auto medium
+
+# Run
+super agent run assistant_microsoft
+```
+
+#### Configuration
+
+**With Ollama**:
+```yaml
+spec:
+  target_framework: microsoft
+  language_model:
+    provider: ollama
+    model: gpt-oss:20b
+    api_base: http://localhost:11434
+```
+
+**With Azure OpenAI**:
+```yaml
+spec:
+  target_framework: microsoft
+  language_model:
+    provider: azure
+    azure_endpoint: https://your-resource.openai.azure.com
+    azure_deployment_name: gpt-4
+    azure_api_version: 2024-02-15-preview
+```
+
+#### What GEPA Optimizes
+
+- Agent instructions (system prompt)
+
+---
+
+### 6. DeepAgents (LangGraph Planning)
+
+**Best for**: Complex planning, multi-step reasoning, advanced workflows
+
+#### Quick Start
+
+```bash
+# Pull demo agent
+super agent pull research_agent_deepagents
+
+# Compile
+super agent compile research_agent_deepagents --framework deepagents
+
+# Evaluate
+super agent evaluate research_agent_deepagents
+
+# Optimize
+super agent optimize research_agent_deepagents --auto medium
+
+# Run
+super agent run research_agent_deepagents
+```
+
+#### Configuration
+
+```yaml
+spec:
+  target_framework: deepagents
+  language_model:
+    provider: ollama
+    model: llama3.1:8b
+  persona:
+    system_prompt: |
+      You are a research agent that plans and executes complex research tasks.
+```
+
+#### What GEPA Optimizes
+
+- System prompt (planning instructions)
+
+---
+
+## Choosing the Right Framework
+
+### Decision Matrix
+
+**Choose DSPy if**:
+- You need maximum optimization flexibility
+- You want to optimize multiple variables
+- You're doing research or complex reasoning
+- You want proven 37.5% → 80% improvements
+
+**Choose OpenAI SDK if**:
+- You want the simplest API
+- You need fast prototyping
+- You're building simple assistants
+- You want Ollama compatibility
+
+**Choose CrewAI if**:
+- You need multiple agents working together
+- You want role-based collaboration
+- You need task delegation
+- You want agent + task combined optimization
+
+**Choose Google ADK if**:
+- You're in the Google ecosystem
+- You want Gemini 2.0 Flash (free tier!)
+- You need session management
+- You want Google-native features
+
+**Choose Microsoft if**:
+- You're using Azure OpenAI
+- You need .NET integration
+- You're in enterprise environment
+- You want built-in observability
+
+**Choose DeepAgents if**:
+- You need complex planning graphs
+- You want LangGraph integration
+- You need multi-step reasoning
+- You want advanced agentic workflows
+
+---
+
+## Framework Switching
+
+Switch frameworks without rewriting code!
+
+```bash
+# Start with DSPy
+super agent compile my_agent --framework dspy
+super agent evaluate my_agent
+
+# Try OpenAI SDK
+super agent compile my_agent --framework openai
+super agent evaluate my_agent
+
+# Compare results!
+```
+
+---
+
+## Optimization Comparison
+
+### GEPA Results Across Frameworks
+
+| Framework | Demo Agent | Baseline | After GEPA | Improvement |
+|-----------|------------|----------|------------|-------------|
+| DSPy | sentiment_analyzer | 37.5% | 80.0% | +42.5 pts |
+| OpenAI SDK | assistant_openai | 100% | 100% | Maintained |
+| CrewAI | content_creator_crew | 75% | 100% | +25 pts |
+| Google ADK | assistant_adk | TBD | TBD | Ready |
+| Microsoft | assistant_microsoft | TBD | TBD | Ready |
+| DeepAgents | research_agent | TBD | TBD | Ready |
+
+---
+
+## Advanced: Multi-Framework Projects
+
+### Example: Compare All Frameworks
+
+```bash
+# Create project
+super init comparison_project
+cd comparison_project
+
+# Pull same agent for all frameworks
+for fw in dspy openai crewai google-adk microsoft deepagents; do
+  super agent pull assistant_${fw}
+  super agent compile assistant_${fw} --framework ${fw}
+  super agent evaluate assistant_${fw}
+  super agent optimize assistant_${fw} --auto medium
+  super agent evaluate assistant_${fw} --load-optimized
+done
+
+# Compare results!
+```
+
+---
+
+## CLI Quick Reference
+
+```bash
+# List all demo agents
+super agent list --pre-built
+
+# Pull specific framework demo
+super agent pull sentiment_analyzer      # DSPy
+super agent pull assistant_openai        # OpenAI SDK
+super agent pull researcher_crew         # CrewAI
+super agent pull assistant_adk           # Google ADK
+super agent pull assistant_microsoft     # Microsoft
+super agent pull research_agent_deepagents  # DeepAgents
+
+# Compile with framework
+super agent compile <agent> --framework <framework>
+
+# Evaluate
+super agent evaluate <agent>
+
+# Optimize (same command for all!)
+super agent optimize <agent> --auto medium
+
+# Run
+super agent run <agent>
+```
+
+---
+
+## Troubleshooting
+
+### Issue: "Framework not found"
+
+**Solution**: Install framework-specific dependencies
+
+```bash
+# OpenAI SDK
+pip install openai-agents-sdk
+
+# CrewAI
+pip install crewai
+
+# Google ADK
+pip install google-adk
+
+# Microsoft
+pip install agent-framework --pre
+
+# DeepAgents (LangGraph)
+pip install langgraph langchain-anthropic
+```
+
+### Issue: "Ollama not supported"
+
+**Solution**: Some frameworks have limitations
+
+- **Google ADK**: Requires Gemini API key (cloud only)
+- **DeepAgents**: Check LangChain compatibility
+
+### Issue: "Optimization not working"
+
+**Solution**: Ensure GEPA is configured
+
+```yaml
+spec:
+  optimization:
+    optimizer:
+      name: GEPA
+      params:
+        auto: medium
+```
+
+---
+
+## Next Steps
+
+1. **Try all frameworks**: Pull demo agents and compare
+2. **Read framework guides**: Check individual integration docs
+3. **Build custom agents**: Create your own with SuperSpec
+4. **Optimize everything**: GEPA works on all frameworks!
+
+### Framework-Specific Docs
+
+- [DSPy Integration](dspy-optimizers.md)
+- [OpenAI SDK Integration](openai-sdk-integration.md)
+- [CrewAI Integration](crewai-integration.md) & [Advanced](crewai-task-optimization.md)
+- [Google ADK Integration](google-adk-integration.md)
+- [Microsoft Integration](microsoft-framework-integration.md)
+- [DeepAgents Integration](deepagents-integration.md)
+
+### Related Docs
+
+- [GEPA Optimization](gepa-optimization.md)
+- [Evaluation & Testing](evaluation-testing.md)
+- [SuperSpec DSL](superspec.md)
+
+---
+
+**Status**: All 6 frameworks production-ready ✅  
+**GEPA Support**: Universal optimization across all frameworks ✅  
+**Documentation**: Complete ✅
