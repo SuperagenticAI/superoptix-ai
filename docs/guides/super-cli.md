@@ -61,6 +61,225 @@ super
 
 ---
 
+## 🔐 Authentication
+
+### Login with GitHub
+
+Super CLI supports secure authentication via GitHub OAuth for accessing cloud features and marketplace.
+
+#### First Time Login
+
+```bash
+SuperOptiX › /login
+```
+
+**What happens:**
+
+1. 🔗 **OAuth URL Generated** - Secure PKCE-based authentication
+2. 🌐 **Browser Opens** - GitHub authorization page
+3. ✅ **Authorize SuperOptiX** - Grant profile access
+4. 🔑 **Token Saved** - Credentials stored securely locally
+
+**Example output:**
+```
+🔑 Login to SuperOptiX
+
+Click the URL below to open in your browser:
+
+🔗 Click here to authenticate
+
+Or copy and paste this URL:
+https://fffpinwooyqblbpdxicq.supabase.co/auth/v1/authorize?...
+
+💡 After authenticating, return here and wait...
+
+⏳ Waiting for authentication...
+
+🔑 Completing authentication...
+
+✅ Successfully logged in!
+
+👤 User: OllyLondon
+📧 Email: ollybabalondon@gmail.com
+```
+
+!!! success "Secure OAuth 2.0 with PKCE"
+    SuperOptiX uses industry-standard OAuth 2.0 with PKCE (Proof Key for Code Exchange) for maximum security. Your GitHub password is never seen by SuperOptiX!
+
+---
+
+### Check Login Status
+
+```bash
+SuperOptiX › /whoami
+```
+
+**Shows your current authentication status:**
+
+```
+┌────────── 🔐 Authentication Status ──────────┐
+│  👤 Logged in as                             │
+│                                              │
+│  Username: @OllyLondon                       │
+│  Email: ollybabalondon@gmail.com             │
+│  Name: Olly                                  │
+│  Avatar: https://avatars.github...           │
+│                                              │
+│  Use /logout to sign out                     │
+└──────────────────────────────────────────────┘
+```
+
+**If not logged in:**
+```
+⚠️  Not logged in
+Run /login to authenticate with GitHub
+```
+
+---
+
+### Logout
+
+```bash
+SuperOptiX › /logout
+```
+
+**What it does:**
+
+1. 🚪 **Revokes Token** - Invalidates token on server
+2. 🗑️ **Clears Credentials** - Deletes local auth file
+3. 👋 **Confirms Logout** - Shows success message
+
+**Example output:**
+```
+🚪 Signing out...
+
+┌─────────────── 👋 See You Soon! ───────────────┐
+│  ✅ Logged out successfully!                    │
+│                                                 │
+│  Goodbye, @OllyLondon!                          │
+│                                                 │
+│  Your credentials have been cleared.            │
+│  To login again, use: /login                    │
+└─────────────────────────────────────────────────┘
+```
+
+!!! tip "Security Best Practice"
+    Always logout when using Super CLI on shared or public computers!
+
+---
+
+### Switch Accounts
+
+To switch between different GitHub accounts:
+
+```bash
+# 1. Logout from current account
+SuperOptiX › /logout
+
+# 2. Login with different account
+SuperOptiX › /login
+# (Authenticate with different GitHub account in browser)
+```
+
+---
+
+### Token-Based Login (Advanced)
+
+For CI/CD environments or automated workflows:
+
+```bash
+SuperOptiX › /login --token YOUR_ACCESS_TOKEN
+```
+
+!!! warning "Keep Tokens Secure"
+    Access tokens should be kept secret. Don't share them or commit them to version control!
+
+---
+
+### Authentication Features
+
+| Feature | Description | Command |
+|---------|-------------|---------|
+| **OAuth Login** | Secure GitHub authentication | `/login` |
+| **Token Login** | Direct token authentication | `/login --token <token>` |
+| **Check Status** | View current user | `/whoami` |
+| **Logout** | Sign out and clear credentials | `/logout` |
+| **Auto-Expiry** | Tokens expire after 1 hour | Automatic |
+| **Server Revocation** | Immediate token invalidation | On `/logout` |
+
+---
+
+### Security & Privacy
+
+**What's Protected:**
+- ✅ **OAuth 2.0 with PKCE** - Industry-standard security
+- ✅ **No Password Storage** - GitHub handles authentication
+- ✅ **Local Credentials** - Tokens stored in `~/.superoptix/auth.json`
+- ✅ **Limited Scopes** - Only reads your profile (email, name, avatar)
+- ✅ **Server Revocation** - Logout invalidates tokens immediately
+
+**Your Data:**
+- ✅ **Profile Only** - Email, username, avatar
+- ❌ **No Repo Access** - Can't read or modify repositories
+- ❌ **No Write Permissions** - Read-only profile access
+- ✅ **Revocable Anytime** - Logout or revoke in GitHub settings
+
+**Token Storage:**
+- 📁 **Location:** `~/.superoptix/auth.json`
+- 🔒 **Permissions:** User-only (600)
+- ⏱️ **Expiry:** Access token expires in 1 hour
+- 🔄 **Refresh:** Refresh token for seamless re-auth
+
+!!! info "Industry Standards"
+    Super CLI follows the same authentication approach as GitHub CLI, Heroku CLI, and other modern CLI tools.
+
+---
+
+### Troubleshooting
+
+#### Can't Login - Port Already in Use
+
+If you see "Port 54321 already in use":
+
+```bash
+# Check what's using the port
+lsof -i :54321
+
+# Kill the process (macOS/Linux)
+kill -9 <PID>
+
+# Try login again
+SuperOptiX › /login
+```
+
+#### OAuth Callback Fails
+
+If browser shows error after GitHub authorization:
+
+1. **Check Supabase Configuration:**
+   - Site URL should be `http://localhost:54321`
+   - Redirect URLs should include `http://localhost:54321/callback`
+
+2. **Try Again:**
+   ```bash
+   SuperOptiX › /logout  # Clear any partial state
+   SuperOptiX › /login   # Fresh login attempt
+   ```
+
+#### Token Expired
+
+If you see "Token expired" errors:
+
+```bash
+# Logout and login again
+SuperOptiX › /logout
+SuperOptiX › /login
+```
+
+**Tip:** Tokens expire after 1 hour. Re-login to get a fresh token.
+
+---
+
 ## 💬 Natural Language Mode
 
 ### Just Type What You Want
@@ -499,6 +718,10 @@ SuperOptiX › create an orchestra for them
 |---------|-------------|
 | `/help` | Full command reference with examples |
 | `/ask <question>` | Ask about SuperOptiX features |
+| `/login` | Login with GitHub OAuth |
+| `/login --token <token>` | Login with access token |
+| `/logout` | Logout and clear credentials |
+| `/whoami` | Show current logged-in user |
 | `/model list` | List available models |
 | `/model set <name>` | Switch to different model |
 | `/config` | Show current configuration |

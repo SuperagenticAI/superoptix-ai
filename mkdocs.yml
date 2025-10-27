@@ -192,8 +192,10 @@ nav:
       - '🚀 GEPA': examples/agents/gepa-integration.md
   - 💻 CLI:
       - '📘 CLI Complete Guide': guides/cli-complete-guide.md
-      - '💬 Conversational Interface': guides/conversational-interface.md
       - '📖 CLI Reference': reference/cli.md
+  - ✨ Super CLI (Beta):
+      - '💬 Overview': guides/super-cli.md
+      - '🔧 Technical Details': guides/conversational-interface.md
   - 🤖 Models:
       - '🧠 Model Management': guides/model-management.md
       - '💡 Model Intelligence': guides/model-intelligence.md
