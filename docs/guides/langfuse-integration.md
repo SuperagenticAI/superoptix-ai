@@ -134,7 +134,7 @@ Expected output:
 │                                                                                                          │
 ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 ✅ Successfully generated Genies-tier pipeline (mixin) at: 
-/Users/shashi/superagentic/SuperOptiX/langfuse_demo/langfuse_demo/agents/developer/pipelines/developer_pipeline.py
+/Users/local/superagentic/SuperOptiX/langfuse_demo/langfuse_demo/agents/developer/pipelines/developer_pipeline.py
 ```
 
 ## 🧪 Testing the Integration
@@ -310,7 +310,7 @@ Expected output:
 ```
 🚀 Running agent 'developer'...
 🔍 Tracing enabled for agent developer_20250714_212620
-📁 Traces will be stored in: /Users/shashi/superagentic/SuperOptiX/langfuse_demo/.superoptix/traces
+📁 Traces will be stored in: /Users/local/superagentic/SuperOptiX/langfuse_demo/.superoptix/traces
 🚀 Configuring llama3.1:8b with ollama for genies-tier capabilities
 ✅ Model connection successful: ollama/llama3.1:8b
 ✅ 3 tools configured successfully

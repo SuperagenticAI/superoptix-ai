@@ -266,8 +266,8 @@ function initializeCodeEnhancements() {
     });
   });
 
-  // Add line numbers to code blocks
-  document.querySelectorAll('pre code').forEach(addLineNumbers);
+  // Line numbers disabled - using CSS-only approach for better performance
+  // document.querySelectorAll('pre code').forEach(addLineNumbers);
 }
 
 function addLineNumbers(codeBlock) {
@@ -425,8 +425,8 @@ function initializeAnimations() {
     });
   }, observerOptions);
 
-  // Observe elements for animation
-  document.querySelectorAll('.hero-section, .feature-card, .md-typeset h2, .md-typeset table, .admonition').forEach(el => {
+  // Observe elements for animation (tables excluded to prevent layout issues)
+  document.querySelectorAll('.hero-section, .feature-card, .md-typeset h2, .admonition').forEach(el => {
     observer.observe(el);
   });
 

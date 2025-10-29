@@ -24,7 +24,7 @@ Perfect for simple to moderate complexity tasks with local models!
 ## 📦 Installation
 
 ```bash
-pip install superoptix[frameworks-openai]==0.2.0b1 --pre
+pip install superoptix[frameworks-openai]
 ```
 
 **Includes:**
@@ -86,7 +86,7 @@ super agent evaluate assistant_openai
 super agent optimize assistant_openai --auto medium
 
 # Run
-super agent run assistant_openai --query "What is Python?"
+super agent run assistant_openai --goal "What is Python?"
 ```
 
 ---
@@ -231,7 +231,7 @@ See if GEPA improved the already perfect 100% pass rate!
 ### Step 7: Run
 
 ```bash
-super agent run assistant_openai --query "Explain quantum computing"
+super agent run assistant_openai --goal "Explain quantum computing"
 ```
 
 ---

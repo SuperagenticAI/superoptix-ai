@@ -11,31 +11,31 @@ Build agents in any of 6 major frameworks, then optimize them all with the same 
 ### Core Installation
 
 ```bash
-pip install superoptix==0.2.0b1 --pre
+pip install superoptix
 ```
 
-**Includes:** DSPy 3.0.4b1 (default framework)
+**Includes:** Core framework with DSPy support
 
 ### Install Specific Frameworks
 
 ```bash
 # OpenAI Agents SDK
-pip install superoptix[frameworks-openai]==0.2.0b1 --pre
+pip install superoptix[frameworks-openai]
 
 # Google ADK
-pip install superoptix[frameworks-google]==0.2.0b1 --pre
+pip install superoptix[frameworks-google]
 
 # Microsoft Agent Framework
-pip install superoptix[frameworks-microsoft]==0.2.0b1 --pre
+pip install superoptix[frameworks-microsoft]
 
 # DeepAgents
-pip install superoptix[frameworks-deepagents]==0.2.0b1 --pre
+pip install superoptix[frameworks-deepagents]
 
 # CrewAI
-pip install superoptix[frameworks-crewai]==0.2.0b1 --pre
+pip install superoptix[frameworks-crewai]
 
 # All frameworks at once
-pip install superoptix[frameworks]==0.2.0b1 --pre
+pip install superoptix[frameworks]
 ```
 
 ---
@@ -547,7 +547,7 @@ pip install crewai
 pip install google-adk
 
 # Microsoft
-pip install agent-framework --pre
+pip install agent-framework
 
 # DeepAgents (LangGraph)
 pip install langgraph langchain-anthropic

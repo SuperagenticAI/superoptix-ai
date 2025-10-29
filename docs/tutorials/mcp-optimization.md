@@ -15,7 +15,7 @@ This tutorial covers:
 ### Install SuperOptiX with MCP Support
 
 ```bash
-pip install superoptix[mcp]==0.2.0b1 --pre
+pip install superoptix[mcp]
 ```
 
 **Includes:**
@@ -130,7 +130,7 @@ spec:
 super agent compile mcp_demo
 
 # Test automatic tool discovery
-super agent run mcp_demo --query "List all available tools"
+super agent run mcp_demo --goal "List all available tools"
 ```
 
 Expected output:
@@ -327,7 +327,7 @@ super agent compile mcp_demo --tracing detailed
 
 ```bash
 # Run with MCP monitoring
-super agent run mcp_demo --query "Analyze the codebase" --monitor
+super agent run mcp_demo --goal "Analyze the codebase" --monitor
 
 # View MCP-specific metrics
 super observe mcp-metrics mcp_demo
@@ -498,4 +498,4 @@ super observe mcp-metrics mcp_demo
 - [MCP Protocol Specification](https://modelcontextprotocol.io/)
 - [MCP Server Development](../guides/protocol-first-agents.md)
 - [GEPA Optimization Guide](../guides/gepa-optimization.md)
-- [Community Discord](https://discord.gg/superoptix)
+- [Community Discord](https://Documentation: https://superagenticai.github.io/superoptix-ai/)

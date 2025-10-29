@@ -15,12 +15,12 @@ This tutorial covers:
 ### Install SuperOptiX
 
 ```bash
-pip install superoptix==0.2.0b1 --pre
+pip install superoptix
 ```
 
 **For vector database support:**
 ```bash
-pip install superoptix[vectordb]==0.2.0b1 --pre
+pip install superoptix[vectordb]
 ```
 
 **Includes:**
@@ -149,7 +149,7 @@ echo "RAG systems improve AI responses with relevant context." > documents/rag.t
 super agent compile rag_chroma_demo
 
 # Test with sample query
-super agent run rag_chroma_demo --query "What is SuperOptiX?"
+super agent run rag_chroma_demo --goal "What is SuperOptiX?"
 ```
 
 Expected output:
@@ -293,7 +293,7 @@ super agent compile rag_chroma_demo --observability langfuse
 
 ```bash
 # Run with monitoring
-super agent run rag_chroma_demo --query "What is GEPA?" --monitor
+super agent run rag_chroma_demo --goal "What is GEPA?" --monitor
 
 # View metrics
 super observe metrics rag_chroma_demo
@@ -378,7 +378,7 @@ super agent compile rag_chroma_demo --embedding-model "all-MiniLM-L6-v2"
 **Irrelevant Context**
 ```bash
 # Enable query expansion
-super agent compile rag_chroma_demo --query-expansion
+super agent compile rag_chroma_demo --goal-expansion
 
 # Use hybrid search
 super agent compile rag_chroma_demo --search-type hybrid
@@ -396,4 +396,4 @@ super agent compile rag_chroma_demo --search-type hybrid
 - [RAG Best Practices](https://docs.superoptix.ai/guides/rag)
 - [Vector Database Comparison](../guides/multi-framework.md)
 - [GEPA Optimization Guide](../guides/gepa-optimization.md)
-- [Community Discord](https://discord.gg/superoptix)
+- [Community Discord](https://Documentation: https://superagenticai.github.io/superoptix-ai/)

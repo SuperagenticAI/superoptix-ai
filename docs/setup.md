@@ -5,10 +5,10 @@ Welcome to SuperOptiX! This guide will help you install the Full Stack Agentic A
 !!! tip "🚀 Quick Start"
     **New to SuperOptiX?** Start with our [Quick Start Guide](quick-start.md) after installation!
 
-!!! warning "Pre-Release Version 0.2.0b1"
-    This is a pre-release version. Use `--pre` flag for installation:
+!!! tip "Stable Release Available!"
+    SuperOptiX is now available as a stable release:
     ```bash
-    pip install superoptix==0.2.0b1 --pre
+    pip install superoptix
     ```
 
 ## 📋 Prerequisites
@@ -57,53 +57,51 @@ git --version  # Should show git version
 ## 🎯 Installation Methods
 
 !!! tip "Framework-Free Core"
-    **SuperOptiX 0.2.0b1 core is now framework-independent!** 🎉
+    **SuperOptiX core is now framework-independent!** 🎉
     
     Install only what you need. Choose from 6 AI frameworks, or use core without any.
 
 Choose your preferred installation method:
 
-=== "Core Only (Framework-Free)"
+=== "Core Only (Includes DSPy)"
     ```bash
-    pip install superoptix==0.2.0b1 --pre
+    pip install superoptix
     ```
-    **Includes:** CLI tools, SuperSpec DSL, YAML processing, template engine
+    **Includes:** CLI tools, SuperSpec DSL, YAML processing, template engine, DSPy
     
-    **Does NOT include:** Any AI frameworks (DSPy, CrewAI, etc.)
-    
-    **Use for:** Framework-independent workflows, custom integrations
+    **Use for:** GEPA optimization, DSPy pipelines, evaluation
 
 === "With DSPy Framework"
     ```bash
-    pip install superoptix[frameworks-dspy]==0.2.0b1 --pre
+    pip install superoptix[frameworks-dspy]
     ```
-    **Includes:** SuperOptiX core + DSPy 3.0.4b1 + GEPA 0.0.17
+    **Includes:** SuperOptiX core + DSPy + GEPA
     
     **Use for:** GEPA optimization, DSPy pipelines, evaluation
 
 === "With Specific Framework"
     ```bash
     # OpenAI Agents SDK
-    pip install superoptix[frameworks-openai]==0.2.0b1 --pre
+    pip install superoptix[frameworks-openai]
     
     # Google ADK
-    pip install superoptix[frameworks-google]==0.2.0b1 --pre
+    pip install superoptix[frameworks-google]
     
     # Microsoft Agent Framework
-    pip install superoptix[frameworks-microsoft]==0.2.0b1 --pre
+    pip install superoptix[frameworks-microsoft]
     
     # DeepAgents
-    pip install superoptix[frameworks-deepagents]==0.2.0b1 --pre
+    pip install superoptix[frameworks-deepagents]
     
     # CrewAI (conflicts with DSPy)
-    pip install superoptix[frameworks-crewai]==0.2.0b1 --pre
+    pip install superoptix[frameworks-crewai]
     ```
     
     **Choose ONE or COMBINE** (except DSPy + CrewAI)
 
 === "All DSPy-Compatible Frameworks"
     ```bash
-    pip install superoptix[frameworks]==0.2.0b1 --pre
+    pip install superoptix[frameworks]
     ```
     **Includes:** DSPy, OpenAI SDK, Google ADK, Microsoft, DeepAgents
     
@@ -111,13 +109,13 @@ Choose your preferred installation method:
 
 === "With MCP Optimization"
     ```bash
-    pip install superoptix[mcp]==0.2.0b1 --pre
+    pip install superoptix[mcp]
     ```
-    **Includes:** MCP SDK 1.19.0 for tool optimization
+    **Includes:** MCP SDK for tool optimization
 
 === "With Everything"
     ```bash
-    pip install superoptix[all]==0.2.0b1 --pre
+    pip install superoptix[all]
     ```
     **Includes:** All frameworks + MCP + vector DBs + observability
 
@@ -127,7 +125,7 @@ Choose your preferred installation method:
     curl -LsSf https://astral.sh/uv/install.sh | sh
     
     # Install SuperOptiX
-    uv pip install superoptix==0.2.0b1 --pre
+    uv pip install superoptix
     ```
 
 === "Using Conda"
@@ -137,7 +135,7 @@ Choose your preferred installation method:
     conda activate superoptix
     
     # Install SuperOptiX
-    pip install superoptix==0.2.0b1 --pre
+    pip install superoptix
     ```
 
 ## 🖥️ Platform-Specific Instructions
@@ -153,7 +151,7 @@ Choose your preferred installation method:
     curl -LsSf https://astral.sh/uv/install.sh | sh
     
     # Install SuperOptiX
-    uv pip install superoptix==0.2.0b1 --pre
+    uv pip install superoptix
     ```
     
     ### Using Conda
@@ -164,7 +162,7 @@ Choose your preferred installation method:
     # Create environment
     conda create -n superoptix python=3.11 -y
     conda activate superoptix
-    pip install superoptix==0.2.0b1 --pre
+    pip install superoptix
     ```
 
 === "🐧 Linux"
@@ -181,7 +179,7 @@ Choose your preferred installation method:
     curl -LsSf https://astral.sh/uv/install.sh | sh
     
     # Install SuperOptiX
-    uv pip install superoptix==0.2.0b1 --pre
+    uv pip install superoptix
     ```
     
     ### CentOS/RHEL/Fedora
@@ -196,7 +194,7 @@ Choose your preferred installation method:
     curl -LsSf https://astral.sh/uv/install.sh | sh
     
     # Install SuperOptiX
-    uv pip install superoptix==0.2.0b1 --pre
+    uv pip install superoptix
     ```
 
 === "🪟 Windows"
@@ -220,7 +218,7 @@ Choose your preferred installation method:
     powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
     
     # Install SuperOptiX
-    uv pip install superoptix==0.2.0b1 --prerelease=allow
+    uv pip install superoptix
     ```
     
     ### Using Conda
@@ -234,25 +232,25 @@ Choose your preferred installation method:
     # Create environment
     conda create -n superoptix python=3.11 -y
     conda activate superoptix
-    pip install superoptix==0.2.0b1 --pre
+    pip install superoptix
     ```
 
 ## 🔧 Optional Dependencies
 
 SuperOptiX is modular - install only what you need! Here are the available extras:
 
-### 🌐 Framework Support (NEW in 0.2.0b1)
+### 🌐 Framework Support
 
 SuperOptiX now supports 6 major AI agent frameworks. Install the ones you need:
 
-| Framework | Install Command | Version | Includes |
-|-----------|----------------|---------|----------|
-| **DSPy** ⭐ | `pip install superoptix[frameworks-dspy]==0.2.0b1 --pre` | 3.0.4b1 | DSPy + GEPA 0.0.17 |
-| **OpenAI SDK** | `pip install superoptix[frameworks-openai]==0.2.0b1 --pre` | 0.4.1 | openai-agents, openai SDK |
-| **Google ADK** | `pip install superoptix[frameworks-google]==0.2.0b1 --pre` | 1.17.0 | google-adk, google-generativeai |
-| **Microsoft** | `pip install superoptix[frameworks-microsoft]==0.2.0b1 --pre` | latest | agent-framework, azure-identity |
-| **DeepAgents** | `pip install superoptix[frameworks-deepagents]==0.2.0b1 --pre` | latest | deepagents |
-| **CrewAI** ⚠️ | `pip install superoptix[frameworks-crewai]==0.2.0b1 --pre` | 1.2.0 | crewai (conflicts with DSPy) |
+| Framework | Install Command | Includes |
+|-----------|----------------|----------|
+| **DSPy** ⭐ | `pip install superoptix[frameworks-dspy]` | DSPy + GEPA |
+| **OpenAI SDK** | `pip install superoptix[frameworks-openai]` | openai-agents, openai SDK |
+| **Google ADK** | `pip install superoptix[frameworks-google]` | google-adk, google-generativeai |
+| **Microsoft** | `pip install superoptix[frameworks-microsoft]` | agent-framework, azure-identity |
+| **DeepAgents** | `pip install superoptix[frameworks-deepagents]` | deepagents |
+| **CrewAI** ⚠️ | `pip install superoptix[frameworks-crewai]` | crewai (conflicts with DSPy) |
 
 ⭐ **Recommended:** DSPy for GEPA optimization  
 ⚠️ **Note:** CrewAI and DSPy cannot be installed together
@@ -262,10 +260,10 @@ SuperOptiX now supports 6 major AI agent frameworks. Install the ones you need:
 === "DSPy (Recommended)"
     ```bash
     # Install
-    pip install superoptix[frameworks-dspy]==0.2.0b1 --pre
+    pip install superoptix[frameworks-dspy]
     ```
     
-    **Includes:** DSPy 3.0.4b1 + GEPA 0.0.17
+    **Includes:** DSPy + GEPA
     
     **Use for:** GEPA optimization, evaluation, orchestration
     
@@ -274,7 +272,7 @@ SuperOptiX now supports 6 major AI agent frameworks. Install the ones you need:
 === "OpenAI SDK"
     ```bash
     # Install
-    pip install superoptix[frameworks-openai]==0.2.0b1 --pre
+    pip install superoptix[frameworks-openai]
     
     # For OpenAI API (optional, Ollama works too)
     export OPENAI_API_KEY=your-key
@@ -283,7 +281,7 @@ SuperOptiX now supports 6 major AI agent frameworks. Install the ones you need:
 === "Google ADK"
     ```bash
     # Install
-    pip install superoptix[frameworks-google]==0.2.0b1 --pre
+    pip install superoptix[frameworks-google]
     
     # Set API key
     export GOOGLE_API_KEY=your-google-api-key
@@ -292,7 +290,7 @@ SuperOptiX now supports 6 major AI agent frameworks. Install the ones you need:
 === "Microsoft"
     ```bash
     # Install
-    pip install superoptix[frameworks-microsoft]==0.2.0b1 --pre
+    pip install superoptix[frameworks-microsoft]
     
     # For Azure OpenAI
     export AZURE_OPENAI_ENDPOINT=your-endpoint
@@ -302,7 +300,7 @@ SuperOptiX now supports 6 major AI agent frameworks. Install the ones you need:
 === "DeepAgents"
     ```bash
     # Install
-    pip install superoptix[frameworks-deepagents]==0.2.0b1 --pre
+    pip install superoptix[frameworks-deepagents]
     ```
     
     **Use for:** LangGraph-based planning and complex workflows
@@ -310,22 +308,22 @@ SuperOptiX now supports 6 major AI agent frameworks. Install the ones you need:
 === "CrewAI"
     ```bash
     # Install
-    pip install superoptix[frameworks-crewai]==0.2.0b1 --pre
+    pip install superoptix[frameworks-crewai]
     ```
     
     ⚠️ **Cannot be installed with DSPy** (json-repair conflict)
     
     **Use for:** Multi-agent crew workflows without DSPy optimization
 
-### 🔌 MCP Tool Optimization (NEW in 0.2.0b1)
+### 🔌 MCP Tool Optimization
 
 Optimize MCP tool descriptions and system prompts with GEPA:
 
 ```bash
-pip install superoptix[mcp]==0.2.0b1 --pre
+pip install superoptix[mcp]
 ```
 
-**Includes:** MCP SDK 1.19.0
+**Includes:** MCP SDK
 
 **Use Cases:**
 - Optimize MCP tool descriptions

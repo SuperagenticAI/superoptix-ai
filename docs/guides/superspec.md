@@ -740,7 +740,7 @@ SuperSpec now supports all major DSPy optimizers with universal tier compatibili
 
 | Optimizer | Description | Strengths | Time Estimate |
 |-----------|-------------|-----------|---------------|
-| **🧠 GEPA** | Graph Enhanced Prompting Algorithm | Complex reasoning, math, reflective optimization | 3-30 min |
+| **🧠 GEPA** | Genetic-Pareto | Complex reasoning, math, reflective optimization | 3-30 min |
 | **⚡ SIMBA** | Stochastic Introspective Mini-Batch Ascent | Fast optimization, general tasks | 1-3 min |
 | **📝 MIPROv2** | Multi-step Instruction Prompt Optimization | Creative writing, sophisticated prompts | 2-15 min |
 | **🔄 BootstrapFewShot** | Bootstrap few-shot examples | Quick optimization, small datasets | 30-60 sec |

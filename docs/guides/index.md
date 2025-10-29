@@ -19,7 +19,7 @@ Choose your path based on what you want to accomplish:
 
 ### 🚀 **Advanced Optimization**
 - **[DSPy Optimizers](dspy-optimizers.md)** - Comprehensive guide to all DSPy optimizers (GEPA, SIMBA, MIPROv2, etc.)
-- **[GEPA Optimization](gepa-optimization.md)** - Deep dive into Graph Enhanced Prompting Algorithm
+- **[GEPA Optimization](gepa-optimization.md)** - Deep dive into Genetic-Pareto
 - **[Optimization Strategies](optimization.md)** - General optimization techniques and best practices
 - **[Evaluation & Testing](evaluation-testing.md)** - Measure and improve agent performance
 

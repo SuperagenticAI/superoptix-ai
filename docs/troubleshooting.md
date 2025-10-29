@@ -137,7 +137,7 @@ pip install superoptix
 If you're still experiencing problems:
 
 1. **📖 Check this guide** for your specific error
-2. **🔍 Search existing issues** on [GitHub](https://github.com/SuperagenticAI/superoptix-ai/issues)
+2. **🔍 Search existing issues** on [GitHub](https://mailto:hello@super-agentic.ai)
 3. **🐛 Report new issues** with detailed error messages and system information
 4. **💬 Join our community** for support and discussions
 

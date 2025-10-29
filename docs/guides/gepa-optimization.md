@@ -1,6 +1,6 @@
 # 🚀 GEPA: The Universal Agent Optimizer
 
-GEPA (Graph Enhanced Prompting Algorithm) is SuperOptiX's **universal optimizer** that works across **all 6 major agent frameworks**. With proven results and sample efficiency, GEPA dramatically improves agent performance with minimal training data.
+GEPA (Genetic-Pareto) is SuperOptiX's **universal optimizer** that works across **all 6 major agent frameworks**. With proven results and sample efficiency, GEPA dramatically improves agent performance with minimal training data.
 
 **🌟 Key Achievement**: The world's first optimizer that works across DSPy, OpenAI SDK, CrewAI, Google ADK, Microsoft Agent Framework, and DeepAgents!
 

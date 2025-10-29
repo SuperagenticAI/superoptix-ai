@@ -12,7 +12,7 @@ pip install mlflow
 
 **Output:**
 ```
-Requirement already satisfied: mlflow in /Users/shashi/miniconda3/lib/python3.12/site-packages (3.1.1)
+Requirement already satisfied: mlflow in /Users/local/miniconda3/lib/python3.12/site-packages (3.1.1)
 ... (truncated for brevity)
 Successfully installed cachetools-5.5.2
 ```

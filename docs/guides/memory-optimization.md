@@ -202,7 +202,7 @@ memory.remember(
 
 # Get optimized context for query
 context_info = memory.get_optimized_context(
-	query="What happened with my shipping issue?",
+	--goal "What happened with my shipping issue?",
 	task_type="customer_support"
 )
 
@@ -246,7 +246,7 @@ optimizer = ContextWindowOptimizer(
 )
 
 result = optimizer.optimize_context(
-	query="What is the return policy?",
+	--goal "What is the return policy?",
 	available_memories=all_memories,
 	task_type="customer_support",
 	preserve_n_recent=3,          # Always include 3 most recent
@@ -297,19 +297,19 @@ Different tasks need different memory selection strategies:
 ```python
 # Q&A - Prioritize relevance
 context = memory.get_optimized_context(
-	query="What is our refund policy?",
+	--goal "What is our refund policy?",
 	task_type="qa"
 )
 
 # Conversation - Prioritize recency
 context = memory.get_optimized_context(
-	query="Continue our discussion",
+	--goal "Continue our discussion",
 	task_type="conversation"
 )
 
 # Knowledge Search - Prioritize importance
 context = memory.get_optimized_context(
-	query="Find all critical business rules",
+	--goal "Find all critical business rules",
 	task_type="knowledge"
 )
 ```
@@ -321,7 +321,7 @@ Override default task weights:
 ```python
 # Custom weights for specialized task
 result = optimizer.optimize_context(
-	query="Emergency protocol check",
+	--goal "Emergency protocol check",
 	available_memories=all_memories,
 	task_type="custom",
 )
@@ -429,7 +429,7 @@ Always include most recent memories for context continuity:
 
 ```python
 result = optimizer.optimize_context(
-	query="Continue our conversation",
+	--goal "Continue our conversation",
 	available_memories=all_memories,
 	preserve_n_recent=3  # Always include 3 most recent
 )
@@ -827,7 +827,7 @@ optimizer = ContextWindowOptimizer(
 
 # Adjust task type
 context = memory.get_optimized_context(
-	query="...",
+	--goal "...",
 	task_type="qa"  # Try different task types
 )
 ```
@@ -839,7 +839,7 @@ If recent memories aren't included:
 ```python
 # Increase recency preservation
 result = optimizer.optimize_context(
-	query="...",
+	--goal "...",
 	preserve_n_recent=5  # Include 5 most recent (default: 3)
 )
 ```

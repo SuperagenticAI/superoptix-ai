@@ -17,7 +17,7 @@ The project integrates GEPA, DSPy, and MCP to create a complete system for optim
 ## Directory Structure
 
 ```
-/Users/shashi/superagentic/SuperOptiX/
+/Users/local/superagentic/SuperOptiX/
 ├── reference/                          # Reference implementations
 │   ├── gepa/                          # GEPA framework (Graph Enhanced Prompting Algorithm)
 │   │   ├── src/gepa/
@@ -579,20 +579,20 @@ User Query
 ## Key Files Reference
 
 **GEPA MCP Adapter**:
-- Main: `/Users/shashi/superagentic/SuperOptiX/reference/gepa/src/gepa/adapters/mcp_adapter/mcp_adapter.py`
-- Types: `/Users/shashi/superagentic/SuperOptiX/reference/gepa/src/gepa/adapters/mcp_adapter/mcp_types.py`
+- Main: `/Users/local/superagentic/SuperOptiX/reference/gepa/src/gepa/adapters/mcp_adapter/mcp_adapter.py`
+- Types: `/Users/local/superagentic/SuperOptiX/reference/gepa/src/gepa/adapters/mcp_adapter/mcp_types.py`
 - Transport: SSE, StreamableHTTP clients
 
 **DSPy MCP Utils**:
-- Utils: `/Users/shashi/superagentic/SuperOptiX/reference/dspy/dspy/utils/mcp.py`
-- Docs: `/Users/shashi/superagentic/SuperOptiX/reference/dspy/docs/docs/learn/programming/mcp.md`
+- Utils: `/Users/local/superagentic/SuperOptiX/reference/dspy/dspy/utils/mcp.py`
+- Docs: `/Users/local/superagentic/SuperOptiX/reference/dspy/docs/docs/learn/programming/mcp.md`
 
 **SuperOptiX Optimizer**:
-- Factory: `/Users/shashi/superagentic/SuperOptiX/superoptix/core/optimizer_factory.py`
-- Examples: `/Users/shashi/superagentic/SuperOptiX/superoptix/agents/dspy_optimizers/`
+- Factory: `/Users/local/superagentic/SuperOptiX/superoptix/core/optimizer_factory.py`
+- Examples: `/Users/local/superagentic/SuperOptiX/superoptix/agents/dspy_optimizers/`
 
 **Examples**:
-- MCP: `/Users/shashi/superagentic/SuperOptiX/reference/gepa/src/gepa/examples/mcp_tool_optimization/`
+- MCP: `/Users/local/superagentic/SuperOptiX/reference/gepa/src/gepa/examples/mcp_tool_optimization/`
 
 ---
 
@@ -607,4 +607,4 @@ User Query
 ---
 
 *Analysis generated: 2025-10-18*
-*Working directory: /Users/shashi/superagentic/SuperOptiX*
+*Working directory: /Users/local/superagentic/SuperOptiX*

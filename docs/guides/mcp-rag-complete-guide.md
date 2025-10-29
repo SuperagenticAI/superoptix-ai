@@ -532,7 +532,7 @@ super agent optimize my_agent --auto medium
 super agent evaluate my_agent
 
 # Check retrieval quality
-super agent rag test my_agent --query "test question"
+super agent rag test my_agent --goal "test question"
 
 # Re-index when data changes
 super agent rag reindex my_agent
@@ -565,7 +565,7 @@ mcp:
 super agent rag info my_agent
 
 # 2. Test retrieval
-super agent rag test my_agent --query "your query"
+super agent rag test my_agent --goal "your query"
 
 # 3. Adjust parameters
 # In playbook:
@@ -618,7 +618,7 @@ rag:
 super agent rag index <agent> --directory <path>
 super agent rag reindex <agent>
 super agent rag info <agent>
-super agent rag test <agent> --query "test"
+super agent rag test <agent> --goal "test"
 super agent rag clear <agent>
 
 # MCP Commands

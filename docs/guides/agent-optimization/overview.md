@@ -89,7 +89,7 @@ SuperOptiX optimizes **6 distinct layers** of the agentic pipeline:
 
 ## How GEPA Optimizes Each Layer
 
-GEPA (Graph Enhanced Prompting Algorithm) doesn't just optimize prompts. It learns **strategies** for each layer through reflection and iteration:
+GEPA (Genetic-Pareto) doesn't just optimize prompts. It learns **strategies** for each layer through reflection and iteration:
 
 ### The Optimization Process
 

@@ -55,7 +55,7 @@ _You can also use MLX or Huggingface for local models, but we'll use Ollama for 
 ## 🛠️ Installation Options
 
 !!! info "Stable Release"
-    SuperOptiX 0.2.0 is now stable! No pre-release flags needed.
+    SuperOptiX is now stable! No pre-release flags needed.
 
 !!! success "Batteries Included"
     SuperOptiX now includes **DSPy, GEPA, and MCP client** by default!

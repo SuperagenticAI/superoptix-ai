@@ -36,8 +36,8 @@ By the end of this guide, you'll have:
     
 ## Installation
 
-!!! warning "Pre-Release Version"
-    SuperOptiX 0.2.0b1 is a pre-release. Use `--pre` flag to install.
+!!! tip "Stable Release Available!"
+    SuperOptiX is now available as a stable release.
 
 !!! info "Git Required"
     Git is required for installation. Verify: `git --version`
@@ -53,33 +53,33 @@ By the end of this guide, you'll have:
 
 Choose your framework(s) and install SuperOptiX:
 
-=== "Core Only (No frameworks)"
+=== "Core Only (Includes DSPy)"
     ```bash
-    pip install superoptix==0.2.0b1 --pre
+    pip install superoptix
     ```
-    **Includes:** CLI tools, SuperSpec DSL, YAML processing
+    **Includes:** CLI tools, SuperSpec DSL, YAML processing, DSPy
     
-    **Use for:** Framework-independent workflows, custom integrations
+    **Use for:** GEPA optimization, DSPy pipelines, evaluation
 
 === "DSPy Framework"
     ```bash
-    pip install superoptix[frameworks-dspy]==0.2.0b1 --pre
+    pip install superoptix[frameworks-dspy]
     ```
-    **Includes:** SuperOptiX core + DSPy 3.0.4b1 + GEPA 0.0.17
+    **Includes:** SuperOptiX core + DSPy + GEPA
     
     ⚠️ **Cannot be installed with CrewAI** (json-repair conflict)
 
 === "OpenAI Agents SDK"
     ```bash
-    pip install superoptix[frameworks-openai]==0.2.0b1 --pre
+    pip install superoptix[frameworks-openai]
     ```
-    **Includes:** openai-agents 0.4.1, openai SDK
+    **Includes:** openai-agents, openai SDK
 
 === "Google ADK"
     ```bash
-    pip install superoptix[frameworks-google]==0.2.0b1 --pre
+    pip install superoptix[frameworks-google]
     ```
-    **Includes:** google-adk 1.17.0, google-generativeai
+    **Includes:** google-adk, google-generativeai
     
     **Setup API Key:**
     ```bash
@@ -88,27 +88,27 @@ Choose your framework(s) and install SuperOptiX:
 
 === "Microsoft Agent Framework"
     ```bash
-    pip install superoptix[frameworks-microsoft]==0.2.0b1 --pre
+    pip install superoptix[frameworks-microsoft]
     ```
     **Includes:** agent-framework, azure-identity
 
 === "DeepAgents"
     ```bash
-    pip install superoptix[frameworks-deepagents]==0.2.0b1 --pre
+    pip install superoptix[frameworks-deepagents]
     ```
     **Includes:** deepagents
 
 === "CrewAI"
     ```bash
-    pip install superoptix[frameworks-crewai]==0.2.0b1 --pre
+    pip install superoptix[frameworks-crewai]
     ```
-    **Includes:** crewai 1.2.0
+    **Includes:** crewai
     
     ⚠️ **Cannot be installed with DSPy** (json-repair conflict)
 
 === "All DSPy-Compatible Frameworks"
     ```bash
-    pip install superoptix[frameworks]==0.2.0b1 --pre
+    pip install superoptix[frameworks]
     ```
     **Includes:** DSPy, OpenAI SDK, Google ADK, Microsoft, DeepAgents
     
@@ -116,13 +116,13 @@ Choose your framework(s) and install SuperOptiX:
 
 === "With MCP Optimization"
     ```bash
-    pip install superoptix[frameworks,mcp]==0.2.0b1 --pre
+    pip install superoptix[frameworks,mcp]
     ```
-    **Includes:** DSPy-compatible frameworks + MCP SDK 1.19.0
+    **Includes:** DSPy-compatible frameworks + MCP SDK
 
 === "Everything (DSPy path)"
     ```bash
-    pip install superoptix[all]==0.2.0b1 --pre
+    pip install superoptix[all]
     ```
     **Includes:** DSPy + compatible frameworks + vector DBs + observability
     
@@ -265,7 +265,7 @@ Average Score: 6.2/10
 
 ## Step 5: Optimize with GEPA
 
-Now comes the magic! **GEPA (Graph Enhanced Prompting Algorithm)** automatically improves your agent's performance.
+Now comes the magic! **GEPA (Genetic-Pareto)** automatically improves your agent's performance.
 
 ### The Universal Optimizer
 

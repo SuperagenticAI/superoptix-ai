@@ -257,7 +257,7 @@ super agent pull assistant_openai
 
 # Compile and run
 super agent compile assistant_openai
-super agent run assistant_openai --query "Hello from vLLM!"
+super agent run assistant_openai --goal "Hello from vLLM!"
 ```
 
 ---

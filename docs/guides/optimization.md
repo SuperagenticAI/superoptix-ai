@@ -1,6 +1,6 @@
 # 🚀 Agent Optimization Strategy
 
-SuperOptiX provides **universal optimization** across all 6 major agent frameworks using GEPA (Graph Enhanced Prompting Algorithm) as the primary optimizer.
+SuperOptiX provides **universal optimization** across all 6 major agent frameworks using GEPA (Genetic-Pareto) as the primary optimizer.
 
 **🌟 Key Achievement**: The world's first framework-agnostic optimizer that delivers proven results across DSPy, OpenAI SDK, CrewAI, Google ADK, Microsoft Agent Framework, and DeepAgents!
 
@@ -18,7 +18,7 @@ Agent optimization in SuperOptiX follows a **GEPA-first strategy** that works se
 
 ### Why GEPA-First?
 
-**GEPA (Graph Enhanced Prompting Algorithm)** is SuperOptiX's universal optimizer that delivers consistent results across all frameworks:
+**GEPA (Genetic-Pareto)** is SuperOptiX's universal optimizer that delivers consistent results across all frameworks:
 
 | Framework | Variables Optimized | Proven Results | Status |
 |-----------|-------------------|----------------|--------|

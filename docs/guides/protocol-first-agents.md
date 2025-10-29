@@ -111,7 +111,7 @@ super agent compile my_protocol_agent
 ### Step 3: Run the Agent
 
 ```bash
-super agent run my_protocol_agent --query "Calculate 25 * 17 and search GitHub for SuperOptiX"
+super agent run my_protocol_agent --goal "Calculate 25 * 17 and search GitHub for SuperOptiX"
 ```
 
 **Behind the Scenes:**
@@ -382,7 +382,7 @@ class MyAgent(ProtocolAgent):
         
     def forward(self, query: str):
         # Execute with protocol tools
-        return self.react(query=query)
+        return self.react(--goal query)
 ```
 
 ### Protocol Registry

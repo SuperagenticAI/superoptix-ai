@@ -258,7 +258,7 @@ super agent pull assistant_openai
 
 # Compile and run
 super agent compile assistant_openai
-super agent run assistant_openai --query "Extract info: Alice, age 25, alice@email.com"
+super agent run assistant_openai --goal "Extract info: Alice, age 25, alice@email.com"
 ```
 
 ---

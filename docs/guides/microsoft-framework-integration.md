@@ -20,7 +20,7 @@ Microsoft Agent Framework is Microsoft's official framework for building AI agen
 ### Install SuperOptiX with Microsoft Agent Framework
 
 ```bash
-pip install superoptix[frameworks-microsoft]==0.2.0b1 --pre
+pip install superoptix[frameworks-microsoft]
 ```
 
 **Includes:**
@@ -32,7 +32,7 @@ pip install superoptix[frameworks-microsoft]==0.2.0b1 --pre
 - Python 3.11+
 - Git (for DSPy dependency)
 
-> **Note**: Both SuperOptiX and Microsoft Agent Framework are currently in pre-release.
+> **Note**: SuperOptiX is now stable! Microsoft Agent Framework may still be in preview.
 
 ## 🎯 GEPA Optimization Target
 
@@ -194,7 +194,7 @@ Expected improvement:
 ### 7. Run Agent
 
 ```bash
-super agent run assistant_microsoft --query "What is artificial intelligence?"
+super agent run assistant_microsoft --goal "What is artificial intelligence?"
 ```
 
 Or interactive mode:
@@ -310,7 +310,7 @@ super agent optimize weather_ms --auto medium
 super agent evaluate weather_ms --load-optimized
 
 # 7. Run
-super agent run weather_ms --query "Will it rain tomorrow?"
+super agent run weather_ms --goal "Will it rain tomorrow?"
 ```
 
 ## 🔍 Under the Hood
@@ -418,7 +418,7 @@ response2 = await agent.run("What did I just say?")
 
 **Solution**: Install Microsoft Agent Framework
 ```bash
-pip install agent-framework --pre
+pip install agent-framework
 ```
 
 ### Issue: API Key Not Set

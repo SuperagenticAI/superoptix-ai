@@ -20,7 +20,7 @@ SuperOptiX now supports **Google ADK (Agent Development Kit)** - Google's code-f
 **Install SuperOptiX with Google ADK:**
 
 ```bash
-pip install superoptix[frameworks-google]==0.2.0b1 --pre
+pip install superoptix[frameworks-google]
 ```
 
 **Includes:**
@@ -72,7 +72,7 @@ super agent optimize assistant_adk --auto medium
 ### 7. Run
 
 ```bash
-super agent run assistant_adk --query "What is AI?"
+super agent run assistant_adk --goal "What is AI?"
 ```
 
 ---
@@ -174,7 +174,7 @@ complex topics clearly and providing actionable insights.
 ### 4. **Run**: Execute with Optimized Instruction
 
 ```bash
-super agent run assistant_adk --query "Explain quantum computing"
+super agent run assistant_adk --goal "Explain quantum computing"
 # Uses optimized instruction → Better results!
 ```
 
@@ -576,8 +576,8 @@ Google ADK supports multi-agent architectures:
 Need help?
 
 - 📖 [Documentation](https://superoptix.dev)
-- 💬 [Discord Community](https://discord.gg/superoptix)
-- 🐛 [GitHub Issues](https://github.com/superagentic/superoptix/issues)
+- 💬 [Discord Community](https://Documentation: https://superagenticai.github.io/superoptix-ai/)
+- 🐛 [GitHub Issues](https://mailto:hello@super-agentic.ai)
 
 ---
 

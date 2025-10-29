@@ -18,7 +18,7 @@ SuperOptiX now supports **CrewAI** - a powerful multi-agent framework with 100,0
 ### 1. Install SuperOptiX with CrewAI
 
 ```bash
-pip install superoptix[frameworks-crewai]==0.2.0b1 --pre
+pip install superoptix[frameworks-crewai]
 ```
 
 **Includes:**
@@ -612,8 +612,8 @@ persona:
 Need help? We're here for you:
 
 - 📖 [Documentation](https://superoptix.dev)
-- 💬 [Discord Community](https://discord.gg/superoptix)
-- 🐛 [GitHub Issues](https://github.com/superagentic/superoptix/issues)
+- 💬 [Discord Community](https://Documentation: https://superagenticai.github.io/superoptix-ai/)
+- 🐛 [GitHub Issues](https://mailto:hello@super-agentic.ai)
 - 📧 [Email Support](mailto:support@superoptix.dev)
 
 ---

@@ -251,7 +251,7 @@ agent = MyAgent(config={
 })
 
 # Run the agent
-result = agent.run(query="What is the capital of France?")
+result = agent.run(goal="What is the capital of France?")
 
 # Run BDD tests
 test_results = agent.run_executable_specs()

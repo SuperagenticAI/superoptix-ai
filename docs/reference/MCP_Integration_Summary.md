@@ -6,7 +6,7 @@
 
 **Implementation Location**:
 ```
-/Users/shashi/superagentic/SuperOptiX/reference/gepa/src/gepa/adapters/mcp_adapter/
+/Users/local/superagentic/SuperOptiX/reference/gepa/src/gepa/adapters/mcp_adapter/
 ```
 
 ---
@@ -302,7 +302,7 @@ result = optimizer.optimize(
 | `cloud_api.py` | OpenAI key | $$ | 2-5 min | Fast iteration |
 | `remote_server.py` | MCP server URL | Varies | Immediate | Production-ready |
 
-**Location**: `/Users/shashi/superagentic/SuperOptiX/reference/gepa/src/gepa/examples/mcp_tool_optimization/`
+**Location**: `/Users/local/superagentic/SuperOptiX/reference/gepa/src/gepa/examples/mcp_tool_optimization/`
 
 ---
 
@@ -334,7 +334,7 @@ result = optimizer.optimize(
 
 ## Next Actions
 
-1. Review `/Users/shashi/superagentic/SuperOptiX/reference/gepa/src/gepa/adapters/mcp_adapter/mcp_adapter.py`
+1. Review `/Users/local/superagentic/SuperOptiX/reference/gepa/src/gepa/adapters/mcp_adapter/mcp_adapter.py`
 2. Run example: `python /reference/gepa/src/gepa/examples/mcp_tool_optimization/local_ollama.py`
 3. Create SuperOptiX wrapper class
 4. Add playbook schema support

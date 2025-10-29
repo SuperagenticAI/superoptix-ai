@@ -198,23 +198,23 @@ SuperOptiX is the only framework that optimizes **across every layer of the agen
 
 ## 🎯 Quick Install
 
-!!! tip "NEW in 0.2.0b1: Framework-Free Core!"
-    SuperOptiX core is now **100% framework-independent**. Choose only what you need from 6 AI frameworks, or use core without any!
+!!! tip "Stable Release Available!"
+    SuperOptiX is now available as a stable release with support for 6 major AI frameworks!
 
 ```bash
-# Core only (no frameworks)
-pip install superoptix==0.2.0b1 --pre
+# Core installation (includes DSPy)
+pip install superoptix
 
 # With DSPy (for GEPA optimization)
-pip install superoptix[frameworks-dspy]==0.2.0b1 --pre
+pip install superoptix[frameworks-dspy]
 
 # With specific framework
-pip install superoptix[frameworks-openai]==0.2.0b1 --pre  # OpenAI
-pip install superoptix[frameworks-google]==0.2.0b1 --pre  # Google ADK
-pip install superoptix[frameworks-crewai]==0.2.0b1 --pre  # CrewAI
+pip install superoptix[frameworks-openai]  # OpenAI
+pip install superoptix[frameworks-google]  # Google ADK
+pip install superoptix[frameworks-crewai]  # CrewAI
 
 # All DSPy-compatible frameworks
-pip install superoptix[frameworks]==0.2.0b1 --pre
+pip install superoptix[frameworks]
 ```
 
 **Requirements:** Python 3.11+, Git

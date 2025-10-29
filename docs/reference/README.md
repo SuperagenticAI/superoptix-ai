@@ -198,4 +198,4 @@ A: Local Stdio, Remote SSE, Remote StreamableHTTP. See [MCP_Integration_Summary.
 ---
 
 *Documentation updated: 2025-10-18*
-*Working directory: /Users/shashi/superagentic/SuperOptiX*
+*Working directory: /Users/local/superagentic/SuperOptiX*

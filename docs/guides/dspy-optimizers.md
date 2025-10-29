@@ -17,7 +17,7 @@ DSPy optimizers automatically improve your agent's prompts and reasoning pattern
 
 ## 🚀 GEPA: The Universal Optimizer
 
-**GEPA (Graph Enhanced Prompting Algorithm)** is SuperOptiX's universal optimizer that works across **all 6 frameworks**, including DSPy. It's proven to deliver dramatic improvements with minimal training data.
+**GEPA (Genetic-Pareto)** is SuperOptiX's universal optimizer that works across **all 6 frameworks**, including DSPy. It's proven to deliver dramatic improvements with minimal training data.
 
 ### DSPy + GEPA Results
 
@@ -591,7 +591,7 @@ Based on testing with llama3.1:8b on M4 Max (128GB):
 
 Here are ready-to-run commands for each DSPy optimizer. Each example includes pull, compile, optimize, and test steps.
 
-#### GEPA - Graph Enhanced Prompting Algorithm
+#### GEPA - Genetic-Pareto
 **Best for**: Oracle-tier agents, complex reasoning, mathematical problems
 
 ```bash

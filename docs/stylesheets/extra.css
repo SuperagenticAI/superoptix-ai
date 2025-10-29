@@ -150,6 +150,102 @@
 }
 
 /* ============================================================================
+   TABLE STYLING - PROPER BORDERS AND LAYOUT
+   ============================================================================ */
+
+/* All tables - aggressive styling to prevent JS from breaking them */
+.md-typeset table,
+.md-typeset table:not([class]),
+table {
+	display: table !important;
+	width: 100% !important;
+	border-collapse: collapse !important;
+	margin: 1.5rem 0 !important;
+	text-align: left !important;
+	border: 1px solid var(--md-default-fg-color--lightest) !important;
+	table-layout: auto !important;
+}
+
+.md-typeset table thead,
+.md-typeset table:not([class]) thead,
+table thead {
+	background: var(--md-code-bg-color) !important;
+}
+
+.md-typeset table th,
+.md-typeset table td,
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td,
+table th,
+table td {
+	border: 1px solid var(--md-default-fg-color--lightest) !important;
+	padding: 0.8rem 1rem !important;
+	text-align: left !important;
+	vertical-align: top !important;
+}
+
+.md-typeset table th,
+.md-typeset table:not([class]) th,
+table th {
+	font-weight: 600 !important;
+	background: var(--md-code-bg-color) !important;
+}
+
+/* Dark mode table adjustments */
+[data-md-color-scheme="slate"] .md-typeset table,
+[data-md-color-scheme="slate"] .md-typeset table:not([class]),
+[data-md-color-scheme="slate"] table {
+	border-color: #2d2d2d !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table th,
+[data-md-color-scheme="slate"] .md-typeset table td,
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th,
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) td,
+[data-md-color-scheme="slate"] table th,
+[data-md-color-scheme="slate"] table td {
+	border-color: #2d2d2d !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table thead,
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) thead,
+[data-md-color-scheme="slate"] table thead {
+	background: #1a1a1a !important;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table th,
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th,
+[data-md-color-scheme="slate"] table th {
+	background: #1a1a1a !important;
+}
+
+/* Prevent animations from affecting tables */
+.md-typeset table.animate-in,
+table.animate-in {
+	animation: none !important;
+	opacity: 1 !important;
+	transform: none !important;
+}
+
+/* ============================================================================
+   HIDE RIGHT SIDEBAR (TOC) TO GIVE MORE SPACE - OPTIONAL
+   ============================================================================ */
+
+/* Uncomment these lines to hide the right sidebar and give more space to content:
+.md-sidebar--secondary {
+	display: none !important;
+}
+
+.md-content {
+	max-width: none !important;
+}
+
+.md-grid {
+	max-width: 80rem !important;
+}
+*/
+
+/* ============================================================================
    NAVIGATION STYLING - EXACT LIVE DOCS MATCH
    ============================================================================ */
 

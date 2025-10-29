@@ -48,12 +48,12 @@ superoptix/
 ## 🔍 How to Provide Feedback
 
 ### 🐛 **Bug Reports**
-1. Check existing [issues](https://github.com/SuperagenticAI/superoptix-ai/issues)
+1. Check existing [issues](https://mailto:hello@super-agentic.ai)
 2. Search for similar reports before creating new ones
 3. Create a new issue with detailed information about the problem
 
 ### ✨ **Feature Requests**
-1. Check existing [feature requests](https://github.com/SuperagenticAI/superoptix-ai/issues)
+1. Check existing [feature requests](https://mailto:hello@super-agentic.ai)
 2. Create a new issue describing your use case and expected benefits
 3. Consider if it aligns with our platform vision
 
