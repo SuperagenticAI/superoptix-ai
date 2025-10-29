@@ -2,7 +2,7 @@
 
 **SuperOptiX now supports OpenAI Agents SDK - a lightweight, provider-agnostic framework that works PERFECTLY with Ollama!**
 
-✅ **100% Pass Rate Achieved with Ollama gpt-oss:20b on First Try!**
+✅ **Works great with FREE Ollama (No API Keys Needed!)**
 
 ---
 
@@ -49,28 +49,41 @@ super agent pull assistant_openai
 
 ### 2. Configure Model
 
-**✅ Works with Ollama!** (Recommended for local development)
+**✅ Uses Ollama by Default!** (FREE, no API keys needed!)
+
+The `assistant_openai` agent now defaults to Ollama `gpt-oss:120b`:
 
 ```yaml
 language_model:
   location: local
   provider: ollama
-  model: ollama:gpt-oss:20b
+  model: ollama:gpt-oss:120b  # Most powerful free model
   temperature: 0.7
   api_base: http://localhost:11434
 ```
 
-**Also Works With:**
+**Just install Ollama and run:**
+```bash
+brew install ollama  # macOS
+ollama pull gpt-oss:120b
+super agent run assistant_openai --goal "Hello!"
+```
+
+**Also Works With Cloud Models** (requires API key):
 ```yaml
-# OpenAI (cloud)
+# OpenAI GPT-4
 language_model:
+  location: cloud
   provider: openai
-  model: gpt-4.1
+  model: openai:gpt-4o
+  # Set: export OPENAI_API_KEY="sk-..."
   
-# OpenAI (alternative)
+# Anthropic Claude
 language_model:
-  provider: openai
-  model: gpt-4-turbo
+  location: cloud
+  provider: anthropic
+  model: anthropic:claude-sonnet-4-20250514
+  # Set: export ANTHROPIC_API_KEY="sk-ant-..."
 ```
 
 ### 3. Run the Workflow
@@ -79,7 +92,7 @@ language_model:
 # Compile
 super agent compile assistant_openai --framework openai
 
-# Evaluate (expect 100% pass rate!)
+# Evaluate
 super agent evaluate assistant_openai
 
 # Optimize with GEPA
@@ -226,7 +239,7 @@ GEPA will test variations to find the best instructions!
 super agent evaluate assistant_openai
 ```
 
-See if GEPA improved the already perfect 100% pass rate!
+See if GEPA improved the pass rate!
 
 ### Step 7: Run
 
@@ -319,7 +332,7 @@ class AssistantOpenAiPipeline:
 | Feature | DSPy | DeepAgents | OpenAI SDK |
 |---------|------|------------|------------|
 | **Ollama Support** | ✅ Full | ❌ Blocked | ✅ Perfect |
-| **Baseline Pass Rate** | 37.5% | N/A | 100% 🏆 |
+| **Baseline Performance** | Good | N/A | Excellent |
 | **API Complexity** | Medium | High | Low |
 | **Planning** | Manual | Built-in | Manual |
 | **Multi-Agent** | Manual | Subagents | Handoffs |
@@ -491,7 +504,7 @@ persona:
   goal: Provide clear responses
 
 → instructions = "Helpful AI Assistant\nGoal: Provide clear responses"
-→ Baseline: 75% pass rate
+→ Baseline: Good performance (results vary by hardware/model)
 ```
 
 **After GEPA:**
@@ -506,7 +519,7 @@ When answering questions:
 
 Goal: Provide clear, helpful responses that directly address the user's query."
 
-→ Optimized: 90% pass rate (15% improvement!)
+→ Optimized: Improved performance (results vary by hardware/model)
 ```
 
 ---
@@ -576,11 +589,11 @@ language_model:
 - ✅ Free inference
 - ✅ Privacy (data stays local)
 - ✅ Fast development iteration
-- ✅ 100% baseline pass rate!
+- ✅ Good baseline performance
 
 **Supported Ollama Models:**
-- `ollama:gpt-oss:20b` (recommended, 100% pass rate)
-- `ollama:gpt-oss:120b` (more capable)
+- `ollama:gpt-oss:120b` (default, most capable)
+- `ollama:gpt-oss:20b` (faster alternative)
 - `ollama:llama3.1:8b` (faster, lower capability)
 - `ollama:qwen3:8b` (alternative)
 
@@ -601,7 +614,7 @@ Set API key: `export OPENAI_API_KEY=your_key`
 
 ### OpenAI SDK Advantages
 - ✅ **Ollama compatibility** (unlike DeepAgents)
-- ✅ **100% baseline performance**
+- ✅ **Good baseline performance**
 - ✅ **Simple, clean API**
 - ✅ **Built-in tracing and sessions**
 - ✅ **Fast compilation and execution**
@@ -686,10 +699,10 @@ spec:
 
 ### Baseline Comparison (Same BDD Scenarios)
 
-| Framework | Model | Pass Rate | Cost | Speed |
-|-----------|-------|-----------|------|-------|
-| **OpenAI SDK** | gpt-oss:20b | **100%** 🏆 | Free | Fast |
-| **DSPy** | llama3.1:8b | 37.5% | Free | Fast |
+| Framework | Model | Performance | Cost | Speed |
+|-----------|-------|-------------|------|-------|
+| **OpenAI SDK** | gpt-oss:120b | Excellent | Free | Medium |
+| **DSPy** | llama3.1:8b | Good | Free | Fast |
 | **DSPy** | gpt-4 | 85% | $$$ | Medium |
 | **DeepAgents** | Claude | N/A | $$ | Medium |
 
@@ -697,8 +710,8 @@ spec:
 
 | Framework | Baseline | After GEPA | Improvement |
 |-----------|----------|------------|-------------|
-| **OpenAI SDK** | 100% | 100% | 0% (already perfect!) |
-| **DSPy** | 37.5% | 55% | +17.5% |
+| **OpenAI SDK** | High | High | Moderate improvement |
+| **DSPy** | Good | Better | Significant improvement (results vary) |
 
 **Key Insight:** OpenAI SDK achieves better baseline with Ollama!
 
@@ -801,7 +814,7 @@ This is based on the official OpenAI Agents SDK example for Ollama!
 
 ### Baseline Performance
 
-**"We got 100% pass rate on the FIRST evaluation!"**
+**"Great results on the first evaluation!"**
 
 With simple, clear BDD scenarios and gpt-oss:20b model, the OpenAI SDK achieved perfect baseline performance. This demonstrates:
 
@@ -864,7 +877,7 @@ scenarios:
 ## ❓ FAQ
 
 **Q: Why use OpenAI SDK instead of DSPy?**  
-A: OpenAI SDK has simpler API and better Ollama baseline (100% vs 37.5%). Use DSPy for maximum optimization potential.
+A: OpenAI SDK has simpler API and works well with Ollama out of the box. Use DSPy for maximum optimization flexibility. Performance varies by hardware and model.
 
 **Q: Does it work with Ollama?**  
 A: Yes! Perfectly! Unlike DeepAgents, OpenAI SDK has no function-calling limitations.
@@ -897,7 +910,7 @@ A: Use `handoffs` for agent delegation. Works similar to CrewAI's crew concept.
 **SuperOptiX now supports THREE frameworks:**
 1. ✅ DSPy (Ollama compatible, max optimization)
 2. ✅ DeepAgents (planning & complexity, Claude/GPT-4 only)
-3. ✅ OpenAI SDK (simple & powerful, **100% with Ollama!** 🏆)
+3. ✅ OpenAI SDK (simple & powerful, great Ollama support)
 
 **All with:**
 - Same SuperSpec YAML format
@@ -907,6 +920,6 @@ A: Use `handoffs` for agent delegation. Works similar to CrewAI's crew concept.
 
 ---
 
-*Try it now: `super agent pull assistant_openai` and experience 100% pass rate with Ollama!* 🚀
+*Try it now: `super agent pull assistant_openai` and experience great performance with Ollama!* 🚀
 
 

@@ -8,12 +8,10 @@
     Learn how to build, run, evaluate, and optimize DeepAgents from scratch in 30 minutes:
     
     - ✅ Step-by-step with real expected outputs
-    - ✅ Tested with FREE Gemini API
+    - ✅ Works with FREE Gemini API
     - ✅ Persistent memory, real file access, hybrid storage
-    - ✅ GEPA optimization (+200% improvements)
+    - ✅ GEPA optimization guide
     - ✅ Production deployment guide
-    
-    **Everything tested and working!** 🎉
 
 ---
 
@@ -50,12 +48,19 @@ The biggest addition is the **backend abstraction** that lets you choose where a
 ## 📦 Installation
 
 ```bash
+# Install SuperOptiX with DeepAgents support
 pip install superoptix[frameworks-deepagents]
+
+# REQUIRED: Install Gemini integration (or your preferred LLM provider)
+pip install langchain-google-genai  # For Gemini
+# pip install langchain-anthropic   # For Claude
+# pip install langchain-openai      # For GPT-4
 ```
 
 **Includes:**
 - **deepagents 0.2.0+** with pluggable backends
 - SuperOptiX core with GEPA
+- LangChain integration (provider-specific packages need to be installed separately)
 - LangChain, LangGraph integration
 
 **Requirements:**
@@ -90,7 +95,7 @@ super agent run research_agent_deepagents --goal "What is LangGraph?"
 super agent evaluate research_agent_deepagents
 super agent optimize research_agent_deepagents --auto medium
 
-# ✅ Done! Agent optimized with 100% FREE Gemini calls
+# ✅ Done! Agent optimized with FREE Gemini calls
 ```
 
 **📖 Detailed Gemini Guide**: See `DEEPAGENTS_GEMINI_TEST.md` in repo root
@@ -174,8 +179,8 @@ super agent evaluate research_agent_deepagents --load-optimized
 ```
 
 **Expected Results:**
-- Baseline: 33.3% → After GEPA: 100% (+200% improvement!)
-- Cost: $0.00 with FREE Gemini
+- Baseline performance → After GEPA: Significant improvement (results vary by hardware and model)
+- Cost: $0.00 with FREE Gemini tier
 - Time: 5-10 minutes
 
 !!! success "📖 Want Detailed Step-by-Step Guide?"
@@ -184,10 +189,8 @@ super agent evaluate research_agent_deepagents --load-optimized
     This comprehensive tutorial shows you:
     - ✅ What to expect at each step (real outputs!)
     - ✅ How to configure all 3 backend types
-    - ✅ GEPA optimization walkthrough (33.3% → 100%)
+    - ✅ GEPA optimization walkthrough with examples
     - ✅ Production deployment guide
-    
-    **Everything tested and verified working!** 🎉
 
 ---
 
@@ -1110,7 +1113,7 @@ GEPA automatically:
 **Before (Baseline):**
 ```
 System Prompt: "You are an expert researcher."
-Pass Rate: 33.3%
+Pass Rate: Baseline performance (varies by hardware/model)
 ```
 
 **After GEPA Optimization:**
@@ -1120,7 +1123,7 @@ System Prompt: "You are an expert researcher. When answering questions:
 2. Save findings to research_notes.md
 3. Synthesize information before responding
 ..."
-Pass Rate: 66.7%
+Pass Rate: Improved (results vary by hardware/model)
 ```
 
 ---
@@ -1225,12 +1228,10 @@ SuperOptiX lets you:
     **30 minutes from zero to production:**
     
     - 🎯 Step 1-10: Build, run, evaluate, and optimize
-    - 📊 See real results: 33.3% → 100% with GEPA
+    - 📊 See real results with GEPA optimization
     - 🗄️ Learn all 3 backend types with examples
     - 🚀 Deploy production-ready agents
-    - 💰 100% FREE with Gemini
-    
-    **Everything tested and working!**
+    - 💰 FREE tier with Gemini
 
 **OR start exploring on your own:**
 

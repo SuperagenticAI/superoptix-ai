@@ -149,48 +149,60 @@ spec:
 
 ### 2. OpenAI Agents SDK (Simple & Fast)
 
-**Best for**: Simple agents, fast prototyping, Ollama compatibility
+**Best for**: Simple agents, fast prototyping, 100% local & free with Ollama
 
 #### Quick Start
 
 ```bash
-# Pull demo agent
+# Pull demo agent (already configured for Ollama!)
 super agent pull assistant_openai
 
-# Compile
+# Install Ollama (if not already installed)
+brew install ollama
+ollama pull gpt-oss:120b
+
+# Compile & Run (no API keys needed!)
 super agent compile assistant_openai --framework openai
+super agent run assistant_openai --goal "Hello!"
 
 # Evaluate
 super agent evaluate assistant_openai
 
 # Optimize
 super agent optimize assistant_openai --auto medium
-
-# Run
-super agent run assistant_openai
 ```
 
 #### Configuration
 
+**Default (FREE Ollama - already configured!)**:
 ```yaml
 # playbook.yaml
 spec:
   target_framework: openai
   language_model:
+    location: local
     provider: ollama
-    model: llama3.1:8b
+    model: ollama:gpt-oss:120b  # FREE, powerful!
     api_base: http://localhost:11434
-  persona:
-    instructions: |
-      You are a helpful AI assistant.
-      Provide clear, concise responses.
+```
+
+**Optional Cloud Models** (requires API key):
+```yaml
+# For OpenAI
+spec:
+  target_framework: openai
+  language_model:
+    location: cloud
+    provider: openai
+    model: openai:gpt-4o
+    # Set: export OPENAI_API_KEY="sk-..."
 ```
 
 #### What GEPA Optimizes
 
 - Agent instructions (the main system prompt)
 
-**Proven Results**: 100% pass rate
+**Proven Results**: Excellent performance with Ollama (results vary by hardware/model)
 
 ---
 
@@ -260,7 +272,7 @@ GEPA can optimize:
 - **Task configuration**: description, expected_output
 - **Combined optimization**: agent profile + task configuration for better results
 
-**Proven Results**: 100% pass rate
+**Proven Results**: Excellent performance with Ollama (results vary by hardware/model)
 
 ---
 
@@ -469,9 +481,9 @@ super agent evaluate my_agent
 
 | Framework | Demo Agent | Baseline | After GEPA | Improvement |
 |-----------|------------|----------|------------|-------------|
-| DSPy | sentiment_analyzer | 37.5% | 80.0% | +42.5 pts |
-| OpenAI SDK | assistant_openai | 100% | 100% | Maintained |
-| CrewAI | content_creator_crew | 75% | 100% | +25 pts |
+| DSPy | sentiment_analyzer | Good | Improved | Significant improvement (results vary) |
+| OpenAI SDK | assistant_openai | Excellent | Excellent | Maintained performance (results vary) |
+| CrewAI | content_creator_crew | Good | Improved | Significant improvement (results vary) |
 | Google ADK | assistant_adk | TBD | TBD | Ready |
 | Microsoft | assistant_microsoft | TBD | TBD | Ready |
 | DeepAgents | research_agent | TBD | TBD | Ready |

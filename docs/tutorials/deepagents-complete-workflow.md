@@ -16,7 +16,7 @@
 
 **Time to Complete:** 30-45 minutes  
 **Difficulty:** Intermediate  
-**Cost:** $0.00 (100% FREE with Gemini!)
+**Cost:** $0.00 (FREE tier with Gemini!)
 
 ---
 
@@ -57,12 +57,11 @@ DeepAgents 0.2.0 is LangChain's framework for building **"deep agents"** - sophi
 ### 2. Install SuperOptiX
 
 ```bash
-# Option A: From PyPI (stable release)
+# Install SuperOptiX with DeepAgents support
 pip install superoptix[frameworks-deepagents]
 
-# Option B: From source (latest features)
-cd /Users/local/superagentic/SuperOptiX
-pip install -e ".[frameworks-deepagents]"
+# REQUIRED: Install Gemini integration for LangChain
+pip install langchain-google-genai
 ```
 
 **What gets installed:**
@@ -70,11 +69,12 @@ pip install -e ".[frameworks-deepagents]"
 - DeepAgents 0.2.0+ with backend support
 - LangChain, LangGraph integration
 - GEPA optimizer
+- Google Gemini integration for LangChain
 
 ### 3. Get FREE Gemini API Key
 
 **Why Gemini?**
-- ✅ 100% FREE tier (generous quotas)
+- ✅ FREE tier with generous quotas
 - ✅ Function-calling support (required for DeepAgents)
 - ✅ Fast (1-3 second responses)
 - ✅ GPT-4 class quality
@@ -562,13 +562,13 @@ Iteration 3: Testing 3 candidates...
 ```
 
 **What GEPA did:**
-1. **Analyzed failures** from baseline (33.3% pass rate)
+1. **Analyzed failures** from baseline
 2. **Reflected** on why scenarios failed
 3. **Proposed** 3 improved system prompts per iteration
-4. **Tested** each proposal
+4. **Evaluated** each proposal
 5. **Selected** best performer (Pareto selection)
 6. **Repeated** for 3 iterations
-7. **Achieved** 100% pass rate (+203% improvement!)
+7. **Achieved** significantly improved performance (results vary by hardware and model)
 
 **Cost:** $0.00 (all using FREE Gemini quota!)
 
@@ -744,16 +744,16 @@ Overall: 3/3 PASS (100.0%)
 ```
 
 **🎉 Amazing Results!**
-- **Before:** 33.3% pass rate (1/3)
-- **After:** 100.0% pass rate (3/3)
-- **Improvement:** +203% (from 0.33 to 1.00)
+- **Before:** Baseline performance
+- **After:** Significantly improved performance
+- **Improvement:** Noticeable enhancement (results vary by hardware and model)
 
 **All scenarios now passing:**
 - ✅ Simple research query
 - ✅ Technical comparison
 - ✅ Complex research
 
-**✅ Checkpoint:** This demonstrates GEPA's power - it automatically improved the agent to 100% accuracy!
+**✅ Checkpoint:** This demonstrates GEPA's power - it automatically improved the agent's performance significantly!
 
 ---
 
@@ -1042,11 +1042,10 @@ super agent run research_agent_deepagents --goal "Complex query here"
 
 | Step | Baseline | After GEPA |
 |------|----------|------------|
-| **Simple queries** | ✅ 100% | ✅ 100% |
-| **Technical comparisons** | ❌ 0% | ✅ 100% |
-| **Complex research** | ❌ 0% | ✅ 100% |
-| **Overall** | 33.3% | 100.0% |
-| **Improvement** | - | +203% |
+| **Simple queries** | ✅ Good | ✅ Excellent |
+| **Technical comparisons** | ❌ Poor | ✅ Good |
+| **Complex research** | ❌ Poor | ✅ Good |
+| **Overall** | Baseline | Significantly Improved (results vary by hardware/model) |
 
 ### API Costs
 
@@ -1727,7 +1726,7 @@ super agent optimize production_agent \
 
 # 3. Validate optimized version
 super agent evaluate production_agent --load-optimized
-# Ensure ≥95% pass rate
+# Check performance metrics (varies by hardware/model)
 
 # 4. Test with real data
 super agent run production_agent --goal "Production query"
