@@ -1062,111 +1062,14 @@ super agent run research_agent_deepagents --goal "Complex query here"
 
 ## 🎓 Advanced Examples
 
-### Example 1: Building a Persistent Memory Chatbot
+Prefer CLI over copying YAML. Use prebuilt agents as starting points and adjust the generated playbooks locally after pulling.
 
-**Full Playbook:**
-```yaml
-apiVersion: agent/v1
-kind: AgentSpec
-metadata:
-  name: Personal Assistant with Memory
-  id: my_assistant
-spec:
-  target_framework: deepagents
-  
-  language_model:
-    provider: google-genai
-    model: gemini-2.5-flash
-    temperature: 0.7
-  
-  # Enable persistent memory
-  backend:
-    type: store
-  
-  input_fields:
-    - name: query
-      type: str
-  
-  output_fields:
-    - name: response
-      type: str
-  
-  persona:
-    system_prompt: |
-      You are a personal AI assistant with PERSISTENT LONG-TERM MEMORY.
-      
-      MEMORY FILES (These persist forever across ALL conversations):
-      
-      📝 /user_profile.txt
-      - User's name, preferences, interests, background
-      - Update whenever you learn something new
-      
-      📚 /conversation_topics.txt
-      - Key topics discussed in past conversations
-      - Add new topics as you discuss them
-      
-      ✅ /reminders.txt
-      - User's reminders, to-dos, future plans
-      - Update when user mentions tasks
-      
-      WORKFLOW (Follow strictly):
-      
-      1. BEFORE responding:
-         - Read /user_profile.txt
-         - Read /conversation_topics.txt
-         - Check /reminders.txt
-      
-      2. PERSONALIZE response:
-         - Use their name
-         - Reference previous conversations
-         - Build on existing knowledge
-      
-      3. AFTER responding:
-         - Update /user_profile.txt if you learned something
-         - Add to /conversation_topics.txt if new topic
-         - Update /reminders.txt if tasks mentioned
-      
-      Remember: These files SURVIVE FOREVER. Build a relationship!
-  
-  feature_specifications:
-    scenarios:
-      - name: Remember name
-        input:
-          query: "My name is Sarah"
-        expected_output:
-          response: "Nice to meet you"
-          expected_keywords:
-            - Sarah
-      
-      - name: Recall name
-        input:
-          query: "What's my name?"
-        expected_output:
-          response: "Sarah"
-          expected_keywords:
-            - Sarah
-```
+### Example 1: Persistent Memory Chatbot (StoreBackend)
 
-**Usage:**
 ```bash
-# Save the playbook above, then:
-super agent compile my_assistant --framework deepagents
-
-# First conversation
-super agent run my_assistant --goal "Hi! I'm Sarah and I love gardening."
-# Response: "Nice to meet you, Sarah! I see you love gardening..."
-
-# Hours later...
-super agent run my_assistant --goal "What's my name?"
-# Response: "Your name is Sarah!"
-
-# Days later...
-super agent run my_assistant --goal "What do I like to do?"
-# Response: "You love gardening!"
-
-# Weeks later...
-super agent run my_assistant --goal "Remind me what we've talked about"
-# Response: "We've discussed your interest in gardening..."
+super agent pull chatbot_persistent
+super agent compile chatbot_persistent --framework deepagents
+super agent run chatbot_persistent --goal "Hi! I'm Sarah and I love gardening."
 ```
 
 ---
@@ -1190,63 +1093,7 @@ def register(username, password, email):
 EOF
 ```
 
-**Playbook:**
-```yaml
-apiVersion: agent/v1
-kind: AgentSpec
-metadata:
-  name: Code Reviewer
-  id: code_reviewer
-spec:
-  target_framework: deepagents
-  
-  language_model:
-    provider: google-genai
-    model: gemini-2.5-pro  # Pro for better code analysis
-    temperature: 0.3
-  
-  # Access real project files
-  backend:
-    type: filesystem
-    root_dir: /tmp/my_app
-  
-  input_fields:
-    - name: query
-      type: str
-  
-  output_fields:
-    - name: report
-      type: str
-  
-  persona:
-    system_prompt: |
-      You are a senior code reviewer with DIRECT FILESYSTEM ACCESS.
-      
-      Available tools:
-      - ls /src/ - List source files
-      - read_file /src/auth.py - Read code
-      - write_file /review.md - Write reports
-      - grep_search "TODO" /src/ - Find patterns
-      
-      SECURITY CHECKLIST:
-      - SQL injection
-      - XSS/CSRF risks
-      - Input validation
-      - Authentication flaws
-      - Hardcoded secrets
-      
-      WORKFLOW:
-      1. List files with ls
-      2. Read code with read_file
-      3. Analyze for security issues
-      4. Write detailed report to /security_report.md
-      
-      Include:
-      - File path and line numbers
-      - Severity (Critical/High/Medium/Low)
-      - Code examples
-      - Recommended fixes
-```
+After pulling, set `backend.root_dir` in the playbook to `/tmp/my_app`, then:
 
 **Usage:**
 ```bash
@@ -1301,82 +1148,7 @@ mkdir -p /tmp/research_workspace/papers
 echo "Sample academic paper about AI agents..." > /tmp/research_workspace/papers/agents_paper.txt
 ```
 
-**Playbook:**
-```yaml
-apiVersion: agent/v1
-kind: AgentSpec
-metadata:
-  name: Advanced Researcher
-  id: researcher_hybrid
-spec:
-  target_framework: deepagents
-  
-  language_model:
-    provider: google-genai
-    model: gemini-2.5-flash
-  
-  # Hybrid storage strategy (PRODUCTION-READY)
-  backend:
-    type: composite
-    default: state                # Fast scratch space
-    routes:
-      /memories/: store          # Research findings (persistent forever)
-      /papers/: filesystem       # Academic papers (real files)
-      /cache/: state             # Search results (temporary)
-    root_dir: /tmp/research_workspace
-  
-  persona:
-    system_prompt: |
-      You are an advanced research agent with HYBRID STORAGE.
-      
-      STORAGE ARCHITECTURE:
-      
-      📚 /memories/ → Persistent Database
-      - Research findings that should last forever
-      - Literature reviews and summaries
-      - Key insights and discoveries
-      - Survives: ALL conversations, forever
-      
-      📂 /papers/ → Real Filesystem  
-      - Actual PDF papers in /tmp/research_workspace/papers/
-      - Academic publications
-      - Technical documentation
-      - Survives: Forever (real files on disk)
-      
-      💾 /cache/ → Temporary State
-      - Internet search results  
-      - Intermediate calculations
-      - Survives: Current conversation only
-      
-      🗂️ / → Scratch Space
-      - Current work in progress
-      - Survives: Current conversation only
-      
-      RESEARCH WORKFLOW:
-      
-      1. CHECK PRIOR RESEARCH
-         read_file /memories/research_index.txt
-         → See if topic was researched before
-      
-      2. SEARCH & CACHE
-         [Conduct internet search]
-         write_file /cache/search_results.txt [results]
-         → Store temporarily for this session
-      
-      3. ACCESS PAPERS
-         ls /papers/
-         read_file /papers/relevant_paper.pdf
-         → Read actual academic papers
-      
-      4. SAVE FINDINGS
-         write_file /memories/[topic]_research.txt [summary]
-         edit_file /memories/research_index.txt
-           Add: "- [topic]: See /memories/[topic]_research.txt"
-         → Persist important findings
-      
-      5. RESPOND
-         Return comprehensive answer with sources
-```
+After pulling, set `root_dir` in the playbook to `/tmp/research_workspace`.
 
 **Usage - First Session:**
 ```bash
@@ -1739,55 +1511,19 @@ super agent run production_agent --goal "Production query"
 
 ---
 
-## 📊 Performance Benchmarks
+## 📊 Performance Notes
 
-### GEPA Optimization Results
-
-| Budget | Time | API Calls | Typical Improvement | Cost (Gemini) |
-|--------|------|-----------|---------------------|---------------|
-| **light** | 5 min | ~15 | +10-20% | $0.00 |
-| **medium** | 10 min | ~30 | +20-30% | $0.00 |
-| **heavy** | 20 min | ~60 | +30-50% | $0.00 |
-
-### Backend Performance
-
-| Backend | Read Speed | Write Speed | Persistence | Best For |
-|---------|------------|-------------|-------------|----------|
-| **state** | ⚡⚡⚡ | ⚡⚡⚡ | ❌ | Speed |
-| **store** | ⚡⚡ | ⚡⚡ | ✅ | Memory |
-| **filesystem** | ⚡⚡ | ⚡⚡ | ✅ | Real files |
-| **composite** | ⚡⚡ | ⚡⚡ | ✅ | Production |
-
-### Model Performance (Gemini 2.5)
-
-| Model | Speed | Quality | Context | Cost |
-|-------|-------|---------|---------|------|
-| **Flash** | ⚡⚡⚡ 1-2s | ⭐⭐⭐⭐ | 1M tokens | FREE |
-| **Pro** | ⚡⚡ 2-4s | ⭐⭐⭐⭐⭐ | 2M tokens | FREE |
+Performance and accuracy vary based on hardware, model choice, prompts, and scenarios.
 
 ---
 
-## 🎓 Learning Path
+## 🚀 Try More Demos
 
-### Beginner (Day 1)
-1. ✅ Complete Steps 1-5 (Pull and run agent)
-2. ✅ Try different queries
-3. ✅ Understand BDD scenarios
-
-### Intermediate (Day 2-3)
-4. ✅ Complete Steps 6-10 (Evaluation and optimization)
-5. ✅ Try persistent chatbot example
-6. ✅ Experiment with backends
-
-### Advanced (Week 1)
-7. ✅ Build code review agent
-8. ✅ Create hybrid researcher
-9. ✅ Design custom backend strategies
-
-### Expert (Week 2+)
-10. ✅ Build production-ready agents
-11. ✅ Optimize for your use case
-12. ✅ Deploy to production
+```bash
+super agent pull chatbot_persistent         # StoreBackend
+super agent pull code_reviewer              # FilesystemBackend (edit root_dir)
+super agent pull researcher_hybrid          # CompositeBackend
+```
 
 ---
 
