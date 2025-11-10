@@ -479,7 +479,7 @@ super agent evaluate chatbot_persistent
 super agent optimize chatbot_persistent --auto medium
 
 # Test optimized version
-super agent evaluate chatbot_persistent --load-optimized
+super agent evaluate chatbot_persistent  # automatically loads optimized weights
 ```
 
 **What GEPA optimizes:**

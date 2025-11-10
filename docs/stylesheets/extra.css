@@ -228,10 +228,9 @@ table.animate-in {
 }
 
 /* ============================================================================
-   HIDE RIGHT SIDEBAR (TOC) TO GIVE MORE SPACE - OPTIONAL
+   HIDE RIGHT SIDEBAR (TOC) TO GIVE MORE SPACE
    ============================================================================ */
 
-/* Uncomment these lines to hide the right sidebar and give more space to content:
 .md-sidebar--secondary {
 	display: none !important;
 }
@@ -243,7 +242,6 @@ table.animate-in {
 .md-grid {
 	max-width: 80rem !important;
 }
-*/
 
 /* ============================================================================
    NAVIGATION STYLING - EXACT LIVE DOCS MATCH

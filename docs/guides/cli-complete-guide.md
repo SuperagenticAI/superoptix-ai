@@ -141,7 +141,7 @@ super agent compile agent1 agent2 agent3
 super agent evaluate my_agent
 
 # Evaluate optimized version
-super agent evaluate my_agent --load-optimized
+super agent evaluate my_agent  # automatically loads optimized weights
 
 # Evaluate with specific dataset
 super agent evaluate my_agent --dataset ./data/test.csv
@@ -208,7 +208,7 @@ super agent run my_agent --input "Analyze this text"
 super agent run my_agent --input-file ./input.txt
 
 # Run optimized version
-super agent run my_agent --load-optimized
+super agent run my_agent  # automatically loads optimized weights
 
 # Run with specific framework
 super agent run my_agent --framework openai
@@ -425,7 +425,7 @@ super agent pull sentiment_analyzer && \
 super agent compile sentiment_analyzer && \
 super agent evaluate sentiment_analyzer && \
 super agent optimize sentiment_analyzer --auto medium && \
-super agent evaluate sentiment_analyzer --load-optimized && \
+super agent evaluate sentiment_analyzer && \
 super agent run sentiment_analyzer
 ```
 
@@ -533,7 +533,7 @@ super agent evaluate sentiment_analyzer
 super agent optimize sentiment_analyzer --auto medium
 
 # 6. Evaluate optimized
-super agent evaluate sentiment_analyzer --load-optimized
+super agent evaluate sentiment_analyzer  # automatically loads optimized weights
 
 # 7. Run
 super agent run sentiment_analyzer
@@ -675,7 +675,7 @@ ls agents/my_agent/*.yaml | entr super agent compile my_agent
 # Save evaluation results for comparison
 super agent evaluate my_agent --save-report baseline.json
 super agent optimize my_agent --auto medium
-super agent evaluate my_agent --load-optimized --save-report optimized.json
+super agent evaluate my_agent --save-report optimized.json  # automatically loads optimized weights
 
 # Compare
 diff baseline.json optimized.json

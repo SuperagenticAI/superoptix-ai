@@ -277,7 +277,7 @@ super agent evaluate docs_qa
 super agent optimize docs_qa --auto medium
 
 # Test after optimization
-super agent evaluate docs_qa --load-optimized
+super agent evaluate docs_qa  # automatically loads optimized weights
 # Example result: 85% accuracy (+25%)
 ```
 
@@ -631,7 +631,7 @@ super agent compile <agent>
 super agent rag index <agent> --directory ./docs
 super agent evaluate <agent>
 super agent optimize <agent> --auto medium
-super agent evaluate <agent> --load-optimized
+super agent evaluate <agent>  # automatically loads optimized weights
 super agent run <agent>
 ```
 

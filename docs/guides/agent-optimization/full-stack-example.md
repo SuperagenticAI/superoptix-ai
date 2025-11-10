@@ -370,7 +370,7 @@ Agent Learns:
 ### Re-Evaluation After Optimization
 
 ```bash
-super agent evaluate code_review_assistant --load-optimized
+super agent evaluate code_review_assistant  # automatically loads optimized weights
 ```
 
 **Result**:
@@ -800,7 +800,7 @@ super agent optimize code_reviewer --auto medium --fresh
 # → Shows progress for each layer
 
 # 8. Re-evaluate
-super agent evaluate code_reviewer --load-optimized
+super agent evaluate code_reviewer  # automatically loads optimized weights
 # → Shows improvement: 100% accuracy (+87.5%)
 
 # 9. Test on real code

@@ -558,7 +558,7 @@ Iteration 3: Testing 3 candidates...
 💡 Next steps:
    1. Review optimized results
    2. Test: super agent run research_agent_deepagents
-   3. Evaluate: super agent evaluate research_agent_deepagents --load-optimized
+   3. Evaluate: super agent evaluate research_agent_deepagents  # automatically loads optimized weights
 ```
 
 **What GEPA did:**
@@ -702,7 +702,7 @@ Response │ LangGraph and LangChain serve different but complementary purposes:
 Measure the improvement:
 
 ```bash
-super agent evaluate research_agent_deepagents --load-optimized
+super agent evaluate research_agent_deepagents  # automatically loads optimized weights
 ```
 
 **Expected Output:**
@@ -1032,7 +1032,7 @@ super agent optimize research_agent_deepagents \
   --reflection-lm google-genai:gemini-2.5-pro
 
 # 7. Evaluate (optimized)
-super agent evaluate research_agent_deepagents --load-optimized
+super agent evaluate research_agent_deepagents  # automatically loads optimized weights
 
 # 8. Run optimized
 super agent run research_agent_deepagents --goal "Complex query here"
@@ -1497,7 +1497,7 @@ super agent optimize production_agent \
   --reflection-lm google-genai:gemini-2.5-pro
 
 # 3. Validate optimized version
-super agent evaluate production_agent --load-optimized
+super agent evaluate production_agent  # automatically loads optimized weights
 # Check performance metrics (varies by hardware/model)
 
 # 4. Test with real data
@@ -1575,7 +1575,7 @@ super agent optimize research_agent_deepagents \
   --reflection-lm google-genai:gemini-2.5-pro
 
 # Test optimized
-super agent evaluate research_agent_deepagents --load-optimized
+super agent evaluate research_agent_deepagents  # automatically loads optimized weights
 ```
 
 ### All Demo Agents

@@ -93,9 +93,9 @@ super agent pull research_agent_deepagents
 super agent compile research_agent_deepagents --framework deepagents
 super agent run research_agent_deepagents --goal "What is LangGraph?"
 super agent evaluate research_agent_deepagents
-super agent optimize research_agent_deepagents --auto medium
+super agent optimize research_agent_deepagents --auto medium --framework deepagents --reflection-lm ollama:llama3.1:8b
 
-# ✅ Done! Agent optimized with FREE Gemini calls
+# ✅ Done! Agent optimized with local Ollama
 ```
 
 **📖 Detailed Gemini Guide**: See `DEEPAGENTS_GEMINI_TEST.md` in repo root
@@ -144,7 +144,7 @@ super agent optimize research_agent_deepagents \
   --reflection-lm google-genai:gemini-2.5-pro
 
 # Test optimized version
-super agent evaluate research_agent_deepagents --load-optimized
+super agent evaluate research_agent_deepagents  # automatically loads optimized weights
 ```
 
 **Expected Results:**
@@ -592,7 +592,7 @@ Overall: 2/3 PASS (66.7%)
 ### Step 5: Optimize with GEPA
 
 ```bash
-super agent optimize research_agent_deepagents --auto medium
+super agent optimize research_agent_deepagents --auto medium --framework deepagents --reflection-lm ollama:llama3.1:8b
 ```
 
 **What happens:**

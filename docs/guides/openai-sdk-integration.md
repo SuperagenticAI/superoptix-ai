@@ -51,13 +51,13 @@ super agent pull assistant_openai
 
 **✅ Uses Ollama by Default!** (FREE, no API keys needed!)
 
-The `assistant_openai` agent now defaults to Ollama `gpt-oss:120b`:
+The `assistant_openai` agent now defaults to Ollama `llama3.1:8b`:
 
 ```yaml
 language_model:
   location: local
   provider: ollama
-  model: ollama:gpt-oss:120b  # Most powerful free model
+  model: ollama:llama3.1:8b  # Fast and efficient model
   temperature: 0.7
   api_base: http://localhost:11434
 ```
@@ -65,7 +65,7 @@ language_model:
 **Just install Ollama and run:**
 ```bash
 brew install ollama  # macOS
-ollama pull gpt-oss:120b
+ollama pull llama3.1:8b
 super agent run assistant_openai --goal "Hello!"
 ```
 
@@ -96,7 +96,7 @@ super agent compile assistant_openai --framework openai
 super agent evaluate assistant_openai
 
 # Optimize with GEPA
-super agent optimize assistant_openai --auto medium
+super agent optimize assistant_openai --auto medium --framework openai --reflection-lm ollama:llama3.1:8b
 
 # Run
 super agent run assistant_openai --goal "What is Python?"
@@ -225,13 +225,15 @@ Overall: 4/4 PASS (100.0%)
 ### Step 5: Optimize
 
 ```bash
-super agent optimize assistant_openai --auto medium
+super agent optimize assistant_openai --auto medium --framework openai --reflection-lm ollama:llama3.1:8b
 ```
 
 **What GEPA optimizes:**
 - **`instructions`**: The agent's system prompt
 
 GEPA will test variations to find the best instructions!
+
+**Note:** Requires `--reflection-lm` parameter for Universal GEPA optimization
 
 ### Step 6: Re-evaluate
 
@@ -475,7 +477,7 @@ guardrails:
 1. Check BDD scenario keywords are realistic
 2. Lower threshold to 0.4 or 0.5
 3. Run GEPA optimization to improve instructions
-4. Try different model (gpt-oss:120b for more capability)
+4. Try different model (llama3.1:70b or gpt-oss:120b for more capability)
 
 ### Import Error
 
@@ -592,9 +594,9 @@ language_model:
 - ✅ Good baseline performance
 
 **Supported Ollama Models:**
-- `ollama:gpt-oss:120b` (default, most capable)
+- `ollama:llama3.1:8b` (default, fast and efficient)
+- `ollama:gpt-oss:120b` (most capable, larger model)
 - `ollama:gpt-oss:20b` (faster alternative)
-- `ollama:llama3.1:8b` (faster, lower capability)
 - `ollama:qwen3:8b` (alternative)
 
 ### OpenAI (Cloud)
@@ -701,7 +703,7 @@ spec:
 
 | Framework | Model | Performance | Cost | Speed |
 |-----------|-------|-------------|------|-------|
-| **OpenAI SDK** | gpt-oss:120b | Excellent | Free | Medium |
+| **OpenAI SDK** | llama3.1:8b | Good | Free | Fast |
 | **DSPy** | llama3.1:8b | Good | Free | Fast |
 | **DSPy** | gpt-4 | 85% | $$$ | Medium |
 | **DeepAgents** | Claude | N/A | $$ | Medium |

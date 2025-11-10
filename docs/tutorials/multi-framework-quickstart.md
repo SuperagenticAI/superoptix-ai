@@ -4,46 +4,61 @@ title: Multi-Framework Quick Start - SuperOptiX
 
 # Multi-Framework Quick Start
 
-Build and optimize AI agents across **6 major frameworks** in **10 minutes**.
+<div align="center">
 
-## What You'll Build
+**Build and optimize AI agents across multiple major frameworks**
 
-By the end of this guide, you'll have:
+Choose from DSPy, OpenAI SDK, CrewAI, Google ADK, Microsoft, or DeepAgents
 
-- ✅ A fully functional AI agent in your chosen framework
-- ✅ Automated evaluation with RSpec-style BDD scenarios
-- ✅ GEPA optimization with proven improvements
-- ✅ Production-ready agent deployment
+</div>
 
-## Requirements
+---
 
-### Hardware
+## 🎯 What You'll Build
 
-- **Minimum**: 16GB GPU RAM for optimization
-- **Recommended**: 8GB+ system RAM
-- **Network**: Stable internet connection for model downloads
+!!! success "Learning Outcomes"
+    By the end of this guide, you'll have:
 
-### Software
+    - ✅ A fully functional AI agent in your chosen framework
+    - ✅ Automated evaluation with RSpec-style BDD scenarios
+    - ✅ GEPA optimization with proven improvements
+    - ✅ Production-ready agent deployment
 
-- **Python 3.11 or higher**
-- **Ollama** (for local LLMs)
+## 📋 Requirements
+
+### 🖥️ Hardware
+
+| Component | Requirement |
+|-----------|-------------|
+| **GPU RAM** | 16GB recommended for optimization |
+| **System RAM** | 8GB+ recommended |
+| **Network** | Stable internet connection for model downloads |
+
+### 🐍 Software
+
+| Software | Version |
+|----------|---------|
+| **Python** | 3.11 or higher |
+| **Ollama** | For local LLMs |
 
 !!! warning "Windows Users"
     Set `PYTHONUTF8=1` to ensure proper UTF-8 encoding support:
     ```cmd
     set PYTHONUTF8=1
     ```
-    
-## Installation
 
-!!! tip "Stable Release Available!"
+---
+
+## 📦 Installation
+
+!!! tip "Stable Release Available"
     SuperOptiX is now available as a stable release.
 
 !!! info "Git Required"
     Git is required for installation. Verify: `git --version`
-    
+
     **Install Git:**
-    
+
     - **macOS:** `xcode-select --install`
     - **Linux:** `sudo apt-get install git`
     - **Windows:** [Download Git](https://git-scm.com/downloads)
@@ -51,7 +66,7 @@ By the end of this guide, you'll have:
 !!! tip "Framework-Free Core"
     SuperOptiX core is now **framework-independent**! Install only what you need.
 
-Choose your framework(s) and install SuperOptiX:
+**Choose your framework(s) and install SuperOptiX:**
 
 === "Core Only (Includes DSPy)"
     ```bash
@@ -131,7 +146,9 @@ Choose your framework(s) and install SuperOptiX:
 !!! tip "First Execution"
     The first execution of `super` commands may take a few seconds as Python compiles bytecodes.
 
-## Step 1: Initialize Project
+---
+
+## 🚀 Step 1: Initialize Project
 
 ```bash
 # Create a new project
@@ -139,19 +156,23 @@ super init my_first_agent
 cd my_first_agent
 ```
 
-This creates a standard project structure:
+!!! example "Project Structure"
+    This creates a standard project structure:
 
-```
-my_first_agent/
-├── agents/          # Agent playbooks
-├── pipelines/       # Compiled agents
-├── evals/          # Evaluation results
-└── optimizers/     # Optimization data
-```
+    ```
+    my_first_agent/
+    ├── agents/          # Agent playbooks
+    ├── pipelines/       # Compiled agents
+    ├── evals/          # Evaluation results
+    └── optimizers/     # Optimization data
+    ```
 
-## Step 2: Choose Your Framework and Pull an Agent
+---
 
-SuperOptiX supports 6 major frameworks. Choose the one that fits your needs:
+## 🎨 Step 2: Choose Your Framework and Pull an Agent
+
+!!! info "Framework Support"
+    SuperOptiX supports multiple major frameworks. Choose the one that fits your needs:
 
 === "DSPy (Recommended)"
 
@@ -159,10 +180,10 @@ SuperOptiX supports 6 major frameworks. Choose the one that fits your needs:
     # DSPy: Stanford research framework
     super agent pull sentiment_analyzer
     ```
-    
-    **Best for**: Complex reasoning, research, 10+ optimizable variables
-    
-    **Proven**: 37.5% → 80% improvement with GEPA
+
+    **Best for**: Complex reasoning, research, multiple optimizable variables
+
+    **Status**: Proven GEPA optimization results
 
 === "OpenAI SDK"
 
@@ -170,10 +191,10 @@ SuperOptiX supports 6 major frameworks. Choose the one that fits your needs:
     # OpenAI SDK: Simple and fast
     super agent pull assistant_openai
     ```
-    
+
     **Best for**: Simple agents, fast prototyping
-    
-    **Proven**: 100% pass rate with GEPA
+
+    **Status**: Proven GEPA optimization results
 
 === "CrewAI"
 
@@ -181,10 +202,10 @@ SuperOptiX supports 6 major frameworks. Choose the one that fits your needs:
     # CrewAI: Multi-agent collaboration
     super agent pull researcher_crew
     ```
-    
+
     **Best for**: Multi-agent teams, role-based agents
-    
-    **Proven**: 100% pass rate with GEPA
+
+    **Status**: Proven GEPA optimization results
 
 === "Google ADK"
 
@@ -192,10 +213,10 @@ SuperOptiX supports 6 major frameworks. Choose the one that fits your needs:
     # Google ADK: Gemini 2.0 native
     super agent pull assistant_adk
     ```
-    
+
     **Best for**: Gemini integration, free tier available
-    
-    **Ready**: For optimization
+
+    **Status**: Ready for optimization
 
 === "Microsoft"
 
@@ -203,10 +224,10 @@ SuperOptiX supports 6 major frameworks. Choose the one that fits your needs:
     # Microsoft: Enterprise Azure
     super agent pull assistant_microsoft
     ```
-    
+
     **Best for**: Enterprise Azure integration
-    
-    **Ready**: For optimization
+
+    **Status**: Ready for optimization
 
 === "DeepAgents"
 
@@ -214,22 +235,23 @@ SuperOptiX supports 6 major frameworks. Choose the one that fits your needs:
     # DeepAgents: Complex planning
     super agent pull research_agent_deepagents
     ```
-    
+
     **Best for**: LangGraph planning, advanced reasoning
-    
-    **Ready**: For optimization
+
+    **Status**: Ready for optimization
 
 !!! tip "Browse All Agents"
-    
     ```bash
     # See all pre-built agents
     super market browse agents
-    
+
     # List demo agents
     super agent list --pre-built
     ```
 
-## Step 3: Compile the Agent
+---
+
+## 🔧 Step 3: Compile the Agent
 
 ```bash
 # Compile for your chosen framework
@@ -242,9 +264,12 @@ super agent compile sentiment_analyzer
 super agent compile assistant_openai
 ```
 
-This generates framework-specific Python code in the `pipelines/` directory.
+!!! success "Compilation Output"
+    This generates framework-specific Python code in the `pipelines/` directory.
 
-## Step 4: Evaluate Performance
+---
+
+## 📊 Step 4: Evaluate Performance
 
 ```bash
 # Run baseline evaluation
@@ -254,25 +279,30 @@ super agent evaluate <agent_name>
 super agent evaluate sentiment_analyzer
 ```
 
-You'll see results like:
+!!! example "Evaluation Output"
+    You'll see baseline results showing:
 
-```
-Evaluation Results:
-==================
-Pass Rate: 37.5% (3/8 scenarios)
-Average Score: 6.2/10
-```
+    ```
+    Evaluation Results:
+    ==================
+    Pass Rate: X% (scenarios passed/total)
+    Average Score: X.X/10
+    ```
 
-## Step 5: Optimize with GEPA
+---
 
-Now comes the magic! **GEPA (Genetic-Pareto)** automatically improves your agent's performance.
+## 🧬 Step 5: Optimize with GEPA
 
-### The Universal Optimizer
+!!! tip "The Magic Step"
+    **GEPA (Genetic-Pareto)** automatically improves your agent's performance!
 
-- Works on **ALL 6 frameworks** (DSPy, OpenAI SDK, CrewAI, Google ADK, Microsoft, DeepAgents)
-- Proven results: DSPy 37.5% → 80%, OpenAI/CrewAI 100% pass rates
-- Sample efficient: Improves with just 3-10 scenarios
-- Framework-agnostic: Same command for all frameworks!
+### 🌟 The Universal Optimizer
+
+!!! success "Framework Support"
+    - ✅ Works on **ALL frameworks** (DSPy, OpenAI SDK, CrewAI, Google ADK, Microsoft, DeepAgents)
+    - ✅ Proven optimization results across frameworks
+    - ✅ Sample efficient: Works with minimal training scenarios
+    - ✅ Framework-agnostic: Same command for all frameworks!
 
 ```bash
 # GEPA works on ALL frameworks! Same command!
@@ -287,35 +317,41 @@ super agent optimize assistant_microsoft --auto medium       # Microsoft
 super agent optimize research_agent_deepagents --auto medium # DeepAgents
 ```
 
-### Optimization Levels
+### ⚙️ Optimization Levels
 
-| Level | Time | Iterations | Best For |
-|-------|------|------------|----------|
-| `light` | ~5 min | 2-3 | Quick iteration, prototyping |
-| `medium` | ~10-15 min | 5 | Most use cases (Recommended) |
-| `intensive` | ~30+ min | 10+ | Critical production agents |
+| Level | Best For |
+|-------|----------|
+| `light` | Quick iteration, prototyping |
+| `medium` | Most use cases (Recommended) |
+| `intensive` | Critical production agents |
 
 !!! warning "API Usage"
     Optimization makes multiple LLM API calls. Monitor your usage if using cloud models. Works great with Ollama (local, free)!
 
-## Step 6: Re-evaluate to See Improvement
+---
+
+## 📈 Step 6: Re-evaluate to See Improvement
 
 ```bash
 # Evaluate optimized version
-super agent evaluate <agent_name> --load-optimized
+super agent evaluate <agent_name>  # automatically loads optimized weights
 ```
 
-You'll see dramatic improvements:
+!!! success "See the Improvements"
+    You'll see improvements in:
 
-```
-Evaluation Results (Optimized):
-================================
-Pass Rate: 80.0% (6.5/8 scenarios)  ← UP from 37.5%!
-Average Score: 9.1/10                ← UP from 6.2/10!
-Improvement: +42.5 percentage points
-```
+    ```
+    Evaluation Results (Optimized):
+    ================================
+    Pass Rate: Improved ⬆️
+    Average Score: Improved ⬆️
+    ```
 
-## Step 7: Run Your Optimized Agent
+    The optimized agent automatically loads the improved weights from GEPA optimization!
+
+---
+
+## 🎯 Step 7: Run Your Optimized Agent
 
 ```bash
 # Run the optimized agent
@@ -326,129 +362,144 @@ super agent run sentiment_analyzer \
   --input "This product exceeded all my expectations!"
 ```
 
-## Complete Example
+---
 
-Here's the full workflow for a DSPy sentiment analyzer:
+## 🔄 Complete Example Workflow
 
-```bash
-# 1. Initialize
-super init sentiment_project
-cd sentiment_project
+!!! example "Full DSPy Sentiment Analyzer Workflow"
+    Here's the complete end-to-end workflow:
 
-# 2. Pull agent
-super agent pull sentiment_analyzer
+    ```bash
+    # 1. Initialize
+    super init sentiment_project
+    cd sentiment_project
 
-# 3. Compile
-super agent compile sentiment_analyzer
+    # 2. Pull agent
+    super agent pull sentiment_analyzer
 
-# 4. Baseline evaluation
-super agent evaluate sentiment_analyzer
-# Result: 37.5% pass rate
+    # 3. Compile
+    super agent compile sentiment_analyzer
 
-# 5. Optimize
-super agent optimize sentiment_analyzer --auto medium
-# GEPA optimizes agent with 5 iterations
+    # 4. Baseline evaluation
+    super agent evaluate sentiment_analyzer
 
-# 6. Re-evaluate
-super agent evaluate sentiment_analyzer --load-optimized
-# Result: 80.0% pass rate (+42.5 points!)
+    # 5. Optimize with GEPA
+    super agent optimize sentiment_analyzer --auto medium
 
-# 7. Run
-super agent run sentiment_analyzer
-```
+    # 6. Re-evaluate (automatically loads optimized weights)
+    super agent evaluate sentiment_analyzer
 
-## What's Next?
+    # 7. Run your optimized agent
+    super agent run sentiment_analyzer
+    ```
 
-Congratulations! You've just built, evaluated, and optimized your first AI agent with SuperOptiX.
+---
 
-### Learn More
+## 🎓 What's Next?
 
-- **[Multi-Framework Guide](../guides/multi-framework.md)** - Compare all 6 frameworks
-- **[GEPA Optimization](../guides/gepa-optimization.md)** - Deep dive into optimization
-- **[SuperSpec DSL](../guides/superspec.md)** - Build custom agents
-- **[Evaluation & Testing](../guides/evaluation-testing.md)** - Advanced testing strategies
+!!! success "Congratulations!"
+    You've just built, evaluated, and optimized your first AI agent with SuperOptiX!
 
-### Try Different Frameworks
+### 📚 Learn More
 
-```bash
-# Try OpenAI SDK
-super agent pull assistant_openai
-super agent compile assistant_openai
-super agent evaluate assistant_openai
-super agent optimize assistant_openai --auto medium
+| Resource | Description |
+|----------|-------------|
+| [Multi-Framework Guide](../guides/multi-framework.md) | Compare all supported frameworks |
+| [GEPA Optimization](../guides/gepa-optimization.md) | Deep dive into optimization |
+| [SuperSpec DSL](../guides/superspec.md) | Build custom agents |
+| [Evaluation & Testing](../guides/evaluation-testing.md) | Advanced testing strategies |
 
-# Try CrewAI
-super agent pull researcher_crew
-super agent compile researcher_crew
-super agent evaluate researcher_crew
-super agent optimize researcher_crew --auto medium
-```
+### 🔄 Try Different Frameworks
 
-### Build Custom Agents
+!!! example "Explore Other Frameworks"
+    ```bash
+    # Try OpenAI SDK
+    super agent pull assistant_openai
+    super agent compile assistant_openai
+    super agent evaluate assistant_openai
+    super agent optimize assistant_openai --auto medium
 
-Create your own agent with SuperSpec:
+    # Try CrewAI
+    super agent pull researcher_crew
+    super agent compile researcher_crew
+    super agent evaluate researcher_crew
+    super agent optimize researcher_crew --auto medium
+    ```
 
-```yaml
-# my_agent_playbook.yaml
-apiVersion: agent/v1
-kind: AgentSpec
-metadata:
-  name: my_custom_agent
-spec:
-  target_framework: dspy  # or openai, crewai, google-adk, microsoft, deepagents
-  language_model:
-    provider: ollama
-    model: llama3.1:8b
-  persona:
-    role: Data Analyst
-    goal: Analyze data and provide insights
-  feature_specifications:
-    scenarios:
-      - name: Basic analysis
-        input:
-          data: "Sales data for Q1"
-        expected_output:
-          analysis: "Comprehensive analysis"
-```
+### 🎨 Build Custom Agents
 
-Then compile and optimize:
+!!! tip "Create Your Own Agent"
+    Create your own agent with SuperSpec:
 
-```bash
-super agent compile my_custom_agent
-super agent evaluate my_custom_agent
-super agent optimize my_custom_agent --auto medium
-```
+    ```yaml
+    # my_agent_playbook.yaml
+    apiVersion: agent/v1
+    kind: AgentSpec
+    metadata:
+      name: my_custom_agent
+    spec:
+      target_framework: dspy  # or openai, crewai, google-adk, microsoft, deepagents
+      language_model:
+        provider: ollama
+        model: llama3.1:8b
+      persona:
+        role: Data Analyst
+        goal: Analyze data and provide insights
+      feature_specifications:
+        scenarios:
+          - name: Basic analysis
+            input:
+              data: "Sales data for Q1"
+            expected_output:
+              analysis: "Comprehensive analysis"
+    ```
 
-## Troubleshooting
+    Then compile and optimize:
 
-### Common Issues
+    ```bash
+    super agent compile my_custom_agent
+    super agent evaluate my_custom_agent
+    super agent optimize my_custom_agent --auto medium
+    ```
+
+---
+
+## 🆘 Troubleshooting
+
+### ❓ Common Issues
 
 !!! question "Installation fails"
-    Try using `pip install superoptix[all]` or check Python version with `python --version` (must be 3.11+)
+    **Solution**: Try using `pip install superoptix[all]` or check Python version with `python --version` (must be 3.11+)
 
 !!! question "Optimization fails"
-    Check that you have at least 16GB GPU RAM and Ollama is running with `ollama list`
+    **Solution**: Check that you have sufficient GPU RAM and Ollama is running with `ollama list`
 
 !!! question "No improvement after optimization"
-    Ensure your RSpec-style BDD scenarios are well-defined and provide clear success criteria
+    **Solution**: Ensure your RSpec-style BDD scenarios are well-defined and provide clear success criteria
 
-### Get Help
+### 💬 Get Help
 
-- **Documentation**: [https://superoptix.ai/docs](https://superoptix.ai/docs)
-- **GitHub Issues**: [https://github.com/SuperagenticAI/SuperOptiX/issues](https://github.com/SuperagenticAI/SuperOptiX/issues)
-- **Website**: [https://superoptix.ai](https://superoptix.ai)
+!!! help "Support Resources"
+    - 📖 **Documentation**: [https://superoptix.ai/docs](https://superoptix.ai/docs)
+    - 🐛 **GitHub Issues**: [https://github.com/SuperagenticAI/SuperOptiX/issues](https://github.com/SuperagenticAI/SuperOptiX/issues)
+    - 🌐 **Website**: [https://superoptix.ai](https://superoptix.ai)
 
-## Summary
+---
 
-You've learned how to:
+## ✅ Summary
 
-1. ✅ Install SuperOptiX
-2. ✅ Initialize a project
-3. ✅ Choose from 6 frameworks
-4. ✅ Compile agents
-5. ✅ Evaluate performance
-6. ✅ Optimize with GEPA
-7. ✅ Deploy to production
+!!! success "What You've Accomplished"
 
-**Ready to build more?** Check out our [Guides](../guides/index.md) for in-depth tutorials!
+    | Skill | Status |
+    |-------|--------|
+    | Install SuperOptiX | ✅ Complete |
+    | Initialize a project | ✅ Complete |
+    | Choose from multiple frameworks | ✅ Complete |
+    | Compile agents | ✅ Complete |
+    | Evaluate performance | ✅ Complete |
+    | Optimize with GEPA | ✅ Complete |
+    | Deploy to production | ✅ Complete |
+
+!!! note "Ready to Build More?"
+    Check out our [Guides](../guides/index.md) for in-depth tutorials!
 

@@ -228,7 +228,7 @@ Optimize the RAG system using GEPA:
 super agent optimize rag_chroma_demo --auto medium
 
 # Evaluate optimized version
-super agent evaluate rag_chroma_demo --load-optimized
+super agent evaluate rag_chroma_demo  # automatically loads optimized weights
 ```
 
 GEPA will optimize:

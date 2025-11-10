@@ -342,7 +342,7 @@ super agent evaluate sentiment_analyzer
 super agent optimize sentiment_analyzer --auto medium
 
 # 6. Evaluate optimized version
-super agent evaluate sentiment_analyzer --load-optimized
+super agent evaluate sentiment_analyzer  # automatically loads optimized weights
 
 # 7. Run the optimized agent
 super agent run sentiment_analyzer

@@ -78,7 +78,6 @@ theme:
     - navigation.tracking
     - navigation.path
     - navigation.top
-    - toc.follow
     - search.suggest
     - search.highlight
     - search.share

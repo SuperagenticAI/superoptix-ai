@@ -453,7 +453,7 @@ super agent evaluate code_reviewer
 super agent optimize code_reviewer --auto medium
 
 # 5. See improvement
-super agent evaluate code_reviewer --load-optimized
+super agent evaluate code_reviewer  # automatically loads optimized weights
 ```
 
 GEPA automatically optimizes all prompts in your playbook!

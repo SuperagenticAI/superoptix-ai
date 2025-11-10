@@ -367,8 +367,8 @@ super agent evaluate <agent_name>
 # Step 5: Optimize with GEPA (same command for ALL frameworks!)
 super agent optimize <agent_name> --auto medium
 
-# Step 6: Evaluate optimized version
-super agent evaluate <agent_name> --load-optimized
+# Step 6: Evaluate optimized version (automatically loads optimized weights)
+super agent evaluate <agent_name>
 
 # Step 7: Run in production
 super agent run <agent_name>

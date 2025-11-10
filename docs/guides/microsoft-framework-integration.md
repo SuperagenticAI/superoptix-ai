@@ -175,7 +175,7 @@ GEPA will:
 ### 6. Evaluate Optimized Agent
 
 ```bash
-super agent evaluate assistant_microsoft --load-optimized
+super agent evaluate assistant_microsoft  # automatically loads optimized weights
 ```
 
 Expected improvement:
@@ -307,7 +307,7 @@ super agent evaluate weather_ms
 super agent optimize weather_ms --auto medium
 
 # 6. Evaluate optimized
-super agent evaluate weather_ms --load-optimized
+super agent evaluate weather_ms  # automatically loads optimized weights
 
 # 7. Run
 super agent run weather_ms --goal "Will it rain tomorrow?"

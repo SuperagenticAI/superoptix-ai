@@ -92,8 +92,8 @@ super agent evaluate research_agent_deepagents # DeepAgents
 # Optimize with GEPA (universal optimizer)
 super agent optimize <agent_name> --auto medium
 
-# Re-evaluate optimized version
-super agent evaluate <agent_name> --load-optimized
+# Re-evaluate optimized version (automatically loads optimized weights)
+super agent evaluate <agent_name>
 ```
 
 ## 📊 Multi-Framework Testing Results
@@ -115,10 +115,8 @@ super agent evaluate <agent_name> --load-optimized
 
 ```bash
 # Standard evaluation (works for ALL frameworks)
+# Note: Automatically loads optimized weights if they exist
 super agent evaluate <agent_name>
-
-# With optimization comparison
-super agent evaluate <agent_name> --load-optimized
 
 # Verbose output for debugging
 super agent evaluate <agent_name> --verbose

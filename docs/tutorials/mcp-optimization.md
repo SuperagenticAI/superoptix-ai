@@ -228,7 +228,7 @@ class MCPCustomTools:
 super agent optimize mcp_demo --auto medium
 
 # Evaluate optimized version
-super agent evaluate mcp_demo --load-optimized
+super agent evaluate mcp_demo  # automatically loads optimized weights
 ```
 
 GEPA will optimize:

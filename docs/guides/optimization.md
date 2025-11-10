@@ -102,7 +102,7 @@ super agent optimize research_agent_deepagents --auto medium # DeepAgents
 
 ```bash
 # Evaluate optimized version
-super agent evaluate <agent_name> --load-optimized
+super agent evaluate <agent_name>  # automatically loads optimized weights
 
 # Run in production
 super agent run <agent_name>
@@ -263,7 +263,7 @@ super agent optimize <agent_name> --auto intensive
 
 ```bash
 # Always re-evaluate after optimization
-super agent evaluate <agent_name> --load-optimized
+super agent evaluate <agent_name>  # automatically loads optimized weights
 ```
 
 ### **4. Use Quality Training Scenarios**

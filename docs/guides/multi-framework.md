@@ -80,10 +80,10 @@ super agent compile my_agent --framework [dspy|openai|crewai|google-adk|microsof
 super agent evaluate my_agent
 
 # 4. Optimize with GEPA (works on ALL frameworks!)
-super agent optimize my_agent --auto medium
+super agent optimize my_agent --auto medium --framework <framework> --reflection-lm ollama:llama3.1:8b
 
 # 5. Re-evaluate
-super agent evaluate my_agent --load-optimized
+super agent evaluate my_agent  # automatically loads optimized weights
 
 # 6. Run in production
 super agent run my_agent
@@ -159,7 +159,7 @@ super agent pull assistant_openai
 
 # Install Ollama (if not already installed)
 brew install ollama
-ollama pull gpt-oss:120b
+ollama pull llama3.1:8b
 
 # Compile & Run (no API keys needed!)
 super agent compile assistant_openai --framework openai
@@ -169,7 +169,7 @@ super agent run assistant_openai --goal "Hello!"
 super agent evaluate assistant_openai
 
 # Optimize
-super agent optimize assistant_openai --auto medium
+super agent optimize assistant_openai --auto medium --framework openai --reflection-lm ollama:llama3.1:8b
 ```
 
 #### Configuration
@@ -182,7 +182,7 @@ spec:
   language_model:
     location: local
     provider: ollama
-    model: ollama:gpt-oss:120b  # FREE, powerful!
+    model: ollama:llama3.1:8b  # FREE, fast and efficient!
     api_base: http://localhost:11434
 ```
 
@@ -224,7 +224,7 @@ super agent compile researcher_crew --framework crewai
 super agent evaluate researcher_crew
 
 # Optimize
-super agent optimize content_creator_crew --auto medium
+super agent optimize content_creator_crew --auto medium --framework crewai --reflection-lm ollama:llama3.1:8b
 
 # Run
 super agent run researcher_crew
@@ -296,7 +296,7 @@ super agent compile assistant_adk --framework google-adk
 super agent evaluate assistant_adk
 
 # Optimize
-super agent optimize assistant_adk --auto medium
+super agent optimize assistant_adk --auto medium --framework google-adk --reflection-lm ollama:llama3.1:8b
 
 # Run
 super agent run assistant_adk
@@ -338,7 +338,7 @@ super agent compile assistant_microsoft --framework microsoft
 super agent evaluate assistant_microsoft
 
 # Optimize
-super agent optimize assistant_microsoft --auto medium
+super agent optimize assistant_microsoft --auto medium --framework microsoft --reflection-lm ollama:llama3.1:8b
 
 # Run
 super agent run assistant_microsoft
@@ -390,7 +390,7 @@ super agent compile research_agent_deepagents --framework deepagents
 super agent evaluate research_agent_deepagents
 
 # Optimize
-super agent optimize research_agent_deepagents --auto medium
+super agent optimize research_agent_deepagents --auto medium --framework deepagents --reflection-lm ollama:llama3.1:8b
 
 # Run
 super agent run research_agent_deepagents
@@ -505,7 +505,7 @@ for fw in dspy openai crewai google-adk microsoft deepagents; do
   super agent compile assistant_${fw} --framework ${fw}
   super agent evaluate assistant_${fw}
   super agent optimize assistant_${fw} --auto medium
-  super agent evaluate assistant_${fw} --load-optimized
+  super agent evaluate assistant_${fw}  # automatically loads optimized weights
 done
 
 # Compare results!

@@ -159,19 +159,19 @@ GEPA works seamlessly across all 6 supported frameworks:
 super agent optimize <agent_name> --auto medium
 
 # Examples for each framework:
-super agent optimize sentiment_analyzer --auto medium        # DSPy
-super agent optimize assistant_openai --auto medium          # OpenAI SDK
-super agent optimize researcher_crew --auto medium           # CrewAI
-super agent optimize assistant_adk --auto medium             # Google ADK
-super agent optimize assistant_microsoft --auto medium       # Microsoft
-super agent optimize research_agent_deepagents --auto medium # DeepAgents
+super agent optimize sentiment_analyzer --auto medium        # DSPy (uses native GEPA)
+super agent optimize assistant_openai --auto medium --framework openai --reflection-lm ollama:llama3.1:8b          # OpenAI SDK
+super agent optimize researcher_crew --auto medium --framework crewai --reflection-lm ollama:llama3.1:8b           # CrewAI
+super agent optimize assistant_adk --auto medium --framework google-adk --reflection-lm ollama:llama3.1:8b             # Google ADK
+super agent optimize assistant_microsoft --auto medium --framework microsoft --reflection-lm ollama:llama3.1:8b       # Microsoft
+super agent optimize research_agent_deepagents --auto medium --framework deepagents --reflection-lm ollama:llama3.1:8b # DeepAgents
 ```
 
 **Step 3: Evaluate & Deploy**
 
 ```bash
 # Evaluate optimized version
-super agent evaluate <agent_name> --load-optimized
+super agent evaluate <agent_name>  # automatically loads optimized weights
 
 # Run in production
 super agent run <agent_name>
@@ -256,7 +256,7 @@ super agent optimize developer --auto light --fresh
 # → Stakeholders see the optimization happening
 
 # 3. Post-optimization evaluation
-super agent evaluate developer --load-optimized
+super agent evaluate developer  # automatically loads optimized weights
 # → Shows 80% pass rate
 # → Clear improvement demonstrated!
 ```

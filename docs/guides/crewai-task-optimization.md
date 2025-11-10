@@ -157,7 +157,7 @@ GEPA optimizes:
 ### Step 5: Re-evaluate
 
 ```bash
-super agent evaluate content_creator_crew --load-optimized
+super agent evaluate content_creator_crew  # automatically loads optimized weights
 ```
 
 Output:
@@ -459,7 +459,7 @@ super agent pull content_creator_crew
 super agent compile content_creator_crew
 super agent evaluate content_creator_crew
 super agent optimize content_creator_crew --auto medium
-super agent evaluate content_creator_crew --load-optimized
+super agent evaluate content_creator_crew  # automatically loads optimized weights
 
 # Advanced options
 super agent optimize content_creator_crew \
@@ -468,7 +468,7 @@ super agent optimize content_creator_crew \
   --minibatch-size 5
 
 # Run optimized agent
-super agent run content_creator_crew --load-optimized
+super agent run content_creator_crew  # automatically loads optimized weights
 ```
 
 ---
