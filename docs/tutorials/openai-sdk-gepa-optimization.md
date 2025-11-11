@@ -1321,6 +1321,68 @@ pip install "superoptix[frameworks-openai]"
 
 ---
 
+## 🌩️ Using Cloud Models (Optional)
+
+The [`superoptix-lite-openai`](https://github.com/SuperagenticAI/superoptix-lite-openai) repository includes simplified scripts for using cloud models instead of local Ollama:
+
+### Quick Start with Cloud Models
+
+**Simplified Scripts Approach** (Recommended)
+
+The repo includes 4 ready-to-use scripts:
+
+```bash
+# Local Models (FREE)
+python demo_local.py        # Demo with Ollama
+python optimize_local.py    # GEPA optimization with Ollama
+
+# Cloud Models (OpenAI, Anthropic, Google)
+export OPENAI_API_KEY=sk-...        # Uses gpt-5
+# OR
+export ANTHROPIC_API_KEY=sk-ant-... # Uses claude-sonnet-4.5
+# OR
+export GOOGLE_API_KEY=...           # Uses gemini-pro-2.5
+
+python demo_cloud.py        # Demo with cloud models (auto-detects provider)
+python optimize_cloud.py    # GEPA optimization with cloud models
+```
+
+**Features:**
+- ✅ Auto-detects cloud provider from API key
+- ✅ Uses latest models (gpt-5, claude-sonnet-4.5, gemini-pro-2.5)
+- ✅ Separate scripts for local vs cloud (no complex switching)
+- ✅ Includes cost warnings (optimization uses APIs)
+- ✅ .env file support for API keys
+
+### .env File Method
+
+```bash
+# Copy and edit .env file
+cp .env.example .env
+# Add your API key to .env: OPENAI_API_KEY=sk-...
+
+# Load environment and run
+source .env
+python demo_cloud.py
+python optimize_cloud.py
+```
+
+### Cost Warning
+
+⚠️ **IMPORTANT**: Cloud optimization uses APIs and will incur costs. The optimization process:
+- Evaluates test scenarios multiple times
+- Makes many API calls to improve the agent
+- Costs vary by provider and model
+
+**Tips to reduce costs:**
+1. Use local models (Ollama) - completely free!
+2. Test with `demo_cloud.py` first (cheaper) before running `optimize_cloud.py`
+3. Only run optimization when needed
+
+See the [repo README](https://github.com/SuperagenticAI/superoptix-lite-openai) for complete cloud setup documentation.
+
+---
+
 ## 📚 Additional Resources
 
 ### Documentation

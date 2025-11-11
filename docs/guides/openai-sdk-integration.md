@@ -106,6 +106,39 @@ super agent run assistant_openai --goal "What is Python?"
 
 ---
 
+## 🌩️ Simplified Cloud/Local Model Switching
+
+The [`superoptix-lite-openai`](https://github.com/SuperagenticAI/superoptix-lite-openai) companion repo includes simplified scripts for easy switching between local and cloud models:
+
+### Local Models (FREE)
+```bash
+python demo_local.py        # Run demo with Ollama
+python optimize_local.py    # GEPA optimization with Ollama
+```
+
+### Cloud Models (OpenAI, Anthropic, Google)
+```bash
+# Set API key (choose one)
+export OPENAI_API_KEY=sk-...        # Uses gpt-5
+export ANTHROPIC_API_KEY=sk-ant-... # Uses claude-sonnet-4.5
+export GOOGLE_API_KEY=...           # Uses gemini-pro-2.5
+
+# Run cloud scripts (auto-detects provider)
+python demo_cloud.py        # Demo with cloud models
+python optimize_cloud.py    # GEPA optimization with cloud models
+```
+
+**Features:**
+- ✅ Auto-detects cloud provider from API key
+- ✅ Uses latest models (gpt-5, claude-sonnet-4.5, gemini-pro-2.5)
+- ✅ Separate scripts for local vs cloud (no complex switching)
+- ✅ Includes cost warnings (optimization uses APIs)
+- ✅ .env file support for API keys
+
+See the [repo README](https://github.com/SuperagenticAI/superoptix-lite-openai) for complete documentation.
+
+---
+
 ## 📋 Creating Your Own OpenAI SDK Playbook
 
 ### Basic Structure
