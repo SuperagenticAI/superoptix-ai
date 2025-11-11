@@ -4,6 +4,8 @@
 
 ✅ **Works great with FREE Ollama (No API Keys Needed!)**
 
+> **Hands-on demo:** Clone the MIT-licensed companion repo [`superoptix-lite-openai`](https://github.com/SuperagenticAI/superoptix-lite-openai) to try the OpenAI Agents SDK with SuperOptiX Lite right away. The Code Reviewer example in that project mirrors this guide step by step.
+
 ---
 
 ## 🎯 What is OpenAI Agents SDK?
@@ -940,6 +942,7 @@ A: Performance varies by use case, model, and hardware. OpenAI SDK typically has
 - **Ollama Setup**: `/docs/llm-setup.md`
 - **Multi-Framework Guide**: `/docs/guides/multi-framework.md`
 - **Universal GEPA**: `/plan/MULTI_FRAMEWORK_GEPA_STRATEGY.md`
+- **Hands-on Repo**: [`superoptix-lite-openai`](https://github.com/SuperagenticAI/superoptix-lite-openai) — clone this MIT-licensed companion project to try the OpenAI Agents SDK with SuperOptiX Lite and follow our Code Reviewer tutorial step by step.
 
 ---
 
@@ -992,8 +995,9 @@ This comprehensive step-by-step tutorial teaches you how to:
 ✅ Implement **automatic optimization loading** for production deployment
 
 **Example project:** Code Reviewer Agent that detects security vulnerabilities
+**Hands-on repo:** [`superoptix-lite-openai`](https://github.com/SuperagenticAI/superoptix-lite-openai) — clone it to follow the tutorial with a fully wired SuperOptiX Lite playground.
 
-**Time:** 30-45 minutes | **Difficulty:** Intermediate | **Prerequisites:** Python, Ollama
+**Time:** 30-45 minutes | **Difficulty:** Intermediate | **Prerequisites:** Python, Ollama, Git access to the repo above
 
 👉 **[Start the tutorial now](../tutorials/openai-sdk-gepa-optimization.md)**
 

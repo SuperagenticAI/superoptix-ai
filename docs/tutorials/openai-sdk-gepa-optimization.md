@@ -4,6 +4,21 @@
 
 This comprehensive tutorial demonstrates how to create production-ready AI agents using the official OpenAI Agents SDK, integrate them with SuperOptiX, and achieve measurable performance improvements through GEPA (Genetic Evaluation-based Prompt Augmentation) optimization.
 
+> **Hands-on first:** Clone the live example repo and follow along step by step — every snippet in this guide comes straight from [`superoptix-lite-openai`](https://github.com/SuperagenticAI/superoptix-lite-openai). Use it as your working playground while you read.
+
+---
+
+## 🔗 Repo Spotlight
+
+Looking for a complete, runnable example? Check out the open source companion repository [`superoptix-lite-openai`](https://github.com/SuperagenticAI/superoptix-lite-openai). It ships with:
+
+- ✅ A production-ready Code Reviewer agent following this tutorial end-to-end
+- ✅ GEPA optimization workflow powered by the lightweight `superoptix_lite` package
+- ✅ Playbook-driven Agent Spec scenarios for SQL injection, memory leaks, error handling, and performance tuning
+- ✅ Automation scripts for baseline evaluation, optimization, and regression testing
+
+We'll reference this repository throughout the tutorial so you can clone, copy, or adapt the same patterns instantly.
+
 ---
 
 ## 📋 What You'll Learn
@@ -104,6 +119,8 @@ code-reviewer-tutorial/
         ├── pipelines/        # Agent implementation
         └── optimized/        # GEPA optimization results
 ```
+
+> **Quick start:** prefer cloning instead? `git clone https://github.com/SuperagenticAI/superoptix-lite-openai.git` to get the finished layout with baseline, optimization, and demo scripts already wired up.
 
 ---
 
@@ -309,8 +326,8 @@ import json
 from agents import Agent, Runner, OpenAIChatCompletionsModel
 from openai import AsyncOpenAI
 
-# SuperOptiX integration
-from superoptix.core.base_component import BaseComponent
+# SuperOptiX Lite integration (matches superoptix-lite-openai repo)
+from openai_gepa.superoptix_lite import BaseComponent
 
 
 # ======================================================================
@@ -394,7 +411,7 @@ class CodeReviewerAgent:
 
 class CodeReviewerComponent(BaseComponent):
     """
-    SuperOptiX wrapper for OpenAI SDK agent.
+    SuperOptiX Lite wrapper for OpenAI SDK agent.
 
     Makes the native agent compatible with GEPA optimization by:
     - Inheriting from BaseComponent
@@ -409,7 +426,7 @@ class CodeReviewerComponent(BaseComponent):
         **kwargs
     ):
         """
-        Initialize SuperOptiX component.
+        Initialize SuperOptiX Lite component.
 
         Args:
             instructions: Agent instructions (GEPA optimizes this!)
@@ -418,7 +435,7 @@ class CodeReviewerComponent(BaseComponent):
         # Default instructions from playbook persona
         default_instructions = self._build_default_instructions()
 
-        # Initialize BaseComponent
+        # Initialize BaseComponent from superoptix_lite (lightweight GEPA harness)
         super().__init__(
             name="code_reviewer",
             description="AI code reviewer for security and performance analysis",
@@ -715,9 +732,9 @@ def create_code_reviewer_agent(
 - `Agent` for definition, `Runner.run()` for execution
 - Direct integration with Ollama via `OpenAIChatCompletionsModel`
 
-**Part 2: SuperOptiX Integration**
+**Part 2: SuperOptiX Lite Integration**
 - `CodeReviewerComponent` wraps native agent
-- `BaseComponent` provides GEPA compatibility
+- `BaseComponent` from `superoptix_lite` provides GEPA compatibility (same module shipped in `superoptix-lite-openai`)
 - `variable` field contains optimizable instructions
 
 **Part 3: Pipeline**
@@ -1282,6 +1299,28 @@ optimizer:
 
 ---
 
+## 📚 About SuperOptiX Lite
+
+This tutorial mirrors the lightweight framework distributed with [`superoptix-lite-openai`](https://github.com/SuperagenticAI/superoptix-lite-openai):
+
+**Included**
+- ✅ `BaseComponent` scaffolding for GEPA-compatible variables
+- ✅ Minimal config loader for auto-loading optimized instructions
+- ✅ OpenAI Agents SDK integration wired for Ollama endpoints
+
+**Not Included (Full SuperOptiX)**
+- ❌ UniversalGEPA optimizer and multi-framework compilers
+- ❌ Advanced RAG optimization, memory systems, or Orchestra tooling
+- ❌ CLI workflows (`super` command) and observability integrations
+
+Need the full stack? Install the production framework with:
+
+```bash
+pip install "superoptix[frameworks-openai]"
+```
+
+---
+
 ## 📚 Additional Resources
 
 ### Documentation
@@ -1290,12 +1329,12 @@ optimizer:
 - [GEPA Paper](https://arxiv.org/abs/xxxx.xxxxx)
 
 ### Example Code
-- [Complete Tutorial Code](https://github.com/superoptix/examples/openai-gepa)
+- [SuperOptiX Lite OpenAI Demo](https://github.com/SuperagenticAI/superoptix-lite-openai)
 - [More Agent Examples](https://docs.superoptix.ai/examples)
 
-### Community
-- [Discord Community](https://discord.gg/superoptix)
-- [GitHub Discussions](https://github.com/superoptix/superoptix/discussions)
+### Support
+- Connect with us via [superoptix.ai](https://superoptix.ai) for product updates and contact options
+- Licensing questions: [licensing@super-agentic.ai](mailto:licensing@super-agentic.ai)
 
 ---
 
@@ -1313,12 +1352,6 @@ Your agent is now production-ready and self-optimizing! 🚀
 
 ## 📝 Tutorial Summary
 
-**Time Invested**: 30-45 minutes
-**Lines of Code**: ~600 (agent + pipeline)
-**Test Coverage**: 4 BDD scenarios
-**Final Pass Rate**: 100%
-**Optimization**: Automatic loading
-
 **What You Built**:
 A production-ready code reviewer agent that:
 - Uses official OpenAI SDK patterns
@@ -1326,5 +1359,7 @@ A production-ready code reviewer agent that:
 - Loads optimized instructions transparently
 - Works with local Ollama models
 - Achieves measurable performance improvements
+
+👉 Keep iterating in the [`superoptix-lite-openai`](https://github.com/SuperagenticAI/superoptix-lite-openai) repository. It tracks this tutorial line-for-line, giving you a ready-made playground for experiments, upgrades, and commits you can bring back into your full SuperOptiX projects.
 
 Ready to build more? Check out our [other tutorials](/tutorials/)!
