@@ -117,6 +117,7 @@ nav:
           - '📚 Tutorials Overview': tutorials/index.md
           - '🔮 Your First Agent (Oracle)': tutorials/oracles-agent.md
           - '🧞 Agent with Tools & RAG (Genie)': tutorials/genies-agent.md
+          - '🔧 OpenAI SDK + GEPA Optimization': tutorials/openai-sdk-gepa-optimization.md
   - 🔬 Frameworks:
       - '📚 Frameworks Overview': guides/index.md
       - '🌐 Comparison': guides/multi-framework.md
@@ -156,6 +157,7 @@ nav:
       - '🧬 GEPA Optimizer': guides/gepa-optimization.md
       - '📈 Optimization Guide': guides/optimization.md
       - '🔬 DSPy Optimizers': guides/dspy-optimizers.md
+      - '🔧 OpenAI SDK + GEPA Tutorial': tutorials/openai-sdk-gepa-optimization.md
       - '🔍 RAG Optimization': tutorials/rag-optimization.md
       - '🔌 MCP Optimization': tutorials/mcp-optimization.md
       - '💡 Memory Optimization': guides/memory-optimization.md

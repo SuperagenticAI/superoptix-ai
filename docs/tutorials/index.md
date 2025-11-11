@@ -23,7 +23,22 @@ Welcome to the SuperOptiX tutorials! These step-by-step guides will take you fro
 **Difficulty:** Beginner  
 **Prerequisites:** None
 
-### 2. 🎭 [Multi-Agent Orchestra](first-orchestra)
+### 2. 🔧 [OpenAI SDK + GEPA Optimization](openai-sdk-gepa-optimization)
+
+**Build custom agents with native OpenAI SDK!** Create a production-ready code reviewer using official OpenAI Agents SDK patterns and optimize it with GEPA.
+
+**What you'll learn:**
+- Write agents using official OpenAI SDK patterns
+- Integrate native SDK agents with SuperOptiX
+- Define BDD test scenarios for measurable metrics
+- Run GEPA optimization to improve performance
+- Implement automatic optimization loading
+
+**Time:** 30-45 minutes
+**Difficulty:** Intermediate
+**Prerequisites:** Basic Python, Ollama installed
+
+### 3. 🎭 [Multi-Agent Orchestra](first-orchestra)
 
 **Advanced tutorial** - Coordinate multiple agents to solve complex problems.
 
@@ -33,8 +48,8 @@ Welcome to the SuperOptiX tutorials! These step-by-step guides will take you fro
 - Handle complex orchestration scenarios
 - Deploy production-ready systems
 
-**Time:** 30-45 minutes  
-**Difficulty:** Intermediate  
+**Time:** 30-45 minutes
+**Difficulty:** Advanced
 **Prerequisites:** First Agent Tutorial
 
 ## 🎯 Prerequisites
@@ -54,7 +69,14 @@ Before starting the tutorials, ensure you have:
 - RAG system integration
 - Memory and observability features
 
-### Tutorial 2: Multi-Agent Orchestra
+### Tutorial 2: OpenAI SDK Code Reviewer
+- Production-ready code reviewer agent
+- Native OpenAI Agents SDK implementation
+- GEPA-optimized prompts (75% → 100% pass rate)
+- BDD test scenarios for validation
+- Automatic optimization loading
+
+### Tutorial 3: Multi-Agent Orchestra
 - Customer service workflow
 - Multiple specialized agents
 - Coordinated problem-solving

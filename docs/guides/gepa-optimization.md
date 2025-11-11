@@ -167,6 +167,30 @@ super agent optimize assistant_microsoft --auto medium --framework microsoft --r
 super agent optimize research_agent_deepagents --auto medium --framework deepagents --reflection-lm ollama:llama3.1:8b # DeepAgents
 ```
 
+**💡 About Reflection Models**
+
+The `--reflection-lm` parameter specifies which model GEPA uses to analyze evaluation results and suggest prompt improvements. We typically recommend using a **smaller, faster model** for reflection:
+
+**Why use a smaller reflection model (e.g., llama3.1:8b)?**
+- ✅ **Speed**: GEPA runs the reflection model many times (10-50+ iterations). Smaller models make optimization 5-10x faster
+- ✅ **Resources**: Reduces memory and compute requirements significantly
+- ✅ **Good Enough**: The reflection task (analyzing results, suggesting improvements) is simpler than the agent's actual task
+
+**Example:**
+```bash
+# Your agent uses gpt-oss:20b (20B parameters)
+# But reflection uses llama3.1:8b (8B parameters) - much faster!
+super agent optimize my_agent --auto medium --reflection-lm ollama:llama3.1:8b
+```
+
+**You can use a larger reflection model if needed:**
+```bash
+# For more sophisticated prompt improvements (slower)
+super agent optimize my_agent --auto medium --reflection-lm ollama:gpt-oss:70b
+```
+
+---
+
 **Step 3: Evaluate & Deploy**
 
 ```bash

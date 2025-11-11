@@ -82,6 +82,13 @@ super agent evaluate my_agent
 # 4. Optimize with GEPA (works on ALL frameworks!)
 super agent optimize my_agent --auto medium --framework <framework> --reflection-lm ollama:llama3.1:8b
 
+# 💡 Why --reflection-lm ollama:llama3.1:8b?
+# The reflection model runs many times during optimization to analyze results
+# and suggest improvements. Using a smaller, faster model (8b vs 20b/70b):
+# ✅ Speeds up optimization 5-10x
+# ✅ Reduces memory/resource usage
+# ✅ Provides good enough reflections (simpler task than the actual agent)
+
 # 5. Re-evaluate
 super agent evaluate my_agent  # automatically loads optimized weights
 
@@ -609,8 +616,10 @@ spec:
 - [Evaluation & Testing](evaluation-testing.md)
 - [SuperSpec DSL](superspec.md)
 
+### Tutorials
+
+- [**OpenAI SDK + GEPA Optimization Tutorial**](../tutorials/openai-sdk-gepa-optimization.md) - Complete step-by-step guide to building custom agents with native OpenAI SDK patterns and optimizing them with GEPA
+
 ---
 
-**Status**: All 6 frameworks production-ready ✅  
-**GEPA Support**: Universal optimization across all frameworks ✅  
-**Documentation**: Complete ✅
+Ready to build your own optimized agent? Start with the [OpenAI SDK + GEPA Tutorial](../tutorials/openai-sdk-gepa-optimization.md)!
