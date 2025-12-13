@@ -122,6 +122,8 @@ nav:
       - '📚 Frameworks Overview': guides/index.md
       - '🌐 Comparison': guides/multi-framework.md
       - '🤖 OpenAI SDK': guides/openai-sdk-integration.md
+      - '🐍 Pydantic AI': guides/pydantic-ai-integration.md
+      - '🐍 Pydantic AI MCP Demo': guides/pydantic-ai-mcp-demo.md
       - '👥 CrewAI': guides/crewai-integration.md
       - '⚡ CrewAI Advanced': guides/crewai-task-optimization.md
       - '🔮 Google ADK': guides/google-adk-integration.md

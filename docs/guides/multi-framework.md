@@ -2,7 +2,7 @@
 
 **SuperOptiX: The World's First Universal Agent Optimization Framework**
 
-Build agents in any of 6 major frameworks, then optimize them all with the same powerful GEPA engine.
+Build agents in any of 7 major frameworks, then optimize them all with the same powerful GEPA engine.
 
 ---
 
@@ -31,6 +31,9 @@ pip install superoptix[frameworks-microsoft]
 # DeepAgents
 pip install superoptix[frameworks-deepagents]
 
+# Pydantic AI
+pip install superoptix[frameworks-pydantic-ai]
+
 # CrewAI
 pip install superoptix[frameworks-crewai]
 
@@ -44,7 +47,7 @@ pip install superoptix[frameworks]
 
 SuperOptiX is the **only framework** that allows you to:
 
-- ✅ Build agents in **6 major frameworks** (DSPy, OpenAI SDK, CrewAI, Google ADK, Microsoft, DeepAgents)
+- ✅ Build agents in **7 major frameworks** (DSPy, OpenAI SDK, CrewAI, Google ADK, Microsoft, DeepAgents, Pydantic AI)
 - ✅ Optimize with **one universal optimizer** (GEPA)
 - ✅ Use **the same workflow** regardless of framework
 - ✅ Switch frameworks without rewriting code
@@ -64,6 +67,7 @@ SuperOptiX is the **only framework** that allows you to:
 | **Google ADK** | ✅ Production | 1 (instruction) | ☁️ Gemini | Google ecosystem, free tier |
 | **Microsoft** | ✅ Production | 1 (instructions) | ✅ Ollama | Enterprise Azure, .NET |
 | **DeepAgents** | ✅ Production | 1 (system_prompt) | ✅ Ollama | Complex planning, LangGraph |
+| **Pydantic AI** | ✅ Production | 1 (instructions) + MCP tools | ✅ Ollama | Type-safe outputs, MCP tools |
 
 ---
 
@@ -570,6 +574,9 @@ pip install agent-framework
 
 # DeepAgents (LangGraph)
 pip install langgraph langchain-anthropic
+
+# Pydantic AI
+pip install pydantic-ai==1.31.0
 ```
 
 ### Issue: "Ollama not supported"
@@ -609,6 +616,7 @@ spec:
 - [Google ADK Integration](google-adk-integration.md)
 - [Microsoft Integration](microsoft-framework-integration.md)
 - [DeepAgents Integration](deepagents-integration.md)
+- [Pydantic AI Integration](pydantic-ai-integration.md) & [MCP Demo](pydantic-ai-mcp-demo.md)
 
 ### Related Docs
 
