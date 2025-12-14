@@ -34,6 +34,11 @@ Choose your path based on what you want to accomplish:
 - **[Model Management](model-management.md)** - Manage AI models across backends
 - **[Marketplace](marketplace.md)** - Discover and install components
 
+### 📊 **Observability & Monitoring**
+- **[LogFire Integration](logfire-integration.md)** - Observability for Pydantic AI agents
+- **[Enhanced Observability](enhanced-observability.md)** - Multi-backend observability system
+- **[Observability Guide](observability.md)** - Comprehensive observability and tracing
+
 ### 🔧 **Support & Troubleshooting**
 - **[Debugging Guide](../debugging-guide.md)** - Debug and troubleshoot issues
 - **[Troubleshooting](../troubleshooting.md)** - Common problems and solutions

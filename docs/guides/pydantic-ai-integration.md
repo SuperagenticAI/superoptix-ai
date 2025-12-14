@@ -277,7 +277,7 @@ spec:
         type: stdio
         config:
           command: "npx"
-          args: ["-y", "@modelcontextprotocol/server-filesystem", "/tmp"]
+          args: ["-y", "@modelcontextprotocol/server-filesystem", "/private/tmp"]  # Use /private/tmp on macOS (or /tmp on Linux)
         tool_prefix: "fs_"  # Optional: prefix to avoid naming conflicts
 ```
 
@@ -296,7 +296,7 @@ spec:
         type: stdio
         config:
           command: "npx"
-          args: ["-y", "@modelcontextprotocol/server-filesystem", "/tmp"]
+          args: ["-y", "@modelcontextprotocol/server-filesystem", "/private/tmp"]  # Use /private/tmp on macOS (or /tmp on Linux)
           env:  # Optional environment variables
             API_KEY: "${MY_API_KEY}"
           timeout: 30  # Optional timeout in seconds
@@ -346,7 +346,7 @@ spec:
         type: stdio
         config:
           command: "npx"
-          args: ["-y", "@modelcontextprotocol/server-filesystem", "/tmp"]
+          args: ["-y", "@modelcontextprotocol/server-filesystem", "/private/tmp"]  # Use /private/tmp on macOS (or /tmp on Linux)
         tool_prefix: "fs_"
       
       - name: weather_api
@@ -377,7 +377,7 @@ spec:
         type: stdio
         config:
           command: "npx"
-          args: ["-y", "@modelcontextprotocol/server-filesystem", "/tmp"]
+          args: ["-y", "@modelcontextprotocol/server-filesystem", "/private/tmp"]  # Use /private/tmp on macOS (or /tmp on Linux)
         tool_prefix: "fs_"  # Tools will be prefixed with fs_ at runtime
     
     # Enable MCP tool description optimization
@@ -523,7 +523,7 @@ spec:
         type: stdio
         config:
           command: "npx"
-          args: ["-y", "@modelcontextprotocol/server-filesystem", "/tmp"]
+          args: ["-y", "@modelcontextprotocol/server-filesystem", "/private/tmp"]  # Use /private/tmp on macOS (or /tmp on Linux)
         tool_prefix: "fs_"  # Runtime prefix (tools become fs__read_file, etc.)
     
     # Enable tool optimization
@@ -576,7 +576,7 @@ spec:
      scenarios:
        - name: read_config_file
          input:
-           feature_requirement: "Read /tmp/config.json and tell me what database host is configured"
+           feature_requirement: "Read /private/tmp/config.json and tell me what database host is configured"  # Use /private/tmp on macOS
          expected_output:
            implementation: "localhost"  # Should use fs_read_file tool
    ```
@@ -636,7 +636,7 @@ See: [**Pydantic AI MCP Demo Guide**](pydantic-ai-mcp-demo.md)
 super init swe && cd swe
 super agent pull pydantic-mcp
 super agent compile pydantic-mcp --framework pydantic-ai
-super agent run pydantic-mcp --goal "List all files in /tmp"
+super agent run pydantic-mcp --goal "List all files in /private/tmp"  # Use /private/tmp on macOS
 ```
 
 ---
@@ -779,6 +779,343 @@ Optimized instructions are saved to:
 ```
 
 The generated pipeline automatically loads optimized instructions if available.
+
+---
+
+## 🔍 Field Description Optimization
+
+> ⚠️ **IMPORTANT: Resource Requirements**
+> 
+> Field description optimization is resource-intensive and should only be run when:
+> - ✅ You have a **high-end GPU** (or cloud GPU access)
+> - ✅ You understand the **cost implications** (additional LLM API calls)
+> - ✅ You plan to use **structured output mode** (required for optimized descriptions to take effect)
+
+### What Gets Optimized
+
+**Field Description Optimization** uses GEPA to optimize Pydantic model field descriptions (`Field(description=...)`) for structured output. This improves the model's understanding of what each output field should contain.
+
+**Requires:**
+- `output_fields` defined in your playbook
+- `optimize_field_descriptions: true` in optimization config
+- Structured output mode enabled (`output_mode: structured`) to use optimized descriptions
+
+### How It Works
+
+GEPA optimizes field descriptions by:
+
+1. **Extracting field descriptions** from `output_fields` in your playbook
+2. **Creating evaluation scenarios** based on your BDD test cases
+3. **Generating variations** of each field description
+4. **Testing each variation** to see which descriptions lead to better structured outputs
+5. **Selecting the best descriptions** that improve structured data extraction accuracy
+
+### Example Transformation
+
+**Before Optimization:**
+```yaml
+spec:
+  output_fields:
+    - name: implementation
+      type: string
+      description: The code implementation of the feature
+```
+
+**After GEPA Optimization:**
+```json
+{
+  "original_descriptions": {
+    "implementation": "The code implementation of the feature"
+  },
+  "optimized_descriptions": {
+    "implementation": "Complete, production-ready code implementation with proper imports, error handling, and documentation. Include full function/class definitions, not pseudocode or descriptions."
+  },
+  "score": 0.95,
+  "iterations": 3
+}
+```
+
+The optimized description is more explicit about what the model should produce, leading to better structured output quality.
+
+### Enable Field Description Optimization
+
+Add to your playbook's `optimization` section:
+
+```yaml
+spec:
+  output_fields:
+    - name: implementation
+      type: string
+      description: The code implementation of the feature
+      required: true
+  
+  optimization:
+    optimize_field_descriptions: true  # Enable field description optimization
+    optimizer:
+      name: GEPA
+      params:
+        auto: light
+        reflection_lm: ollama/llama3.1:8b
+```
+
+**Important Notes:**
+- Field description optimization runs as **Phase 1.5** (between MCP tool optimization and instruction optimization)
+- It only runs if `output_fields` are defined in your playbook
+- Optimized descriptions are saved but **only used when structured output mode is enabled**
+
+### Running Field Description Optimization
+
+```bash
+# Quick test (super light - ~1-2 minutes)
+super agent optimize developer \
+  --framework pydantic-ai \
+  --max-metric-calls 20 \
+  --reflection-lm ollama/llama3.1:8b
+
+# Light mode (~5-10 minutes)
+super agent optimize developer \
+  --framework pydantic-ai \
+  --auto light \
+  --reflection-lm ollama/llama3.1:8b
+```
+
+**What You'll See:**
+
+```
+🔧 Phase 1: Optimizing MCP Tool Descriptions (if enabled)
+   ...
+
+📋 Phase 1.5: Optimizing Field Descriptions
+   Optimizing 1 field descriptions:
+     - implementation: The code implementation of the feature
+   
+   ✅ Field description optimization complete!
+   Best score: 0.95
+   Saved to: .../developer_field_descriptions_optimized.json
+
+⚡ Phase 2: Running GEPA optimization for instructions...
+   ...
+```
+
+### Output File
+
+Optimized field descriptions are saved to:
+```
+{project_name}/agents/{agent_name}/optimized/{agent_name}_field_descriptions_optimized.json
+```
+
+**File Format:**
+```json
+{
+  "original_descriptions": {
+    "implementation": "The code implementation of the feature"
+  },
+  "optimized_descriptions": {
+    "implementation": "Complete, production-ready code implementation..."
+  },
+  "score": 0.95,
+  "iterations": 3
+}
+```
+
+### Using Optimized Field Descriptions
+
+Optimized descriptions are **automatically used** when:
+1. Structured output mode is enabled (`output_mode: structured`)
+2. The optimization file exists in the `optimized/` directory
+3. You've run `super agent optimize` with `optimize_field_descriptions: true`
+
+The generated pipeline automatically loads and applies optimized descriptions when creating the BaseModel for structured output.
+
+### Benefits
+
+✅ **Better Structured Output**: More explicit field descriptions improve the model's understanding  
+✅ **Improved Accuracy**: Optimized descriptions lead to better structured data extraction  
+✅ **Type Safety**: Works seamlessly with Pydantic's BaseModel validation  
+✅ **Automatic**: Pipeline automatically applies optimized descriptions when available
+
+### When to Use
+
+**Use field description optimization when:**
+- ✅ You're using structured output mode
+- ✅ Your structured outputs aren't accurate enough
+- ✅ You have well-defined BDD test scenarios
+- ✅ You have adequate GPU/compute resources
+
+**Skip field description optimization when:**
+- ❌ You're using plain text output mode (descriptions won't be used)
+- ❌ Your structured outputs already work well
+- ❌ You don't have resources for additional optimization
+- ❌ `output_fields` aren't defined in your playbook
+
+---
+
+## 📊 Structured Output Mode
+
+Pydantic AI supports **structured output** using Pydantic BaseModel for type-safe, validated responses. SuperOptiX provides an opt-in structured output mode that uses optimized field descriptions when available.
+
+### What is Structured Output?
+
+**Structured Output** uses Pydantic BaseModel to enforce type-safe responses:
+- ✅ **Type Validation**: Responses are validated against the BaseModel schema
+- ✅ **Field Descriptions**: Each field has a description that guides the model
+- ✅ **Type Safety**: Python type hints ensure correct data types
+- ✅ **Automatic Parsing**: Responses are automatically parsed into BaseModel instances
+
+**Default Mode (Plain Text):**
+- Agent returns plain text strings
+- No JSON structure enforcement
+- Works great for code generation, explanations, etc.
+- Better compatibility with smaller models (8b)
+
+**Structured Output Mode (Opt-in):**
+- Agent returns validated BaseModel instances
+- Type-safe, structured data
+- Uses optimized field descriptions when available
+- Requires larger models (70b+) for reliable results
+
+### Enable Structured Output
+
+Add `output_mode: structured` to your playbook:
+
+```yaml
+spec:
+  output_mode: structured  # Enable structured output (opt-in, defaults to plain)
+  output_fields:
+    - name: implementation
+      type: string
+      description: The code implementation of the feature
+      required: true
+```
+
+**Requirements:**
+- `output_fields` must be defined
+- Requires larger models (70b+) for reliable structured output
+- Works best with optimized field descriptions
+
+### Example Playbook
+
+```yaml
+apiVersion: agent/v1
+kind: AgentSpec
+metadata:
+  name: Developer Assistant
+  id: developer
+spec:
+  # Enable structured output
+  output_mode: structured
+  
+  language_model:
+    provider: ollama
+    model: llama3.1:70b  # Larger model recommended for structured output
+    api_base: http://localhost:11434
+  
+  output_fields:
+    - name: implementation
+      type: string
+      description: The code implementation of the feature
+      required: true
+  
+  optimization:
+    optimize_field_descriptions: true  # Optimize field descriptions
+    optimizer:
+      name: GEPA
+      params:
+        auto: light
+        reflection_lm: ollama/llama3.1:8b
+```
+
+### How It Works
+
+When structured output is enabled:
+
+1. **BaseModel Creation**: A Pydantic BaseModel is created from `output_fields`
+2. **Optimized Descriptions**: If available, optimized field descriptions are used
+3. **Agent Configuration**: Agent is configured with `output_type=BaseModel`
+4. **Response Validation**: Model responses are validated against the BaseModel
+5. **Type-Safe Output**: Responses are returned as BaseModel instances
+
+**Generated Code:**
+```python
+# BaseModel created from output_fields
+class DeveloperOutput(BaseModel):
+    implementation: str = Field(
+        description="Complete, production-ready code implementation..."  # Optimized description if available
+    )
+
+# Agent configured with structured output
+agent = Agent(
+    model=model,
+    instructions=instructions,
+    output_type=DeveloperOutput  # Structured output enabled
+)
+```
+
+### Verification
+
+When running an agent with structured output, you'll see:
+
+```
+✅ Using structured output mode (BaseModel)
+   Output Model: DeveloperOutput
+   ✅ Using optimized field descriptions
+```
+
+**Response Output:**
+```
+✅ Structured Output Received!
+   Type: DeveloperOutput
+   Model: DeveloperOutput
+   📊 Pydantic v2 model validated successfully
+   📋 Structured Data (JSON):
+   {
+     "implementation": "...actual code here..."
+   }
+```
+
+### Benefits
+
+✅ **Type Safety**: Responses are validated against Pydantic models  
+✅ **Better Structure**: Enforces consistent output format  
+✅ **Optimized Descriptions**: Uses GEPA-optimized field descriptions  
+✅ **Validation**: Automatic validation ensures correct data types  
+✅ **Integration**: Works seamlessly with Pydantic AI's native structured output
+
+### When to Use Structured Output
+
+**Use structured output when:**
+- ✅ You need type-safe, validated responses
+- ✅ You're using larger models (70b+)
+- ✅ You have well-defined output schemas
+- ✅ You've optimized field descriptions
+- ✅ You need consistent data structure
+
+**Use plain text output when:**
+- ✅ You're using smaller models (8b)
+- ✅ You want maximum compatibility
+- ✅ Output format is flexible
+- ✅ You don't need structured validation
+- ✅ **Default mode** - works great for most use cases
+
+### Switching Between Modes
+
+**Enable structured output:**
+```yaml
+spec:
+  output_mode: structured
+```
+
+**Disable (use plain text - default):**
+```yaml
+spec:
+  # output_mode: plain  # Default, can omit
+  # or remove output_mode entirely
+```
+
+**Important:** Always recompile after changing `output_mode`:
+```bash
+super agent compile developer --framework pydantic-ai
+```
 
 ---
 
@@ -1063,7 +1400,7 @@ super agent compile your_agent --framework pydantic-ai  # Recompile
          type: stdio
          config:
            command: npx
-           args: ["-y", "@modelcontextprotocol/server-filesystem", "/tmp"]
+           args: ["-y", "@modelcontextprotocol/server-filesystem", "/private/tmp"]  # Use /private/tmp on macOS (or /tmp on Linux)
    ```
 
 ---
@@ -1124,7 +1461,7 @@ from pydantic_ai.mcp import MCPServerStdio
 
 server = MCPServerStdio(
     command="npx",
-    args=["-y", "@modelcontextprotocol/server-filesystem", "/tmp"],
+    args=["-y", "@modelcontextprotocol/server-filesystem", "/private/tmp"],  # Use /private/tmp on macOS (or /tmp on Linux)
 )
 
 agent = Agent(
@@ -1231,5 +1568,16 @@ super agent optimize my_agent --framework pydantic-ai --auto light  # Recommende
 > - Heavy: ~$20-100+
 > 
 > 💡 **Save money:** Use `--reflection-lm ollama/llama3.1:8b` for **free** local optimization!
+
+---
+
+## 📊 Observability with LogFire
+
+SuperOptiX includes **native LogFire integration** for Pydantic AI agents, providing comprehensive observability for your agents. See the **[LogFire Integration Guide](logfire-integration.md)** for:
+
+- ✅ Tracing agent executions
+- ✅ Monitoring LLM calls and tool usage
+- ✅ Tracking token usage and costs
+- ✅ Viewing traces in LogFire dashboard or local backends (Jaeger)
 
 Happy building! 🚀

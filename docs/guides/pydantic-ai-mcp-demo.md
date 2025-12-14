@@ -47,7 +47,7 @@ super agent pull pydantic-mcp
 super agent compile pydantic-mcp --framework pydantic-ai
 
 # Test it!
-super agent run pydantic-mcp --goal "List all files in /tmp"
+super agent run pydantic-mcp --goal "List all files in /private/tmp"
 ```
 
 **Expected Output:**
@@ -119,7 +119,7 @@ spec:
           args:
             - "-y"
             - "@modelcontextprotocol/server-filesystem"
-            - "/tmp"
+            - "/private/tmp"  # Use /private/tmp on macOS (or /tmp on Linux)
         tool_prefix: fs_  # Tools become: fs_read_file, fs_write_file, etc.
 ```
 
@@ -141,17 +141,17 @@ super agent compile pydantic-mcp --framework pydantic-ai
 
 Create a test file first:
 ```bash
-echo "Hello from MCP test file!" > /tmp/test.txt
+echo "Hello from MCP test file!" > /private/tmp/test.txt
 ```
 
 **Test 1: List Files**
 ```bash
-super agent run pydantic-mcp --goal "List all files in /tmp"
+super agent run pydantic-mcp --goal "List all files in /private/tmp"
 ```
 
 **Test 2: Read a File**
 ```bash
-super agent run pydantic-mcp --goal "Read the file at /tmp/test.txt"
+super agent run pydantic-mcp --goal "Read the file at /private/tmp/test.txt"
 ```
 
 **Expected output:**
@@ -159,7 +159,7 @@ super agent run pydantic-mcp --goal "Read the file at /tmp/test.txt"
 ┏━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃ Aspect   ┃ Value                                                             ┃
 ┡━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│ Response │ The contents of the file at /tmp/test.txt have been read          │
+│ Response │ The contents of the file at /private/tmp/test.txt have been read          │
 │          │ successfully. The output is:                                      │
 │          │                                                                   │
 │          │ "Hello from MCP test file!"                                       │
@@ -168,12 +168,12 @@ super agent run pydantic-mcp --goal "Read the file at /tmp/test.txt"
 
 **Test 3: Write a File**
 ```bash
-super agent run pydantic-mcp --goal "Create a file /tmp/mcp_demo.txt with content: MCP demo successful!"
+super agent run pydantic-mcp --goal "Create a file /private/tmp/mcp_demo.txt with content: MCP demo successful!"
 ```
 
 **Verify:**
 ```bash
-cat /tmp/mcp_demo.txt
+cat /private/tmp/mcp_demo.txt
 # Output: MCP demo successful!
 ```
 
@@ -242,7 +242,7 @@ spec:
           args:
             - "-y"
             - "@modelcontextprotocol/server-filesystem"
-            - "/tmp"
+            - "/private/tmp"  # Use /private/tmp on macOS (or /tmp on Linux)
         tool_prefix: fs_
 ```
 
@@ -438,7 +438,7 @@ spec:
         type: stdio
         config:
           command: "npx"
-          args: ["-y", "@modelcontextprotocol/server-filesystem", "/tmp"]
+          args: ["-y", "@modelcontextprotocol/server-filesystem", "/private/tmp"]  # Use /private/tmp on macOS
         tool_prefix: "fs_"  # Runtime prefix (tools become fs__read_file at runtime)
     
     # Tool optimization - use actual MCP server tool names (WITHOUT prefix)
@@ -450,7 +450,7 @@ spec:
     scenarios:
       - name: read_config_file
         input:
-          feature_requirement: Read /tmp/config.json and extract the database URL
+          feature_requirement: Read /private/tmp/config.json and extract the database URL
         expected_output:
           implementation: read_file config.json database URL extract
   
@@ -480,11 +480,11 @@ super agent compile developer_mcp --framework pydantic-ai
 
 ```bash
 # Create a test file first
-echo '{"db_host": "localhost", "db_port": 5432}' > /tmp/config.json
+echo '{"db_host": "localhost", "db_port": 5432}' > /private/tmp/config.json
 
 # Run agent
 super agent run developer_mcp \
-  --goal "Read /tmp/config.json and tell me what database port is configured"
+  --goal "Read /private/tmp/config.json and tell me what database port is configured"
 ```
 
 **Expected behavior:**
@@ -543,8 +543,9 @@ super agent optimize developer_mcp \
 
 2. **Test the MCP server manually:**
    ```bash
-   npx -y @modelcontextprotocol/server-filesystem /tmp
+   npx -y @modelcontextprotocol/server-filesystem /private/tmp
    # Should output: "Secure MCP Filesystem Server running on stdio"
+   # Note: On macOS, use /private/tmp (or /tmp on Linux)
    ```
 
 3. **Check playbook filename:**
@@ -563,7 +564,7 @@ super agent optimize developer_mcp \
            args:
              - "-y"
              - "@modelcontextprotocol/server-filesystem"
-             - "/tmp"
+             - "/private/tmp"  # Use /private/tmp on macOS (or /tmp on Linux)
    ```
 
 ### Tools Not Being Called
@@ -582,8 +583,8 @@ super agent optimize developer_mcp \
 2. **Use explicit paths:**
    ```bash
    # Instead of: "read test.txt"
-   # Use: "Read the file at /tmp/test.txt"
-   super agent run pydantic-mcp --goal "Read the file at /tmp/test.txt"
+   # Use: "Read the file at /private/tmp/test.txt" (on macOS)
+   super agent run pydantic-mcp --goal "Read the file at /private/tmp/test.txt"
    ```
 
 3. **Check allowed directories:**
@@ -597,16 +598,18 @@ super agent optimize developer_mcp \
 
 **Error:** `Access denied - path outside allowed directories`
 
-**Cause:** The model tried to access a file outside the allowed `/tmp` directory.
+**Cause:** The model tried to access a file outside the allowed directory.
 
 **Solution:** 
-- Only request file operations within `/tmp`
+- **macOS:** Use `/private/tmp` in both MCP server config and file paths
+- **Linux:** Use `/tmp` as normal
 - Or modify the MCP server config to allow more directories:
   ```yaml
   args:
     - "-y"
     - "@modelcontextprotocol/server-filesystem"
-    - "/tmp"
+    - "/private/tmp"  # macOS
+    # - "/tmp"        # Linux
     - "/home/user/projects"  # Add more allowed directories
   ```
 
@@ -658,19 +661,19 @@ tool_names: ["read_file", "write_file", "list_directory"]
 These commands were tested and work with `llama3.1:8b`:
 
 ```bash
-# List directory contents
-super agent run pydantic-mcp --goal "List all files in /tmp"
+# List directory contents (use /private/tmp on macOS, /tmp on Linux)
+super agent run pydantic-mcp --goal "List all files in /private/tmp"
 # ✅ Returns actual file list from filesystem
 
 # Read a file
-echo "Test content" > /tmp/test.txt
-super agent run pydantic-mcp --goal "Read the file at /tmp/test.txt"
+echo "Test content" > /private/tmp/test.txt
+super agent run pydantic-mcp --goal "Read the file at /private/tmp/test.txt"
 # ✅ Returns: "Test content"
 
 # Write a file
-super agent run pydantic-mcp --goal "Create a file /tmp/hello.txt with content: Hello World"
+super agent run pydantic-mcp --goal "Create a file /private/tmp/hello.txt with content: Hello World"
 # ✅ Creates the file
-cat /tmp/hello.txt  # Verify: "Hello World"
+cat /private/tmp/hello.txt  # Verify: "Hello World"
 ```
 
 ---

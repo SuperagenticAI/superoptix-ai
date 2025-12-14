@@ -170,6 +170,7 @@ nav:
       - '📊 Observability Overview': guides/observability.md
       - '🧿 MLFlow': guides/mlflow-guide.md
       - '🧬 LangFuse': guides/langfuse-integration.md
+      - '🔥 LogFire': guides/logfire-integration.md
       - '📈 Weights & Biases': guides/weights-biases-integration.md
       - '⚖️ Comparison': guides/observability-comparison.md
       - '🚀 Enhanced': guides/enhanced-observability.md
