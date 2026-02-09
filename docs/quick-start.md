@@ -35,7 +35,7 @@ title: Quick Start - SuperOptiX
 | Software | Version/Details |
 |----------|-----------------|
 | **Python** | 3.11 or higher |
-| **SuperOptiX package** | Install via pip, conda, or uv |
+| **SuperOptiX** | Install via uv (recommended) or pip |
 | **Ollama** | For local LLMs (alternatives like MLX or Hugging Face also work) |
 
 **Install Ollama** (if needed):
@@ -44,26 +44,23 @@ title: Quick Start - SuperOptiX
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
-!!! warning "Windows Users"
-    Set `PYTHONUTF8=1` in your environment before running the CLI.
+### 🔧 Install SuperOptiX
 
-### 🔧 Install Options
+We recommend using `uv` for fast, reliable installation.
+
+=== "uv (Recommended)"
+
+    ```bash
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+    uv tool install superoptix
+    super --version
+    ```
 
 === "pip"
 
     ```bash
     pip install superoptix
     super --version
-    super
-    ```
-
-=== "uv"
-
-    ```bash
-    curl -LsSf https://astral.sh/uv/install.sh | sh
-    uv pip install superoptix
-    super --version
-    super
     ```
 
 ---
@@ -88,24 +85,6 @@ super dataset pull sentiment_reviews
 
 !!! success "Dataset Location"
     This stores `sentiment_reviews.csv` in your project's `data/` directory.
-
-??? note "Alternative: Create Dataset Manually"
-    If you're on an older CLI without `super dataset pull`, create it manually:
-
-```bash
-mkdir -p data
-cat <<'CSV' > data/sentiment_reviews.csv
-text,label
-I absolutely love this product! It exceeded all my expectations.,positive
-This is terrible and I'm disappointed with the quality.,negative
-The package arrived on time. It contains the items I ordered.,neutral
-It's decent overall and I'm satisfied with the results.,positive
-It works but I expected better for the price.,negative
-Excellent service from start to finish.,positive
-Poor quality and bad customer service.,negative
-The restaurant is located downtown and serves Italian food.,neutral
-CSV
-```
 
 ### Step 3. Pull & Compile the Agent
 
@@ -148,10 +127,6 @@ super agent evaluate sentiment_analyzer
     - Each scenario is scored with the `answer_exact_match` metric (threshold 0.7).
     - Examples from `data/sentiment_reviews.csv` were converted into DSPy `Example`s and included in the run.
     - A rich pass/fail summary (capability score, recommendations) was printed to the terminal.
-    - **Improve results by:**
-        - Expanding the `expected_output` keywords so they better match the phrasing your model produces.
-        - Trying a stronger base model (e.g., `llama3.1:70b`, `gpt-4`) via environment variables or CLI flags.
-        - Extending `data/sentiment_reviews.csv` with domain-specific examples so evaluation reflects your requirements.
 
 ---
 
@@ -169,12 +144,6 @@ super agent evaluate sentiment_analyzer
     - GEPA iteratively mutated the sentiment pipeline and scored each candidate against the same evaluation set.
     - Optimized weights were saved to `agents/sentiment_analyzer/pipelines/sentiment_analyzer_optimized.json`.
     - The second `evaluate` command automatically loaded those weights before re-running the scenarios.
-    - With the default local model, scores may still be low—this demo highlights the pipeline mechanics more than raw accuracy.
-    - **To boost pass rates:**
-        - Provide a more capable reflection model using `--reflection-lm` (OpenAI, Anthropic, larger Ollama variants).
-        - Increase `--auto` intensity or `max_full_evals` for deeper GEPA exploration.
-        - Update the playbook persona/reasoning to emphasize sentiment-specific cues you want.
-        - Add new dataset rows targeting failure cases, then rerun evaluation/optimization.
 
 !!! success "Part 1 Complete!"
     You've now completed the full evaluation-first loop! Continue exploring or move on to the multi-agent SWE workflow below.
@@ -194,17 +163,6 @@ super init swe
 cd swe
 ```
 
-!!! example "Project Structure"
-    ```
-    swe/
-    ├── agents/
-    ├── data/
-    ├── orchestrations/
-    ├── pipelines/
-    ├── tools/
-    └── .super
-    ```
-
 ---
 
 ### Step 2. Pull & Compile the Developer Agent
@@ -215,10 +173,7 @@ super agent compile developer
 ```
 
 !!! note "Compilation Output"
-    Compilation generates an explicit DSPy pipeline at `agents/developer/pipelines/developer_pipeline.py`. This is your starting point for customization—open the file to see imports, signature definitions, and the reasoning chain produced from the playbook.
-
-!!! tip
-    Each compile also prints the next suggested command. Rerun `super agent compile developer --verbose` if you want extra scaffolding (test counts, customization advice, etc.).
+    Compilation generates an explicit DSPy pipeline at `agents/developer/pipelines/developer_pipeline.py`. This is your starting point for customization.
 
 ---
 
@@ -232,16 +187,6 @@ super agent run developer \
 !!! example "What to Expect"
     Watch the agent reason about the task and emit code along with explanations. The output file is stored in `pipelines/` and the CLI displays the result inline.
 
-??? example "Try Other Requests"
-    ```bash
-    super agent run developer --goal "Implement a REST API endpoint for user registration"
-    super agent run developer --goal "Fix a memory leak in a Python application"
-    super agent run developer --goal "Review and improve this sorting algorithm"
-    ```
-
-!!! tip "Need Automated Verification?"
-    Run `super agent evaluate developer --verbose` to execute the BDD scenarios defined in the playbook. Keep in mind the developer playbook is intentionally minimal—treat it as a baseline and extend it with domain-specific tests and knowledge.
-
 ---
 
 ### Step 4. Add QA & DevOps Agents
@@ -252,15 +197,6 @@ super agent pull devops_engineer
 super agent compile qa_engineer
 super agent compile devops_engineer
 ```
-
-!!! success "Generated Pipelines"
-    Each agent lives in its own subfolder under `agents/`. After compilation you'll see:
-
-    - `agents/qa_engineer/pipelines/qa_engineer_pipeline.py`
-    - `agents/devops_engineer/pipelines/devops_engineer_pipeline.py`
-
-!!! tip
-    Open these pipelines to understand their personas, evaluation metrics, and prompts before orchestrating them.
 
 ---
 
@@ -282,9 +218,6 @@ super orchestra run sdlc --goal "Build a task management web app with auth, CRUD
 !!! example "Output Files"
     Orchestra results are saved to the project root (e.g., `implement_feature_implementation.txt`, `configure_ci_pipeline_result.json`, `create_test_plan_test_plan.txt`).
 
-!!! tip "Customizing the Flow"
-    Edit `orchestras/sdlc_orchestra.yaml` to insert additional agents, tweak execution order, or change prompts before re-running `super orchestra run`.
-
 ---
 
 ### Step 6. Observe and Monitor
@@ -300,7 +233,7 @@ super observe dashboard
 
 ---
 
-## ✅ Summary
+## Summary
 
 !!! success "What You've Accomplished"
 

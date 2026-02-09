@@ -86,9 +86,8 @@ DSPy is the **only framework that systematically optimizes** language model prog
 
 ## 💰 **Licensing & Tiers**
 
-### What's included in the Proprietary version?
-
-The **Proprietary version** includes:
+### Is SuperOptiX open source?
+Yes! SuperOptiX is open source under the MIT License. We welcome contributions from the community.
 
 - **🎭 Oracle Tier** - Basic Q&A and simple evaluation capabilities
 - **🧞 Genie Tier** - Tools, RAG, memory, and streaming features
@@ -108,17 +107,17 @@ This is a **known dependency conflict** between CrewAI and DSPy due to incompati
 - **DSPy 3.0.0** requires `json-repair>=0.30.0`
 - **CrewAI 0.157.0** requires `json-repair==0.25.2` (exact version)
 
-**✅ The Solution:**
+**The Solution:**
 Install CrewAI manually after installing SuperOptiX with DSPy support:
 
 ```bash
-# 1. Install SuperOptiX with DSPy support (this gets compatible json-repair)
+# Install SuperOptiX with DSPy support (this gets compatible json-repair)
 pip install "superoptix[optimas]"
 
-# 2. Install CrewAI without dependencies to avoid conflicts
+# Install CrewAI without dependencies to avoid conflicts
 pip install crewai==0.157.0 --no-deps
 
-# 3. Ensure compatible json-repair version
+# Ensure compatible json-repair version
 pip install "json-repair>=0.30.0"
 ```
 
@@ -194,7 +193,7 @@ The evaluation system provides:
 SuperOptiX includes:
 
 - **🎯 Semantic F1** - Semantic similarity scoring
-- **✅ Exact Match** - Precise answer matching
+- **Exact Match** - Precise answer matching
 - **🧠 Reasoning Quality** - Assessment of reasoning process
 - **🛠️ Tool Usage Efficiency** - Evaluation of tool selection and usage
 - **📊 Response Time** - Performance and latency metrics

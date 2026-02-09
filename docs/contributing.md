@@ -2,7 +2,7 @@
 
 Welcome to SuperOptiX! We're excited that you're interested in our professional AI agent development framework. 🚀
 
-> **Note**: SuperOptiX is now a proprietary software framework. We no longer accept code contributions, but we welcome feedback, bug reports, and feature requests.
+> **Note**: SuperOptiX is an open source project. We welcome code contributions, feedback, bug reports, and feature requests. Please read our contribution guidelines below.
 
 ## 🌟 Our Mission
 
@@ -16,14 +16,14 @@ SuperOptiX provides enterprise-grade AI agent development through our powerful f
 ## 🚀 Getting Started with SuperOptiX
 
 ```bash
-# 1. Install the SuperOptiX Framework
+# Install the SuperOptiX Framework
 pip install superoptix
 
-# 2. Initialize your first project
+# Initialize your first project
 super init my-project
 cd my-project
 
-# 3. Try the CLI to see available commands
+# Try the CLI to see available commands
 super --help
 ```
 
@@ -174,7 +174,7 @@ Help improve our documentation:
 
 ### **📢 Getting Help**
 - **Website**: [super-agentic.ai](https://super-agentic.ai) - Visit our website for support
-- **GitHub Discussions**: [Join discussions](https://github.com/SuperagenticAI/superoptix-ai/discussions)
+- **GitHub Discussions**: [Join discussions](https://github.com/SuperagenticAI/superoptix/discussions)
 - **Email Support**: support@super-agentic.ai
 
 ### **📋 Feedback Standards**

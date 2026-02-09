@@ -1,5 +1,5 @@
 site_name: SUPEROPTIX AI
-site_description: 'Professional AI Agent Development Framework: Evaluation-First. Enterprise-Grade. Production-Ready.'
+site_description: 'AI Agent Development Framework: Evaluation-First and Optimization-Core.'
 site_url: https://docs.super-agentic.ai
 site_author: SuperagenticAI
 
@@ -108,26 +108,28 @@ nav:
   - 🚀 Get Started:
       - '📖 Introduction': introduction.md
       - '🚀 Quick Start': quick-start.md
+      - '⭐ Golden Workflow': guides/golden-workflow.md
       - '🌐 Multi-Framework Quick Start': tutorials/multi-framework-quickstart.md
       - '⚙️ Setup & Installation': setup.md
+      - '🛠️ Troubleshooting by Symptom': guides/troubleshooting-by-symptom.md
       - '🧠 LLM Setup': llm-setup.md
       - '🏗️ Environment Setup': environment-setup.md
       - '📁 Project Structure': project-structure.md
       - '🎓 Tutorials':
           - '📚 Tutorials Overview': tutorials/index.md
-          - '🔮 Your First Agent (Oracle)': tutorials/oracles-agent.md
-          - '🧞 Agent with Tools & RAG (Genie)': tutorials/genies-agent.md
           - '🔧 OpenAI SDK + GEPA Optimization': tutorials/openai-sdk-gepa-optimization.md
   - 🔬 Frameworks:
       - '📚 Frameworks Overview': guides/index.md
       - '🌐 Comparison': guides/multi-framework.md
+      - '📊 Feature Matrix': guides/framework-feature-matrix.md
       - '🤖 OpenAI SDK': guides/openai-sdk-integration.md
+      - '🧠 Claude Agent SDK': guides/claude-sdk-integration.md
       - '🐍 Pydantic AI': guides/pydantic-ai-integration.md
       - '🐍 Pydantic AI MCP Demo': guides/pydantic-ai-mcp-demo.md
       - '👥 CrewAI': guides/crewai-integration.md
       - '⚡ CrewAI Advanced': guides/crewai-task-optimization.md
       - '🔮 Google ADK': guides/google-adk-integration.md
-      - '🏢 Microsoft': guides/microsoft-framework-integration.md
+      - '🏢 Microsoft (Legacy)': guides/microsoft-framework-integration.md
       - '🌊 DeepAgents': guides/deepagents-integration.md
   - 📝 SuperSpec:
       - '📝 SuperSpec Overview': guides/superspec.md
@@ -137,14 +139,13 @@ nav:
       - '⚙️ Configuration': guides/superspec-configuration.md
       - '🧠 Context Engineering': guides/superspec-context-engineering.md
   - 🛠️ Build:
-      - '🏆 Agent Tiers': guides/tiers.md
       - '🎨 Agent Patterns': agent-patterns.md
       - '🔍 Agent Discovery': guides/agent-discovery.md
       - '🤖 Agent Development': guides/agent-development.md
       - '🔧 Tool Development': guides/tool-development.md
       - '🏛️ Technical Architecture': guides/technical-architecture.md
-  - ✅ Evaluate:
-      - '✅ Evaluation & Testing': guides/evaluation-testing.md
+  - Evaluate:
+      - 'Evaluation & Testing': guides/evaluation-testing.md
       - '🎭 RSpec-Style BDD Testing': guides/bdd.md
   - 🎯 Agent Optimization:
       - '📖 Overview': guides/agent-optimization/overview.md
@@ -157,6 +158,7 @@ nav:
       - '🎯 Full-Stack Example': guides/agent-optimization/full-stack-example.md
   - ⚡ Optimize:
       - '🧬 GEPA Optimizer': guides/gepa-optimization.md
+      - '🧪 RLM (Experimental)': guides/rlm-experimental.md
       - '📈 Optimization Guide': guides/optimization.md
       - '🔬 DSPy Optimizers': guides/dspy-optimizers.md
       - '🔧 OpenAI SDK + GEPA Tutorial': tutorials/openai-sdk-gepa-optimization.md
@@ -183,6 +185,8 @@ nav:
   - 🔌 Integrations:
       - '⚡ Optimas': examples/agents/optimas-examples.md
       - '⚡ Optimas Guide': guides/optimas-integration.md
+      - '🗂️ StackOne Integration': guides/stackone-integration.md
+      - '🗂️ StackOne + Claude SDK': guides/stackone-claude-sdk.md
       - '🚥 ChromaDB': examples/agents/rag-chroma-demo.md
       - '🍀 LanceDB': examples/agents/rag-lancedb-demo.md
       - '🔰 Weaviate': examples/agents/weaviate-demo.md
@@ -208,7 +212,7 @@ nav:
           - '🐼 Ollama': examples/agents/ollama-demo.md
           - '🤗 HuggingFace': examples/agents/huggingface-demo.md
           - '🎛️ LM Studio': examples/agents/lmstudio-demo.md
-      - '☁️ Cloud & Production':
+      - '☁️ Cloud':
           - '☁️ Cloud Inference (OpenAI, Anthropic, Google)': guides/cloud-inference.md
           - '🚀 vLLM (High-Performance Serving)': guides/vllm-inference.md
           - '⚡ SGLang (Structured Generation)': guides/sglang-inference.md
@@ -233,15 +237,15 @@ nav:
       - '💡 Memory Optimization': guides/memory-optimization.md
       - '🔍 RAG Integration': guides/rag.md
       - '📈 Optimization': guides/optimization.md
-      - '✅ Evaluation & Testing': guides/evaluation-testing.md
+      - 'Evaluation & Testing': guides/evaluation-testing.md
       - '📊 Observability': guides/observability.md
       - '🎭 RSpec-Style BDD Testing': guides/bdd.md
       - '🔄 CI/CD Integration': guides/cicd-integration.md
       - '🚂 Rails Analogy (For Rails Devs)': guides/rails-analogy.md
   - 🛍️ Marketplace:
       - '🛍️ Marketplace Overview': guides/marketplace.md
-  - ✅ Responsible AI:
-      - '✅ Responsible AI Guide': guides/responsible-ai.md
+  - Responsible AI:
+      - 'Responsible AI Guide': guides/responsible-ai.md
   - 🏢 Company:
       - '🌟 Superagentic AI': superagentic-ai.md
   - 📖 Reference:
